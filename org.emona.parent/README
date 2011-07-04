@@ -1,0 +1,16 @@
+
+
+This is the parent project mainly for the build with maven.
+
+Maybe it has additionally use in the future.
+
+
+As you can see in the pom file, the project consists of the following
+eclipse plugin projects:
+
+org.emona.edit: The grammar definition and xtext modifications
+org.emona.edit.ui: The UI part for the eclipse editor
+org.emona.model: The model definition
+org.emona.edit.feature: The eclipse feature that may be used for
+  building a update site. 
+  

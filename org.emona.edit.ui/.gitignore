@@ -1,0 +1,5 @@
+/src-gen
+/src-gen/**/*
+/bin
+/plugin.xml_gen
+/target

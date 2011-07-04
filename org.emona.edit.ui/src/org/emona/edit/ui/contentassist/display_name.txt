@@ -1,0 +1,7 @@
+#DESC#
+Display Name for GUI
+#DESC#
+#TEMPLATE#
+display_name ${name} 		;${comment}
+
+#TEMPLATE#

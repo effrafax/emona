@@ -1,0 +1,7 @@
+#DESC#
+Register Template (0/1)
+#DESC#
+#TEMPLATE#
+register ${0} 		;${comment}
+
+#TEMPLATE#

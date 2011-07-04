@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2011 Martin Stockhammer &lt;m.stockhammer@web.de>&#xA;All rights reserved.   This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.emona.model/src-gen" editDirectory="/org.emona.model.edit/src-gen"
+    editorDirectory="/org.emona.model.editor/src-gen" modelPluginID="org.emona.model"
+    modelName="EmonaBase" codeFormatting="true" testsDirectory="/org.emona.model.tests/src-gen"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    providerRootExtendsClass="" classNamePattern="">
+  <foreignModel>base.ecore</foreignModel>
+  <genPackages prefix="Base" basePackage="org.emona.model" disposableProviderFactory="true"
+      extensibleProviderFactory="true" ecorePackage="base.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="base.ecore#//Weekday">
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Weekday/SU"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Weekday/MO"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Weekday/TU"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Weekday/WE"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Weekday/TH"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Weekday/FR"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Weekday/SA"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="base.ecore#//Month">
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/JAN"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/FEB"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/MAR"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/APR"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/MAY"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/JUN"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/JUL"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/AUG"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/SEP"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/OCT"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/NOV"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/DEC"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="base.ecore#//StateValue">
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//StateValue/UP"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//StateValue/DOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//StateValue/UNREACHABLE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="base.ecore#//HostNotificationValue">
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostNotificationValue/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostNotificationValue/RECOVERY"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostNotificationValue/DOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostNotificationValue/UNREACHABLE"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostNotificationValue/FLAPPING"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostNotificationValue/SCHEDULEDDOWNTIME"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="base.ecore#//ServiceNotificationValue">
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceNotificationValue/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceNotificationValue/WARNING"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceNotificationValue/CRITICAL"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceNotificationValue/UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceNotificationValue/FLAPPING"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="base.ecore#//InetAddress"/>
+    <genDataTypes ecoreDataType="base.ecore#//TimeRange"/>
+    <genDataTypes ecoreDataType="base.ecore#//Date"/>
+    <genDataTypes ecoreDataType="base.ecore#//MailAddress"/>
+    <genClasses ecoreClass="base.ecore#//MonObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//MonObject/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference base.ecore#//MonObject/use"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//MonObject/register"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="base.ecore#//Attribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//Attribute/comment"/>
+      <genOperations ecoreOperation="base.ecore#//Attribute/getToken"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="base.ecore#//NameAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//NameAttribute/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="base.ecore#//ValueAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//ValueAttribute/value"/>
+    </genClasses>
+    <genClasses ecoreClass="base.ecore#//BooleanAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//BooleanAttribute/enabled"/>
+    </genClasses>
+    <genClasses ecoreClass="base.ecore#//ReferenceAttribute"/>
+    <genClasses ecoreClass="base.ecore#//IntegerValueAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//IntegerValueAttribute/value"/>
+    </genClasses>
+    <nestedGenPackages prefix="Attributes" basePackage="org.emona.model.base" disposableProviderFactory="true"
+        ecorePackage="base.ecore#//attributes">
+      <genClasses ecoreClass="base.ecore#//attributes/Alias">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Alias/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/InitialState">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/InitialState/value"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/InitialState/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostGroups">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/HostGroups/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostGroups/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/Parents">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/Parents/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Parents/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/Address">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Address/value"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Address/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/DisplayName">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/DisplayName/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/Register">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Register/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/Use">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/Use/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Use/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/TimeperiodName">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/TimeperiodName/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostGroupName">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostGroupName/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostName">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostName/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/TemplateName">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/TemplateName/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/CommandLine">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/CommandLine/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/CommandName">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/CommandName/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/MaxCheckAttempts">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/MaxCheckAttempts/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/CheckInterval">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/CheckInterval/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/RetryInterval">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/RetryInterval/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ActiveChecksEnabled">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ActiveChecksEnabled/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/PassiveChecksEnabled">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/PassiveChecksEnabled/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/CheckPeriod">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/CheckPeriod/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/CheckPeriod/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/CheckCommand">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/CheckCommand/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/CheckCommand/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/TimeExclude">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/TimeExclude/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/TimeExclude/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ContactName">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ContactName/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostNotificationsEnabled">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationsEnabled/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServiceNotificationsEnabled">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceNotificationsEnabled/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostNotificationPeriod">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/HostNotificationPeriod/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationPeriod/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServiceNotificationPeriod">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/ServiceNotificationPeriod/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceNotificationPeriod/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostNotificationOptions">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationOptions/value"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationOptions/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServiceNotificationOptions">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceNotificationOptions/value"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceNotificationOptions/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ContactAddress">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ContactAddress/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostNotificationCommands">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/HostNotificationCommands/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationCommands/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServiceNotificationCommands">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/ServiceNotificationCommands/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceNotificationCommands/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/Email">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Email/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/Pager">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Pager/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/Members">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/Members/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Members/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ContactGroupName">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ContactGroupName/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/Contacts">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/Contacts/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Contacts/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ContactGroups">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/ContactGroups/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ContactGroups/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/NotificationInterval">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/NotificationInterval/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/FirstNotificationDelay">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/FirstNotificationDelay/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/StalkingOptions">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/StalkingOptions/value"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/StalkingOptions/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/Notes">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Notes/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/NotesUrl">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/NotesUrl/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ActionUrl">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ActionUrl/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/IconImage">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/IconImage/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/IconImageAlt">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/IconImageAlt/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/VrmlImage">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/VrmlImage/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/StatusmapImage">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/StatusmapImage/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/TwoDCoords">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/TwoDCoords/token"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/TwoDCoords/xcoord"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/TwoDCoords/ycoord"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ThreeDCoords">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ThreeDCoords/token"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ThreeDCoords/xcoord"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ThreeDCoords/ycoord"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ThreeDCoords/zcoord"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

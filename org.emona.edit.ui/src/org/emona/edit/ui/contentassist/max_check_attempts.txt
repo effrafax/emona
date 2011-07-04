@@ -1,0 +1,7 @@
+#DESC#
+Maximum Check Attempts
+#DESC#
+#TEMPLATE#
+max_check_attempts ${3} 		;${comment}
+
+#TEMPLATE#

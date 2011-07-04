@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Model Files for Emona Editor
+Bundle-SymbolicName: org.emona.model;singleton:=true
+Bundle-Version: 0.1.0
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.emona.model.base,
+ org.emona.model.base.attributes,
+ org.emona.model.base.attributes.impl,
+ org.emona.model.base.impl,
+ org.emona.model.types
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ javax.mail;bundle-version="1.4.0";visibility:=reexport
+Bundle-ActivationPolicy: lazy

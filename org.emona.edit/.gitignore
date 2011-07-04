@@ -1,0 +1,7 @@
+/src-gen
+/src-gen/**/*
+/bin
+/plugin.xml_gen
+/target
+/.git.org
+/.antlr-generator-3.2.0.jar

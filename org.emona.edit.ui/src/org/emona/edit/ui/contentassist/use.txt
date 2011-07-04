@@ -1,0 +1,6 @@
+#DESC#
+Inherit other template
+#DESC#
+#TEMPLATE#
+use ${template:CrossReference('Use.reference')} 		;${comment}
+#TEMPLATE#

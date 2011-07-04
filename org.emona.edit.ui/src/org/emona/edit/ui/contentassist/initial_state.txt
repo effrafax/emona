@@ -1,0 +1,7 @@
+#DESC#
+Initial State (o,d,u)
+#DESC#
+#TEMPLATE#
+initial_state ${state:Enum('StateValue')} 		;${comment}
+
+#TEMPLATE#

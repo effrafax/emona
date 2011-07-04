@@ -1,0 +1,647 @@
+/*
+ * <copyright> 
+ *
+ * Copyright (c) 2011 Martin Stockhammer <m.stockhammer@web.de>
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: 
+ *   Martin Stockhammer - Initial Grammar Definition
+ *
+ * </copyright>
+ */
+grammar org.emona.edit.NagiosCfg
+
+generate nagiosCfg "http://www.emona.org/edit/NagiosCfg"
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "platform:/resource/org.emona.model/model/base.ecore" as baseModel
+import "platform:/resource/org.emona.model/model/base.ecore#//attributes" as baseAttributes
+
+ObjectModel hidden(IL_WS, NL):
+	info+=InfoObject*;
+
+InfoObject:
+	CommentLine | ConfigObject;
+
+ConfigObject hidden(IL_WS, NL):
+	Host | HostGroup | Command | Timeperiod | Contact | ContactGroup;
+
+	// Proposals haben Probleme mit NL !!!
+Host:
+	{Host}
+	'define' 'host' '{'
+	attr+=HostAttribute*
+	'}';
+
+HostAttribute returns baseModel::Attribute hidden(IL_WS):
+	(HostName | DisplayName | Alias | Address | Parents |
+	HostGroups | CheckCommand | InitialState | MaxCheckAttempts |
+	CheckInterval | RetryInterval | ActiveChecksEnabled |
+	PassiveChecksEnabled | CheckPeriod |
+	ObsessOverHost | CheckFreshness | FreshnessThreshold |
+	EventHandler | EventHandlerEnabled | FlapDetectionEnabled |
+	LowFlapThreshold | HighFlapThreshold | FlapDetectionOptions |
+	ProcessPerfData | RetainStatusInformation | RetainNonStatusInformation |
+	Contacts | ContactGroups |
+	HNotificationPeriod | HNotificationOptions | HNotificationsEnabled |
+	StalkingOptions |
+	Notes | NotesUrl | ActionUrl |
+	IconImage | IconImageAlt | VrmlImage | StatusMapImage |
+	TwoDCoords | ThreeDCoords |
+	TemplateAttribute) comment=SL_COMMENT? NL;
+
+HostName returns baseAttributes::HostName:
+	'host_name' name=HostNameEntry;
+
+HostGroup:
+	{HostGroup}
+	'define' 'hostgroup' '{'
+	attr+=HostGroupAttribute*
+	'}';
+
+HostGroupAttribute returns baseModel::Attribute hidden(IL_WS):
+	(HostGroupName | Alias | TemplateAttribute) comment=SL_COMMENT? NL;
+
+HostGroupName returns baseAttributes::HostGroupName:
+	'hostgroup_name' name=HostGroupNameEntry;
+
+Command:
+	{Command}
+	'define' 'command' '{'
+	attr+=CommandAttribute*
+	'}';
+
+CommandAttribute returns baseModel::Attribute hidden(IL_WS):
+	(CommandName | CommandLine | Alias | TemplateAttribute) comment=SL_COMMENT? NL;
+
+Timeperiod:
+	{Timeperiod}
+	'define' 'timeperiod' '{'
+	attr+=TimeperiodAttribute*
+	'}';
+
+TimeperiodAttribute returns baseModel::Attribute hidden(IL_WS):
+	(TimeperiodName |
+	TimeDefinition | Alias | TemplateAttribute | TimeExclude) comment=SL_COMMENT? NL;
+
+Contact:
+	{Contact}
+	'define' 'contact' '{'
+	attr+=ContactAttribute*
+	'}';
+
+ContactAttribute returns baseModel::Attribute hidden(IL_WS):
+	(ContactName | HostNotificationsEnabled |
+	ServiceNotificationsEnabled | HostNotificationPeriod |
+	ServiceNotificationPeriod | HostNotificationOptions |
+	ServiceNotificationOptions | HostNotificationCommands |
+	ServiceNotificationCommands | Email | Pager |
+	ContactAddress | CanSubmitCommands |
+	Alias | TemplateAttribute) comment=SL_COMMENT? NL;
+
+ContactGroup:
+	{ContactGroup}
+	'define' 'contactgroup' '{'
+	attr+=ContactGroupAttribute*
+	'}';
+
+ContactGroupAttribute returns baseModel::Attribute hidden(IL_WS):
+	(ContactGroupName | Members | Alias | TemplateAttribute) comment=SL_COMMENT? NL;
+
+	/**
+ * Common Attributes
+ */
+TemplateAttribute returns baseModel::Attribute:
+	(Use | Register | TemplateName);
+
+	/*
+ * Template attributes
+ */
+Use returns baseAttributes::Use:
+	'use' reference+=[baseAttributes::TemplateName|UID] (',' reference+=[baseAttributes::TemplateName|UID])*;
+
+TemplateName returns baseAttributes::TemplateName:
+	'name' name=IdOrKeyword;
+
+Register returns baseAttributes::Register:
+	'register' enabled=TrueFalse;
+
+	/**
+ * Common Attributes used by differents config objects
+ */
+Alias returns baseAttributes::Alias:
+	'alias' value=Entry;
+
+DisplayName returns baseAttributes::DisplayName:
+	'display_name' value=Entry;
+
+	/*
+ * Host Attributes
+ */
+/*
+    host_name	host_name
+	alias	alias
+	display_name	display_name
+	address	address
+	parents	host_names
+	hostgroups	hostgroup_names
+	check_command	command_name
+	initial_state	[o,d,u]
+	max_check_attempts	#
+	check_interval	#
+	retry_interval	#
+	active_checks_enabled	[0/1]
+	passive_checks_enabled	[0/1]
+	check_period	timeperiod_name
+	obsess_over_host	[0/1]
+	check_freshness	[0/1]
+	freshness_threshold	#
+	event_handler	command_name
+	event_handler_enabled	[0/1]
+	low_flap_threshold	#
+	high_flap_threshold	#
+	flap_detection_enabled	[0/1]
+	flap_detection_options	[o,d,u]
+	process_perf_data	[0/1]
+	retain_status_information	[0/1]
+	retain_nonstatus_information	[0/1]
+	contacts	contacts
+	contact_groups	contact_groups
+	notification_interval	#
+	first_notification_delay	#
+	notification_period	timeperiod_name
+	notification_options	[d,u,r,f,s]
+	notifications_enabled	[0/1]
+	stalking_options	[o,d,u]
+	notes	note_string
+	notes_url	url
+	action_url	url
+	icon_image	image_file
+	icon_image_alt	alt_string
+	vrml_image	image_file
+	statusmap_image	image_file
+	2d_coords	x_coord,y_coord
+	3d_coords	x_coord,y_coord,z_coord
+*/
+Address returns baseAttributes::Address:
+	'address' value=(IpAddress | NameAddress);
+
+Parents returns baseAttributes::Parents:
+	'parents' reference+=[baseAttributes::HostName|HostNameEntry] (','
+	reference+=[baseAttributes::HostName|HostNameEntry])*;
+
+HostGroups returns baseAttributes::HostGroups:
+	'hostgroups' reference+=[baseAttributes::HostGroupName|HostGroupNameEntry] (','
+	reference+=[baseAttributes::HostGroupName|HostGroupNameEntry])*;
+
+InitialState returns baseAttributes::InitialState:
+	'initial_state' value=StateValue;
+
+MaxCheckAttempts returns baseAttributes::MaxCheckAttempts:
+	'max_check_attempts' value=INT;
+
+CheckInterval returns baseAttributes::CheckInterval:
+	'check_interval' value=INT;
+
+RetryInterval returns baseAttributes::RetryInterval:
+	'retry_interval' value=INT;
+
+ActiveChecksEnabled returns baseAttributes::ActiveChecksEnabled:
+	'active_checks_enabled' enabled=TrueFalse;
+
+PassiveChecksEnabled returns baseAttributes::PassiveChecksEnabled:
+	'passive_checks_enabled' enabled=TrueFalse;
+
+CheckPeriod returns baseAttributes::CheckPeriod:
+	'check_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
+
+ObsessOverHost:
+	'obsess_over_host' enabled=TrueFalse;
+
+CheckFreshness:
+	'check_freshness' enabled=TrueFalse;
+
+FreshnessThreshold:
+	'freshness_threshold' value=INT;
+
+EventHandler:
+	'event_handler' reference=[baseAttributes::CommandName|CommandNameEntry];
+
+EventHandlerEnabled:
+	'event_handler_enabled' enabled=TrueFalse;
+
+LowFlapThreshold:
+	'low_flap_threshold' value=INT;
+
+HighFlapThreshold:
+	'high_flap_threshold' value=INT;
+
+FlapDetectionEnabled:
+	'flap_detection_enabled' enabled=TrueFalse;
+
+FlapDetectionOptions:
+	'flap_detection_options' value=StateValue;
+
+ProcessPerfData:
+	'process_perf_data' enabled=TrueFalse;
+
+RetainStatusInformation:
+	'retain_status_information' enabled=TrueFalse;
+
+RetainNonStatusInformation:
+	'retain_nonstatus_information' enabled=TrueFalse;
+
+Contacts returns baseAttributes::Contacts:
+	'contacts' reference+=[baseAttributes::ContactName|ContactNameEntry] (','
+	reference+=[baseAttributes::ContactName|ContactNameEntry])*;
+
+ContactGroups returns baseAttributes::ContactGroups:
+	'contact_groups' reference+=[baseAttributes::ContactGroupName|ContactGroupNameEntry] (','
+	reference+=[baseAttributes::ContactGroupName|ContactGroupNameEntry])*;
+
+HNotificationPeriod returns baseAttributes::HostNotificationPeriod:
+	'notification_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
+
+HNotificationOptions returns baseAttributes::HostNotificationOptions:
+	'notification_options' value+=HostNotificationValue (',' value+=HostNotificationValue)*;
+
+HNotificationsEnabled returns baseAttributes::HostNotificationsEnabled:
+	'notification_options' enabled=TrueFalse;
+
+StalkingOptions returns baseAttributes::StalkingOptions:
+	'stalking_options' value+=StateValue (',' value+=StateValue)*;
+
+Notes returns baseAttributes::Notes:
+	'notes' value=Entry;
+
+NotesUrl returns baseAttributes::NotesUrl:
+	'notes_url' value=Entry;
+
+ActionUrl returns baseAttributes::ActionUrl:
+	'action_url' value=Entry;
+
+IconImage returns baseAttributes::IconImage:
+	'icon_image' value=Entry;
+
+IconImageAlt returns baseAttributes::IconImageAlt:
+	'icon_image_alt' value=Entry;
+
+VrmlImage returns baseAttributes::VrmlImage:
+	'vrml_image' value=Entry;
+
+StatusMapImage returns baseAttributes::StatusmapImage:
+	'statusmap_image' value=Entry;
+
+TwoDCoords returns baseAttributes::TwoDCoords:
+	'2d_coords' xcoord=INT ',' ycoord=INT;
+
+ThreeDCoords returns baseAttributes::ThreeDCoords:
+	'3d_coords' xcoord=RealNumber ',' ycoord=RealNumber ',' zcoord=RealNumber;
+
+	//	action_url	url
+//	icon_image	image_file
+//	icon_image_alt	alt_string
+//	vrml_image	image_file
+//	statusmap_image	image_file
+//	2d_coords	x_coord,y_coord
+//	3d_coords	x_coord,y_coord,z_coord	
+
+/********************
+ * Command Attributes
+ */
+CheckCommand returns baseAttributes::CheckCommand:
+	'check_command' reference=[baseAttributes::CommandName|CommandNameEntry];
+
+CommandLine returns baseAttributes::CommandLine:
+	'command_line' value=Entry;
+
+CommandName returns baseAttributes::CommandName:
+	'command_name' name=CommandNameEntry;
+
+	/**
+	 * Time definitions
+	 */
+TimeperiodName returns baseAttributes::TimeperiodName:
+	'timeperiod_name' name=TimeperiodNameEntry;
+
+TimeDefinition:
+	{TimeDefinition} days=DateSpec ranges+=TimeRange (',' ranges+=TimeRange)*;
+
+TimeExclude returns baseAttributes::TimeExclude:
+	'exclude' reference+=[baseAttributes::TimeperiodName|TimeperiodNameEntry] (','
+	reference+=[baseAttributes::TimeperiodName|TimeperiodNameEntry])*;
+
+	/*
+ * Contact
+ */
+/*
+  * define contact{
+
+	contact_name                    jdoe
+
+	alias                           John Doe
+
+	host_notifications_enabled		1
+
+	service_notifications_enabled	1
+
+	service_notification_period     24x7
+
+	host_notification_period        24x7
+
+	service_notification_options    w,u,c,r
+
+	host_notification_options       d,u,r
+
+	service_notification_commands   notify-by-email
+
+	host_notification_commands      host-notify-by-email
+
+	email			jdoe@localhost.localdomain
+
+	pager			555-5555@pagergateway.localhost.localdomain
+
+	address1			xxxxx.xyyy@icq.com
+
+	address2			555-555-5555
+
+	can_submit_commands	1
+
+	}
+  
+  */
+ContactName returns baseAttributes::ContactName:
+	'contact_name' name=ContactNameEntry;
+
+HostNotificationsEnabled returns baseAttributes::HostNotificationsEnabled:
+	'host_notifications_enabled' enabled=TrueFalse;
+
+ServiceNotificationsEnabled returns baseAttributes::ServiceNotificationsEnabled:
+	'service_notifications_enabled' enabled=TrueFalse;
+
+HostNotificationPeriod returns baseAttributes::HostNotificationPeriod:
+	'host_notification_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
+
+ServiceNotificationPeriod returns baseAttributes::ServiceNotificationPeriod:
+	'service_notification_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
+
+HostNotificationOptions returns baseAttributes::HostNotificationOptions:
+	'host_notification_options' value+=HostNotificationValue (',' value+=HostNotificationValue)*;
+
+ServiceNotificationOptions returns baseAttributes::ServiceNotificationOptions:
+	'service_notification_options' value=ServiceNotificationValue;
+
+HostNotificationCommands:
+	'host_notification_commands' reference+=[baseAttributes::CommandName|CommandNameEntry] (','
+	reference+=[baseAttributes::CommandName|CommandNameEntry])*;
+
+ServiceNotificationCommands:
+	'service_notification_commands' reference+=[baseAttributes::CommandName|CommandNameEntry] (','
+	reference+=[baseAttributes::CommandName|CommandNameEntry])*;
+
+Email:
+	'email' value=EmailAddress;
+
+Pager:
+	'pager' value=EmailAddress;
+
+ContactAddress returns baseAttributes::ContactAddress:
+	ContactAddress1 | ContactAddress2 | ContactAddress3 | ContactAddress4 | ContactAddress5 | ContactAddress6;
+
+ContactAddress1 returns baseAttributes::ContactAddress:
+	token='address1' value=Entry;
+
+ContactAddress2 returns baseAttributes::ContactAddress:
+	token='address2' value=Entry;
+
+ContactAddress3 returns baseAttributes::ContactAddress:
+	token='address3' value=Entry;
+
+ContactAddress4 returns baseAttributes::ContactAddress:
+	token='address4' value=Entry;
+
+ContactAddress5 returns baseAttributes::ContactAddress:
+	token='address5' value=Entry;
+
+ContactAddress6 returns baseAttributes::ContactAddress:
+	token='address6' value=Entry;
+
+CanSubmitCommands:
+	'can_submit_commands' enabled=TrueFalse;
+
+	/*
+define contactgroup{
+
+	contactgroup_name		novell-admins
+
+	alias			Novell Administrators
+
+	members			jdoe,rtobert,tzach
+
+	}
+ */
+ContactGroupName returns baseAttributes::ContactGroupName:
+	'contactgroup_name' value=ContactGroupNameEntry;
+
+Members returns baseAttributes::Members:
+	'members' reference+=[baseAttributes::ContactName|ContactNameEntry] (','
+	reference+=[baseAttributes::ContactName|ContactNameEntry])*;
+
+enum StateValue returns baseModel::StateValue:
+	UP='o' | DOWN='d' | UNREACHABLE='u';
+
+enum HostNotificationValue returns baseModel::HostNotificationValue:
+	RECOVERY='r' | DOWN='d' | UNREACHABLE='u' | FLAPPING='f' | SCHEDULEDDOWNTIME='s' | NONE='n';
+
+enum ServiceNotificationValue returns baseModel::ServiceNotificationValue:
+	WARNING='w' | UNKNOWN='u' | CRITICAL='c' | FLAPPING='f' | NONE='n';
+
+HostNameEntry:
+	UID;
+
+HostGroupNameEntry:
+	UID;
+
+CommandNameEntry:
+	UID;
+
+TimeperiodNameEntry:
+	UID;
+
+ContactNameEntry:
+	UID;
+
+ContactGroupNameEntry:
+	UID;
+
+	/*
+ * Common terminal rules
+ */
+IdOrKeyword:
+	(UID | Keywords);
+
+TrueFalse returns ecore::EBooleanObject:
+	INT;
+
+RealNumber returns ecore::EDouble hidden():
+	DASH? INT ('.' INT)?;
+	/*
+ * The entry is a catchall rule
+ */
+Entry hidden():
+	(UID | ANY | Keywords | IL_WS | NO_COMMENT | LOWER | UPPER | INT | STRING)+;
+
+IpAddress returns baseModel::InetAddress hidden():
+	INT '.' INT '.' INT '.' INT;
+
+NameAddress returns baseModel::InetAddress hidden():
+	UID ('.' UID)*;
+
+EmailAddress returns baseModel::MailAddress:
+	Entry;
+
+CommentLine hidden():
+	{CommentLine} value=HASH_COMMENT;
+
+	/**
+ * Here are the time / date specific rules. 
+ * timeperiods may be rather complex constructs ...
+ * 
+ */
+DateSpec:
+	(NumericDateRange | DayRange | WeekDayRange | MonthRange) ('/' divisor=INT)?;
+
+DayRange:
+	'day' start=SignedNumber (DASH end=SignedNumber)?;
+
+MonthRange:
+	start=MonthSpec (DASH end=MonthOptSpec)?;
+
+MonthSpec:
+	month=Month day=SignedNumber;
+
+MonthOptSpec returns MonthSpec:
+	month=Month? day=SignedNumber;
+
+WeekDayRange:
+	start=WeekDaySpec (DASH end=WeekDaySpec)?;
+
+WeekDaySpec:
+	day=Weekday selector+=SignedNumber* month=Month?;
+
+NumericDateRange:
+	start=NumericDate (DASH end=NumericDate)?;
+
+NumericDate returns baseModel::Date hidden():
+	DATETERM;
+
+enum Weekday returns baseModel::Weekday:
+	SU='sunday' | MO='monday' | TU='tuesday' | WE='wednesday' | TH='thursday' | FR='friday' | SA='saturday';
+
+enum Month returns baseModel::Month:
+	JAN='january' | FEB='february' | MAR='march' | APR='april' | MAY='may' | JUN='june' | JUL='july' | AUG='august'
+	| SEP='september' |
+	OCT='october' | NOV='november' | DEC='december';
+
+TimeRange returns baseModel::TimeRange:
+	TIMERANGETERM;
+
+	/* 
+	 * These keywords are needed to avoid syntax errors in attribute values, that
+ 	 * may contain all characters. 
+ 	 */
+Keywords:
+	'notes' | 'contact_name' | 'check_interval' | 'timeperiod' | 'host_notifications_enabled' | 'event_handler_enabled' |
+	'check_freshness' | 'r' | 'flap_detection_options' | 'exclude' | 'contacts' |
+	'command' | 'monday' | 'obsess_over_host' | 'service_notification_options' | 'stalking_options' |
+	'3d_coords' | 'host' | 'n' | 'saturday' | '{' | 'statusmap_image' |
+	'february' | 'friday' | 'april' | 'command_line' | 'high_flap_threshold' |
+	'command_name' | 'august' | 'f' | 'freshness_threshold' | 'january' | 'o' |
+	's' | 'parents' | 'timeperiod_name' | 'contactgroup_name' | 'members' |
+	'notification_options' | 'may' | 'address1' | 'alias' | 'host_notification_options' |
+	'service_notification_commands' | 'host_notification_commands' |
+	'c' | 'notes_url' | 'december' | 'november' |
+	'2d_coords' | 'display_name' | 'address2' | 'event_handler' | 'd' |
+	'retain_status_information' | 'july' | 'name' | 'max_check_attempts' | 'thursday' |
+	'september' | 'day' | 'sunday' | 'retry_interval' | '/' |
+	'tuesday' | 'march' | 'contact_groups' | 'hostgroup' | 'email' |
+	'contactgroup' | 'service' | 'address3' | 'low_flap_threshold' | 'address' |
+	'define' | '.' | 'flap_detection_enabled' | 'vrml_image' | 'passive_checks_enabled' |
+	'address5' | 'contact' | 'service_notification_period' | 'address4' | 'w' |
+	',' | 'active_checks_enabled' | 'initial_state' | 'process_perf_data' | 'address6' |
+	'host_notification_period' | 'hostgroups' | 'host_group' | 'icon_image_alt' | 'use' |
+	'can_submit_commands' | 'wednesday' | 'pager' | '}' | 'service_notifications_enabled' |
+	'june' | 'october' | 'hostgroup_name' | 'retain_nonstatus_information' | 'notification_period' |
+	'check_period' | 'host_name' | 'check_command' | 'icon_image' |
+	'action_url' | 'u' | 'register';
+
+terminal fragment DIGIT:
+	'0'..'9';
+
+SignedNumber returns ecore::EInt hidden():
+	DASH? INT;
+
+terminal INT returns ecore::EInt:
+	(DIGIT)+;
+
+terminal TIME:
+	DIGIT DIGIT COLON DIGIT DIGIT;
+
+terminal TIMERANGETERM:
+	TIME DASH TIME;
+
+terminal DATETERM:
+	DIGIT DIGIT DIGIT DIGIT DASH DIGIT DIGIT DASH DIGIT DIGIT;
+
+terminal LOWER:
+	'a'..'z';
+
+terminal UPPER:
+	'A'..'Z';
+	// terminal ZERO: '0';
+// terminal ONE: '1';
+// erminal DIGIT: '2'..'9';
+terminal DASH:
+	'-';
+
+terminal COLON:
+	':';
+
+	// Just whitespace
+terminal IL_WS:
+	' ' | '\t';
+
+	// A comment after config attribute
+terminal SL_COMMENT:
+	';' !('\n' | '\r')*;
+
+	// Comment lines start with hash
+terminal HASH_COMMENT:
+	'#' !('\n' | '\r')*;
+
+	// Using an extended ID terminal
+terminal UID:
+	('^')? (LOWER | UPPER | '_') (LOWER | UPPER | '_' | DASH | INT)*;
+
+	// maybe strings are needed 
+terminal STRING:
+	'"' ('\\' ('b' | 't' | 'n' | 'f' | 'r' | '"' | "'" | '\\') | !('\\' | '"'))* '"' |
+	"'" ('\\' ('b' | 't' | 'n' | 'f' | 'r' | '"' | "'" | '\\') | !('\\' | "'"))* "'";
+
+	// Only for integers
+
+// This is needed for the catchall values
+terminal NO_COMMENT:
+	!(';' | '\n' | '\r');
+
+	// Newline is needed in Nagios config files
+terminal NL:
+	('\r')? '\n';
+
+terminal ANY:
+	.;
+	
+
+

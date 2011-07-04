@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Emona Editor Grammar Definition
+Bundle-Version: 0.1.0
+Bundle-SymbolicName: org.emona.edit; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ com.ibm.icu;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.emona.model
+Import-Package: ch.qos.logback.classic,
+ ch.qos.logback.core.joran.spi,
+ org.apache.commons.logging,
+ org.apache.log4j,
+ org.slf4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.emona.edit,
+ org.emona.edit.nagiosCfg,
+ org.emona.edit.nagiosCfg.impl,
+ org.emona.edit.nagiosCfg.util,
+ org.emona.edit.parseTreeConstruction,
+ org.emona.edit.parser.antlr,
+ org.emona.edit.parser.antlr.internal,
+ org.emona.edit.services,
+ org.emona.edit.sourceset,
+ org.emona.edit.utils,
+ org.emona.edit.validation

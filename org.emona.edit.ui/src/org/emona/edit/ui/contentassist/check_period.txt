@@ -1,0 +1,7 @@
+#DESC#
+The check periods (comma separated)
+#DESC#
+#TEMPLATE#
+check_period ${period:CrossReference('CheckPeriod.reference')} 		;${comment}
+
+#TEMPLATE#
