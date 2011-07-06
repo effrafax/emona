@@ -45,8 +45,8 @@ import org.emona.model.base.attributes.CommandName;
 import org.emona.model.base.attributes.DisplayName;
 import org.emona.model.base.attributes.HostGroupName;
 import org.emona.model.base.attributes.HostGroups;
+import org.emona.model.base.attributes.HostInitialState;
 import org.emona.model.base.attributes.HostName;
-import org.emona.model.base.attributes.InitialState;
 import org.emona.model.base.attributes.MaxCheckAttempts;
 import org.emona.model.base.attributes.Parents;
 import org.emona.model.base.attributes.Register;
@@ -247,7 +247,7 @@ public class NagiosCfgProposalProvider extends
 					keywordSnippets);
 			registerKeywordSnippet(getToken("HostGroups"), HostGroups.class,
 					keywordSnippets);
-			registerKeywordSnippet(getToken("InitialState"), InitialState.class,
+			registerKeywordSnippet(getToken("InitialState"), HostInitialState.class,
 					keywordSnippets);
 			registerKeywordSnippet(getToken("MaxCheckAttempts"),
 					MaxCheckAttempts.class, keywordSnippets);
