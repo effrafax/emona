@@ -20,628 +20,920 @@ import "platform:/resource/org.emona.model/model/base.ecore" as baseModel
 import "platform:/resource/org.emona.model/model/base.ecore#//attributes" as baseAttributes
 
 ObjectModel hidden(IL_WS, NL):
-	info+=InfoObject*;
+    info+=InfoObject*;
 
 InfoObject:
-	CommentLine | ConfigObject;
+    CommentLine | ConfigObject;
 
 ConfigObject hidden(IL_WS, NL):
-	Host | HostGroup | Command | Timeperiod | Contact | ContactGroup;
+    Host | HostGroup | Service | Command | Timeperiod | Contact | ContactGroup;
 
-	// Proposals haben Probleme mit NL !!!
+    // Proposals haben Probleme mit NL !!!
 Host:
-	{Host}
-	'define' 'host' '{'
-	attr+=HostAttribute*
-	'}';
+    {Host}
+    'define' 'host' '{'
+    attr+=HostAttribute*
+    '}';
 
 HostAttribute returns baseModel::Attribute hidden(IL_WS):
-	(HostName | DisplayName | Alias | Address | Parents |
-	HostGroups | CheckCommand | InitialState | MaxCheckAttempts |
-	CheckInterval | RetryInterval | ActiveChecksEnabled |
-	PassiveChecksEnabled | CheckPeriod |
-	ObsessOverHost | CheckFreshness | FreshnessThreshold |
-	EventHandler | EventHandlerEnabled | FlapDetectionEnabled |
-	LowFlapThreshold | HighFlapThreshold | FlapDetectionOptions |
-	ProcessPerfData | RetainStatusInformation | RetainNonStatusInformation |
-	Contacts | ContactGroups |
-	HNotificationPeriod | HNotificationOptions | HNotificationsEnabled |
-	StalkingOptions |
-	Notes | NotesUrl | ActionUrl |
-	IconImage | IconImageAlt | VrmlImage | StatusMapImage |
-	TwoDCoords | ThreeDCoords |
-	TemplateAttribute) comment=SL_COMMENT? NL;
+    (HostName | DisplayName | Alias | Address | Parents |
+    HostGroups | CheckCommand | HostInitialState | MaxCheckAttempts |
+    CheckInterval | RetryInterval | ActiveChecksEnabled |
+    PassiveChecksEnabled | CheckPeriod |
+    ObsessOverHost | CheckFreshness | FreshnessThreshold |
+    EventHandler | EventHandlerEnabled | FlapDetectionEnabled |
+    LowFlapThreshold | HighFlapThreshold | HostFlapDetectionOptions |
+    ProcessPerfData | RetainStatusInformation | RetainNonStatusInformation |
+    Contacts | ContactGroups |
+    NotificationPeriod | HNotificationOptions | NotificationsEnabled |
+    NotificationInterval | FirstNotificationDelay | StalkingOptions |
+    Notes | NotesUrl | ActionUrl |
+    IconImage | IconImageAlt | VrmlImage | StatusMapImage |
+    TwoDCoords | ThreeDCoords |
+    TemplateAttribute) comment=SL_COMMENT? NL;
 
 HostName returns baseAttributes::HostName:
-	'host_name' name=HostNameEntry;
+    'host_name' name=HostNameEntry;
 
+/* */
+/* 
+ * Hostgroup
+ * =========
+ * 
+  define hostgroup{
+    hostgroup_name    hostgroup_name
+    alias    alias
+    members    hosts
+    hostgroup_members    hostgroups
+    notes    note_string
+    notes_url    url
+    action_url    url
+  }
+ * 
+ */
 HostGroup:
-	{HostGroup}
-	'define' 'hostgroup' '{'
-	attr+=HostGroupAttribute*
-	'}';
+    {HostGroup}
+    'define' 'hostgroup' '{'
+    attr+=HostGroupAttribute*
+    '}';
 
 HostGroupAttribute returns baseModel::Attribute hidden(IL_WS):
-	(HostGroupName | Alias | TemplateAttribute) comment=SL_COMMENT? NL;
+    (HostGroupName | Alias | HostMembers | HostgroupMembers |
+    ActionUrl | Notes | NotesUrl | TemplateAttribute) comment=SL_COMMENT? NL;
 
 HostGroupName returns baseAttributes::HostGroupName:
-	'hostgroup_name' name=HostGroupNameEntry;
+    'hostgroup_name' name=HostGroupNameEntry;
 
+/* */
+/*
+ * Service 
+ * =======
+ * 
+ * 
+  define service{
+    host_name   host_name
+    hostgroup_name  hostgroup_name
+    service_description service_description
+    display_name    display_name
+    servicegroups   servicegroup_names
+    is_volatile [0/1]
+    check_command   command_name
+    initial_state   [o,w,u,c]
+    max_check_attempts  #
+    check_interval  #
+    retry_interval  #
+    active_checks_enabled   [0/1]
+    passive_checks_enabled  [0/1]
+    check_period    timeperiod_name
+    obsess_over_service [0/1]
+    check_freshness [0/1]
+    freshness_threshold #
+    event_handler   command_name
+    event_handler_enabled   [0/1]
+    low_flap_threshold  #
+    high_flap_threshold #
+    flap_detection_enabled  [0/1]
+    flap_detection_options  [o,w,c,u]
+    process_perf_data   [0/1]
+    retain_status_information   [0/1]
+    retain_nonstatus_information    [0/1]
+    notification_interval   #
+    first_notification_delay    #
+    notification_period timeperiod_name
+    notification_options    [w,u,c,r,f,s]
+    notifications_enabled   [0/1]
+    contacts    contacts
+    contact_groups  contact_groups
+    stalking_options    [o,w,u,c]
+    notes   note_string
+    notes_url   url
+    action_url  url
+    icon_image  image_file
+    icon_image_alt  alt_string
+    }
+ *
+ * 
+ * 
+ */
+Service:
+    {Service}
+    'define' 'service' '{'
+    attr+=ServiceAttribute*
+    '}';
+
+ServiceAttribute returns baseModel::Attribute hidden(IL_WS):
+    (ServiceDescription | HostNameReference | HostgroupNameReference |
+    IsVolatile | CheckCommand | ServiceInitialState |
+    MaxCheckAttempts | CheckInterval | RetryInterval |
+    ActiveChecksEnabled | PassiveChecksEnabled | CheckPeriod |
+    ObsessOverService | CheckFreshness  | FreshnessThreshold |
+    EventHandler | EventHandlerEnabled |
+    LowFlapThreshold | HighFlapThreshold | FlapDetectionEnabled | ServiceFlapDetectionOptions |
+    ProcessPerfData | RetainStatusInformation | RetainNonStatusInformation |
+    NotificationInterval | FirstNotificationDelay | NotificationPeriod |
+    ServiceNotificationOptions | NotificationsEnabled  | 
+    Contacts | ContactGroups | StalkingOptions | Notes | NotesUrl | ActionUrl |
+    IconImage | IconImageAlt |
+    DisplayName | TemplateAttribute) comment=SL_COMMENT? NL;
+
+ServiceDescription returns baseAttributes::ServiceDescription:
+    name=ServiceDescriptionEntry;
+
+ServiceDescriptionEntry:
+    UID+;
+
+/* */
+/*
+ * Command 
+ * =======
+ * 
+ */
 Command:
-	{Command}
-	'define' 'command' '{'
-	attr+=CommandAttribute*
-	'}';
+    {Command}
+    'define' 'command' '{'
+    attr+=CommandAttribute*
+    '}';
 
 CommandAttribute returns baseModel::Attribute hidden(IL_WS):
-	(CommandName | CommandLine | Alias | TemplateAttribute) comment=SL_COMMENT? NL;
+    (CommandName | CommandLine | Alias | TemplateAttribute) comment=SL_COMMENT? NL;
 
 Timeperiod:
-	{Timeperiod}
-	'define' 'timeperiod' '{'
-	attr+=TimeperiodAttribute*
-	'}';
+    {Timeperiod}
+    'define' 'timeperiod' '{'
+    attr+=TimeperiodAttribute*
+    '}';
 
 TimeperiodAttribute returns baseModel::Attribute hidden(IL_WS):
-	(TimeperiodName |
-	TimeDefinition | Alias | TemplateAttribute | TimeExclude) comment=SL_COMMENT? NL;
+    (TimeperiodName |
+    TimeDefinition | Alias | TemplateAttribute | TimeExclude) comment=SL_COMMENT? NL;
 
 Contact:
-	{Contact}
-	'define' 'contact' '{'
-	attr+=ContactAttribute*
-	'}';
+    {Contact}
+    'define' 'contact' '{'
+    attr+=ContactAttribute*
+    '}';
 
 ContactAttribute returns baseModel::Attribute hidden(IL_WS):
-	(ContactName | HostNotificationsEnabled |
-	ServiceNotificationsEnabled | HostNotificationPeriod |
-	ServiceNotificationPeriod | HostNotificationOptions |
-	ServiceNotificationOptions | HostNotificationCommands |
-	ServiceNotificationCommands | Email | Pager |
-	ContactAddress | CanSubmitCommands |
-	Alias | TemplateAttribute) comment=SL_COMMENT? NL;
+    (ContactName | HostNotificationsEnabled |
+    ServiceNotificationsEnabled | HostNotificationPeriod |
+    ServiceNotificationPeriod | HostNotificationOptions |
+    ServiceNotificationOptions | HostNotificationCommands |
+    ServiceNotificationCommands | Email | Pager |
+    ContactAddress | CanSubmitCommands |
+    Alias | TemplateAttribute) comment=SL_COMMENT? NL;
 
 ContactGroup:
-	{ContactGroup}
-	'define' 'contactgroup' '{'
-	attr+=ContactGroupAttribute*
-	'}';
+    {ContactGroup}
+    'define' 'contactgroup' '{'
+    attr+=ContactGroupAttribute*
+    '}';
 
 ContactGroupAttribute returns baseModel::Attribute hidden(IL_WS):
-	(ContactGroupName | Members | Alias | TemplateAttribute) comment=SL_COMMENT? NL;
+    (ContactGroupName | ContactMembers | Alias | TemplateAttribute) comment=SL_COMMENT? NL;
 
-	/**
+    /**
  * Common Attributes
  */
 TemplateAttribute returns baseModel::Attribute:
-	(Use | Register | TemplateName);
+    (Use | Register | TemplateName);
 
-	/*
+    /*
  * Template attributes
  */
 Use returns baseAttributes::Use:
-	'use' reference+=[baseAttributes::TemplateName|UID] (',' reference+=[baseAttributes::TemplateName|UID])*;
+    'use' reference+=[baseAttributes::TemplateName|UID] (',' reference+=[baseAttributes::TemplateName|UID])*;
 
 TemplateName returns baseAttributes::TemplateName:
-	'name' name=IdOrKeyword;
+    'name' name=IdOrKeyword;
 
 Register returns baseAttributes::Register:
-	'register' enabled=TrueFalse;
+    'register' enabled=TrueFalse;
 
-	/**
- * Common Attributes used by differents config objects
+/* */
+/*
+ * **************************************
+ * Common attributes
+ * **************************************
  */
 Alias returns baseAttributes::Alias:
-	'alias' value=Entry;
+    'alias' value=Entry;
 
 DisplayName returns baseAttributes::DisplayName:
-	'display_name' value=Entry;
+    'display_name' value=Entry;
 
-	/*
- * Host Attributes
+/* */
+/*
+ * Host/Service Attribute 'max_check_attempts': The maximum check attempts.
+ */
+MaxCheckAttempts returns baseAttributes::MaxCheckAttempts:
+    'max_check_attempts' value=INT;
+
+/* */
+/*
+ * Host/Service Attribute 'check_interval': The interval between checks.
+ */
+CheckInterval returns baseAttributes::CheckInterval:
+    'check_interval' value=INT;
+
+/* */
+/*
+ * Host/Service Attribute 'retry_interval': The interval between a failed check and the next
+ * check attempt.
+ */
+RetryInterval returns baseAttributes::RetryInterval:
+    'retry_interval' value=INT;
+
+/* */
+/*
+ * Host/Service Attribute 'active_checks_enabled': Boolean attribute [0/1]
+ */
+ActiveChecksEnabled returns baseAttributes::ActiveChecksEnabled:
+    'active_checks_enabled' enabled=TrueFalse;
+
+/* */
+/*
+ * Host/Service Attribute 'passive_checks_enabled': Boolean attribute [0/1]
+ */
+PassiveChecksEnabled returns baseAttributes::PassiveChecksEnabled:
+    'passive_checks_enabled' enabled=TrueFalse;
+
+/* */
+/*
+ * Host/Service Attribute 'check_period': Reference to the time period definition.
+ */
+CheckPeriod returns baseAttributes::CheckPeriod:
+    'check_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
+
+/* */
+/*
+ * Host/Service Attribute 'check_freshness': Boolean
+ */
+CheckFreshness returns baseAttributes::CheckFreshness:
+    'check_freshness' enabled=TrueFalse;
+
+/* */
+/*
+ * Host/Service Attribute 'freshness_threshold': Integer value
+ */
+FreshnessThreshold returns baseAttributes::FreshnessThreshold:
+    'freshness_threshold' value=INT;
+
+/* */
+/*
+ * Host/Service Attribute 'event_handler': Reference to command
+ */
+EventHandler returns baseAttributes::EventHandler:
+    'event_handler' reference=[baseAttributes::CommandName|CommandNameEntry];
+
+/* */
+/*
+ * Host/Service Attribute 'event_handler_enabled': Boolean
+ */
+EventHandlerEnabled returns baseAttributes::EventHandlerEnabled:
+    'event_handler_enabled' enabled=TrueFalse;
+
+/* */
+/*
+ * Host/Service Attribute 'low_flap_threshold': Integer value
+ */
+LowFlapThreshold returns baseAttributes::LowFlapThreshold:
+    'low_flap_threshold' value=INT;
+
+/* */
+/*
+ * Host/Service Attribute 'high_flap_threshold': Integer value
+ */
+HighFlapThreshold returns baseAttributes::HighFlapThreshold:
+    'high_flap_threshold' value=INT;
+
+/* */
+/*
+ * Host/Service Attribute 'flap_detection_enabled': Boolean
+ */
+FlapDetectionEnabled returns baseAttributes::FlapDetectionEnabled:
+    'flap_detection_enabled' enabled=TrueFalse;
+
+/* */
+/*
+ * Host/Service Attribute 'process_perf_data': Boolean
+ */
+ProcessPerfData returns baseAttributes::ProcessPerfData:
+    'process_perf_data' enabled=TrueFalse;
+
+/* */
+/*
+ * Host/Service Attribute 'retain_status_information': Boolean
+ */
+RetainStatusInformation returns RetainNonStatusInformation:
+    'retain_status_information' enabled=TrueFalse;
+
+/* */
+/*
+ * Host/Service Attribute 'retain_nonstatus_information': Boolean
+ */
+RetainNonStatusInformation returns RetainNonStatusInformation:
+    'retain_nonstatus_information' enabled=TrueFalse;
+
+/* */
+/*
+ * Host/Service Attribute 'notification_period': Reference to timeperiod
+ */
+NotificationPeriod returns baseAttributes::NotificationPeriod:
+    'notification_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
+
+/* */
+/*
+ * Host/Service Attribute 'notifications_enabled': Boolean
+ */
+NotificationsEnabled returns baseAttributes::NotificationsEnabled:
+    'notifications_enabled' enabled=TrueFalse;
+
+/* */
+/*
+ * Host/Service Attribute 'notification_interval': Integer Value
+ */
+NotificationInterval returns baseAttributes::NotificationInterval:
+    'notification_interval' value=INT;
+    
+/* */
+/*
+ * Host/Service Attribute 'first_notification_delay': Integer value
+ */
+FirstNotificationDelay returns baseAttributes::FirstNotificationDelay:
+    'first_notification_delay' value=INT;
+
+/* */
+/*
+ * Host/Service Attribute 'contacts': Reference to contact
+ */
+Contacts returns baseAttributes::Contacts:
+    'contacts' reference+=[baseAttributes::ContactName|ContactNameEntry] (','
+    reference+=[baseAttributes::ContactName|ContactNameEntry])*;
+
+/* */
+/*
+ * Host/Service Attribute 'contact_groups': Reference to contact group
+ */
+ContactGroups returns baseAttributes::ContactGroups:
+    'contact_groups' reference+=[baseAttributes::ContactGroupName|ContactGroupNameEntry] (','
+    reference+=[baseAttributes::ContactGroupName|ContactGroupNameEntry])*;
+
+/* */
+/*
+ * Host/Service Attribute 'stalking_options': HostStateValue
+ */
+StalkingOptions returns baseAttributes::StalkingOptions:
+    'stalking_options' value+=HostStateValue (',' value+=HostStateValue)*;
+
+
+/* */
+/*
+ * Host/Service Attribute 'notes': Any Entry
+ */
+Notes returns baseAttributes::Notes:
+    'notes' value=Entry;
+
+/* */
+/*
+ * Host/Service Attribute 'notes_url': Any entry
+ */
+NotesUrl returns baseAttributes::NotesUrl:
+    'notes_url' value=Entry;
+
+/* */
+/*
+ * Host/Service Attribute 'action_url': Any entry
+ */
+ActionUrl returns baseAttributes::ActionUrl:
+    'action_url' value=Entry;
+
+/* */
+/*
+ * Host/Service Attribute 'icon_image': Any entry
+ */
+IconImage returns baseAttributes::IconImage:
+    'icon_image' value=Entry;
+
+/* */
+/*
+ * Host/Service Attribute 'icon_image_alt': Any entry
+ */
+IconImageAlt returns baseAttributes::IconImageAlt:
+    'icon_image_alt' value=Entry;
+
+
+    
+/* */
+/*
+ * **************************************
+ * Host attributes
+ * **************************************
  */
 /*
-    host_name	host_name
-	alias	alias
-	display_name	display_name
-	address	address
-	parents	host_names
-	hostgroups	hostgroup_names
-	check_command	command_name
-	initial_state	[o,d,u]
-	max_check_attempts	#
-	check_interval	#
-	retry_interval	#
-	active_checks_enabled	[0/1]
-	passive_checks_enabled	[0/1]
-	check_period	timeperiod_name
-	obsess_over_host	[0/1]
-	check_freshness	[0/1]
-	freshness_threshold	#
-	event_handler	command_name
-	event_handler_enabled	[0/1]
-	low_flap_threshold	#
-	high_flap_threshold	#
-	flap_detection_enabled	[0/1]
-	flap_detection_options	[o,d,u]
-	process_perf_data	[0/1]
-	retain_status_information	[0/1]
-	retain_nonstatus_information	[0/1]
-	contacts	contacts
-	contact_groups	contact_groups
-	notification_interval	#
-	first_notification_delay	#
-	notification_period	timeperiod_name
-	notification_options	[d,u,r,f,s]
-	notifications_enabled	[0/1]
-	stalking_options	[o,d,u]
-	notes	note_string
-	notes_url	url
-	action_url	url
-	icon_image	image_file
-	icon_image_alt	alt_string
-	vrml_image	image_file
-	statusmap_image	image_file
-	2d_coords	x_coord,y_coord
-	3d_coords	x_coord,y_coord,z_coord
+    host_name    host_name
+    alias    alias
+    display_name    display_name
+    address    address
+    parents    host_names
+    hostgroups    hostgroup_names
+    check_command    command_name
+    initial_state    [o,d,u]
+    max_check_attempts    #
+    check_interval    #
+    retry_interval    #
+    active_checks_enabled    [0/1]
+    passive_checks_enabled    [0/1]
+    check_period    timeperiod_name
+    obsess_over_host    [0/1]
+    check_freshness    [0/1]
+    freshness_threshold    #
+    event_handler    command_name
+    event_handler_enabled    [0/1]
+    low_flap_threshold    #
+    high_flap_threshold    #
+    flap_detection_enabled    [0/1]
+    flap_detection_options    [o,d,u]
+    process_perf_data    [0/1]
+    retain_status_information    [0/1]
+    retain_nonstatus_information    [0/1]
+    contacts    contacts
+    contact_groups    contact_groups
+    notification_interval    #
+    first_notification_delay    #
+    notification_period    timeperiod_name
+    notification_options    [d,u,r,f,s]
+    notifications_enabled    [0/1]
+    stalking_options    [o,d,u]
+    notes    note_string
+    notes_url    url
+    action_url    url
+    icon_image    image_file
+    icon_image_alt    alt_string
+    vrml_image    image_file
+    statusmap_image    image_file
+    2d_coords    x_coord,y_coord
+    3d_coords    x_coord,y_coord,z_coord
 */
 Address returns baseAttributes::Address:
-	'address' value=(IpAddress | NameAddress);
+    'address' value=(IpAddress | NameAddress);
 
 Parents returns baseAttributes::Parents:
-	'parents' reference+=[baseAttributes::HostName|HostNameEntry] (','
-	reference+=[baseAttributes::HostName|HostNameEntry])*;
+    'parents' reference+=[baseAttributes::HostName|HostNameEntry] (','
+    reference+=[baseAttributes::HostName|HostNameEntry])*;
 
 HostGroups returns baseAttributes::HostGroups:
-	'hostgroups' reference+=[baseAttributes::HostGroupName|HostGroupNameEntry] (','
-	reference+=[baseAttributes::HostGroupName|HostGroupNameEntry])*;
+    'hostgroups' reference+=[baseAttributes::HostGroupName|HostGroupNameEntry] (','
+    reference+=[baseAttributes::HostGroupName|HostGroupNameEntry])*;
 
-InitialState returns baseAttributes::InitialState:
-	'initial_state' value=StateValue;
+HostInitialState returns baseAttributes::HostInitialState:
+    'initial_state' value=HostStateValue;
 
-MaxCheckAttempts returns baseAttributes::MaxCheckAttempts:
-	'max_check_attempts' value=INT;
+ObsessOverHost returns baseAttributes::ObsessOverHost:
+    'obsess_over_host' enabled=TrueFalse;
 
-CheckInterval returns baseAttributes::CheckInterval:
-	'check_interval' value=INT;
-
-RetryInterval returns baseAttributes::RetryInterval:
-	'retry_interval' value=INT;
-
-ActiveChecksEnabled returns baseAttributes::ActiveChecksEnabled:
-	'active_checks_enabled' enabled=TrueFalse;
-
-PassiveChecksEnabled returns baseAttributes::PassiveChecksEnabled:
-	'passive_checks_enabled' enabled=TrueFalse;
-
-CheckPeriod returns baseAttributes::CheckPeriod:
-	'check_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
-
-ObsessOverHost:
-	'obsess_over_host' enabled=TrueFalse;
-
-CheckFreshness:
-	'check_freshness' enabled=TrueFalse;
-
-FreshnessThreshold:
-	'freshness_threshold' value=INT;
-
-EventHandler:
-	'event_handler' reference=[baseAttributes::CommandName|CommandNameEntry];
-
-EventHandlerEnabled:
-	'event_handler_enabled' enabled=TrueFalse;
-
-LowFlapThreshold:
-	'low_flap_threshold' value=INT;
-
-HighFlapThreshold:
-	'high_flap_threshold' value=INT;
-
-FlapDetectionEnabled:
-	'flap_detection_enabled' enabled=TrueFalse;
-
-FlapDetectionOptions:
-	'flap_detection_options' value=StateValue;
-
-ProcessPerfData:
-	'process_perf_data' enabled=TrueFalse;
-
-RetainStatusInformation:
-	'retain_status_information' enabled=TrueFalse;
-
-RetainNonStatusInformation:
-	'retain_nonstatus_information' enabled=TrueFalse;
-
-Contacts returns baseAttributes::Contacts:
-	'contacts' reference+=[baseAttributes::ContactName|ContactNameEntry] (','
-	reference+=[baseAttributes::ContactName|ContactNameEntry])*;
-
-ContactGroups returns baseAttributes::ContactGroups:
-	'contact_groups' reference+=[baseAttributes::ContactGroupName|ContactGroupNameEntry] (','
-	reference+=[baseAttributes::ContactGroupName|ContactGroupNameEntry])*;
-
-HNotificationPeriod returns baseAttributes::HostNotificationPeriod:
-	'notification_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
+/* */
+/*
+ * Host Attribute 'flap_detection_options': Boolean
+ */
+HostFlapDetectionOptions returns baseAttributes::HostFlapDetectionOptions:
+    'flap_detection_options' value=HostStateValue;
 
 HNotificationOptions returns baseAttributes::HostNotificationOptions:
-	'notification_options' value+=HostNotificationValue (',' value+=HostNotificationValue)*;
-
-HNotificationsEnabled returns baseAttributes::HostNotificationsEnabled:
-	'notification_options' enabled=TrueFalse;
-
-StalkingOptions returns baseAttributes::StalkingOptions:
-	'stalking_options' value+=StateValue (',' value+=StateValue)*;
-
-Notes returns baseAttributes::Notes:
-	'notes' value=Entry;
-
-NotesUrl returns baseAttributes::NotesUrl:
-	'notes_url' value=Entry;
-
-ActionUrl returns baseAttributes::ActionUrl:
-	'action_url' value=Entry;
-
-IconImage returns baseAttributes::IconImage:
-	'icon_image' value=Entry;
-
-IconImageAlt returns baseAttributes::IconImageAlt:
-	'icon_image_alt' value=Entry;
+    'notification_options' value+=HostNotificationValue (',' value+=HostNotificationValue)*;
 
 VrmlImage returns baseAttributes::VrmlImage:
-	'vrml_image' value=Entry;
+    'vrml_image' value=Entry;
 
 StatusMapImage returns baseAttributes::StatusmapImage:
-	'statusmap_image' value=Entry;
+    'statusmap_image' value=Entry;
 
 TwoDCoords returns baseAttributes::TwoDCoords:
-	'2d_coords' xcoord=INT ',' ycoord=INT;
+    '2d_coords' xcoord=INT ',' ycoord=INT;
 
 ThreeDCoords returns baseAttributes::ThreeDCoords:
-	'3d_coords' xcoord=RealNumber ',' ycoord=RealNumber ',' zcoord=RealNumber;
+    '3d_coords' xcoord=RealNumber ',' ycoord=RealNumber ',' zcoord=RealNumber;
 
-	//	action_url	url
-//	icon_image	image_file
-//	icon_image_alt	alt_string
-//	vrml_image	image_file
-//	statusmap_image	image_file
-//	2d_coords	x_coord,y_coord
-//	3d_coords	x_coord,y_coord,z_coord	
+/* */
+/*
+ * **************************************
+ * HostGroup attributes
+ * **************************************
+ */
+HostgroupMembers returns baseAttributes::HostgroupMembers:
+    'hostgroup_members' reference+=[baseAttributes::HostGroupName|HostGroupNameEntry] (','
+    reference+=[baseAttributes::HostGroupName|HostGroupNameEntry])*;
 
-/********************
+HostMembers returns baseAttributes::HostMembers:
+    'members' reference+=[baseAttributes::HostName|HostNameEntry] (','
+    reference+=[baseAttributes::HostName|HostNameEntry])*;
+
+/* */
+/*
+ * **************************************
+ * Service Attributes
+ * **************************************
+ */
+/*
+ * Service Attribute 'host_name'. Reference to one or more host names.
+ */
+HostNameReference returns baseAttributes::HostNameReference:
+    'host_name' reference+=[baseAttributes::HostName|HostNameEntry] (','
+    reference+=[baseAttributes::HostName|HostNameEntry])*;
+/* */
+/*
+ * Service Attribute 'hostgroup_name': Reference to one or more hostgroup names.
+ */
+HostgroupNameReference returns baseAttributes::HostgroupNameReference:
+    'hostgroup_name' reference+=[baseAttributes::HostGroupName|HostGroupNameEntry] (','
+    reference+=[baseAttributes::HostGroupName|HostGroupNameEntry])*;
+/* */
+/*
+ * Service Attribute 'is_volatile': Boolean Attribute [0/1].
+ */
+IsVolatile returns baseAttributes::IsVolatileFlag:
+    'is_volatile' enabled=TrueFalse;
+/* */
+/*
+ * Service Attribute 'initial_state': The assumed initial state [OK|WARNING|CRITICAL|UNKNOWN] 
+ */
+ServiceInitialState returns baseAttributes::ServiceInitialState:
+    'initial_state' value=ServiceStateValue;
+/* */
+/*
+ * Service Attribute 'obsess_over_service' 
+ */
+ObsessOverService returns baseAttributes::ObsessOverService:
+    'obsess_over_service' enabled=TrueFalse;
+/* */
+/*
+ * Host Attribute 'flap_detection_options': Boolean
+ */
+ServiceFlapDetectionOptions returns baseAttributes::ServiceFlapDetectionOptions:
+    'flap_detection_options' value=ServiceStateValue;
+
+
+
+/* */
+/*
+ * **************************************
  * Command Attributes
+ * **************************************
  */
 CheckCommand returns baseAttributes::CheckCommand:
-	'check_command' reference=[baseAttributes::CommandName|CommandNameEntry];
+    'check_command' reference=[baseAttributes::CommandName|CommandNameEntry];
 
 CommandLine returns baseAttributes::CommandLine:
-	'command_line' value=Entry;
+    'command_line' value=Entry;
 
 CommandName returns baseAttributes::CommandName:
-	'command_name' name=CommandNameEntry;
+    'command_name' name=CommandNameEntry;
 
-	/**
-	 * Time definitions
-	 */
+    /**
+     * Time definitions
+     */
 TimeperiodName returns baseAttributes::TimeperiodName:
-	'timeperiod_name' name=TimeperiodNameEntry;
+    'timeperiod_name' name=TimeperiodNameEntry;
 
 TimeDefinition:
-	{TimeDefinition} days=DateSpec ranges+=TimeRange (',' ranges+=TimeRange)*;
+    {TimeDefinition} days=DateSpec ranges+=TimeRange (',' ranges+=TimeRange)*;
 
 TimeExclude returns baseAttributes::TimeExclude:
-	'exclude' reference+=[baseAttributes::TimeperiodName|TimeperiodNameEntry] (','
-	reference+=[baseAttributes::TimeperiodName|TimeperiodNameEntry])*;
+    'exclude' reference+=[baseAttributes::TimeperiodName|TimeperiodNameEntry] (','
+    reference+=[baseAttributes::TimeperiodName|TimeperiodNameEntry])*;
 
-	/*
+    /*
  * Contact
  */
 /*
   * define contact{
 
-	contact_name                    jdoe
+    contact_name                    jdoe
 
-	alias                           John Doe
+    alias                           John Doe
 
-	host_notifications_enabled		1
+    host_notifications_enabled        1
 
-	service_notifications_enabled	1
+    service_notifications_enabled    1
 
-	service_notification_period     24x7
+    service_notification_period     24x7
 
-	host_notification_period        24x7
+    host_notification_period        24x7
 
-	service_notification_options    w,u,c,r
+    service_notification_options    w,u,c,r
 
-	host_notification_options       d,u,r
+    host_notification_options       d,u,r
 
-	service_notification_commands   notify-by-email
+    service_notification_commands   notify-by-email
 
-	host_notification_commands      host-notify-by-email
+    host_notification_commands      host-notify-by-email
 
-	email			jdoe@localhost.localdomain
+    email            jdoe@localhost.localdomain
 
-	pager			555-5555@pagergateway.localhost.localdomain
+    pager            555-5555@pagergateway.localhost.localdomain
 
-	address1			xxxxx.xyyy@icq.com
+    address1            xxxxx.xyyy@icq.com
 
-	address2			555-555-5555
+    address2            555-555-5555
 
-	can_submit_commands	1
+    can_submit_commands    1
 
-	}
+    }
   
   */
 ContactName returns baseAttributes::ContactName:
-	'contact_name' name=ContactNameEntry;
+    'contact_name' name=ContactNameEntry;
 
 HostNotificationsEnabled returns baseAttributes::HostNotificationsEnabled:
-	'host_notifications_enabled' enabled=TrueFalse;
+    'host_notifications_enabled' enabled=TrueFalse;
 
 ServiceNotificationsEnabled returns baseAttributes::ServiceNotificationsEnabled:
-	'service_notifications_enabled' enabled=TrueFalse;
+    'service_notifications_enabled' enabled=TrueFalse;
 
 HostNotificationPeriod returns baseAttributes::HostNotificationPeriod:
-	'host_notification_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
+    'host_notification_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
 
 ServiceNotificationPeriod returns baseAttributes::ServiceNotificationPeriod:
-	'service_notification_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
+    'service_notification_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
 
 HostNotificationOptions returns baseAttributes::HostNotificationOptions:
-	'host_notification_options' value+=HostNotificationValue (',' value+=HostNotificationValue)*;
+    'host_notification_options' value+=HostNotificationValue (',' value+=HostNotificationValue)*;
 
 ServiceNotificationOptions returns baseAttributes::ServiceNotificationOptions:
-	'service_notification_options' value=ServiceNotificationValue;
+    'service_notification_options' value=ServiceNotificationValue;
 
 HostNotificationCommands:
-	'host_notification_commands' reference+=[baseAttributes::CommandName|CommandNameEntry] (','
-	reference+=[baseAttributes::CommandName|CommandNameEntry])*;
+    'host_notification_commands' reference+=[baseAttributes::CommandName|CommandNameEntry] (','
+    reference+=[baseAttributes::CommandName|CommandNameEntry])*;
 
 ServiceNotificationCommands:
-	'service_notification_commands' reference+=[baseAttributes::CommandName|CommandNameEntry] (','
-	reference+=[baseAttributes::CommandName|CommandNameEntry])*;
+    'service_notification_commands' reference+=[baseAttributes::CommandName|CommandNameEntry] (','
+    reference+=[baseAttributes::CommandName|CommandNameEntry])*;
 
 Email:
-	'email' value=EmailAddress;
+    'email' value=EmailAddress;
 
 Pager:
-	'pager' value=EmailAddress;
+    'pager' value=EmailAddress;
 
 ContactAddress returns baseAttributes::ContactAddress:
-	ContactAddress1 | ContactAddress2 | ContactAddress3 | ContactAddress4 | ContactAddress5 | ContactAddress6;
+    ContactAddress1 | ContactAddress2 | ContactAddress3 | ContactAddress4 | ContactAddress5 | ContactAddress6;
 
 ContactAddress1 returns baseAttributes::ContactAddress:
-	token='address1' value=Entry;
+    token='address1' value=Entry;
 
 ContactAddress2 returns baseAttributes::ContactAddress:
-	token='address2' value=Entry;
+    token='address2' value=Entry;
 
 ContactAddress3 returns baseAttributes::ContactAddress:
-	token='address3' value=Entry;
+    token='address3' value=Entry;
 
 ContactAddress4 returns baseAttributes::ContactAddress:
-	token='address4' value=Entry;
+    token='address4' value=Entry;
 
 ContactAddress5 returns baseAttributes::ContactAddress:
-	token='address5' value=Entry;
+    token='address5' value=Entry;
 
 ContactAddress6 returns baseAttributes::ContactAddress:
-	token='address6' value=Entry;
+    token='address6' value=Entry;
 
 CanSubmitCommands:
-	'can_submit_commands' enabled=TrueFalse;
+    'can_submit_commands' enabled=TrueFalse;
 
-	/*
+    /*
 define contactgroup{
 
-	contactgroup_name		novell-admins
+    contactgroup_name        novell-admins
 
-	alias			Novell Administrators
+    alias            Novell Administrators
 
-	members			jdoe,rtobert,tzach
+    members            jdoe,rtobert,tzach
 
-	}
+    }
  */
 ContactGroupName returns baseAttributes::ContactGroupName:
-	'contactgroup_name' value=ContactGroupNameEntry;
+    'contactgroup_name' value=ContactGroupNameEntry;
 
-Members returns baseAttributes::Members:
-	'members' reference+=[baseAttributes::ContactName|ContactNameEntry] (','
-	reference+=[baseAttributes::ContactName|ContactNameEntry])*;
+ContactMembers returns baseAttributes::ContactMembers:
+    'members' reference+=[baseAttributes::ContactName|ContactNameEntry] (','
+    reference+=[baseAttributes::ContactName|ContactNameEntry])*;
 
-enum StateValue returns baseModel::StateValue:
-	UP='o' | DOWN='d' | UNREACHABLE='u';
+enum ServiceStateValue returns baseModel::ServiceStateValue:
+    OK='o' | WARNING='w' | CRITICAL='c' | UNKNOWN='u';
+
+enum HostStateValue returns baseModel::HostStateValue:
+    UP='o' | DOWN='d' | UNREACHABLE='u';
 
 enum HostNotificationValue returns baseModel::HostNotificationValue:
-	RECOVERY='r' | DOWN='d' | UNREACHABLE='u' | FLAPPING='f' | SCHEDULEDDOWNTIME='s' | NONE='n';
+    RECOVERY='r' | DOWN='d' | UNREACHABLE='u' | FLAPPING='f' | SCHEDULEDDOWNTIME='s' | NONE='n';
 
 enum ServiceNotificationValue returns baseModel::ServiceNotificationValue:
-	WARNING='w' | UNKNOWN='u' | CRITICAL='c' | FLAPPING='f' | NONE='n';
+    WARNING='w' | UNKNOWN='u' | CRITICAL='c' | FLAPPING='f' | NONE='n';
 
 HostNameEntry:
-	UID;
+    UID;
 
 HostGroupNameEntry:
-	UID;
+    UID;
 
 CommandNameEntry:
-	UID;
+    UID;
 
 TimeperiodNameEntry:
-	UID;
+    UID;
 
 ContactNameEntry:
-	UID;
+    UID;
 
 ContactGroupNameEntry:
-	UID;
+    UID;
 
-	/*
+    /*
  * Common terminal rules
  */
 IdOrKeyword:
-	(UID | Keywords);
+    (UID | Keywords);
 
 TrueFalse returns ecore::EBooleanObject:
-	INT;
+    INT;
 
 RealNumber returns ecore::EDouble hidden():
-	DASH? INT ('.' INT)?;
-	/*
+    DASH? INT ('.' INT)?;
+    /*
  * The entry is a catchall rule
  */
 Entry hidden():
-	(UID | ANY | Keywords | IL_WS | NO_COMMENT | LOWER | UPPER | INT | STRING)+;
+    (UID | ANY | Keywords | IL_WS | NO_COMMENT | LOWER | UPPER | INT | STRING)+;
 
 IpAddress returns baseModel::InetAddress hidden():
-	INT '.' INT '.' INT '.' INT;
+    INT '.' INT '.' INT '.' INT;
 
 NameAddress returns baseModel::InetAddress hidden():
-	UID ('.' UID)*;
+    UID ('.' UID)*;
 
 EmailAddress returns baseModel::MailAddress:
-	Entry;
+    Entry;
 
 CommentLine hidden():
-	{CommentLine} value=HASH_COMMENT;
+    {CommentLine} value=HASH_COMMENT;
 
-	/**
+    /**
  * Here are the time / date specific rules. 
  * timeperiods may be rather complex constructs ...
  * 
  */
 DateSpec:
-	(NumericDateRange | DayRange | WeekDayRange | MonthRange) ('/' divisor=INT)?;
+    (NumericDateRange | DayRange | WeekDayRange | MonthRange) ('/' divisor=INT)?;
 
 DayRange:
-	'day' start=SignedNumber (DASH end=SignedNumber)?;
+    'day' start=SignedNumber (DASH end=SignedNumber)?;
 
 MonthRange:
-	start=MonthSpec (DASH end=MonthOptSpec)?;
+    start=MonthSpec (DASH end=MonthOptSpec)?;
 
 MonthSpec:
-	month=Month day=SignedNumber;
+    month=Month day=SignedNumber;
 
 MonthOptSpec returns MonthSpec:
-	month=Month? day=SignedNumber;
+    month=Month? day=SignedNumber;
 
 WeekDayRange:
-	start=WeekDaySpec (DASH end=WeekDaySpec)?;
+    start=WeekDaySpec (DASH end=WeekDaySpec)?;
 
 WeekDaySpec:
-	day=Weekday selector+=SignedNumber* month=Month?;
+    day=Weekday selector+=SignedNumber* month=Month?;
 
 NumericDateRange:
-	start=NumericDate (DASH end=NumericDate)?;
+    start=NumericDate (DASH end=NumericDate)?;
 
 NumericDate returns baseModel::Date hidden():
-	DATETERM;
+    DATETERM;
 
 enum Weekday returns baseModel::Weekday:
-	SU='sunday' | MO='monday' | TU='tuesday' | WE='wednesday' | TH='thursday' | FR='friday' | SA='saturday';
+    SU='sunday' | MO='monday' | TU='tuesday' | WE='wednesday' | TH='thursday' | FR='friday' | SA='saturday';
 
 enum Month returns baseModel::Month:
-	JAN='january' | FEB='february' | MAR='march' | APR='april' | MAY='may' | JUN='june' | JUL='july' | AUG='august'
-	| SEP='september' |
-	OCT='october' | NOV='november' | DEC='december';
+    JAN='january' | FEB='february' | MAR='march' | APR='april' | MAY='may' | JUN='june' | JUL='july' | AUG='august'
+    | SEP='september' |
+    OCT='october' | NOV='november' | DEC='december';
 
 TimeRange returns baseModel::TimeRange:
-	TIMERANGETERM;
+    TIMERANGETERM;
 
-	/* 
-	 * These keywords are needed to avoid syntax errors in attribute values, that
- 	 * may contain all characters. 
- 	 */
+    /* 
+     * These keywords are needed to avoid syntax errors in attribute values, that
+      * may contain all characters. 
+      */
 Keywords:
-	'notes' | 'contact_name' | 'check_interval' | 'timeperiod' | 'host_notifications_enabled' | 'event_handler_enabled' |
-	'check_freshness' | 'r' | 'flap_detection_options' | 'exclude' | 'contacts' |
-	'command' | 'monday' | 'obsess_over_host' | 'service_notification_options' | 'stalking_options' |
-	'3d_coords' | 'host' | 'n' | 'saturday' | '{' | 'statusmap_image' |
-	'february' | 'friday' | 'april' | 'command_line' | 'high_flap_threshold' |
-	'command_name' | 'august' | 'f' | 'freshness_threshold' | 'january' | 'o' |
-	's' | 'parents' | 'timeperiod_name' | 'contactgroup_name' | 'members' |
-	'notification_options' | 'may' | 'address1' | 'alias' | 'host_notification_options' |
-	'service_notification_commands' | 'host_notification_commands' |
-	'c' | 'notes_url' | 'december' | 'november' |
-	'2d_coords' | 'display_name' | 'address2' | 'event_handler' | 'd' |
-	'retain_status_information' | 'july' | 'name' | 'max_check_attempts' | 'thursday' |
-	'september' | 'day' | 'sunday' | 'retry_interval' | '/' |
-	'tuesday' | 'march' | 'contact_groups' | 'hostgroup' | 'email' |
-	'contactgroup' | 'service' | 'address3' | 'low_flap_threshold' | 'address' |
-	'define' | '.' | 'flap_detection_enabled' | 'vrml_image' | 'passive_checks_enabled' |
-	'address5' | 'contact' | 'service_notification_period' | 'address4' | 'w' |
-	',' | 'active_checks_enabled' | 'initial_state' | 'process_perf_data' | 'address6' |
-	'host_notification_period' | 'hostgroups' | 'host_group' | 'icon_image_alt' | 'use' |
-	'can_submit_commands' | 'wednesday' | 'pager' | '}' | 'service_notifications_enabled' |
-	'june' | 'october' | 'hostgroup_name' | 'retain_nonstatus_information' | 'notification_period' |
-	'check_period' | 'host_name' | 'check_command' | 'icon_image' |
-	'action_url' | 'u' | 'register';
+    'notes' | 'contact_name' | 'check_interval' | 'timeperiod' | 'host_notifications_enabled' | 'event_handler_enabled'
+    |
+    'check_freshness' | 'r' | 'flap_detection_options' | 'exclude' | 'contacts' |
+    'command' | 'monday' | 'obsess_over_host' | 'service_notification_options' | 'stalking_options' |
+    '3d_coords' | 'host' | 'n' | 'saturday' | '{' | 'statusmap_image' |
+    'february' | 'friday' | 'april' | 'command_line' | 'high_flap_threshold' |
+    'command_name' | 'august' | 'f' | 'freshness_threshold' | 'january' | 'o' |
+    's' | 'parents' | 'timeperiod_name' | 'contactgroup_name' | 'members' |
+    'notification_options' | 'may' | 'address1' | 'alias' | 'host_notification_options' |
+    'service_notification_commands' | 'host_notification_commands' |
+    'c' | 'notes_url' | 'december' | 'november' |
+    '2d_coords' | 'display_name' | 'address2' | 'event_handler' | 'd' |
+    'retain_status_information' | 'july' | 'name' | 'max_check_attempts' | 'thursday' |
+    'september' | 'day' | 'sunday' | 'retry_interval' | '/' |
+    'tuesday' | 'march' | 'contact_groups' | 'hostgroup' | 'email' |
+    'contactgroup' | 'service' | 'address3' | 'low_flap_threshold' | 'address' |
+    'define' | '.' | 'flap_detection_enabled' | 'vrml_image' | 'passive_checks_enabled' |
+    'address5' | 'contact' | 'service_notification_period' | 'address4' | 'w' |
+    ',' | 'active_checks_enabled' | 'initial_state' | 'process_perf_data' | 'address6' |
+    'host_notification_period' | 'hostgroups' | 'host_group' | 'icon_image_alt' | 'use' |
+    'can_submit_commands' | 'wednesday' | 'pager' | '}' | 'service_notifications_enabled' |
+    'june' | 'october' | 'hostgroup_name' | 'retain_nonstatus_information' | 'notification_period' |
+    'check_period' | 'host_name' | 'check_command' | 'icon_image' |
+    'action_url' | 'u' | 'register';
 
 terminal fragment DIGIT:
-	'0'..'9';
+    '0'..'9';
 
 SignedNumber returns ecore::EInt hidden():
-	DASH? INT;
+    DASH? INT;
 
 terminal INT returns ecore::EInt:
-	(DIGIT)+;
+    (DIGIT)+;
 
 terminal TIME:
-	DIGIT DIGIT COLON DIGIT DIGIT;
+    DIGIT DIGIT COLON DIGIT DIGIT;
 
 terminal TIMERANGETERM:
-	TIME DASH TIME;
+    TIME DASH TIME;
 
 terminal DATETERM:
-	DIGIT DIGIT DIGIT DIGIT DASH DIGIT DIGIT DASH DIGIT DIGIT;
+    DIGIT DIGIT DIGIT DIGIT DASH DIGIT DIGIT DASH DIGIT DIGIT;
 
 terminal LOWER:
-	'a'..'z';
+    'a'..'z';
 
 terminal UPPER:
-	'A'..'Z';
-	// terminal ZERO: '0';
+    'A'..'Z';
+    // terminal ZERO: '0';
 // terminal ONE: '1';
 // erminal DIGIT: '2'..'9';
 terminal DASH:
-	'-';
+    '-';
 
 terminal COLON:
-	':';
+    ':';
 
-	// Just whitespace
+    // Just whitespace
 terminal IL_WS:
-	' ' | '\t';
+    ' ' | '\t';
 
-	// A comment after config attribute
+    // A comment after config attribute
 terminal SL_COMMENT:
-	';' !('\n' | '\r')*;
+    ';' !('\n' | '\r')*;
 
-	// Comment lines start with hash
+    // Comment lines start with hash
 terminal HASH_COMMENT:
-	'#' !('\n' | '\r')*;
+    '#' !('\n' | '\r')*;
 
-	// Using an extended ID terminal
+    // Using an extended ID terminal
 terminal UID:
-	('^')? (LOWER | UPPER | '_') (LOWER | UPPER | '_' | DASH | INT)*;
+    ('^')? (LOWER | UPPER | '_') (LOWER | UPPER | '_' | DASH | INT)*;
 
-	// maybe strings are needed 
+    // maybe strings are needed 
 terminal STRING:
-	'"' ('\\' ('b' | 't' | 'n' | 'f' | 'r' | '"' | "'" | '\\') | !('\\' | '"'))* '"' |
-	"'" ('\\' ('b' | 't' | 'n' | 'f' | 'r' | '"' | "'" | '\\') | !('\\' | "'"))* "'";
+    '"' ('\\' ('b' | 't' | 'n' | 'f' | 'r' | '"' | "'" | '\\') | !('\\' | '"'))* '"' |
+    "'" ('\\' ('b' | 't' | 'n' | 'f' | 'r' | '"' | "'" | '\\') | !('\\' | "'"))* "'";
 
-	// Only for integers
+    // Only for integers
 
 // This is needed for the catchall values
 terminal NO_COMMENT:
-	!(';' | '\n' | '\r');
+    !(';' | '\n' | '\r');
 
-	// Newline is needed in Nagios config files
+    // Newline is needed in Nagios config files
 terminal NL:
-	('\r')? '\n';
+    ('\r')? '\n';
 
 terminal ANY:
-	.;
-	
+    .;
+    
 
 

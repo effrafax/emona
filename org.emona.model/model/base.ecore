@@ -1,17 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
- <copyright> 
- 
- Copyright (c) 2011 Martin Stockhammer <m.stockhammer@web.de>
- All rights reserved.   This program and the accompanying materials
- are made available under the terms of the Eclipse Public License v1.0
- which accompanies this distribution, and is available at
- http://www.eclipse.org/legal/epl-v10.html
-  
- Contributors: 
-   Martin Stockhammer
- </copyright>
--->
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="base"
@@ -69,7 +56,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="IntegerValueAttribute" eSuperTypes="#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="StateValue">
+  <eClassifiers xsi:type="ecore:EEnum" name="HostStateValue">
     <eLiterals name="UP" literal="o"/>
     <eLiterals name="DOWN" value="1" literal="d"/>
     <eLiterals name="UNREACHABLE" value="2" literal="u"/>
@@ -82,22 +69,30 @@
     <eLiterals name="FLAPPING" value="4" literal="f"/>
     <eLiterals name="SCHEDULEDDOWNTIME" value="5" literal="s"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ServiceNotificationValue">
-    <eLiterals name="NONE" literal="n"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="MailAddress" instanceClassName="javax.mail.internet.InternetAddress"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ServiceStateValue">
+    <eLiterals name="OK" literal="o"/>
     <eLiterals name="WARNING" value="1" literal="w"/>
     <eLiterals name="CRITICAL" value="2" literal="c"/>
     <eLiterals name="UNKNOWN" value="3" literal="u"/>
-    <eLiterals name="FLAPPING" value="4" literal="f"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="MailAddress" instanceClassName="javax.mail.internet.InternetAddress"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ServiceNotificationValue">
+    <eLiterals name="NONE" literal="n"/>
+    <eLiterals name="RECOVERY" value="1" literal="r"/>
+    <eLiterals name="WARNING" value="2" literal="w"/>
+    <eLiterals name="CRITICAL" value="3" literal="c"/>
+    <eLiterals name="FLAPPING" value="4" literal="f"/>
+    <eLiterals name="SCHEDULEDDOWNTIME" value="5" literal="s"/>
+    <eLiterals name="UNKNOWN" value="6" literal="u"/>
+  </eClassifiers>
   <eSubpackages name="attributes" nsURI="http://www.emona.org/model/base/attributes"
       nsPrefix="eatt">
     <eClassifiers xsi:type="ecore:EClass" name="Alias" eSuperTypes="#//ValueAttribute">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="alias"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="InitialState" eSuperTypes="#//Attribute">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//StateValue"/>
+    <eClassifiers xsi:type="ecore:EClass" name="HostInitialState" eSuperTypes="#//Attribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//HostStateValue"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="inital_state"/>
     </eClassifiers>
@@ -196,6 +191,10 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="contact_name"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NotificationsEnabled" eSuperTypes="#//BooleanAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="notifications_enabled"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="HostNotificationsEnabled" eSuperTypes="#//BooleanAttribute">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="host_notifications_enabled"/>
@@ -203,6 +202,11 @@
     <eClassifiers xsi:type="ecore:EClass" name="ServiceNotificationsEnabled" eSuperTypes="#//BooleanAttribute">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="service_notifications_enabled"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NotificationPeriod" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//attributes/TimeperiodName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="notification_period"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="HostNotificationPeriod" eSuperTypes="#//ReferenceAttribute">
       <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//attributes/TimeperiodName"/>
@@ -225,9 +229,10 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="service_notification_options"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ContactAddress" eSuperTypes="#//ValueAttribute">
+    <eClassifiers xsi:type="ecore:EClass" name="NotificationCommands" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//attributes/CommandName"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          defaultValueLiteral="contact_address"/>
+          defaultValueLiteral="notification_commands"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="HostNotificationCommands" eSuperTypes="#//ReferenceAttribute">
       <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//attributes/CommandName"/>
@@ -239,6 +244,10 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="service_notification_commands"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ContactAddress" eSuperTypes="#//ValueAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="contact_address"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Email" eSuperTypes="#//ValueAttribute">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="email"/>
@@ -247,7 +256,7 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="pager"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Members" eSuperTypes="#//ReferenceAttribute">
+    <eClassifiers xsi:type="ecore:EClass" name="ContactMembers" eSuperTypes="#//ReferenceAttribute">
       <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
           eType="#//attributes/ContactName"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -279,7 +288,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="StalkingOptions" eSuperTypes="#//Attribute">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" upperBound="-1"
-          eType="#//StateValue"/>
+          eType="#//HostStateValue"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="stalking_options"/>
     </eClassifiers>
@@ -328,6 +337,102 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="zcoord" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="HostgroupMembers" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
+          eType="#//attributes/HostGroupName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="hostgroup_members"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="HostMembers" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
+          eType="#//attributes/HostName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="members"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="HostNameReference" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
+          eType="#//attributes/HostName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="host_name"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="HostgroupNameReference" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
+          eType="#//attributes/HostGroupName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="hostgroup_name"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ServiceDescription" eSuperTypes="#//NameAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="service_description"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ServiceInitialState" eSuperTypes="#//Attribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//ServiceStateValue"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="inital_state"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IsVolatileFlag" eSuperTypes="#//BooleanAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="is_volatile"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ObsessOverHost" eSuperTypes="#//BooleanAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="obsess_over_host"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ObsessOverService" eSuperTypes="#//BooleanAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="obsess_over_service"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CheckFreshness" eSuperTypes="#//BooleanAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="check_freshness"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FreshnessThreshold" eSuperTypes="#//IntegerValueAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="freshness_threshold"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EventHandler" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//attributes/CommandName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="event_handler"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EventHandlerEnabled" eSuperTypes="#//BooleanAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="event_handler_enabled"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="LowFlapThreshold" eSuperTypes="#//IntegerValueAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="low_flap_threshold"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="HighFlapThreshold" eSuperTypes="#//IntegerValueAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="high_flap_threshold"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FlapDetectionEnabled" eSuperTypes="#//BooleanAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="flap_detection_enabled"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="HostFlapDetectionOptions" eSuperTypes="#//Attribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//HostStateValue"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="flap_detection_options"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ProcessPerfData" eSuperTypes="#//BooleanAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="process_perf_data"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="RetainStatusInformation" eSuperTypes="#//BooleanAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="retain_status_information"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="RetainNonstatusInformation" eSuperTypes="#//BooleanAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="retain_nonstatus_information"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ServiceFlapDetectionOptions" eSuperTypes="#//Attribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//ServiceStateValue"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="flap_detection_options"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>
