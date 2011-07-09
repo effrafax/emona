@@ -96,11 +96,11 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="inital_state"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="HostGroups" eSuperTypes="#//ReferenceAttribute">
+    <eClassifiers xsi:type="ecore:EClass" name="Hostgroups" eSuperTypes="#//ReferenceAttribute">
       <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
-          eType="#//attributes/HostGroupName"/>
+          eType="#//attributes/HostgroupName"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          changeable="false" defaultValueLiteral="host_groups"/>
+          changeable="false" defaultValueLiteral="hostgroups"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Parents" eSuperTypes="#//ReferenceAttribute">
       <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
@@ -131,7 +131,7 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="timeperiod_name"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="HostGroupName" eSuperTypes="#//NameAttribute">
+    <eClassifiers xsi:type="ecore:EClass" name="HostgroupName" eSuperTypes="#//NameAttribute">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="host_group_name"/>
     </eClassifiers>
@@ -340,7 +340,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="HostgroupMembers" eSuperTypes="#//ReferenceAttribute">
       <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
-          eType="#//attributes/HostGroupName"/>
+          eType="#//attributes/HostgroupName"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="hostgroup_members"/>
     </eClassifiers>
@@ -358,7 +358,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="HostgroupNameReference" eSuperTypes="#//ReferenceAttribute">
       <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
-          eType="#//attributes/HostGroupName"/>
+          eType="#//attributes/HostgroupName"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="hostgroup_name"/>
     </eClassifiers>
@@ -433,6 +433,28 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//ServiceStateValue"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="flap_detection_options"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ServicegroupName" eSuperTypes="#//NameAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="servicegroup_name"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ServiceMembers" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
+          eType="#//attributes/ServiceDescription"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="members"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ServicegroupMembers" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
+          eType="#//attributes/ServicegroupName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="servicegroup_members"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Servicegroups" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
+          eType="#//attributes/ServicegroupName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="servicegroups"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

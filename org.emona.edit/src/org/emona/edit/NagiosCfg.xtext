@@ -26,7 +26,7 @@ InfoObject:
     CommentLine | ConfigObject;
 
 ConfigObject hidden(IL_WS, NL):
-    Host | HostGroup | Service | Command | Timeperiod | Contact | ContactGroup;
+    Host | Hostgroup | Service | Servicegroup | Command | Timeperiod | Contact | ContactGroup;
 
     // Proposals haben Probleme mit NL !!!
 Host:
@@ -37,7 +37,7 @@ Host:
 
 HostAttribute returns baseModel::Attribute hidden(IL_WS):
     (HostName | DisplayName | Alias | Address | Parents |
-    HostGroups | CheckCommand | HostInitialState | MaxCheckAttempts |
+    Hostgroups | CheckCommand | HostInitialState | MaxCheckAttempts |
     CheckInterval | RetryInterval | ActiveChecksEnabled |
     PassiveChecksEnabled | CheckPeriod |
     ObsessOverHost | CheckFreshness | FreshnessThreshold |
@@ -71,23 +71,25 @@ HostName returns baseAttributes::HostName:
   }
  * 
  */
-HostGroup:
-    {HostGroup}
+Hostgroup:
+    {Hostgroup}
     'define' 'hostgroup' '{'
-    attr+=HostGroupAttribute*
+    attr+=HostgroupAttribute*
     '}';
 
-HostGroupAttribute returns baseModel::Attribute hidden(IL_WS):
-    (HostGroupName | Alias | HostMembers | HostgroupMembers |
+HostgroupAttribute returns baseModel::Attribute hidden(IL_WS):
+    (HostgroupName | Alias | HostMembers | HostgroupMembers |
     ActionUrl | Notes | NotesUrl | TemplateAttribute) comment=SL_COMMENT? NL;
 
-HostGroupName returns baseAttributes::HostGroupName:
-    'hostgroup_name' name=HostGroupNameEntry;
+HostgroupName returns baseAttributes::HostgroupName:
+    'hostgroup_name' name=HostgroupNameEntry;
 
 /* */
 /*
- * Service 
- * =======
+ * **************************************
+ * Service Element 
+ * ===============
+ * **************************************
  * 
  * 
   define service{
@@ -142,31 +144,65 @@ Service:
     '}';
 
 ServiceAttribute returns baseModel::Attribute hidden(IL_WS):
-    (ServiceDescription | HostNameReference | HostgroupNameReference |
-    IsVolatile | CheckCommand | ServiceInitialState |
+    (HostNameReference | HostgroupNameReference | ServiceDescription | DisplayName |
+    Servicegroups | IsVolatile | CheckCommand | ServiceInitialState |
     MaxCheckAttempts | CheckInterval | RetryInterval |
     ActiveChecksEnabled | PassiveChecksEnabled | CheckPeriod |
-    ObsessOverService | CheckFreshness  | FreshnessThreshold |
+    ObsessOverService | CheckFreshness | FreshnessThreshold |
     EventHandler | EventHandlerEnabled |
     LowFlapThreshold | HighFlapThreshold | FlapDetectionEnabled | ServiceFlapDetectionOptions |
     ProcessPerfData | RetainStatusInformation | RetainNonStatusInformation |
     NotificationInterval | FirstNotificationDelay | NotificationPeriod |
-    ServiceNotificationOptions | NotificationsEnabled  | 
+    ServiceNotificationOptions | NotificationsEnabled |
     Contacts | ContactGroups | StalkingOptions | Notes | NotesUrl | ActionUrl |
     IconImage | IconImageAlt |
-    DisplayName | TemplateAttribute) comment=SL_COMMENT? NL;
+    TemplateAttribute) comment=SL_COMMENT? NL;
 
 ServiceDescription returns baseAttributes::ServiceDescription:
-    name=ServiceDescriptionEntry;
+    'service_description' name=ServiceDescriptionEntry;
 
 ServiceDescriptionEntry:
     UID+;
 
 /* */
 /*
- * Command 
- * =======
+ * **************************************
+ * Servicegroup element
+ * ===============
+ * **************************************
  * 
+   define servicegroup{
+    servicegroup_name   servicegroup_name
+    alias   alias
+    members services
+    servicegroup_members    servicegroups
+    notes   note_string
+    notes_url   url
+    action_url  url
+    }
+ */
+Servicegroup:
+    {Servicegroup}
+    'define' 'servicegroup' '{'
+    attr+=ServicegroupAttribute*
+    '}';
+
+ServicegroupAttribute returns baseModel::Attribute hidden(IL_WS):
+    (ServicegroupName | Alias | ServiceMembers | ServicegroupMembers |
+    Notes | NotesUrl | ActionUrl | TemplateAttribute) comment=SL_COMMENT? NL;
+
+ServicegroupName returns baseAttributes::ServicegroupName:
+    'servicegroup_name' name=ServicegroupNameEntry;
+
+ServicegroupNameEntry:
+    UID;
+
+/* */
+/*
+ * **************************************
+ * Command element
+ * ===============
+ * **************************************
  */
 Command:
     {Command}
@@ -177,6 +213,13 @@ Command:
 CommandAttribute returns baseModel::Attribute hidden(IL_WS):
     (CommandName | CommandLine | Alias | TemplateAttribute) comment=SL_COMMENT? NL;
 
+/* */
+/*
+ * **************************************
+ * Timeperiod element
+ * ==================
+ * **************************************
+ */
 Timeperiod:
     {Timeperiod}
     'define' 'timeperiod' '{'
@@ -187,6 +230,13 @@ TimeperiodAttribute returns baseModel::Attribute hidden(IL_WS):
     (TimeperiodName |
     TimeDefinition | Alias | TemplateAttribute | TimeExclude) comment=SL_COMMENT? NL;
 
+/* */
+/*
+ * **************************************
+ * Contact Element
+ * ===============
+ * **************************************
+ */
 Contact:
     {Contact}
     'define' 'contact' '{'
@@ -202,6 +252,13 @@ ContactAttribute returns baseModel::Attribute hidden(IL_WS):
     ContactAddress | CanSubmitCommands |
     Alias | TemplateAttribute) comment=SL_COMMENT? NL;
 
+/* */
+/*
+ * **************************************
+ * ContactGroup Element
+ * ====================
+ * **************************************
+ */
 ContactGroup:
     {ContactGroup}
     'define' 'contactgroup' '{'
@@ -211,15 +268,15 @@ ContactGroup:
 ContactGroupAttribute returns baseModel::Attribute hidden(IL_WS):
     (ContactGroupName | ContactMembers | Alias | TemplateAttribute) comment=SL_COMMENT? NL;
 
-    /**
- * Common Attributes
+/* */
+/*
+ * **************************************
+ * Template attributes
+ * **************************************
  */
 TemplateAttribute returns baseModel::Attribute:
     (Use | Register | TemplateName);
 
-    /*
- * Template attributes
- */
 Use returns baseAttributes::Use:
     'use' reference+=[baseAttributes::TemplateName|UID] (',' reference+=[baseAttributes::TemplateName|UID])*;
 
@@ -374,7 +431,7 @@ NotificationsEnabled returns baseAttributes::NotificationsEnabled:
  */
 NotificationInterval returns baseAttributes::NotificationInterval:
     'notification_interval' value=INT;
-    
+
 /* */
 /*
  * Host/Service Attribute 'first_notification_delay': Integer value
@@ -404,7 +461,6 @@ ContactGroups returns baseAttributes::ContactGroups:
  */
 StalkingOptions returns baseAttributes::StalkingOptions:
     'stalking_options' value+=HostStateValue (',' value+=HostStateValue)*;
-
 
 /* */
 /*
@@ -441,8 +497,6 @@ IconImage returns baseAttributes::IconImage:
 IconImageAlt returns baseAttributes::IconImageAlt:
     'icon_image_alt' value=Entry;
 
-
-    
 /* */
 /*
  * **************************************
@@ -501,9 +555,9 @@ Parents returns baseAttributes::Parents:
     'parents' reference+=[baseAttributes::HostName|HostNameEntry] (','
     reference+=[baseAttributes::HostName|HostNameEntry])*;
 
-HostGroups returns baseAttributes::HostGroups:
-    'hostgroups' reference+=[baseAttributes::HostGroupName|HostGroupNameEntry] (','
-    reference+=[baseAttributes::HostGroupName|HostGroupNameEntry])*;
+Hostgroups returns baseAttributes::Hostgroups:
+    'hostgroups' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry] (','
+    reference+=[baseAttributes::HostgroupName|HostgroupNameEntry])*;
 
 HostInitialState returns baseAttributes::HostInitialState:
     'initial_state' value=HostStateValue;
@@ -536,12 +590,12 @@ ThreeDCoords returns baseAttributes::ThreeDCoords:
 /* */
 /*
  * **************************************
- * HostGroup attributes
+ * Hostgroup attributes
  * **************************************
  */
 HostgroupMembers returns baseAttributes::HostgroupMembers:
-    'hostgroup_members' reference+=[baseAttributes::HostGroupName|HostGroupNameEntry] (','
-    reference+=[baseAttributes::HostGroupName|HostGroupNameEntry])*;
+    'hostgroup_members' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry] (','
+    reference+=[baseAttributes::HostgroupName|HostgroupNameEntry])*;
 
 HostMembers returns baseAttributes::HostMembers:
     'members' reference+=[baseAttributes::HostName|HostNameEntry] (','
@@ -553,6 +607,14 @@ HostMembers returns baseAttributes::HostMembers:
  * Service Attributes
  * **************************************
  */
+/* */
+/*
+ * Service Attribute 'servicegroups'. Reference to one or more servicegroups.
+ */
+Servicegroups returns baseAttributes::Servicegroups:
+    'servicegroups' reference+=[baseAttributes::ServicegroupName|ServicegroupNameEntry]
+    (',' reference+=[baseAttributes::ServicegroupName|ServicegroupNameEntry])*;
+/* */
 /*
  * Service Attribute 'host_name'. Reference to one or more host names.
  */
@@ -564,8 +626,8 @@ HostNameReference returns baseAttributes::HostNameReference:
  * Service Attribute 'hostgroup_name': Reference to one or more hostgroup names.
  */
 HostgroupNameReference returns baseAttributes::HostgroupNameReference:
-    'hostgroup_name' reference+=[baseAttributes::HostGroupName|HostGroupNameEntry] (','
-    reference+=[baseAttributes::HostGroupName|HostGroupNameEntry])*;
+    'hostgroup_name' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry] (','
+    reference+=[baseAttributes::HostgroupName|HostgroupNameEntry])*;
 /* */
 /*
  * Service Attribute 'is_volatile': Boolean Attribute [0/1].
@@ -591,7 +653,19 @@ ObsessOverService returns baseAttributes::ObsessOverService:
 ServiceFlapDetectionOptions returns baseAttributes::ServiceFlapDetectionOptions:
     'flap_detection_options' value=ServiceStateValue;
 
+/* */
+/*
+ * **************************************
+ * Servicegroup Attributes
+ * **************************************
+ */
+ServiceMembers returns baseAttributes::ServiceMembers:
+    'members' reference+=[baseAttributes::ServiceDescription|ServiceDescriptionEntry]
+    (',' reference+=[baseAttributes::ServiceDescription|ServiceDescriptionEntry])*;
 
+ServicegroupMembers returns baseAttributes::ServicegroupMembers:
+    'servicegroup_members' reference+=[baseAttributes::ServicegroupName|ServicegroupNameEntry]
+    (',' reference+=[baseAttributes::ServicegroupName|ServicegroupNameEntry])*;
 
 /* */
 /*
@@ -608,9 +682,10 @@ CommandLine returns baseAttributes::CommandLine:
 CommandName returns baseAttributes::CommandName:
     'command_name' name=CommandNameEntry;
 
-    /**
-     * Time definitions
-     */
+/* */
+/**
+ * Time definitions
+ */
 TimeperiodName returns baseAttributes::TimeperiodName:
     'timeperiod_name' name=TimeperiodNameEntry;
 
@@ -621,7 +696,8 @@ TimeExclude returns baseAttributes::TimeExclude:
     'exclude' reference+=[baseAttributes::TimeperiodName|TimeperiodNameEntry] (','
     reference+=[baseAttributes::TimeperiodName|TimeperiodNameEntry])*;
 
-    /*
+/* */
+/*
  * Contact
  */
 /*
@@ -752,7 +828,7 @@ enum ServiceNotificationValue returns baseModel::ServiceNotificationValue:
 HostNameEntry:
     UID;
 
-HostGroupNameEntry:
+HostgroupNameEntry:
     UID;
 
 CommandNameEntry:
@@ -867,7 +943,9 @@ Keywords:
     'can_submit_commands' | 'wednesday' | 'pager' | '}' | 'service_notifications_enabled' |
     'june' | 'october' | 'hostgroup_name' | 'retain_nonstatus_information' | 'notification_period' |
     'check_period' | 'host_name' | 'check_command' | 'icon_image' |
-    'action_url' | 'u' | 'register';
+    'action_url' | 'u' | 'register' |
+    'is_volatile' | 'obsess_over_service' |
+    'servicegroup_members';
 
 terminal fragment DIGIT:
     '0'..'9';
