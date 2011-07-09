@@ -85,6 +85,14 @@
     <eLiterals name="SCHEDULEDDOWNTIME" value="5" literal="s"/>
     <eLiterals name="UNKNOWN" value="6" literal="u"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FailureCriteriaValue">
+    <eLiterals name="OK" literal="o"/>
+    <eLiterals name="WARNING" value="1" literal="w"/>
+    <eLiterals name="UNKNOWN" value="2" literal="u"/>
+    <eLiterals name="CRITICAL" value="3" literal="c"/>
+    <eLiterals name="PENDING" value="4" literal="p"/>
+    <eLiterals name="NONE" value="5" literal="n"/>
+  </eClassifiers>
   <eSubpackages name="attributes" nsURI="http://www.emona.org/model/base/attributes"
       nsPrefix="eatt">
     <eClassifiers xsi:type="ecore:EClass" name="Alias" eSuperTypes="#//ValueAttribute">
@@ -455,6 +463,51 @@
           eType="#//attributes/ServicegroupName"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="servicegroups"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DependentHostName" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
+          eType="#//attributes/HostName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="dependent_host_name"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DependentHostgroupName" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
+          eType="#//attributes/HostgroupName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="dependent_hostgroup_name"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DependentServiceDescription" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//attributes/ServiceDescription"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="dependent_service_description"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ServiceDescriptionReference" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
+          upperBound="-1" eType="#//attributes/ServiceDescription"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="service_description"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="InheritsParent" eSuperTypes="#//BooleanAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="inherits_parent"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ExecutionFailureCriteria" eSuperTypes="#//Attribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" upperBound="-1"
+          eType="#//FailureCriteriaValue"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="execution_failure_criteria"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NotificationFailureCriteria" eSuperTypes="#//Attribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" upperBound="-1"
+          eType="#//FailureCriteriaValue"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="notification_failure_criteria"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DependencyPeriod" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
+          eType="#//attributes/TimeperiodName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="dependency_period"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

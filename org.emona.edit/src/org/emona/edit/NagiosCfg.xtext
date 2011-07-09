@@ -26,7 +26,9 @@ InfoObject:
     CommentLine | ConfigObject;
 
 ConfigObject hidden(IL_WS, NL):
-    Host | Hostgroup | Service | Servicegroup | Command | Timeperiod | Contact | ContactGroup;
+    Host | Hostgroup | Service | Servicegroup | Command | Timeperiod | Contact | ContactGroup |
+    Servicedependency 
+    ;
 
     // Proposals haben Probleme mit NL !!!
 Host:
@@ -196,6 +198,39 @@ ServicegroupName returns baseAttributes::ServicegroupName:
 
 ServicegroupNameEntry:
     UID;
+
+/* */
+/*
+ * **************************************
+ * Servicedependency element
+ * ===============
+ * **************************************
+ * 
+ * 
+ * define servicedependency{
+    dependent_host_name host_name
+    dependent_hostgroup_name    hostgroup_name
+    dependent_service_description   service_description
+    host_name   host_name
+    hostgroup_name  hostgroup_name
+    service_description service_description
+    inherits_parent [0/1]
+    execution_failure_criteria  [o,w,u,c,p,n]
+    notification_failure_criteria   [o,w,u,c,p,n]
+    dependency_period   timeperiod_name
+    }
+ */
+Servicedependency:
+    {Servicedependency}
+    'define' 'servicedependency' '{'
+    attr+=ServicedependencyAttribute*
+    '}';
+
+ServicedependencyAttribute returns baseModel::Attribute hidden(IL_WS):
+    (DependentHostName | DependentHostgroupName | DependentServiceDescription |
+        HostNameReference | HostgroupNameReference  | ServiceDescriptionReference |
+        TemplateAttribute
+    ) comment=SL_COMMENT? NL;
 
 /* */
 /*
@@ -616,14 +651,14 @@ Servicegroups returns baseAttributes::Servicegroups:
     (',' reference+=[baseAttributes::ServicegroupName|ServicegroupNameEntry])*;
 /* */
 /*
- * Service Attribute 'host_name'. Reference to one or more host names.
+ * Service/ServiceDependency Attribute 'host_name'. Reference to one or more host names.
  */
 HostNameReference returns baseAttributes::HostNameReference:
     'host_name' reference+=[baseAttributes::HostName|HostNameEntry] (','
     reference+=[baseAttributes::HostName|HostNameEntry])*;
 /* */
 /*
- * Service Attribute 'hostgroup_name': Reference to one or more hostgroup names.
+ * Service/ServiceDependency Attribute 'hostgroup_name': Reference to one or more hostgroup names.
  */
 HostgroupNameReference returns baseAttributes::HostgroupNameReference:
     'hostgroup_name' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry] (','
@@ -666,6 +701,41 @@ ServiceMembers returns baseAttributes::ServiceMembers:
 ServicegroupMembers returns baseAttributes::ServicegroupMembers:
     'servicegroup_members' reference+=[baseAttributes::ServicegroupName|ServicegroupNameEntry]
     (',' reference+=[baseAttributes::ServicegroupName|ServicegroupNameEntry])*;
+
+    /*
+ * 
+ *     dependent_host_name host_name
+    dependent_hostgroup_name    hostgroup_name
+    dependent_service_description   service_description
+    host_name   host_name
+    hostgroup_name  hostgroup_name
+    service_description service_description
+    inherits_parent [0/1]
+    execution_failure_criteria  [o,w,u,c,p,n]
+    notification_failure_criteria   [o,w,u,c,p,n]
+    dependency_period   timeperiod_name
+    }
+ * 
+ */
+DependentHostName returns baseAttributes::DependentHostName:
+    {baseAttributes::DependentHostName}
+    'dependent_host_name' reference+=[baseAttributes::HostName|HostNameEntry]?
+    (',' reference+=[baseAttributes::HostName|HostNameEntry])*;
+
+DependentHostgroupName returns baseAttributes::DependentHostgroupName:
+    'dependent_hostgroup_name' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry]
+    (',' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry])*;
+
+DependentServiceDescription returns baseAttributes::DependentServiceDescription:
+    'dependent_hostgroup_name' reference=[baseAttributes::ServiceDescription|ServiceDescriptionEntry];
+
+/* */
+/*
+ * Attribute 'service_description': Reference to one or more service descriptions
+ */
+ServiceDescriptionReference returns baseAttributes::ServiceDescriptionReference:
+    'service_description' reference+=[baseAttributes::ServiceDescription|ServiceDescriptionEntry]
+     (',' reference+=[baseAttributes::ServiceDescription|ServiceDescriptionEntry])*;
 
 /* */
 /*
