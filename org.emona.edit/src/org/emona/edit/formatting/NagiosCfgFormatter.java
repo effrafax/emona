@@ -44,7 +44,7 @@ public class NagiosCfgFormatter extends AbstractDeclarativeFormatter {
 		c.setNoSpace().after(ngGr.getEntryRule());
 		
 		c.setLinewrap(0,1,2).before(ngGr.getHostAttributeRule());
-		c.setLinewrap(0,1,2).before(ngGr.getHostGroupAttributeRule());
+		c.setLinewrap(0,1,2).before(ngGr.getHostgroupAttributeRule());
 		c.setLinewrap(0,1,2).before(ngGr.getCommandAttributeRule());
 		c.setLinewrap(0,1,2).before(ngGr.getTimeperiodAttributeRule());
 		

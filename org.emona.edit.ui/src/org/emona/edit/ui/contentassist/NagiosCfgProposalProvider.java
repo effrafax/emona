@@ -43,10 +43,10 @@ import org.emona.model.base.attributes.CheckPeriod;
 import org.emona.model.base.attributes.CommandLine;
 import org.emona.model.base.attributes.CommandName;
 import org.emona.model.base.attributes.DisplayName;
-import org.emona.model.base.attributes.HostGroupName;
-import org.emona.model.base.attributes.HostGroups;
 import org.emona.model.base.attributes.HostInitialState;
 import org.emona.model.base.attributes.HostName;
+import org.emona.model.base.attributes.HostgroupName;
+import org.emona.model.base.attributes.Hostgroups;
 import org.emona.model.base.attributes.MaxCheckAttempts;
 import org.emona.model.base.attributes.Parents;
 import org.emona.model.base.attributes.Register;
@@ -92,6 +92,10 @@ public class NagiosCfgProposalProvider extends
 	public static String getToken(String name) {
 		ExtendedMetaData modelMetaData = ExtendedMetaData.INSTANCE;
 		EClass clazz = (EClass) modelMetaData.getType(AttributesPackage.eINSTANCE, name);
+		if (clazz == null) {
+			System.err.println("Class for "+name+" not found!");
+			return null;
+		}
 		EList<EObject> cont = clazz.eContents();
 		for (EObject eObject : cont) {
 			if (eObject  instanceof EAttribute) {
@@ -243,11 +247,11 @@ public class NagiosCfgProposalProvider extends
 					keywordSnippets);
 			registerKeywordSnippet(getToken("DisplayName"), DisplayName.class,
 					keywordSnippets);
-			registerKeywordSnippet(getToken("HostGroupName"), HostGroupName.class,
+			registerKeywordSnippet(getToken("HostgroupName"), HostgroupName.class,
 					keywordSnippets);
-			registerKeywordSnippet(getToken("HostGroups"), HostGroups.class,
+			registerKeywordSnippet(getToken("Hostgroups"), Hostgroups.class,
 					keywordSnippets);
-			registerKeywordSnippet(getToken("InitialState"), HostInitialState.class,
+			registerKeywordSnippet(getToken("HostInitialState"), HostInitialState.class,
 					keywordSnippets);
 			registerKeywordSnippet(getToken("MaxCheckAttempts"),
 					MaxCheckAttempts.class, keywordSnippets);
