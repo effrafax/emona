@@ -27,8 +27,7 @@ InfoObject:
 
 ConfigObject hidden(IL_WS, NL):
     Host | Hostgroup | Service | Servicegroup | Command | Timeperiod | Contact | ContactGroup |
-    Servicedependency 
-    ;
+    Servicedependency;
 
     // Proposals haben Probleme mit NL !!!
 Host:
@@ -48,7 +47,7 @@ HostAttribute returns baseModel::Attribute hidden(IL_WS):
     ProcessPerfData | RetainStatusInformation | RetainNonStatusInformation |
     Contacts | ContactGroups |
     NotificationPeriod | HNotificationOptions | NotificationsEnabled |
-    NotificationInterval | FirstNotificationDelay | StalkingOptions |
+    NotificationInterval | FirstNotificationDelay | HostStalkingOptions |
     Notes | NotesUrl | ActionUrl |
     IconImage | IconImageAlt | VrmlImage | StatusMapImage |
     TwoDCoords | ThreeDCoords |
@@ -156,7 +155,7 @@ ServiceAttribute returns baseModel::Attribute hidden(IL_WS):
     ProcessPerfData | RetainStatusInformation | RetainNonStatusInformation |
     NotificationInterval | FirstNotificationDelay | NotificationPeriod |
     ServiceNotificationOptions | NotificationsEnabled |
-    Contacts | ContactGroups | StalkingOptions | Notes | NotesUrl | ActionUrl |
+    Contacts | ContactGroups | ServiceStalkingOptions | Notes | NotesUrl | ActionUrl |
     IconImage | IconImageAlt |
     TemplateAttribute) comment=SL_COMMENT? NL;
 
@@ -228,9 +227,9 @@ Servicedependency:
 
 ServicedependencyAttribute returns baseModel::Attribute hidden(IL_WS):
     (DependentHostName | DependentHostgroupName | DependentServiceDescription |
-        HostNameReference | HostgroupNameReference  | ServiceDescriptionReference |
-        TemplateAttribute
-    ) comment=SL_COMMENT? NL;
+    HostNameReference | HostgroupNameReference | ServiceDescriptionReference |
+    InheritsParent | ExecutionFailureCriteria |
+    TemplateAttribute) comment=SL_COMMENT? NL;
 
 /* */
 /*
@@ -313,7 +312,7 @@ TemplateAttribute returns baseModel::Attribute:
     (Use | Register | TemplateName);
 
 Use returns baseAttributes::Use:
-    'use' reference+=[baseAttributes::TemplateName|UID] (',' reference+=[baseAttributes::TemplateName|UID])*;
+    'use' reference+=[baseAttributes::TemplateName|UID] (COMMA reference+=[baseAttributes::TemplateName|UID])*;
 
 TemplateName returns baseAttributes::TemplateName:
     'name' name=IdOrKeyword;
@@ -479,7 +478,7 @@ FirstNotificationDelay returns baseAttributes::FirstNotificationDelay:
  * Host/Service Attribute 'contacts': Reference to contact
  */
 Contacts returns baseAttributes::Contacts:
-    'contacts' reference+=[baseAttributes::ContactName|ContactNameEntry] (','
+    'contacts' reference+=[baseAttributes::ContactName|ContactNameEntry] (COMMA
     reference+=[baseAttributes::ContactName|ContactNameEntry])*;
 
 /* */
@@ -487,15 +486,8 @@ Contacts returns baseAttributes::Contacts:
  * Host/Service Attribute 'contact_groups': Reference to contact group
  */
 ContactGroups returns baseAttributes::ContactGroups:
-    'contact_groups' reference+=[baseAttributes::ContactGroupName|ContactGroupNameEntry] (','
+    'contact_groups' reference+=[baseAttributes::ContactGroupName|ContactGroupNameEntry] (COMMA
     reference+=[baseAttributes::ContactGroupName|ContactGroupNameEntry])*;
-
-/* */
-/*
- * Host/Service Attribute 'stalking_options': HostStateValue
- */
-StalkingOptions returns baseAttributes::StalkingOptions:
-    'stalking_options' value+=HostStateValue (',' value+=HostStateValue)*;
 
 /* */
 /*
@@ -587,11 +579,11 @@ Address returns baseAttributes::Address:
     'address' value=(IpAddress | NameAddress);
 
 Parents returns baseAttributes::Parents:
-    'parents' reference+=[baseAttributes::HostName|HostNameEntry] (','
+    'parents' reference+=[baseAttributes::HostName|HostNameEntry] (COMMA
     reference+=[baseAttributes::HostName|HostNameEntry])*;
 
 Hostgroups returns baseAttributes::Hostgroups:
-    'hostgroups' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry] (','
+    'hostgroups' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry] (COMMA
     reference+=[baseAttributes::HostgroupName|HostgroupNameEntry])*;
 
 HostInitialState returns baseAttributes::HostInitialState:
@@ -602,13 +594,23 @@ ObsessOverHost returns baseAttributes::ObsessOverHost:
 
 /* */
 /*
+ * Host Attribute 'stalking_options': HostStateValue
+ */
+HostStalkingOptions returns baseAttributes::HostStalkingOptions:
+    {baseAttributes::HostStalkingOptions}
+    'stalking_options' (up?='u'? & down?='d'? & unreachable?='u'?);
+
+/* */
+/*
  * Host Attribute 'flap_detection_options': Boolean
  */
 HostFlapDetectionOptions returns baseAttributes::HostFlapDetectionOptions:
     'flap_detection_options' value=HostStateValue;
 
-HNotificationOptions returns baseAttributes::HostNotificationOptions:
-    'notification_options' value+=HostNotificationValue (',' value+=HostNotificationValue)*;
+HNotificationOptions returns baseAttributes::HostNotificationOptions hidden(IL_WS, COMMA):
+    {baseAttributes::HostNotificationOptions}
+    'notification_options' (recovery?='r'? & down?='d'? & unreachable?='u'? & flapping?='f'? & scheduledDowntime?='s'?
+    & none?='n'?);
 
 VrmlImage returns baseAttributes::VrmlImage:
     'vrml_image' value=Entry;
@@ -617,10 +619,10 @@ StatusMapImage returns baseAttributes::StatusmapImage:
     'statusmap_image' value=Entry;
 
 TwoDCoords returns baseAttributes::TwoDCoords:
-    '2d_coords' xcoord=INT ',' ycoord=INT;
+    '2d_coords' xcoord=INT COMMA ycoord=INT;
 
 ThreeDCoords returns baseAttributes::ThreeDCoords:
-    '3d_coords' xcoord=RealNumber ',' ycoord=RealNumber ',' zcoord=RealNumber;
+    '3d_coords' xcoord=RealNumber COMMA ycoord=RealNumber COMMA zcoord=RealNumber;
 
 /* */
 /*
@@ -629,11 +631,11 @@ ThreeDCoords returns baseAttributes::ThreeDCoords:
  * **************************************
  */
 HostgroupMembers returns baseAttributes::HostgroupMembers:
-    'hostgroup_members' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry] (','
+    'hostgroup_members' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry] (COMMA
     reference+=[baseAttributes::HostgroupName|HostgroupNameEntry])*;
 
 HostMembers returns baseAttributes::HostMembers:
-    'members' reference+=[baseAttributes::HostName|HostNameEntry] (','
+    'members' reference+=[baseAttributes::HostName|HostNameEntry] (COMMA
     reference+=[baseAttributes::HostName|HostNameEntry])*;
 
 /* */
@@ -648,20 +650,20 @@ HostMembers returns baseAttributes::HostMembers:
  */
 Servicegroups returns baseAttributes::Servicegroups:
     'servicegroups' reference+=[baseAttributes::ServicegroupName|ServicegroupNameEntry]
-    (',' reference+=[baseAttributes::ServicegroupName|ServicegroupNameEntry])*;
+    (COMMA reference+=[baseAttributes::ServicegroupName|ServicegroupNameEntry])*;
 /* */
 /*
  * Service/ServiceDependency Attribute 'host_name'. Reference to one or more host names.
  */
 HostNameReference returns baseAttributes::HostNameReference:
-    'host_name' reference+=[baseAttributes::HostName|HostNameEntry] (','
+    'host_name' reference+=[baseAttributes::HostName|HostNameEntry] (COMMA
     reference+=[baseAttributes::HostName|HostNameEntry])*;
 /* */
 /*
  * Service/ServiceDependency Attribute 'hostgroup_name': Reference to one or more hostgroup names.
  */
 HostgroupNameReference returns baseAttributes::HostgroupNameReference:
-    'hostgroup_name' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry] (','
+    'hostgroup_name' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry] (COMMA
     reference+=[baseAttributes::HostgroupName|HostgroupNameEntry])*;
 /* */
 /*
@@ -686,7 +688,16 @@ ObsessOverService returns baseAttributes::ObsessOverService:
  * Host Attribute 'flap_detection_options': Boolean
  */
 ServiceFlapDetectionOptions returns baseAttributes::ServiceFlapDetectionOptions:
-    'flap_detection_options' value=ServiceStateValue;
+    {baseAttributes::ServiceFlapDetectionOptions}
+    'flap_detection_options' (ok?='o'? & warning?='w'? & critical?='c'? & unknown?='u'?);
+
+/* */
+/*
+ * Service Attribute 'stalking_options': HostStateValue
+ */
+ServiceStalkingOptions returns baseAttributes::ServiceStalkingOptions:
+    {baseAttributes::ServiceStalkingOptions}
+    'stalking_options' (ok?='o'? & warning?='w'? & critical?='c'? & unknown?='u'?);
 
 /* */
 /*
@@ -696,13 +707,14 @@ ServiceFlapDetectionOptions returns baseAttributes::ServiceFlapDetectionOptions:
  */
 ServiceMembers returns baseAttributes::ServiceMembers:
     'members' reference+=[baseAttributes::ServiceDescription|ServiceDescriptionEntry]
-    (',' reference+=[baseAttributes::ServiceDescription|ServiceDescriptionEntry])*;
+    (COMMA reference+=[baseAttributes::ServiceDescription|ServiceDescriptionEntry])*;
 
 ServicegroupMembers returns baseAttributes::ServicegroupMembers:
     'servicegroup_members' reference+=[baseAttributes::ServicegroupName|ServicegroupNameEntry]
-    (',' reference+=[baseAttributes::ServicegroupName|ServicegroupNameEntry])*;
+    (COMMA reference+=[baseAttributes::ServicegroupName|ServicegroupNameEntry])*;
 
-    /*
+/* */
+/*
  * 
  *     dependent_host_name host_name
     dependent_hostgroup_name    hostgroup_name
@@ -720,14 +732,22 @@ ServicegroupMembers returns baseAttributes::ServicegroupMembers:
 DependentHostName returns baseAttributes::DependentHostName:
     {baseAttributes::DependentHostName}
     'dependent_host_name' reference+=[baseAttributes::HostName|HostNameEntry]?
-    (',' reference+=[baseAttributes::HostName|HostNameEntry])*;
+    (COMMA reference+=[baseAttributes::HostName|HostNameEntry])*;
 
 DependentHostgroupName returns baseAttributes::DependentHostgroupName:
     'dependent_hostgroup_name' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry]
-    (',' reference+=[baseAttributes::HostgroupName|HostgroupNameEntry])*;
+    (COMMA reference+=[baseAttributes::HostgroupName|HostgroupNameEntry])*;
 
 DependentServiceDescription returns baseAttributes::DependentServiceDescription:
-    'dependent_hostgroup_name' reference=[baseAttributes::ServiceDescription|ServiceDescriptionEntry];
+    'dependent_service_description' reference=[baseAttributes::ServiceDescription|ServiceDescriptionEntry];
+
+InheritsParent returns baseAttributes::InheritsParent:
+    'inherits_parent' enabled=TrueFalse;
+
+ExecutionFailureCriteria returns baseAttributes::ExecutionFailureCriteria hidden(IL_WS, COMMA):
+    {baseAttributes::ExecutionFailureCriteria}
+    'execution_failure_criteria' (ok?='o'? & warning?='w'? & critical?='c'? & unknown?='u'? & pending?='p'? &
+    none?='n'?);
 
 /* */
 /*
@@ -735,7 +755,7 @@ DependentServiceDescription returns baseAttributes::DependentServiceDescription:
  */
 ServiceDescriptionReference returns baseAttributes::ServiceDescriptionReference:
     'service_description' reference+=[baseAttributes::ServiceDescription|ServiceDescriptionEntry]
-     (',' reference+=[baseAttributes::ServiceDescription|ServiceDescriptionEntry])*;
+    (COMMA reference+=[baseAttributes::ServiceDescription|ServiceDescriptionEntry])*;
 
 /* */
 /*
@@ -760,10 +780,10 @@ TimeperiodName returns baseAttributes::TimeperiodName:
     'timeperiod_name' name=TimeperiodNameEntry;
 
 TimeDefinition:
-    {TimeDefinition} days=DateSpec ranges+=TimeRange (',' ranges+=TimeRange)*;
+    {TimeDefinition} days=DateSpec ranges+=TimeRange (COMMA ranges+=TimeRange)*;
 
 TimeExclude returns baseAttributes::TimeExclude:
-    'exclude' reference+=[baseAttributes::TimeperiodName|TimeperiodNameEntry] (','
+    'exclude' reference+=[baseAttributes::TimeperiodName|TimeperiodNameEntry] (COMMA
     reference+=[baseAttributes::TimeperiodName|TimeperiodNameEntry])*;
 
 /* */
@@ -821,18 +841,21 @@ HostNotificationPeriod returns baseAttributes::HostNotificationPeriod:
 ServiceNotificationPeriod returns baseAttributes::ServiceNotificationPeriod:
     'service_notification_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
 
-HostNotificationOptions returns baseAttributes::HostNotificationOptions:
-    'host_notification_options' value+=HostNotificationValue (',' value+=HostNotificationValue)*;
+HostNotificationOptions returns baseAttributes::HostNotificationOptions hidden(IL_WS, COMMA):
+    {baseAttributes::HostNotificationOptions}
+    'host_notification_options' (recovery?='r'? & down?='d'? & unreachable?='u'? & flapping?='f'? &
+    scheduledDowntime?='s'? & none?='n'?);
 
 ServiceNotificationOptions returns baseAttributes::ServiceNotificationOptions:
-    'service_notification_options' value=ServiceNotificationValue;
+    {baseAttributes::ServiceNotificationOptions}
+    'service_notification_options' (warning?='w'? & unknown?='u'? & critical?='c'? & flapping?='f'? & none?='n'?);
 
 HostNotificationCommands:
-    'host_notification_commands' reference+=[baseAttributes::CommandName|CommandNameEntry] (','
+    'host_notification_commands' reference+=[baseAttributes::CommandName|CommandNameEntry] (COMMA
     reference+=[baseAttributes::CommandName|CommandNameEntry])*;
 
 ServiceNotificationCommands:
-    'service_notification_commands' reference+=[baseAttributes::CommandName|CommandNameEntry] (','
+    'service_notification_commands' reference+=[baseAttributes::CommandName|CommandNameEntry] (COMMA
     reference+=[baseAttributes::CommandName|CommandNameEntry])*;
 
 Email:
@@ -880,7 +903,7 @@ ContactGroupName returns baseAttributes::ContactGroupName:
     'contactgroup_name' value=ContactGroupNameEntry;
 
 ContactMembers returns baseAttributes::ContactMembers:
-    'members' reference+=[baseAttributes::ContactName|ContactNameEntry] (','
+    'members' reference+=[baseAttributes::ContactName|ContactNameEntry] (COMMA
     reference+=[baseAttributes::ContactName|ContactNameEntry])*;
 
 enum ServiceStateValue returns baseModel::ServiceStateValue:
@@ -888,12 +911,6 @@ enum ServiceStateValue returns baseModel::ServiceStateValue:
 
 enum HostStateValue returns baseModel::HostStateValue:
     UP='o' | DOWN='d' | UNREACHABLE='u';
-
-enum HostNotificationValue returns baseModel::HostNotificationValue:
-    RECOVERY='r' | DOWN='d' | UNREACHABLE='u' | FLAPPING='f' | SCHEDULEDDOWNTIME='s' | NONE='n';
-
-enum ServiceNotificationValue returns baseModel::ServiceNotificationValue:
-    WARNING='w' | UNKNOWN='u' | CRITICAL='c' | FLAPPING='f' | NONE='n';
 
 HostNameEntry:
     UID;
@@ -1008,7 +1025,7 @@ Keywords:
     'contactgroup' | 'service' | 'address3' | 'low_flap_threshold' | 'address' |
     'define' | '.' | 'flap_detection_enabled' | 'vrml_image' | 'passive_checks_enabled' |
     'address5' | 'contact' | 'service_notification_period' | 'address4' | 'w' |
-    ',' | 'active_checks_enabled' | 'initial_state' | 'process_perf_data' | 'address6' |
+    COMMA | 'active_checks_enabled' | 'initial_state' | 'process_perf_data' | 'address6' |
     'host_notification_period' | 'hostgroups' | 'host_group' | 'icon_image_alt' | 'use' |
     'can_submit_commands' | 'wednesday' | 'pager' | '}' | 'service_notifications_enabled' |
     'june' | 'october' | 'hostgroup_name' | 'retain_nonstatus_information' | 'notification_period' |
@@ -1045,6 +1062,9 @@ terminal UPPER:
 // erminal DIGIT: '2'..'9';
 terminal DASH:
     '-';
+
+terminal COMMA:
+    ',';
 
 terminal COLON:
     ':';
