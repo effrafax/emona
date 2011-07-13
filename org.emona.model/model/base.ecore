@@ -68,7 +68,7 @@
     <eLiterals name="CRITICAL" value="2" literal="c"/>
     <eLiterals name="UNKNOWN" value="3" literal="u"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FailureCriteria" eSuperTypes="#//ServiceState">
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceFailureCriteria" eSuperTypes="#//ServiceState">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pending" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="none" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -97,6 +97,12 @@
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unreachable" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HostFailureCriteria" eSuperTypes="#//HostState">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pending" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="none" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
   </eClassifiers>
   <eSubpackages name="attributes" nsURI="http://www.emona.org/model/base/attributes"
       nsPrefix="eatt">
@@ -510,11 +516,11 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="inherits_parent"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ExecutionFailureCriteria" eSuperTypes="#//Attribute #//FailureCriteria">
+    <eClassifiers xsi:type="ecore:EClass" name="ServiceExecutionFailureCriteria" eSuperTypes="#//Attribute #//ServiceFailureCriteria">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="execution_failure_criteria"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="NotificationFailureCriteria" eSuperTypes="#//Attribute #//FailureCriteria">
+    <eClassifiers xsi:type="ecore:EClass" name="NotificationFailureCriteria" eSuperTypes="#//Attribute #//ServiceFailureCriteria">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="notification_failure_criteria"/>
     </eClassifiers>
@@ -527,6 +533,40 @@
     <eClassifiers xsi:type="ecore:EClass" name="ServiceStalkingOptions" eSuperTypes="#//Attribute #//ServiceState">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="stalking_options"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FirstNotification" eSuperTypes="#//IntegerValueAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="first_notification"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="LastNotification" eSuperTypes="#//IntegerValueAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="last_notification"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EscalationPeriod" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//attributes/TimeperiodName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="escalation_period"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ServiceEscalationOptions" eSuperTypes="#//Attribute #//ServiceState">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="escalation_options"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="HostExecutionFailureCriteria" eSuperTypes="#//Attribute #//HostFailureCriteria">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="execution_failure_criteria"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ServiceNotificationFailureCriteria"
+        eSuperTypes="#//Attribute #//ServiceFailureCriteria">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="notification_failure_criteria"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="HostNotificationFailureCriteria" eSuperTypes="#//Attribute #//HostFailureCriteria">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" defaultValueLiteral="notification_failure_criteria"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="HostEscalationOptions" eSuperTypes="#//Attribute #//HostState">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="escalation_options"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

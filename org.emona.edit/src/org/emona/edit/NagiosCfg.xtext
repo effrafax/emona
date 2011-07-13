@@ -27,7 +27,7 @@ InfoObject:
 
 ConfigObject hidden(IL_WS, NL):
     Host | Hostgroup | Service | Servicegroup | Command | Timeperiod | Contact | ContactGroup |
-    Servicedependency;
+    Servicedependency | Serviceescalation | Hostdependency | Hostescalation;
 
     // Proposals haben Probleme mit NL !!!
 Host:
@@ -169,7 +169,7 @@ ServiceDescriptionEntry:
 /*
  * **************************************
  * Servicegroup element
- * ===============
+ * ======================================
  * **************************************
  * 
    define servicegroup{
@@ -202,7 +202,7 @@ ServicegroupNameEntry:
 /*
  * **************************************
  * Servicedependency element
- * ===============
+ * ======================================
  * **************************************
  * 
  * 
@@ -228,8 +228,103 @@ Servicedependency:
 ServicedependencyAttribute returns baseModel::Attribute hidden(IL_WS):
     (DependentHostName | DependentHostgroupName | DependentServiceDescription |
     HostNameReference | HostgroupNameReference | ServiceDescriptionReference |
-    InheritsParent | ExecutionFailureCriteria |
-    TemplateAttribute) comment=SL_COMMENT? NL;
+    InheritsParent | ServiceExecutionFailureCriteria | ServiceNotificationFailureCriteria |
+    DependencyPeriod | TemplateAttribute) comment=SL_COMMENT? NL;
+
+/* */
+/*
+ * **************************************
+ * Service Escalation element
+ * ======================================
+ * **************************************
+ * 
+ * 
+ * define serviceescalation{
+    host_name   host_name
+    hostgroup_name  hostgroup_name
+    service_description service_description
+    contacts    contacts
+    contact_groups  contactgroup_name
+    first_notification  #
+    last_notification   #
+    notification_interval   #
+    escalation_period   timeperiod_name
+    escalation_options  [w,u,c,r]
+    }
+ *
+ *  
+ */
+Serviceescalation:
+    {Serviceescalation}
+    'define' 'serviceescalation' '{'
+    attr+=ServiceescalationAttribute*
+    '}';
+
+ServiceescalationAttribute returns baseModel::Attribute hidden(IL_WS):
+    (DependentHostName | DependentHostgroupName | DependentServiceDescription |
+    Contacts | ContactGroups |
+    FirstNotification | LastNotification | NotificationInterval |
+    EscalationPeriod | ServiceEscalationOptions | TemplateAttribute) comment=SL_COMMENT? NL;
+
+/* */
+/*
+ * **************************************
+ * Host Dependency element
+ * ======================================
+ * **************************************
+ * 
+ * 
+ * define hostdependency{
+    dependent_host_name host_name
+    dependent_hostgroup_name    hostgroup_name
+    host_name   host_name
+    hostgroup_name  hostgroup_name
+    inherits_parent [0/1]
+    execution_failure_criteria  [o,d,u,p,n]
+    notification_failure_criteria   [o,d,u,p,n]
+    dependency_period   timeperiod_name
+    }
+ */
+Hostdependency:
+    {Hostdependency}
+    'define' 'hostdependency' '{'
+    attr+=HostdependencyAttribute*
+    '}';
+
+HostdependencyAttribute returns baseModel::Attribute hidden(IL_WS):
+    (DependentHostName | DependentHostgroupName |
+    HostNameReference | HostgroupNameReference |
+    InheritsParent | HostExecutionFailureCriteria | HostNotificationFailureCriteria |
+    DependencyPeriod | TemplateAttribute) comment=SL_COMMENT? NL;
+
+/* */
+/*
+ * 
+ * 
+ * 
+ * define hostescalation{
+    host_name   host_name
+    hostgroup_name  hostgroup_name
+    contacts    contacts
+    contact_groups  contactgroup_name
+    first_notification  #
+    last_notification   #
+    notification_interval   #
+    escalation_period   timeperiod_name
+    escalation_options  [d,u,r]
+    }
+ */
+Hostescalation:
+    {Hostescalation}
+    'define' 'hostescalation' '{'
+    attr+=HostescalationAttribute*
+    '}';
+
+HostescalationAttribute returns baseModel::Attribute hidden(IL_WS):
+    (DependentHostName | DependentHostgroupName |
+    Contacts | ContactGroups |
+    FirstNotification | LastNotification | NotificationInterval |
+    EscalationPeriod | HostEscalationOptions | TemplateAttribute) comment=SL_COMMENT? NL;
 
 /* */
 /*
@@ -715,19 +810,9 @@ ServicegroupMembers returns baseAttributes::ServicegroupMembers:
 
 /* */
 /*
- * 
- *     dependent_host_name host_name
-    dependent_hostgroup_name    hostgroup_name
-    dependent_service_description   service_description
-    host_name   host_name
-    hostgroup_name  hostgroup_name
-    service_description service_description
-    inherits_parent [0/1]
-    execution_failure_criteria  [o,w,u,c,p,n]
-    notification_failure_criteria   [o,w,u,c,p,n]
-    dependency_period   timeperiod_name
-    }
- * 
+ * **************************************
+ * Servicedependency Attributes
+ * **************************************
  */
 DependentHostName returns baseAttributes::DependentHostName:
     {baseAttributes::DependentHostName}
@@ -744,10 +829,55 @@ DependentServiceDescription returns baseAttributes::DependentServiceDescription:
 InheritsParent returns baseAttributes::InheritsParent:
     'inherits_parent' enabled=TrueFalse;
 
-ExecutionFailureCriteria returns baseAttributes::ExecutionFailureCriteria hidden(IL_WS, COMMA):
-    {baseAttributes::ExecutionFailureCriteria}
+ServiceExecutionFailureCriteria returns baseAttributes::ServiceExecutionFailureCriteria hidden(IL_WS, COMMA):
+    {baseAttributes::ServiceExecutionFailureCriteria}
     'execution_failure_criteria' (ok?='o'? & warning?='w'? & critical?='c'? & unknown?='u'? & pending?='p'? &
     none?='n'?);
+
+ServiceNotificationFailureCriteria returns baseAttributes::ServiceNotificationFailureCriteria hidden(IL_WS, COMMA):
+    {baseAttributes::ServiceNotificationFailureCriteria}
+    'notification_failure_criteria' (ok?='o'? & warning?='w'? & critical?='c'? & unknown?='u'? & pending?='p'? &
+    none?='n'?);
+
+DependencyPeriod returns baseAttributes::DependencyPeriod:
+    'dependency_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
+
+/* */
+/*
+ * **************************************
+ * Service Escalation Attributes
+ * **************************************
+ */
+FirstNotification returns baseAttributes::FirstNotification:
+    'first_notification' value=INT;
+
+LastNotification returns baseAttributes::LastNotification:
+    'last_notification' value=INT;
+
+EscalationPeriod returns baseAttributes::EscalationPeriod:
+    'escalation_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
+
+ServiceEscalationOptions returns baseAttributes::ServiceEscalationOptions hidden(IL_WS, COMMA):
+    {baseAttributes::ServiceEscalationOptions}
+    'escalation_options' (ok?='o'? & warning?='w'? & critical?='c'? & unknown?='u'?);
+
+/* */
+/*
+ * **************************************
+ * Host Escalation Attributes
+ * **************************************
+ */
+HostExecutionFailureCriteria returns baseAttributes::HostExecutionFailureCriteria hidden(IL_WS, COMMA):
+    {baseAttributes::HostExecutionFailureCriteria}
+    'execution_failure_criteria' (up?='o'? & down?='d'? & unreachable?='u'? & pending?='p'? & none?='n'?);
+
+HostNotificationFailureCriteria returns baseAttributes::HostNotificationFailureCriteria hidden(IL_WS, COMMA):
+    {baseAttributes::HostNotificationFailureCriteria}
+    'notification_failure_criteria' (up?='o'? & down?='d'? & unreachable?='u'? & pending?='p'? & none?='n'?);
+
+HostEscalationOptions returns baseAttributes::HostEscalationOptions hidden(IL_WS, COMMA):
+    {baseAttributes::HostEscalationOptions}
+    'escalation_options' (up?='r'? & down?='d'? & unreachable?='u'?);
 
 /* */
 /*
