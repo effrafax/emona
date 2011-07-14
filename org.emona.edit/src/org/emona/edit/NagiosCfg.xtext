@@ -27,7 +27,7 @@ InfoObject:
 
 ConfigObject hidden(IL_WS, NL):
     Host | Hostgroup | Service | Servicegroup | Command | Timeperiod | Contact | ContactGroup |
-    Servicedependency | Serviceescalation | Hostdependency | Hostescalation;
+    Servicedependency | Serviceescalation | Hostdependency | Hostescalation | Hostextinfo | Serviceextinfo;
 
     // Proposals haben Probleme mit NL !!!
 Host:
@@ -299,7 +299,10 @@ HostdependencyAttribute returns baseModel::Attribute hidden(IL_WS):
 
 /* */
 /*
- * 
+ * **************************************
+ * Host Escalation element
+ * ======================================
+ * **************************************
  * 
  * 
  * define hostescalation{
@@ -325,6 +328,66 @@ HostescalationAttribute returns baseModel::Attribute hidden(IL_WS):
     Contacts | ContactGroups |
     FirstNotification | LastNotification | NotificationInterval |
     EscalationPeriod | HostEscalationOptions | TemplateAttribute) comment=SL_COMMENT? NL;
+
+/* */
+/*
+ * 
+ * **************************************
+ * Extended Host Information element
+ * ======================================
+ * **************************************
+ *
+ *  
+ * define hostextinfo{
+    host_name   host_name
+    notes   note_string
+    notes_url   url
+    action_url  url
+    icon_image  image_file
+    icon_image_alt  alt_string
+    vrml_image  image_file
+    statusmap_image image_file
+    2d_coords   x_coord,y_coord
+    3d_coords   x_coord,y_coord,z_coord
+    }
+ */
+Hostextinfo:
+    {Hostextinfo}
+    'define' 'hostextinfo' '{'
+    attr+=HostextinfoAttribute*
+    '}';
+
+HostextinfoAttribute returns baseModel::Attribute hidden(IL_WS):
+    (HostNameReference | Notes | NotesUrl |
+    ActionUrl | IconImage | IconImageAlt | VrmlImage | StatusMapImage |
+    TwoDCoords | ThreeDCoords | TemplateAttribute) comment=SL_COMMENT? NL;
+
+/* */
+/*
+ * **************************************
+ * Extended Host Information element
+ * ======================================
+ * **************************************
+ * 
+ * define serviceextinfo{
+    host_name   host_name
+    service_description service_description
+    notes   note_string
+    notes_url   url
+    action_url  url
+    icon_image  image_file
+    icon_image_alt  alt_string
+    }
+ */
+Serviceextinfo:
+    {Serviceextinfo}
+    'define' 'serviceextinfo' '{'
+    attr+=ServiceextinfoAttribute*
+    '}';
+
+ServiceextinfoAttribute returns baseModel::Attribute hidden(IL_WS):
+    (HostNameReference | ServiceDescriptionReference |
+    Notes | NotesUrl | IconImage | IconImageAlt | TemplateAttribute) comment=SL_COMMENT? NL;
 
 /* */
 /*
