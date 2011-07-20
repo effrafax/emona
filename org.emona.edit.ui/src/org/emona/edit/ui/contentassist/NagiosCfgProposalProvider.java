@@ -18,6 +18,8 @@ package org.emona.edit.ui.contentassist;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.EList;
@@ -79,6 +81,12 @@ public class NagiosCfgProposalProvider extends
 
 	private final static Logger log = Logger
 			.getLogger(NagiosCfgProposalProvider.class);
+	
+	private static Set<String> ignoredKeywords = new HashSet<String>(); 
+	static {
+		ignoredKeywords.add("host_name");
+	}
+	
 
 	@Inject
 	private IImageHelper imageHelper;
@@ -235,40 +243,6 @@ public class NagiosCfgProposalProvider extends
 	private Multimap<String, KeywordProposal> getSingleKeywordSnippets() {
 		if (keywordSnippets == null) {
 			keywordSnippets = HashMultimap.create();
-			registerKeywordSnippet(getToken("Alias"), Alias.class, keywordSnippets);
-			registerKeywordSnippet(getToken("TemplateName"), TemplateName.class,
-					keywordSnippets);
-			registerKeywordSnippet(getToken("Use"), Use.class, keywordSnippets);
-			registerKeywordSnippet(getToken("Register"), Register.class,
-					keywordSnippets);
-			registerKeywordSnippet(getToken("HostName"), HostName.class,
-					keywordSnippets);
-			registerKeywordSnippet(getToken("ActiveChecksEnabled"),
-					ActiveChecksEnabled.class, keywordSnippets);
-			registerKeywordSnippet(getToken("Address"), Address.class,
-					keywordSnippets);
-			registerKeywordSnippet(getToken("CheckCommand"), CheckCommand.class,
-					keywordSnippets);
-			registerKeywordSnippet(getToken("CheckInterval"), CheckInterval.class,
-					keywordSnippets);
-			registerKeywordSnippet(getToken("CheckPeriod"), CheckPeriod.class,
-					keywordSnippets);
-			registerKeywordSnippet(getToken("CommandLine"), CommandLine.class,
-					keywordSnippets);
-			registerKeywordSnippet(getToken("CommandName"), CommandName.class,
-					keywordSnippets);
-			registerKeywordSnippet(getToken("DisplayName"), DisplayName.class,
-					keywordSnippets);
-			registerKeywordSnippet(getToken("HostgroupName"), HostgroupName.class,
-					keywordSnippets);
-			registerKeywordSnippet(getToken("Hostgroups"), Hostgroups.class,
-					keywordSnippets);
-			registerKeywordSnippet(getToken("HostInitialState"), HostInitialState.class,
-					keywordSnippets);
-			registerKeywordSnippet(getToken("MaxCheckAttempts"),
-					MaxCheckAttempts.class, keywordSnippets);
-			registerKeywordSnippet(getToken("Parents"), Parents.class,
-					keywordSnippets);
 
 		}
 		return keywordSnippets;
@@ -321,28 +295,11 @@ public class NagiosCfgProposalProvider extends
 	public void completeKeyword(Keyword keyword, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		// proposals for registered tokens are provided by the model method
-		if (getSingleKeywordSnippets().containsKey(keyword.getValue())) {
+		if (ignoredKeywords.contains(keyword.getValue())) {
 			EObject model = context.getCurrentModel();
 			String keywordName = keyword.getValue();
 			if (model instanceof ConfigObject) {
-				if (getSingleKeywordSnippets().containsKey(keywordName)) {
-					Collection<KeywordProposal> props = getSingleKeywordSnippets()
-							.get(keywordName);
-					for (KeywordProposal keywordProposal : props) {
-						processAttributeProposal(model,
-								keywordProposal.keyword, keywordProposal.clazz,
-								context, acceptor, true);
-					}
-				}
-				if (getMultilineKeywordSnippets().containsKey(keywordName)) {
-					Collection<KeywordProposal> props = getMultilineKeywordSnippets()
-							.get(keywordName);
-					for (KeywordProposal keywordProposal : props) {
-						processAttributeProposal(model,
-								keywordProposal.keyword, keywordProposal.clazz,
-								context, acceptor, false);
-					}
-				}
+				return;
 			}
 			return;
 		} else {
