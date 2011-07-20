@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+	<template id="org.emona.host1" autoinsert="true"
+		context="org.emona.edit.NagiosCfg.ConfigObject" deleted="false"
+		description="host template" enabled="true" name="host"><![CDATA[define host {
+	use ${templateRef:CrossReference('Use.reference')}
+	host_name ${host_name}
+	address ${address}
+	${cursor}
+}]]></template>
+	<template id="org.emona.hostname" autoinsert="true"
+		context="org.emona.edit.NagiosCfg.kw_host_name" deleted="false"
+		description="host_name Attribute" enabled="true" name="hostNname"><![CDATA[host_name ${name} ${cursor}]]></template>
+</templates>
