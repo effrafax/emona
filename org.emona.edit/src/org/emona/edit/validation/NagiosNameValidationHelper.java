@@ -16,7 +16,6 @@ package org.emona.edit.validation;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.xtext.validation.NamesAreUniqueValidationHelper;
-import org.emona.edit.nagiosCfg.NagiosCfgPackage;
 import org.emona.model.base.BasePackage;
 
 /**
