@@ -17,7 +17,7 @@ package org.emona.edit.errors;
 import org.antlr.runtime.FailedPredicateException;
 import org.eclipse.xtext.nodemodel.SyntaxErrorMessage;
 import org.eclipse.xtext.parser.antlr.SyntaxErrorMessageProvider;
-import org.emona.edit.nagiosCfg.Host;
+import org.emona.model.base.Host;
 
 /**
  * This contains specific error messages.

@@ -18,8 +18,8 @@ import java.util.HashSet;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.validation.Check;
-import org.emona.edit.nagiosCfg.ConfigObject;
 import org.emona.model.base.Attribute;
+import org.emona.model.base.ConfigObject;
  
 
 public class NagiosCfgJavaValidator extends AbstractNagiosCfgJavaValidator {

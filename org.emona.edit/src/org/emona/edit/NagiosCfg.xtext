@@ -18,20 +18,23 @@ generate nagiosCfg "http://www.emona.org/edit/NagiosCfg"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "platform:/resource/org.emona.model/model/base.ecore" as baseModel
 import "platform:/resource/org.emona.model/model/base.ecore#//attributes" as baseAttributes
+import "platform:/resource/org.emona.model/model/base.ecore#//attributes/time" as eatime
+
 
 ObjectModel hidden(IL_WS, NL):
     info+=InfoObject*;
 
-InfoObject:
-    CommentLine | ConfigObject;
+InfoObject returns baseModel::InfoObject:
+    ConfigObject | CommentLine ;
 
-ConfigObject hidden(IL_WS, NL):
-    Host | Hostgroup | Service | Servicegroup | Command | Timeperiod | Contact | ContactGroup |
+ConfigObject returns baseModel::ConfigObject hidden(IL_WS, NL):
+    Host | Hostgroup | Service | Servicegroup | Command | Timeperiod | Contact | Contactgroup |
     Servicedependency | Serviceescalation | Hostdependency | Hostescalation | Hostextinfo | Serviceextinfo;
 
+
     // Proposals haben Probleme mit NL !!!
-Host:
-    {Host}
+Host returns baseModel::Host:
+    {baseModel::Host}
     'define' 'host' '{'
     attr+=HostAttribute*
     '}';
@@ -72,8 +75,8 @@ HostName returns baseAttributes::HostName:
   }
  * 
  */
-Hostgroup:
-    {Hostgroup}
+Hostgroup returns baseModel::Hostgroup:
+    {baseModel::Hostgroup}
     'define' 'hostgroup' '{'
     attr+=HostgroupAttribute*
     '}';
@@ -138,8 +141,8 @@ HostgroupName returns baseAttributes::HostgroupName:
  * 
  * 
  */
-Service:
-    {Service}
+Service returns baseModel::Service:
+    {baseModel::Service}
     'define' 'service' '{'
     attr+=ServiceAttribute*
     '}';
@@ -182,8 +185,8 @@ ServiceDescriptionEntry:
     action_url  url
     }
  */
-Servicegroup:
-    {Servicegroup}
+Servicegroup returns baseModel::Servicegroup:
+    {baseModel::Servicegroup}
     'define' 'servicegroup' '{'
     attr+=ServicegroupAttribute*
     '}';
@@ -219,8 +222,8 @@ ServicegroupNameEntry:
     dependency_period   timeperiod_name
     }
  */
-Servicedependency:
-    {Servicedependency}
+Servicedependency returns baseModel::Servicedependency:
+    {baseModel::Servicedependency}
     'define' 'servicedependency' '{'
     attr+=ServicedependencyAttribute*
     '}';
@@ -254,8 +257,8 @@ ServicedependencyAttribute returns baseModel::Attribute hidden(IL_WS):
  *
  *  
  */
-Serviceescalation:
-    {Serviceescalation}
+Serviceescalation returns baseModel::Serviceescalation:
+    {baseModel::Serviceescalation}
     'define' 'serviceescalation' '{'
     attr+=ServiceescalationAttribute*
     '}';
@@ -285,8 +288,8 @@ ServiceescalationAttribute returns baseModel::Attribute hidden(IL_WS):
     dependency_period   timeperiod_name
     }
  */
-Hostdependency:
-    {Hostdependency}
+Hostdependency returns baseModel::Hostdependency:
+    {baseModel::Hostdependency}
     'define' 'hostdependency' '{'
     attr+=HostdependencyAttribute*
     '}';
@@ -317,8 +320,8 @@ HostdependencyAttribute returns baseModel::Attribute hidden(IL_WS):
     escalation_options  [d,u,r]
     }
  */
-Hostescalation:
-    {Hostescalation}
+Hostescalation returns baseModel::Hostescalation:
+    {baseModel::Hostescalation}
     'define' 'hostescalation' '{'
     attr+=HostescalationAttribute*
     '}';
@@ -351,8 +354,8 @@ HostescalationAttribute returns baseModel::Attribute hidden(IL_WS):
     3d_coords   x_coord,y_coord,z_coord
     }
  */
-Hostextinfo:
-    {Hostextinfo}
+Hostextinfo returns baseModel::Hostextinfo:
+    {baseModel::Hostextinfo}
     'define' 'hostextinfo' '{'
     attr+=HostextinfoAttribute*
     '}';
@@ -379,8 +382,8 @@ HostextinfoAttribute returns baseModel::Attribute hidden(IL_WS):
     icon_image_alt  alt_string
     }
  */
-Serviceextinfo:
-    {Serviceextinfo}
+Serviceextinfo returns baseModel::Serviceextinfo:
+    {baseModel::Serviceextinfo}
     'define' 'serviceextinfo' '{'
     attr+=ServiceextinfoAttribute*
     '}';
@@ -396,8 +399,8 @@ ServiceextinfoAttribute returns baseModel::Attribute hidden(IL_WS):
  * ===============
  * **************************************
  */
-Command:
-    {Command}
+Command returns baseModel::Command:
+    {baseModel::Command}
     'define' 'command' '{'
     attr+=CommandAttribute*
     '}';
@@ -412,8 +415,8 @@ CommandAttribute returns baseModel::Attribute hidden(IL_WS):
  * ==================
  * **************************************
  */
-Timeperiod:
-    {Timeperiod}
+Timeperiod returns baseModel::Timeperiod:
+    {baseModel::Timeperiod}
     'define' 'timeperiod' '{'
     attr+=TimeperiodAttribute*
     '}';
@@ -429,8 +432,8 @@ TimeperiodAttribute returns baseModel::Attribute hidden(IL_WS):
  * ===============
  * **************************************
  */
-Contact:
-    {Contact}
+Contact returns baseModel::Contact:
+    {baseModel::Contact}
     'define' 'contact' '{'
     attr+=ContactAttribute*
     '}';
@@ -451,13 +454,13 @@ ContactAttribute returns baseModel::Attribute hidden(IL_WS):
  * ====================
  * **************************************
  */
-ContactGroup:
-    {ContactGroup}
+Contactgroup returns baseModel::Contactgroup:
+    {baseModel::Contactgroup}
     'define' 'contactgroup' '{'
-    attr+=ContactGroupAttribute*
+    attr+=ContactgroupAttribute*
     '}';
 
-ContactGroupAttribute returns baseModel::Attribute hidden(IL_WS):
+ContactgroupAttribute returns baseModel::Attribute hidden(IL_WS):
     (ContactGroupName | ContactMembers | Alias | TemplateAttribute) comment=SL_COMMENT? NL;
 
 /* */
@@ -972,7 +975,7 @@ CommandName returns baseAttributes::CommandName:
 TimeperiodName returns baseAttributes::TimeperiodName:
     'timeperiod_name' name=TimeperiodNameEntry;
 
-TimeDefinition:
+TimeDefinition returns eatime::TimeDefinition:
     {TimeDefinition} days=DateSpec ranges+=TimeRange (COMMA ranges+=TimeRange)*;
 
 TimeExclude returns baseAttributes::TimeExclude:
@@ -1149,7 +1152,7 @@ NameAddress returns baseModel::InetAddress hidden():
 EmailAddress returns baseModel::MailAddress:
     Entry;
 
-CommentLine hidden():
+CommentLine returns baseModel::CommentLine hidden():
     {CommentLine} value=HASH_COMMENT;
 
     /**
@@ -1157,28 +1160,29 @@ CommentLine hidden():
  * timeperiods may be rather complex constructs ...
  * 
  */
-DateSpec:
+ 
+DateSpec returns eatime::DateSpec:
     (NumericDateRange | DayRange | WeekDayRange | MonthRange) ('/' divisor=INT)?;
 
-DayRange:
+DayRange returns eatime::DayRange:
     'day' start=SignedNumber (DASH end=SignedNumber)?;
 
-MonthRange:
+MonthRange returns eatime::MonthRange:
     start=MonthSpec (DASH end=MonthOptSpec)?;
 
-MonthSpec:
+MonthSpec returns eatime::MonthSpec:
     month=Month day=SignedNumber;
 
-MonthOptSpec returns MonthSpec:
+MonthOptSpec returns eatime::MonthSpec:
     month=Month? day=SignedNumber;
 
-WeekDayRange:
+WeekDayRange returns eatime::WeekdayRange:
     start=WeekDaySpec (DASH end=WeekDaySpec)?;
 
-WeekDaySpec:
+WeekDaySpec returns eatime::WeekdaySpec:
     day=Weekday selector+=SignedNumber* month=Month?;
 
-NumericDateRange:
+NumericDateRange returns eatime::NumericDateRange:
     start=NumericDate (DASH end=NumericDate)?;
 
 NumericDate returns baseModel::Date hidden():
