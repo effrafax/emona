@@ -104,6 +104,31 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="none" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConfigObject" eSuperTypes="#//InfoObject">
+    <eOperations name="hasAttribute" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="token" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attr" upperBound="-1" eType="#//Attribute"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InfoObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CommentLine" eSuperTypes="#//InfoObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Host" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Hostgroup" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Service" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Servicegroup" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Servicedependency" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Hostdependency" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Serviceescalation" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Hostescalation" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Serviceextinfo" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Hostextinfo" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Command" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Timeperiod" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Contact" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Contactgroup" eSuperTypes="#//ConfigObject"/>
   <eSubpackages name="attributes" nsURI="http://www.emona.org/model/base/attributes"
       nsPrefix="eatt">
     <eClassifiers xsi:type="ecore:EClass" name="Alias" eSuperTypes="#//ValueAttribute">
@@ -568,5 +593,51 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="escalation_options"/>
     </eClassifiers>
+    <eSubpackages name="time" nsURI="http://www.emona.org/model/base/attributes/time"
+        nsPrefix="eatime">
+      <eClassifiers xsi:type="ecore:EClass" name="TimeDefinition" eSuperTypes="#//Attribute">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+            changeable="false" defaultValueLiteral="HH:MM"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="days" eType="#//attributes/time/DateSpec"
+            containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="ranges" upperBound="-1"
+            eType="#//TimeRange"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="DayRange" eSuperTypes="#//attributes/time/DateSpec">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" lowerBound="1"
+            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="DateSpec">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="divisor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="MonthSpec">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="month" eType="#//Month"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="day" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="MonthRange" eSuperTypes="#//attributes/time/DateSpec">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="start" lowerBound="1"
+            eType="#//attributes/time/MonthSpec" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//attributes/time/MonthSpec"
+            containment="true"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="WeekdaySpec">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="day" eType="#//Weekday"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="selector" upperBound="-1"
+            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="month" eType="#//Month"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="WeekdayRange" eSuperTypes="#//attributes/time/DateSpec">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="start" lowerBound="1"
+            eType="#//attributes/time/WeekdaySpec" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//attributes/time/WeekdaySpec"
+            containment="true"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="NumericDateRange" eSuperTypes="#//attributes/time/DateSpec">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" lowerBound="1"
+            eType="#//Date"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="#//Date"/>
+      </eClassifiers>
+    </eSubpackages>
   </eSubpackages>
 </ecore:EPackage>

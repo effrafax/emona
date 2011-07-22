@@ -9,6 +9,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.emona.model.base,
  org.emona.model.base.attributes,
  org.emona.model.base.attributes.impl,
+ org.emona.model.base.attributes.time,
+ org.emona.model.base.attributes.time.impl,
  org.emona.model.base.impl,
  org.emona.model.types
 Require-Bundle: org.eclipse.core.runtime,

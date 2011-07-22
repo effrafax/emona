@@ -33,25 +33,16 @@
       <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/NOV"/>
       <genEnumLiterals ecoreEnumLiteral="base.ecore#//Month/DEC"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="base.ecore#//StateValue">
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//StateValue/UP"/>
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//StateValue/DOWN"/>
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//StateValue/UNREACHABLE"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="base.ecore#//HostStateValue">
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostStateValue/UP"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostStateValue/DOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostStateValue/UNREACHABLE"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="base.ecore#//HostNotificationValue">
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostNotificationValue/NONE"/>
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostNotificationValue/RECOVERY"/>
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostNotificationValue/DOWN"/>
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostNotificationValue/UNREACHABLE"/>
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostNotificationValue/FLAPPING"/>
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//HostNotificationValue/SCHEDULEDDOWNTIME"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="base.ecore#//ServiceNotificationValue">
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceNotificationValue/NONE"/>
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceNotificationValue/WARNING"/>
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceNotificationValue/CRITICAL"/>
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceNotificationValue/UNKNOWN"/>
-      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceNotificationValue/FLAPPING"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="base.ecore#//ServiceStateValue">
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceStateValue/OK"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceStateValue/WARNING"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceStateValue/CRITICAL"/>
+      <genEnumLiterals ecoreEnumLiteral="base.ecore#//ServiceStateValue/UNKNOWN"/>
     </genEnums>
     <genDataTypes ecoreDataType="base.ecore#//InetAddress"/>
     <genDataTypes ecoreDataType="base.ecore#//TimeRange"/>
@@ -79,19 +70,66 @@
     <genClasses ecoreClass="base.ecore#//IntegerValueAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//IntegerValueAttribute/value"/>
     </genClasses>
+    <genClasses ecoreClass="base.ecore#//ServiceFailureCriteria">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//ServiceFailureCriteria/pending"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//ServiceFailureCriteria/none"/>
+    </genClasses>
+    <genClasses ecoreClass="base.ecore#//ServiceState">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//ServiceState/ok"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//ServiceState/warning"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//ServiceState/critical"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//ServiceState/unknown"/>
+    </genClasses>
+    <genClasses ecoreClass="base.ecore#//ServiceNotificationOption">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//ServiceNotificationOption/flapping"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//ServiceNotificationOption/none"/>
+    </genClasses>
+    <genClasses ecoreClass="base.ecore#//HostState">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//HostState/up"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//HostState/down"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//HostState/unreachable"/>
+    </genClasses>
+    <genClasses ecoreClass="base.ecore#//HostFailureCriteria">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//HostFailureCriteria/pending"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//HostFailureCriteria/none"/>
+    </genClasses>
+    <genClasses ecoreClass="base.ecore#//ConfigObject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference base.ecore#//ConfigObject/attr"/>
+      <genOperations ecoreOperation="base.ecore#//ConfigObject/hasAttribute">
+        <genParameters ecoreParameter="base.ecore#//ConfigObject/hasAttribute/token"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="base.ecore#//InfoObject"/>
+    <genClasses ecoreClass="base.ecore#//CommentLine">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//CommentLine/value"/>
+    </genClasses>
+    <genClasses ecoreClass="base.ecore#//Host"/>
+    <genClasses ecoreClass="base.ecore#//Hostgroup"/>
+    <genClasses ecoreClass="base.ecore#//Service"/>
+    <genClasses ecoreClass="base.ecore#//Servicegroup"/>
+    <genClasses ecoreClass="base.ecore#//Servicedependency"/>
+    <genClasses ecoreClass="base.ecore#//Hostdependency"/>
+    <genClasses ecoreClass="base.ecore#//Serviceescalation"/>
+    <genClasses ecoreClass="base.ecore#//Hostescalation"/>
+    <genClasses ecoreClass="base.ecore#//Serviceextinfo"/>
+    <genClasses ecoreClass="base.ecore#//Hostextinfo"/>
+    <genClasses ecoreClass="base.ecore#//Command"/>
+    <genClasses ecoreClass="base.ecore#//Timeperiod"/>
+    <genClasses ecoreClass="base.ecore#//Contact"/>
+    <genClasses ecoreClass="base.ecore#//Contactgroup"/>
     <nestedGenPackages prefix="Attributes" basePackage="org.emona.model.base" disposableProviderFactory="true"
         ecorePackage="base.ecore#//attributes">
       <genClasses ecoreClass="base.ecore#//attributes/Alias">
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Alias/token"/>
       </genClasses>
-      <genClasses ecoreClass="base.ecore#//attributes/InitialState">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/InitialState/value"/>
-        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/InitialState/token"/>
+      <genClasses ecoreClass="base.ecore#//attributes/HostInitialState">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostInitialState/value"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostInitialState/token"/>
       </genClasses>
-      <genClasses ecoreClass="base.ecore#//attributes/HostGroups">
+      <genClasses ecoreClass="base.ecore#//attributes/Hostgroups">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference base.ecore#//attributes/HostGroups/reference"/>
-        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostGroups/token"/>
+            ecoreFeature="ecore:EReference base.ecore#//attributes/Hostgroups/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Hostgroups/token"/>
       </genClasses>
       <genClasses ecoreClass="base.ecore#//attributes/Parents">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
@@ -116,8 +154,8 @@
       <genClasses ecoreClass="base.ecore#//attributes/TimeperiodName">
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/TimeperiodName/token"/>
       </genClasses>
-      <genClasses ecoreClass="base.ecore#//attributes/HostGroupName">
-        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostGroupName/token"/>
+      <genClasses ecoreClass="base.ecore#//attributes/HostgroupName">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostgroupName/token"/>
       </genClasses>
       <genClasses ecoreClass="base.ecore#//attributes/HostName">
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostName/token"/>
@@ -164,11 +202,19 @@
       <genClasses ecoreClass="base.ecore#//attributes/ContactName">
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ContactName/token"/>
       </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/NotificationsEnabled">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/NotificationsEnabled/token"/>
+      </genClasses>
       <genClasses ecoreClass="base.ecore#//attributes/HostNotificationsEnabled">
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationsEnabled/token"/>
       </genClasses>
       <genClasses ecoreClass="base.ecore#//attributes/ServiceNotificationsEnabled">
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceNotificationsEnabled/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/NotificationPeriod">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/NotificationPeriod/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/NotificationPeriod/token"/>
       </genClasses>
       <genClasses ecoreClass="base.ecore#//attributes/HostNotificationPeriod">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
@@ -181,15 +227,21 @@
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceNotificationPeriod/token"/>
       </genClasses>
       <genClasses ecoreClass="base.ecore#//attributes/HostNotificationOptions">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationOptions/value"/>
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationOptions/token"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationOptions/recovery"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationOptions/down"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationOptions/unreachable"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationOptions/flapping"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationOptions/scheduledDowntime"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationOptions/none"/>
       </genClasses>
       <genClasses ecoreClass="base.ecore#//attributes/ServiceNotificationOptions">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceNotificationOptions/value"/>
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceNotificationOptions/token"/>
       </genClasses>
-      <genClasses ecoreClass="base.ecore#//attributes/ContactAddress">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ContactAddress/token"/>
+      <genClasses ecoreClass="base.ecore#//attributes/NotificationCommands">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/NotificationCommands/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/NotificationCommands/token"/>
       </genClasses>
       <genClasses ecoreClass="base.ecore#//attributes/HostNotificationCommands">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
@@ -201,16 +253,19 @@
             ecoreFeature="ecore:EReference base.ecore#//attributes/ServiceNotificationCommands/reference"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceNotificationCommands/token"/>
       </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ContactAddress">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ContactAddress/token"/>
+      </genClasses>
       <genClasses ecoreClass="base.ecore#//attributes/Email">
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Email/token"/>
       </genClasses>
       <genClasses ecoreClass="base.ecore#//attributes/Pager">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Pager/token"/>
       </genClasses>
-      <genClasses ecoreClass="base.ecore#//attributes/Members">
+      <genClasses ecoreClass="base.ecore#//attributes/ContactMembers">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference base.ecore#//attributes/Members/reference"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Members/token"/>
+            ecoreFeature="ecore:EReference base.ecore#//attributes/ContactMembers/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ContactMembers/token"/>
       </genClasses>
       <genClasses ecoreClass="base.ecore#//attributes/ContactGroupName">
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ContactGroupName/token"/>
@@ -231,9 +286,8 @@
       <genClasses ecoreClass="base.ecore#//attributes/FirstNotificationDelay">
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/FirstNotificationDelay/token"/>
       </genClasses>
-      <genClasses ecoreClass="base.ecore#//attributes/StalkingOptions">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/StalkingOptions/value"/>
-        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/StalkingOptions/token"/>
+      <genClasses ecoreClass="base.ecore#//attributes/HostStalkingOptions">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostStalkingOptions/token"/>
       </genClasses>
       <genClasses ecoreClass="base.ecore#//attributes/Notes">
         <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Notes/token"/>
@@ -267,6 +321,199 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ThreeDCoords/ycoord"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ThreeDCoords/zcoord"/>
       </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostgroupMembers">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/HostgroupMembers/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostgroupMembers/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostMembers">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/HostMembers/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostMembers/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostNameReference">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/HostNameReference/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNameReference/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostgroupNameReference">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/HostgroupNameReference/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostgroupNameReference/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServiceDescription">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceDescription/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServiceInitialState">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceInitialState/value"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceInitialState/token"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceInitialState/ok"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/IsVolatileFlag">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/IsVolatileFlag/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ObsessOverHost">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ObsessOverHost/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ObsessOverService">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ObsessOverService/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/CheckFreshness">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/CheckFreshness/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/FreshnessThreshold">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/FreshnessThreshold/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/EventHandler">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/EventHandler/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/EventHandler/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/EventHandlerEnabled">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/EventHandlerEnabled/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/LowFlapThreshold">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/LowFlapThreshold/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HighFlapThreshold">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HighFlapThreshold/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/FlapDetectionEnabled">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/FlapDetectionEnabled/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostFlapDetectionOptions">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostFlapDetectionOptions/value"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostFlapDetectionOptions/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ProcessPerfData">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ProcessPerfData/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/RetainStatusInformation">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/RetainStatusInformation/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/RetainNonstatusInformation">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/RetainNonstatusInformation/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServiceFlapDetectionOptions">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceFlapDetectionOptions/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServicegroupName">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServicegroupName/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServiceMembers">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/ServiceMembers/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceMembers/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServicegroupMembers">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/ServicegroupMembers/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServicegroupMembers/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/Servicegroups">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/Servicegroups/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/Servicegroups/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/DependentHostName">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/DependentHostName/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/DependentHostName/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/DependentHostgroupName">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/DependentHostgroupName/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/DependentHostgroupName/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/DependentServiceDescription">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/DependentServiceDescription/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/DependentServiceDescription/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServiceDescriptionReference">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/ServiceDescriptionReference/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceDescriptionReference/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/InheritsParent">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/InheritsParent/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServiceExecutionFailureCriteria">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceExecutionFailureCriteria/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/NotificationFailureCriteria">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/NotificationFailureCriteria/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/DependencyPeriod">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/DependencyPeriod/reference"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/DependencyPeriod/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServiceStalkingOptions">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceStalkingOptions/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/FirstNotification">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/FirstNotification/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/LastNotification">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/LastNotification/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/EscalationPeriod">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference base.ecore#//attributes/EscalationPeriod/reference"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/EscalationPeriod/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServiceEscalationOptions">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceEscalationOptions/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostExecutionFailureCriteria">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostExecutionFailureCriteria/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/ServiceNotificationFailureCriteria">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/ServiceNotificationFailureCriteria/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostNotificationFailureCriteria">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostNotificationFailureCriteria/token"/>
+      </genClasses>
+      <genClasses ecoreClass="base.ecore#//attributes/HostEscalationOptions">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/HostEscalationOptions/token"/>
+      </genClasses>
+      <nestedGenPackages prefix="Time" basePackage="org.emona.model.base.attributes"
+          disposableProviderFactory="true" ecorePackage="base.ecore#//attributes/time">
+        <genClasses ecoreClass="base.ecore#//attributes/time/TimeDefinition">
+          <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/time/TimeDefinition/token"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference base.ecore#//attributes/time/TimeDefinition/days"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/time/TimeDefinition/ranges"/>
+        </genClasses>
+        <genClasses ecoreClass="base.ecore#//attributes/time/DayRange">
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/time/DayRange/start"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/time/DayRange/end"/>
+        </genClasses>
+        <genClasses ecoreClass="base.ecore#//attributes/time/DateSpec">
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/time/DateSpec/divisor"/>
+        </genClasses>
+        <genClasses ecoreClass="base.ecore#//attributes/time/MonthSpec">
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/time/MonthSpec/month"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/time/MonthSpec/day"/>
+        </genClasses>
+        <genClasses ecoreClass="base.ecore#//attributes/time/MonthRange">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference base.ecore#//attributes/time/MonthRange/start"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference base.ecore#//attributes/time/MonthRange/end"/>
+        </genClasses>
+        <genClasses ecoreClass="base.ecore#//attributes/time/WeekdaySpec">
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/time/WeekdaySpec/day"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/time/WeekdaySpec/selector"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/time/WeekdaySpec/month"/>
+        </genClasses>
+        <genClasses ecoreClass="base.ecore#//attributes/time/WeekdayRange">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference base.ecore#//attributes/time/WeekdayRange/start"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference base.ecore#//attributes/time/WeekdayRange/end"/>
+        </genClasses>
+        <genClasses ecoreClass="base.ecore#//attributes/time/NumericDateRange">
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/time/NumericDateRange/start"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//attributes/time/NumericDateRange/end"/>
+        </genClasses>
+      </nestedGenPackages>
     </nestedGenPackages>
   </genPackages>
 </genmodel:GenModel>
