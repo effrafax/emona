@@ -7,7 +7,6 @@
  */
 package org.emona.model.base.attributes.time;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Month Range</b></em>'.

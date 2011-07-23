@@ -468,8 +468,6 @@ public class AttributesSwitch<T> extends Switch<T> {
 			Email email = (Email) theEObject;
 			T result = caseEmail(email);
 			if (result == null)
-				result = caseValueAttribute(email);
-			if (result == null)
 				result = caseAttribute(email);
 			if (result == null)
 				result = defaultCase(theEObject);
@@ -478,8 +476,6 @@ public class AttributesSwitch<T> extends Switch<T> {
 		case AttributesPackage.PAGER: {
 			Pager pager = (Pager) theEObject;
 			T result = casePager(pager);
-			if (result == null)
-				result = caseValueAttribute(pager);
 			if (result == null)
 				result = caseAttribute(pager);
 			if (result == null)

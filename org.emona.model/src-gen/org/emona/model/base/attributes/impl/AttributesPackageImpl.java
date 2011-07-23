@@ -1731,6 +1731,15 @@ public class AttributesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getEmail_Value() {
+		return (EAttribute) emailEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPager() {
 		return pagerEClass;
 	}
@@ -1742,6 +1751,15 @@ public class AttributesPackageImpl extends EPackageImpl implements
 	 */
 	public EAttribute getPager_Token() {
 		return (EAttribute) pagerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPager_Value() {
+		return (EAttribute) pagerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3253,9 +3271,11 @@ public class AttributesPackageImpl extends EPackageImpl implements
 
 		emailEClass = createEClass(EMAIL);
 		createEAttribute(emailEClass, EMAIL__TOKEN);
+		createEAttribute(emailEClass, EMAIL__VALUE);
 
 		pagerEClass = createEClass(PAGER);
 		createEAttribute(pagerEClass, PAGER__TOKEN);
+		createEAttribute(pagerEClass, PAGER__VALUE);
 
 		contactMembersEClass = createEClass(CONTACT_MEMBERS);
 		createEReference(contactMembersEClass, CONTACT_MEMBERS__REFERENCE);
@@ -3594,8 +3614,8 @@ public class AttributesPackageImpl extends EPackageImpl implements
 				theBasePackage.getReferenceAttribute());
 		contactAddressEClass.getESuperTypes().add(
 				theBasePackage.getValueAttribute());
-		emailEClass.getESuperTypes().add(theBasePackage.getValueAttribute());
-		pagerEClass.getESuperTypes().add(theBasePackage.getValueAttribute());
+		emailEClass.getESuperTypes().add(theBasePackage.getAttribute());
+		pagerEClass.getESuperTypes().add(theBasePackage.getAttribute());
 		contactMembersEClass.getESuperTypes().add(
 				theBasePackage.getReferenceAttribute());
 		contactGroupNameEClass.getESuperTypes().add(
@@ -4118,11 +4138,19 @@ public class AttributesPackageImpl extends EPackageImpl implements
 				"email", 0, 1, Email.class, !IS_TRANSIENT, !IS_VOLATILE,
 				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEAttribute(getEmail_Value(), theBasePackage.getMailAddress(),
+				"value", null, 0, 1, Email.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(pagerEClass, Pager.class, "Pager", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPager_Token(), ecorePackage.getEString(), "token",
 				"pager", 0, 1, Pager.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPager_Value(), theBasePackage.getMailAddress(),
+				"value", null, 0, 1, Pager.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 

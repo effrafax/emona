@@ -1780,16 +1780,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EMAIL__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EMAIL__VALUE = BasePackage.VALUE_ATTRIBUTE__VALUE;
+	int EMAIL__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -1798,7 +1789,16 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EMAIL__TOKEN = BasePackage.VALUE_ATTRIBUTE_FEATURE_COUNT + 0;
+	int EMAIL__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL__VALUE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Email</em>' class.
@@ -1807,7 +1807,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EMAIL_FEATURE_COUNT = BasePackage.VALUE_ATTRIBUTE_FEATURE_COUNT + 1;
+	int EMAIL_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.PagerImpl <em>Pager</em>}' class.
@@ -1826,16 +1826,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGER__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAGER__VALUE = BasePackage.VALUE_ATTRIBUTE__VALUE;
+	int PAGER__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -1844,7 +1835,16 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGER__TOKEN = BasePackage.VALUE_ATTRIBUTE_FEATURE_COUNT + 0;
+	int PAGER__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGER__VALUE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Pager</em>' class.
@@ -1853,7 +1853,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGER_FEATURE_COUNT = BasePackage.VALUE_ATTRIBUTE_FEATURE_COUNT + 1;
+	int PAGER_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.ContactMembersImpl <em>Contact Members</em>}' class.
@@ -5869,6 +5869,17 @@ public interface AttributesPackage extends EPackage {
 	EAttribute getEmail_Token();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.emona.model.base.attributes.Email#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.emona.model.base.attributes.Email#getValue()
+	 * @see #getEmail()
+	 * @generated
+	 */
+	EAttribute getEmail_Value();
+
+	/**
 	 * Returns the meta object for class '{@link org.emona.model.base.attributes.Pager <em>Pager</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5888,6 +5899,17 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPager_Token();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.emona.model.base.attributes.Pager#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.emona.model.base.attributes.Pager#getValue()
+	 * @see #getPager()
+	 * @generated
+	 */
+	EAttribute getPager_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.emona.model.base.attributes.ContactMembers <em>Contact Members</em>}'.
@@ -8251,6 +8273,14 @@ public interface AttributesPackage extends EPackage {
 		EAttribute EMAIL__TOKEN = eINSTANCE.getEmail_Token();
 
 		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EMAIL__VALUE = eINSTANCE.getEmail_Value();
+
+		/**
 		 * The meta object literal for the '{@link org.emona.model.base.attributes.impl.PagerImpl <em>Pager</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -8267,6 +8297,14 @@ public interface AttributesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PAGER__TOKEN = eINSTANCE.getPager_Token();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAGER__VALUE = eINSTANCE.getPager_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.emona.model.base.attributes.impl.ContactMembersImpl <em>Contact Members</em>}' class.
