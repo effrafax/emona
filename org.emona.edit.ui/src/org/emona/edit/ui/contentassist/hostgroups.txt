@@ -1,7 +1,0 @@
-#DESC#
-Apply to hostgroups
-#DESC#
-#TEMPLATE#
-hostgroups ${group:CrossReference('HostGroups.reference')} 		;${comment}
-
-#TEMPLATE#

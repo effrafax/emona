@@ -1,7 +1,0 @@
-#DESC#
-Parents of this object
-#DESC#
-#TEMPLATE#
-parents ${parents:CrossReference('Parents.reference')} 		;${comment}
-
-#TEMPLATE#

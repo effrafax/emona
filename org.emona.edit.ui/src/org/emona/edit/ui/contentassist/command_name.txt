@@ -1,7 +1,0 @@
-#DESC#
-The name of the command
-#DESC#
-#TEMPLATE#
-command_name ${name} 		;${comment}
-
-#TEMPLATE#

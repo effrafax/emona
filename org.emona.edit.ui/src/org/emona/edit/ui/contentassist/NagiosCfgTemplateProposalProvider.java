@@ -13,9 +13,6 @@
 
 package org.emona.edit.ui.contentassist;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.eclipse.jface.text.templates.ContextTypeRegistry;
 import org.eclipse.jface.text.templates.Template;
 import org.eclipse.jface.text.templates.TemplateContext;
@@ -23,7 +20,7 @@ import org.eclipse.jface.text.templates.persistence.TemplateStore;
 import org.eclipse.xtext.ui.editor.templates.ContextTypeIdHelper;
 import org.eclipse.xtext.ui.editor.templates.DefaultTemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContext;
-import org.emona.edit.nagiosCfg.ConfigObject;
+import org.emona.model.base.ConfigObject;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -36,10 +33,9 @@ import com.google.inject.Singleton;
 public class NagiosCfgTemplateProposalProvider extends
 		DefaultTemplateProposalProvider {
 	
-	private static Set<String> singleInstanceAttributes = new HashSet<String>();
-	{
-		singleInstanceAttributes.add("org.emona.edit.NagiosCfg.kw_host_name");
-	}
+	private static final String KEYWORD_PREFIX = "org.emona.edit.NagiosCfg.kw_";
+	private static final int KEYWORD_PREFIX_SIZE = KEYWORD_PREFIX.length();
+	
 
 	/**
 	 * @param templateStore
@@ -52,18 +48,23 @@ public class NagiosCfgTemplateProposalProvider extends
 		super(templateStore, registry, helper);
 	}
 	
-	/* (non-Javadoc)
+	/**
+	 * 
+	 * If the current context is a ConfigObject and the attribute is already set,
+	 * the template is ignored.
+	 * 
 	 * @see org.eclipse.xtext.ui.editor.templates.AbstractTemplateProposalProvider#validate(org.eclipse.jface.text.templates.Template, org.eclipse.jface.text.templates.TemplateContext)
 	 */
 	@Override
 	protected boolean validate(Template template, TemplateContext context) {
-		// TODO Auto-generated method stub
 		boolean result = super.validate(template, context);
-		if (singleInstanceAttributes.contains(template.getContextTypeId())) {
+		if (template.getContextTypeId().startsWith(KEYWORD_PREFIX)) {
 			if (context instanceof XtextTemplateContext) {
 				XtextTemplateContext xctx = (XtextTemplateContext)context;
 				if (xctx.getContentAssistContext().getCurrentModel() instanceof ConfigObject) {
-					// TODO ConfigObject mit intelligener hasAttribute-Funktion ausstatten!
+					ConfigObject cfgObj = (ConfigObject) xctx.getContentAssistContext().getCurrentModel();
+					String keyword = template.getContextTypeId().substring(KEYWORD_PREFIX_SIZE);
+					return !cfgObj.hasAttribute(keyword);
 				}
 			}
 		}

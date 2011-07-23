@@ -36,7 +36,6 @@ public class DateConverter implements IValueConverter<Date> {
 	@Override
 	public Date toValue(String string, INode node)
 			throws ValueConverterException {
-		System.out.println("Date conv: "+string);
 		try {
 			return format.parse(string);
 		} catch (ParseException e) {
@@ -46,7 +45,6 @@ public class DateConverter implements IValueConverter<Date> {
 
 	@Override
 	public String toString(Date value) throws ValueConverterException {
-		System.out.println("Date toString: "+value);
 		return format.format(value);
 	}
 

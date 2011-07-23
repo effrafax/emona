@@ -1,7 +1,0 @@
-#DESC#
-The external command to execute
-#DESC#
-#TEMPLATE#
-command_line ${execute} 		;${comment}
-
-#TEMPLATE#

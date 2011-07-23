@@ -25,7 +25,6 @@ public class TimeRangeConverter implements IValueConverter<TimeRange> {
 
 	public TimeRange toValue(String string, INode node)
 			throws ValueConverterException {
-		System.out.println("New TimeRange "+string);
 		if (string == null) {
 			throw new ValueConverterException("Bad time value", node, null);
 		}
@@ -33,7 +32,6 @@ public class TimeRangeConverter implements IValueConverter<TimeRange> {
 	}
 
 	public String toString(TimeRange value) throws ValueConverterException {
-		System.out.println("TimeRange toString "+value);
 		return value.getString(Calendar.MINUTE);
 	}
 

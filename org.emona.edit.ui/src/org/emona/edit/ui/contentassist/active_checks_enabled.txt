@@ -1,7 +1,0 @@
-#DESC#
-Are active checks enabled? (0=false,1=true)
-#DESC#
-#TEMPLATE#
-active_checks_enabled ${1} 		;${comment}
-
-#TEMPLATE#

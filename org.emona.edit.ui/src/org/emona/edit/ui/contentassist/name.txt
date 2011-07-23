@@ -1,7 +1,0 @@
-#DESC#
-Template Name
-#DESC#
-#TEMPLATE#
-name ${NAME} 		;${comment}
-
-#TEMPLATE#

@@ -15,61 +15,19 @@
  */
 package org.emona.edit.ui.contentassist;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collection;
+import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.ExtendedMetaData;
-import org.eclipse.jface.text.BadLocationException;
-import org.eclipse.jface.text.IRegion;
-import org.eclipse.jface.text.Position;
-import org.eclipse.jface.text.contentassist.ICompletionProposal;
-import org.eclipse.jface.text.templates.Template;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.Keyword;
-import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.ui.IImageHelper;
-import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
-import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext.Builder;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.eclipse.xtext.ui.editor.model.IXtextDocument;
-import org.eclipse.xtext.ui.editor.templates.XtextTemplateContext;
-import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType;
-import org.eclipse.xtext.ui.editor.templates.XtextTemplateProposal;
-import org.emona.edit.nagiosCfg.ConfigObject;
-import org.emona.edit.nagiosCfg.TimeDefinition;
-import org.emona.edit.utils.IOUtil;
-import org.emona.model.base.attributes.ActiveChecksEnabled;
-import org.emona.model.base.attributes.Address;
-import org.emona.model.base.attributes.Alias;
-import org.emona.model.base.attributes.AttributesPackage;
-import org.emona.model.base.attributes.CheckCommand;
-import org.emona.model.base.attributes.CheckInterval;
-import org.emona.model.base.attributes.CheckPeriod;
-import org.emona.model.base.attributes.CommandLine;
-import org.emona.model.base.attributes.CommandName;
-import org.emona.model.base.attributes.DisplayName;
-import org.emona.model.base.attributes.HostInitialState;
-import org.emona.model.base.attributes.HostName;
-import org.emona.model.base.attributes.HostgroupName;
-import org.emona.model.base.attributes.Hostgroups;
-import org.emona.model.base.attributes.MaxCheckAttempts;
-import org.emona.model.base.attributes.Parents;
-import org.emona.model.base.attributes.Register;
-import org.emona.model.base.attributes.TemplateName;
-import org.emona.model.base.attributes.Use;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import com.google.inject.Inject;
+import org.emona.model.base.ConfigObject;
 
 /**
  * see
@@ -81,254 +39,45 @@ public class NagiosCfgProposalProvider extends
 
 	private final static Logger log = Logger
 			.getLogger(NagiosCfgProposalProvider.class);
-	
-	private static Set<String> ignoredKeywords = new HashSet<String>(); 
+
+	private static Set<String> ignoredKeywords = new HashSet<String>();
 	static {
-		ignoredKeywords.add("host_name");
-	}
-	
-
-	@Inject
-	private IImageHelper imageHelper;
-
-	@Inject
-	private XtextTemplateContextType templateContextType;
-
-	private static class KeywordProposal {
-		String keyword;
-		String description;
-		Image image;
-		String pattern;
-		Class<?> clazz;
-		private int priority;
-
-		@Override
-		public String toString() {
-			return keyword + "::" + description + "::" + pattern;
-		}
-
-	}
-	
-	public static String getToken(String name) {
-		ExtendedMetaData modelMetaData = ExtendedMetaData.INSTANCE;
-		EClass clazz = (EClass) modelMetaData.getType(AttributesPackage.eINSTANCE, name);
-		if (clazz == null) {
-			System.err.println("Class for "+name+" not found!");
-			return null;
-		}
-		EList<EObject> cont = clazz.eContents();
-		for (EObject eObject : cont) {
-			if (eObject  instanceof EAttribute) {
-				EAttribute att = (EAttribute)eObject;
-				if ("token".equals(att.getName())) {
-					return att.getDefaultValueLiteral();
-				}
+		InputStream keywordInput = Thread.currentThread()
+				.getContextClassLoader()
+				.getResourceAsStream("org/emona/edit/attribute_keywords.txt");
+		BufferedReader reader = new BufferedReader(new InputStreamReader(
+				keywordInput));
+		String line;
+		try {
+			while ((line = reader.readLine()) != null) {
+				int tt = line.indexOf('=');
+				String keyword = line.trim().substring(0, tt);
+				log.debug("Add keyword: "+keyword);
+				ignoredKeywords.add(keyword);
 			}
+		} catch (IOException e) {
+			log.error("Could not load keyword resource file!");
 		}
-		return null;
 	}
 
-
-	private Multimap<String, KeywordProposal> keywordSnippets;
-	private Multimap<String, KeywordProposal> multiKeywordSnippets;
 
 	public NagiosCfgProposalProvider() {
 		super();
 	}
 
-	@SuppressWarnings("unused")
-	private boolean isEmptyLine(ContentAssistContext context) {
-		try {
-			IXtextDocument doc = context.getDocument();
-			IRegion lInfo = doc.getLineInformationOfOffset(context.getOffset());
-			for (int offset = lInfo.getOffset() + lInfo.getLength() - 1; offset >= lInfo
-					.getOffset(); offset--) {
-				char mych = doc.getChar(offset);
-				switch (mych) {
-				case ' ':
-					break;
-				case '\t':
-					break;
-				default:
-					return false;
-				}
-			}
-		} catch (BadLocationException e) {
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * Creates a proposal with a given text.
-	 * 
-	 * @param proposal
-	 * @param context
-	 * @param acceptor
-	 */
-	protected void createStandardProposal(String proposal,
-			ContentAssistContext context, ICompletionProposalAcceptor acceptor,
-			int indent) {
-		ICompletionProposal completionProposal = createCompletionProposal(
-				proposal + "\n" + indent, context);
-		acceptor.accept(completionProposal);
-	}
-
-	/**
-	 * Creates a selected proposal.
-	 * 
-	 * @param proposalText
-	 *            The proposal text.
-	 * @param start
-	 *            The offset inside the proposal text where the selection starts
-	 * @param length
-	 *            The length of the selection
-	 * @param context
-	 * @param acceptor
-	 */
-	protected void createSelectedProposal(ProposalInfo info,
-			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		// Deactivating prefix matching, because whitespace prefix prevents the
-		// proposal creation
-		Builder newCtxBuilder = context.copy();
-		newCtxBuilder.setPrefix("");
-		ContentAssistContext newCtx = newCtxBuilder.toContext();
-		ICompletionProposal completionProposal = createCompletionProposal(
-				info.text, info.displayName, null, newCtx);
-		if (completionProposal instanceof ConfigurableCompletionProposal) {
-			ConfigurableCompletionProposal proposal = (ConfigurableCompletionProposal) completionProposal;
-			proposal.setSelectionStart(proposal.getReplacementOffset()
-					+ info.start);
-			proposal.setSelectionLength(info.length);
-			proposal.setAutoInsertable(false);
-			proposal.setSimpleLinkedMode(newCtx.getViewer(), ' ', '\t');
-			if (info.prioOffset > 0) {
-				proposal.setPriority(proposal.getPriority() + info.prioOffset);
-			}
-
-		}
-		acceptor.accept(completionProposal);
-	}
-
-	private void processAttributeProposal(EObject model, String keyword,
-			Class<?> clazz, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor, boolean checkMulti) {
-		if (model instanceof ConfigObject) {
-			System.out.println("Checking " + model + " / " + clazz + " / "
-					+ keyword);
-			if (checkMulti) {
-				EList<EObject> atts = model.eContents();
-				for (EObject att : atts) {
-					if (clazz.isInstance(att)) {
-						System.out.println(clazz + " found already");
-						return;
-					}
-				}
-			}
-			Collection<KeywordProposal> proposals = getSingleKeywordSnippets()
-					.get(keyword);
-			if (!proposals.isEmpty()) {
-				for (KeywordProposal proposal : proposals) {
-					completeSnippet(proposal, context, acceptor);
-				}
-			}
-		}
-
-	}
-
-	/*
-	 * Returns the proposals for keywords that are only allowed once inside a
-	 * config object.
-	 */
-	private Multimap<String, KeywordProposal> getSingleKeywordSnippets() {
-		if (keywordSnippets == null) {
-			keywordSnippets = HashMultimap.create();
-
-		}
-		return keywordSnippets;
-	}
-
-	private Multimap<String, KeywordProposal> getMultilineKeywordSnippets() {
-		if (multiKeywordSnippets == null) {
-			multiKeywordSnippets = HashMultimap.create();
-			registerKeywordSnippet("timedefinition", TimeDefinition.class,
-					multiKeywordSnippets);
-		}
-		return multiKeywordSnippets;
-	}
-
-	private void registerKeywordSnippet(String keyword, Class<?> clazz,
-			Multimap<String, KeywordProposal> list) {
-
-		InputStream templateStream = null;
-		try {
-			templateStream = this.getClass().getResourceAsStream(
-					keyword + ".txt");
-
-			if (templateStream != null) {
-				System.out.println("Registering " + keyword);
-				Collection<TemplateInfo> info = TemplateInfo
-						.parse(templateStream);
-				for (TemplateInfo templateInfo : info) {
-					KeywordProposal proposal = new KeywordProposal();
-					proposal.keyword = keyword;
-					proposal.clazz = clazz;
-					if (templateInfo.getImageFile() != null) {
-						proposal.image = imageHelper.getImage(templateInfo
-								.getImageFile());
-					}
-					proposal.description = templateInfo.getDescription();
-					proposal.pattern = templateInfo.getPattern();
-					proposal.priority = templateInfo.getPriority();
-					list.put(keyword, proposal);
-				}
-			}
-		} catch (IOException e) {
-			log.error(e);
-		} finally {
-			IOUtil.closeQuietly(templateStream);
-		}
-
-	}
 
 	@Override
 	public void completeKeyword(Keyword keyword, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		// proposals for registered tokens are provided by the model method
-		if (ignoredKeywords.contains(keyword.getValue())) {
-			EObject model = context.getCurrentModel();
-			String keywordName = keyword.getValue();
-			if (model instanceof ConfigObject) {
+		EObject model = context.getCurrentModel();
+		if (model instanceof ConfigObject) {
+			if (ignoredKeywords.contains(keyword.getValue())) {
 				return;
+			} else {
+				super.completeKeyword(keyword, context, acceptor);
 			}
-			return;
-		} else {
-			super.completeKeyword(keyword, context, acceptor);
+
 		}
 	}
 
-	private void completeSnippet(KeywordProposal proposal,
-			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		XtextTemplateContext templateContext = new XtextTemplateContext(
-				templateContextType, context.getDocument(), new Position(
-						context.getReplaceRegion().getOffset(), context
-								.getReplaceRegion().getLength()), context,
-				getScopeProvider());
-
-		Template template = new Template(proposal.keyword,
-				proposal.description, "", proposal.pattern, true);
-		acceptor.accept(new XtextTemplateProposal(template, templateContext,
-				context.getReplaceRegion(), proposal.image, proposal.priority));
-	}
-
-	@Override
-	public void complete_TimeDefinition(EObject model, RuleCall ruleCall,
-			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		Collection<KeywordProposal> prop = getMultilineKeywordSnippets().get(
-				"timedefinition");
-		for (KeywordProposal keywordProposal : prop) {
-			completeSnippet(keywordProposal, context, acceptor);
-		}
-		super.complete_TimeDefinition(model, ruleCall, context, acceptor);
-	}
 }

@@ -1,7 +1,0 @@
-#DESC#
-Name of the host group
-#DESC#
-#TEMPLATE#
-host_group_name ${name} 		;${comment}
-
-#TEMPLATE#

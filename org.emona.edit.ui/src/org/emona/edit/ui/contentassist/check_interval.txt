@@ -1,7 +1,0 @@
-#DESC#
-Interval in time units
-#DESC#
-#TEMPLATE#
-check_interval ${0} 		;${comment}
-
-#TEMPLATE#

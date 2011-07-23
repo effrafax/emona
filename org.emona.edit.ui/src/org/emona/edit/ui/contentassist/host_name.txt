@@ -1,6 +1,0 @@
-#DESC#
-The host name
-#DESC#
-#TEMPLATE#
-host_name ${name} 		;${comment}
-#TEMPLATE#

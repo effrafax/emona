@@ -1,7 +1,0 @@
-#DESC#
-Alias Name
-#DESC#
-#TEMPLATE#
-alias ${ALIASNAME} 		;${comment}
-
-#TEMPLATE#

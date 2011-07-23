@@ -1,7 +1,0 @@
-#DESC#
-Check Command 
-#DESC#
-#TEMPLATE#
-check_command ${command:CrossReference('CheckCommand.reference')} 		;${comment}
-
-#TEMPLATE#
