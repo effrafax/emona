@@ -578,6 +578,11 @@ public class AttributesAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseCanSubmitCommands(CanSubmitCommands object) {
+			return createCanSubmitCommandsAdapter();
+		}
+
+		@Override
 		public Adapter caseAttribute(Attribute object) {
 			return createAttributeAdapter();
 		}
@@ -1979,6 +1984,20 @@ public class AttributesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createHostEscalationOptionsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.emona.model.base.attributes.CanSubmitCommands <em>Can Submit Commands</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.emona.model.base.attributes.CanSubmitCommands
+	 * @generated
+	 */
+	public Adapter createCanSubmitCommandsAdapter() {
 		return null;
 	}
 

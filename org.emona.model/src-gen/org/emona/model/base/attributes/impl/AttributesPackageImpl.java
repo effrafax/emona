@@ -22,6 +22,7 @@ import org.emona.model.base.attributes.Address;
 import org.emona.model.base.attributes.Alias;
 import org.emona.model.base.attributes.AttributesFactory;
 import org.emona.model.base.attributes.AttributesPackage;
+import org.emona.model.base.attributes.CanSubmitCommands;
 import org.emona.model.base.attributes.CheckCommand;
 import org.emona.model.base.attributes.CheckFreshness;
 import org.emona.model.base.attributes.CheckInterval;
@@ -790,6 +791,13 @@ public class AttributesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass hostEscalationOptionsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass canSubmitCommandsEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -3096,6 +3104,25 @@ public class AttributesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCanSubmitCommands() {
+		return canSubmitCommandsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCanSubmitCommands_Token() {
+		return (EAttribute) canSubmitCommandsEClass.getEStructuralFeatures()
+				.get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AttributesFactory getAttributesFactory() {
 		return (AttributesFactory) getEFactoryInstance();
 	}
@@ -3506,6 +3533,9 @@ public class AttributesPackageImpl extends EPackageImpl implements
 		hostEscalationOptionsEClass = createEClass(HOST_ESCALATION_OPTIONS);
 		createEAttribute(hostEscalationOptionsEClass,
 				HOST_ESCALATION_OPTIONS__TOKEN);
+
+		canSubmitCommandsEClass = createEClass(CAN_SUBMIT_COMMANDS);
+		createEAttribute(canSubmitCommandsEClass, CAN_SUBMIT_COMMANDS__TOKEN);
 	}
 
 	/**
@@ -3749,6 +3779,8 @@ public class AttributesPackageImpl extends EPackageImpl implements
 				theBasePackage.getAttribute());
 		hostEscalationOptionsEClass.getESuperTypes().add(
 				theBasePackage.getHostState());
+		canSubmitCommandsEClass.getESuperTypes().add(
+				theBasePackage.getBooleanAttribute());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(aliasEClass, Alias.class, "Alias", !IS_ABSTRACT,
@@ -4097,7 +4129,7 @@ public class AttributesPackageImpl extends EPackageImpl implements
 				HostNotificationCommands.class, "HostNotificationCommands",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHostNotificationCommands_Reference(),
-				this.getCommandName(), null, "reference", null, 0, 1,
+				this.getCommandName(), null, "reference", null, 0, -1,
 				HostNotificationCommands.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4113,7 +4145,7 @@ public class AttributesPackageImpl extends EPackageImpl implements
 				"ServiceNotificationCommands", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getServiceNotificationCommands_Reference(),
-				this.getCommandName(), null, "reference", null, 0, 1,
+				this.getCommandName(), null, "reference", null, 0, -1,
 				ServiceNotificationCommands.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4762,6 +4794,14 @@ public class AttributesPackageImpl extends EPackageImpl implements
 				HostEscalationOptions.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+
+		initEClass(canSubmitCommandsEClass, CanSubmitCommands.class,
+				"CanSubmitCommands", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCanSubmitCommands_Token(), ecorePackage.getEString(),
+				"token", "can_submit_commands", 0, 1, CanSubmitCommands.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 
 } //AttributesPackageImpl

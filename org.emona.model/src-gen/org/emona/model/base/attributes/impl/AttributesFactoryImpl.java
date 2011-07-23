@@ -252,6 +252,8 @@ public class AttributesFactoryImpl extends EFactoryImpl implements
 			return createHostNotificationFailureCriteria();
 		case AttributesPackage.HOST_ESCALATION_OPTIONS:
 			return createHostEscalationOptions();
+		case AttributesPackage.CAN_SUBMIT_COMMANDS:
+			return createCanSubmitCommands();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName()
 					+ "' is not a valid classifier");
@@ -1206,6 +1208,16 @@ public class AttributesFactoryImpl extends EFactoryImpl implements
 	public HostEscalationOptions createHostEscalationOptions() {
 		HostEscalationOptionsImpl hostEscalationOptions = new HostEscalationOptionsImpl();
 		return hostEscalationOptions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CanSubmitCommands createCanSubmitCommands() {
+		CanSubmitCommandsImpl canSubmitCommands = new CanSubmitCommandsImpl();
+		return canSubmitCommands;
 	}
 
 	/**

@@ -596,14 +596,14 @@ ProcessPerfData returns baseAttributes::ProcessPerfData:
 /*
  * Host/Service Attribute 'retain_status_information': Boolean
  */
-RetainStatusInformation returns RetainNonStatusInformation:
+RetainStatusInformation returns baseAttributes::RetainStatusInformation:
     'retain_status_information' enabled=TrueFalse;
 
 /* */
 /*
  * Host/Service Attribute 'retain_nonstatus_information': Boolean
  */
-RetainNonStatusInformation returns RetainNonStatusInformation:
+RetainNonStatusInformation returns baseAttributes::RetainNonstatusInformation:
     'retain_nonstatus_information' enabled=TrueFalse;
 
 /* */
@@ -976,7 +976,7 @@ TimeperiodName returns baseAttributes::TimeperiodName:
     'timeperiod_name' name=TimeperiodNameEntry;
 
 TimeDefinition returns eatime::TimeDefinition:
-    {TimeDefinition} days=DateSpec ranges+=TimeRange (COMMA ranges+=TimeRange)*;
+    {eatime::TimeDefinition} days=DateSpec ranges+=TimeRange (COMMA ranges+=TimeRange)*;
 
 TimeExclude returns baseAttributes::TimeExclude:
     'exclude' reference+=[baseAttributes::TimeperiodName|TimeperiodNameEntry] (COMMA
@@ -1046,11 +1046,11 @@ ServiceNotificationOptions returns baseAttributes::ServiceNotificationOptions:
     {baseAttributes::ServiceNotificationOptions}
     'service_notification_options' (warning?='w'? & unknown?='u'? & critical?='c'? & flapping?='f'? & none?='n'?);
 
-HostNotificationCommands:
+HostNotificationCommands returns baseAttributes::HostNotificationCommands:
     'host_notification_commands' reference+=[baseAttributes::CommandName|CommandNameEntry] (COMMA
     reference+=[baseAttributes::CommandName|CommandNameEntry])*;
 
-ServiceNotificationCommands:
+ServiceNotificationCommands returns baseAttributes::ServiceNotificationCommands:
     'service_notification_commands' reference+=[baseAttributes::CommandName|CommandNameEntry] (COMMA
     reference+=[baseAttributes::CommandName|CommandNameEntry])*;
 
@@ -1081,7 +1081,7 @@ ContactAddress5 returns baseAttributes::ContactAddress:
 ContactAddress6 returns baseAttributes::ContactAddress:
     token='address6' value=Entry;
 
-CanSubmitCommands:
+CanSubmitCommands returns baseAttributes::CanSubmitCommands:
     'can_submit_commands' enabled=TrueFalse;
 
     /*
@@ -1153,7 +1153,7 @@ EmailAddress returns baseModel::MailAddress:
     Entry;
 
 CommentLine returns baseModel::CommentLine hidden():
-    {CommentLine} value=HASH_COMMENT;
+    {baseModel::CommentLine} value=HASH_COMMENT;
 
     /**
  * Here are the time / date specific rules. 

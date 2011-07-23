@@ -7,44 +7,32 @@
  */
 package org.emona.model.base.attributes.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
 import org.emona.model.base.attributes.AttributesPackage;
-import org.emona.model.base.attributes.CommandName;
-import org.emona.model.base.attributes.ServiceNotificationCommands;
-import org.emona.model.base.impl.ReferenceAttributeImpl;
+import org.emona.model.base.attributes.CanSubmitCommands;
+
+import org.emona.model.base.impl.BooleanAttributeImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Service Notification Commands</b></em>'.
+ * An implementation of the model object '<em><b>Can Submit Commands</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.emona.model.base.attributes.impl.ServiceNotificationCommandsImpl#getReference <em>Reference</em>}</li>
- *   <li>{@link org.emona.model.base.attributes.impl.ServiceNotificationCommandsImpl#getToken <em>Token</em>}</li>
+ *   <li>{@link org.emona.model.base.attributes.impl.CanSubmitCommandsImpl#getToken <em>Token</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ServiceNotificationCommandsImpl extends ReferenceAttributeImpl
-		implements ServiceNotificationCommands {
-	/**
-	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReference()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<CommandName> reference;
-
+public class CanSubmitCommandsImpl extends BooleanAttributeImpl implements
+		CanSubmitCommands {
 	/**
 	 * The default value of the '{@link #getToken() <em>Token</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -53,7 +41,7 @@ public class ServiceNotificationCommandsImpl extends ReferenceAttributeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TOKEN_EDEFAULT = "service_notification_commands";
+	protected static final String TOKEN_EDEFAULT = "can_submit_commands";
 
 	/**
 	 * The cached value of the '{@link #getToken() <em>Token</em>}' attribute.
@@ -70,7 +58,7 @@ public class ServiceNotificationCommandsImpl extends ReferenceAttributeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ServiceNotificationCommandsImpl() {
+	protected CanSubmitCommandsImpl() {
 		super();
 	}
 
@@ -81,21 +69,7 @@ public class ServiceNotificationCommandsImpl extends ReferenceAttributeImpl
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AttributesPackage.Literals.SERVICE_NOTIFICATION_COMMANDS;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<CommandName> getReference() {
-		if (reference == null) {
-			reference = new EObjectResolvingEList<CommandName>(
-					CommandName.class, this,
-					AttributesPackage.SERVICE_NOTIFICATION_COMMANDS__REFERENCE);
-		}
-		return reference;
+		return AttributesPackage.Literals.CAN_SUBMIT_COMMANDS;
 	}
 
 	/**
@@ -117,8 +91,8 @@ public class ServiceNotificationCommandsImpl extends ReferenceAttributeImpl
 		token = newToken;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					AttributesPackage.SERVICE_NOTIFICATION_COMMANDS__TOKEN,
-					oldToken, token));
+					AttributesPackage.CAN_SUBMIT_COMMANDS__TOKEN, oldToken,
+					token));
 	}
 
 	/**
@@ -129,9 +103,7 @@ public class ServiceNotificationCommandsImpl extends ReferenceAttributeImpl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case AttributesPackage.SERVICE_NOTIFICATION_COMMANDS__REFERENCE:
-			return getReference();
-		case AttributesPackage.SERVICE_NOTIFICATION_COMMANDS__TOKEN:
+		case AttributesPackage.CAN_SUBMIT_COMMANDS__TOKEN:
 			return getToken();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -142,15 +114,10 @@ public class ServiceNotificationCommandsImpl extends ReferenceAttributeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case AttributesPackage.SERVICE_NOTIFICATION_COMMANDS__REFERENCE:
-			getReference().clear();
-			getReference().addAll((Collection<? extends CommandName>) newValue);
-			return;
-		case AttributesPackage.SERVICE_NOTIFICATION_COMMANDS__TOKEN:
+		case AttributesPackage.CAN_SUBMIT_COMMANDS__TOKEN:
 			setToken((String) newValue);
 			return;
 		}
@@ -165,10 +132,7 @@ public class ServiceNotificationCommandsImpl extends ReferenceAttributeImpl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case AttributesPackage.SERVICE_NOTIFICATION_COMMANDS__REFERENCE:
-			getReference().clear();
-			return;
-		case AttributesPackage.SERVICE_NOTIFICATION_COMMANDS__TOKEN:
+		case AttributesPackage.CAN_SUBMIT_COMMANDS__TOKEN:
 			setToken(TOKEN_EDEFAULT);
 			return;
 		}
@@ -183,9 +147,7 @@ public class ServiceNotificationCommandsImpl extends ReferenceAttributeImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case AttributesPackage.SERVICE_NOTIFICATION_COMMANDS__REFERENCE:
-			return reference != null && !reference.isEmpty();
-		case AttributesPackage.SERVICE_NOTIFICATION_COMMANDS__TOKEN:
+		case AttributesPackage.CAN_SUBMIT_COMMANDS__TOKEN:
 			return TOKEN_EDEFAULT == null ? token != null : !TOKEN_EDEFAULT
 					.equals(token);
 		}
@@ -209,4 +171,4 @@ public class ServiceNotificationCommandsImpl extends ReferenceAttributeImpl
 		return result.toString();
 	}
 
-} //ServiceNotificationCommandsImpl
+} //CanSubmitCommandsImpl

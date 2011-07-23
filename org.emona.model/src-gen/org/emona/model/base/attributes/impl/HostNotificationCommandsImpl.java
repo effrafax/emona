@@ -7,17 +7,16 @@
  */
 package org.emona.model.base.attributes.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.CommandName;
 import org.emona.model.base.attributes.HostNotificationCommands;
-
 import org.emona.model.base.impl.ReferenceAttributeImpl;
 
 /**
@@ -37,14 +36,14 @@ import org.emona.model.base.impl.ReferenceAttributeImpl;
 public class HostNotificationCommandsImpl extends ReferenceAttributeImpl
 		implements HostNotificationCommands {
 	/**
-	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
+	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getReference()
 	 * @generated
 	 * @ordered
 	 */
-	protected CommandName reference;
+	protected EList<CommandName> reference;
 
 	/**
 	 * The default value of the '{@link #getToken() <em>Token</em>}' attribute.
@@ -90,43 +89,13 @@ public class HostNotificationCommandsImpl extends ReferenceAttributeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CommandName getReference() {
-		if (reference != null && reference.eIsProxy()) {
-			InternalEObject oldReference = (InternalEObject) reference;
-			reference = (CommandName) eResolveProxy(oldReference);
-			if (reference != oldReference) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							AttributesPackage.HOST_NOTIFICATION_COMMANDS__REFERENCE,
-							oldReference, reference));
-			}
+	public EList<CommandName> getReference() {
+		if (reference == null) {
+			reference = new EObjectResolvingEList<CommandName>(
+					CommandName.class, this,
+					AttributesPackage.HOST_NOTIFICATION_COMMANDS__REFERENCE);
 		}
 		return reference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CommandName basicGetReference() {
-		return reference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setReference(CommandName newReference) {
-		CommandName oldReference = reference;
-		reference = newReference;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AttributesPackage.HOST_NOTIFICATION_COMMANDS__REFERENCE,
-					oldReference, reference));
 	}
 
 	/**
@@ -161,9 +130,7 @@ public class HostNotificationCommandsImpl extends ReferenceAttributeImpl
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case AttributesPackage.HOST_NOTIFICATION_COMMANDS__REFERENCE:
-			if (resolve)
-				return getReference();
-			return basicGetReference();
+			return getReference();
 		case AttributesPackage.HOST_NOTIFICATION_COMMANDS__TOKEN:
 			return getToken();
 		}
@@ -175,11 +142,13 @@ public class HostNotificationCommandsImpl extends ReferenceAttributeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case AttributesPackage.HOST_NOTIFICATION_COMMANDS__REFERENCE:
-			setReference((CommandName) newValue);
+			getReference().clear();
+			getReference().addAll((Collection<? extends CommandName>) newValue);
 			return;
 		case AttributesPackage.HOST_NOTIFICATION_COMMANDS__TOKEN:
 			setToken((String) newValue);
@@ -197,7 +166,7 @@ public class HostNotificationCommandsImpl extends ReferenceAttributeImpl
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case AttributesPackage.HOST_NOTIFICATION_COMMANDS__REFERENCE:
-			setReference((CommandName) null);
+			getReference().clear();
 			return;
 		case AttributesPackage.HOST_NOTIFICATION_COMMANDS__TOKEN:
 			setToken(TOKEN_EDEFAULT);
@@ -215,7 +184,7 @@ public class HostNotificationCommandsImpl extends ReferenceAttributeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case AttributesPackage.HOST_NOTIFICATION_COMMANDS__REFERENCE:
-			return reference != null;
+			return reference != null && !reference.isEmpty();
 		case AttributesPackage.HOST_NOTIFICATION_COMMANDS__TOKEN:
 			return TOKEN_EDEFAULT == null ? token != null : !TOKEN_EDEFAULT
 					.equals(token);

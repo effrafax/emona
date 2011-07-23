@@ -24,6 +24,7 @@ import org.emona.model.base.attributes.Pager;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.emona.model.base.attributes.impl.PagerImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.attributes.impl.PagerImpl#isMultiline <em>Multiline</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.PagerImpl#getToken <em>Token</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.PagerImpl#getValue <em>Value</em>}</li>
  * </ul>
@@ -51,6 +52,26 @@ public class PagerImpl extends EObjectImpl implements Pager {
 	 * @ordered
 	 */
 	protected String comment = COMMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTILINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getToken() <em>Token</em>}' attribute.
@@ -138,6 +159,28 @@ public class PagerImpl extends EObjectImpl implements Pager {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMultiline() {
+		return multiline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiline(boolean newMultiline) {
+		boolean oldMultiline = multiline;
+		multiline = newMultiline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					AttributesPackage.PAGER__MULTILINE, oldMultiline, multiline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getToken() {
 		return token;
 	}
@@ -187,6 +230,8 @@ public class PagerImpl extends EObjectImpl implements Pager {
 		switch (featureID) {
 		case AttributesPackage.PAGER__COMMENT:
 			return getComment();
+		case AttributesPackage.PAGER__MULTILINE:
+			return isMultiline();
 		case AttributesPackage.PAGER__TOKEN:
 			return getToken();
 		case AttributesPackage.PAGER__VALUE:
@@ -205,6 +250,9 @@ public class PagerImpl extends EObjectImpl implements Pager {
 		switch (featureID) {
 		case AttributesPackage.PAGER__COMMENT:
 			setComment((String) newValue);
+			return;
+		case AttributesPackage.PAGER__MULTILINE:
+			setMultiline((Boolean) newValue);
 			return;
 		case AttributesPackage.PAGER__TOKEN:
 			setToken((String) newValue);
@@ -227,6 +275,9 @@ public class PagerImpl extends EObjectImpl implements Pager {
 		case AttributesPackage.PAGER__COMMENT:
 			setComment(COMMENT_EDEFAULT);
 			return;
+		case AttributesPackage.PAGER__MULTILINE:
+			setMultiline(MULTILINE_EDEFAULT);
+			return;
 		case AttributesPackage.PAGER__TOKEN:
 			setToken(TOKEN_EDEFAULT);
 			return;
@@ -248,6 +299,8 @@ public class PagerImpl extends EObjectImpl implements Pager {
 		case AttributesPackage.PAGER__COMMENT:
 			return COMMENT_EDEFAULT == null ? comment != null
 					: !COMMENT_EDEFAULT.equals(comment);
+		case AttributesPackage.PAGER__MULTILINE:
+			return multiline != MULTILINE_EDEFAULT;
 		case AttributesPackage.PAGER__TOKEN:
 			return TOKEN_EDEFAULT == null ? token != null : !TOKEN_EDEFAULT
 					.equals(token);
@@ -271,6 +324,8 @@ public class PagerImpl extends EObjectImpl implements Pager {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (comment: ");
 		result.append(comment);
+		result.append(", multiline: ");
+		result.append(multiline);
 		result.append(", token: ");
 		result.append(token);
 		result.append(", value: ");

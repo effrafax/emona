@@ -24,6 +24,7 @@ import org.emona.model.base.attributes.Email;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.emona.model.base.attributes.impl.EmailImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.attributes.impl.EmailImpl#isMultiline <em>Multiline</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.EmailImpl#getToken <em>Token</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.EmailImpl#getValue <em>Value</em>}</li>
  * </ul>
@@ -51,6 +52,26 @@ public class EmailImpl extends EObjectImpl implements Email {
 	 * @ordered
 	 */
 	protected String comment = COMMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTILINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getToken() <em>Token</em>}' attribute.
@@ -138,6 +159,28 @@ public class EmailImpl extends EObjectImpl implements Email {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMultiline() {
+		return multiline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiline(boolean newMultiline) {
+		boolean oldMultiline = multiline;
+		multiline = newMultiline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					AttributesPackage.EMAIL__MULTILINE, oldMultiline, multiline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getToken() {
 		return token;
 	}
@@ -174,6 +217,8 @@ public class EmailImpl extends EObjectImpl implements Email {
 		switch (featureID) {
 		case AttributesPackage.EMAIL__COMMENT:
 			return getComment();
+		case AttributesPackage.EMAIL__MULTILINE:
+			return isMultiline();
 		case AttributesPackage.EMAIL__TOKEN:
 			return getToken();
 		case AttributesPackage.EMAIL__VALUE:
@@ -193,6 +238,9 @@ public class EmailImpl extends EObjectImpl implements Email {
 		case AttributesPackage.EMAIL__COMMENT:
 			setComment((String) newValue);
 			return;
+		case AttributesPackage.EMAIL__MULTILINE:
+			setMultiline((Boolean) newValue);
+			return;
 		case AttributesPackage.EMAIL__VALUE:
 			setValue((InternetAddress) newValue);
 			return;
@@ -210,6 +258,9 @@ public class EmailImpl extends EObjectImpl implements Email {
 		switch (featureID) {
 		case AttributesPackage.EMAIL__COMMENT:
 			setComment(COMMENT_EDEFAULT);
+			return;
+		case AttributesPackage.EMAIL__MULTILINE:
+			setMultiline(MULTILINE_EDEFAULT);
 			return;
 		case AttributesPackage.EMAIL__VALUE:
 			setValue(VALUE_EDEFAULT);
@@ -229,6 +280,8 @@ public class EmailImpl extends EObjectImpl implements Email {
 		case AttributesPackage.EMAIL__COMMENT:
 			return COMMENT_EDEFAULT == null ? comment != null
 					: !COMMENT_EDEFAULT.equals(comment);
+		case AttributesPackage.EMAIL__MULTILINE:
+			return multiline != MULTILINE_EDEFAULT;
 		case AttributesPackage.EMAIL__TOKEN:
 			return TOKEN_EDEFAULT == null ? token != null : !TOKEN_EDEFAULT
 					.equals(token);
@@ -252,6 +305,8 @@ public class EmailImpl extends EObjectImpl implements Email {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (comment: ");
 		result.append(comment);
+		result.append(", multiline: ");
+		result.append(multiline);
 		result.append(", token: ");
 		result.append(token);
 		result.append(", value: ");

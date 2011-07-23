@@ -25,6 +25,7 @@ import org.emona.model.base.NameAttribute;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.emona.model.base.impl.NameAttributeImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.impl.NameAttributeImpl#isMultiline <em>Multiline</em>}</li>
  *   <li>{@link org.emona.model.base.impl.NameAttributeImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -52,6 +53,26 @@ public abstract class NameAttributeImpl extends EObjectImpl implements
 	 * @ordered
 	 */
 	protected String comment = COMMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTILINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -119,6 +140,29 @@ public abstract class NameAttributeImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMultiline() {
+		return multiline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiline(boolean newMultiline) {
+		boolean oldMultiline = multiline;
+		multiline = newMultiline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					BasePackage.NAME_ATTRIBUTE__MULTILINE, oldMultiline,
+					multiline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getName() {
 		return name;
 	}
@@ -157,6 +201,8 @@ public abstract class NameAttributeImpl extends EObjectImpl implements
 		switch (featureID) {
 		case BasePackage.NAME_ATTRIBUTE__COMMENT:
 			return getComment();
+		case BasePackage.NAME_ATTRIBUTE__MULTILINE:
+			return isMultiline();
 		case BasePackage.NAME_ATTRIBUTE__NAME:
 			return getName();
 		}
@@ -173,6 +219,9 @@ public abstract class NameAttributeImpl extends EObjectImpl implements
 		switch (featureID) {
 		case BasePackage.NAME_ATTRIBUTE__COMMENT:
 			setComment((String) newValue);
+			return;
+		case BasePackage.NAME_ATTRIBUTE__MULTILINE:
+			setMultiline((Boolean) newValue);
 			return;
 		case BasePackage.NAME_ATTRIBUTE__NAME:
 			setName((String) newValue);
@@ -192,6 +241,9 @@ public abstract class NameAttributeImpl extends EObjectImpl implements
 		case BasePackage.NAME_ATTRIBUTE__COMMENT:
 			setComment(COMMENT_EDEFAULT);
 			return;
+		case BasePackage.NAME_ATTRIBUTE__MULTILINE:
+			setMultiline(MULTILINE_EDEFAULT);
+			return;
 		case BasePackage.NAME_ATTRIBUTE__NAME:
 			setName(NAME_EDEFAULT);
 			return;
@@ -210,6 +262,8 @@ public abstract class NameAttributeImpl extends EObjectImpl implements
 		case BasePackage.NAME_ATTRIBUTE__COMMENT:
 			return COMMENT_EDEFAULT == null ? comment != null
 					: !COMMENT_EDEFAULT.equals(comment);
+		case BasePackage.NAME_ATTRIBUTE__MULTILINE:
+			return multiline != MULTILINE_EDEFAULT;
 		case BasePackage.NAME_ATTRIBUTE__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
 					.equals(name);
@@ -230,6 +284,8 @@ public abstract class NameAttributeImpl extends EObjectImpl implements
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (comment: ");
 		result.append(comment);
+		result.append(", multiline: ");
+		result.append(multiline);
 		result.append(", name: ");
 		result.append(name);
 		result.append(')');

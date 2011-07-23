@@ -469,6 +469,15 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAttribute_Multiline() {
+		return (EAttribute) attributeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNameAttribute() {
 		return nameAttributeEClass;
 	}
@@ -995,6 +1004,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 
 		attributeEClass = createEClass(ATTRIBUTE);
 		createEAttribute(attributeEClass, ATTRIBUTE__COMMENT);
+		createEAttribute(attributeEClass, ATTRIBUTE__MULTILINE);
 
 		nameAttributeEClass = createEClass(NAME_ATTRIBUTE);
 		createEAttribute(nameAttributeEClass, NAME_ATTRIBUTE__NAME);
@@ -1171,6 +1181,10 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAttribute_Comment(), ecorePackage.getEString(),
 				"comment", null, 0, 1, Attribute.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttribute_Multiline(), ecorePackage.getEBoolean(),
+				"multiline", "false", 0, 1, Attribute.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 

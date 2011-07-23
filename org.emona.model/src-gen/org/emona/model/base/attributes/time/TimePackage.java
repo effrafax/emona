@@ -83,6 +83,15 @@ public interface TimePackage extends EPackage {
 	int TIME_DEFINITION__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DEFINITION__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

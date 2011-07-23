@@ -25,6 +25,7 @@ import org.emona.model.base.ValueAttribute;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.emona.model.base.impl.ValueAttributeImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.impl.ValueAttributeImpl#isMultiline <em>Multiline</em>}</li>
  *   <li>{@link org.emona.model.base.impl.ValueAttributeImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
@@ -52,6 +53,26 @@ public abstract class ValueAttributeImpl extends EObjectImpl implements
 	 * @ordered
 	 */
 	protected String comment = COMMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTILINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -119,6 +140,29 @@ public abstract class ValueAttributeImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMultiline() {
+		return multiline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiline(boolean newMultiline) {
+		boolean oldMultiline = multiline;
+		multiline = newMultiline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					BasePackage.VALUE_ATTRIBUTE__MULTILINE, oldMultiline,
+					multiline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getValue() {
 		return value;
 	}
@@ -157,6 +201,8 @@ public abstract class ValueAttributeImpl extends EObjectImpl implements
 		switch (featureID) {
 		case BasePackage.VALUE_ATTRIBUTE__COMMENT:
 			return getComment();
+		case BasePackage.VALUE_ATTRIBUTE__MULTILINE:
+			return isMultiline();
 		case BasePackage.VALUE_ATTRIBUTE__VALUE:
 			return getValue();
 		}
@@ -173,6 +219,9 @@ public abstract class ValueAttributeImpl extends EObjectImpl implements
 		switch (featureID) {
 		case BasePackage.VALUE_ATTRIBUTE__COMMENT:
 			setComment((String) newValue);
+			return;
+		case BasePackage.VALUE_ATTRIBUTE__MULTILINE:
+			setMultiline((Boolean) newValue);
 			return;
 		case BasePackage.VALUE_ATTRIBUTE__VALUE:
 			setValue((String) newValue);
@@ -192,6 +241,9 @@ public abstract class ValueAttributeImpl extends EObjectImpl implements
 		case BasePackage.VALUE_ATTRIBUTE__COMMENT:
 			setComment(COMMENT_EDEFAULT);
 			return;
+		case BasePackage.VALUE_ATTRIBUTE__MULTILINE:
+			setMultiline(MULTILINE_EDEFAULT);
+			return;
 		case BasePackage.VALUE_ATTRIBUTE__VALUE:
 			setValue(VALUE_EDEFAULT);
 			return;
@@ -210,6 +262,8 @@ public abstract class ValueAttributeImpl extends EObjectImpl implements
 		case BasePackage.VALUE_ATTRIBUTE__COMMENT:
 			return COMMENT_EDEFAULT == null ? comment != null
 					: !COMMENT_EDEFAULT.equals(comment);
+		case BasePackage.VALUE_ATTRIBUTE__MULTILINE:
+			return multiline != MULTILINE_EDEFAULT;
 		case BasePackage.VALUE_ATTRIBUTE__VALUE:
 			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT
 					.equals(value);
@@ -230,6 +284,8 @@ public abstract class ValueAttributeImpl extends EObjectImpl implements
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (comment: ");
 		result.append(comment);
+		result.append(", multiline: ");
+		result.append(multiline);
 		result.append(", value: ");
 		result.append(value);
 		result.append(')');

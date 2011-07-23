@@ -27,6 +27,7 @@ import org.emona.model.base.attributes.HostFlapDetectionOptions;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.emona.model.base.attributes.impl.HostFlapDetectionOptionsImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.attributes.impl.HostFlapDetectionOptionsImpl#isMultiline <em>Multiline</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.HostFlapDetectionOptionsImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.HostFlapDetectionOptionsImpl#getToken <em>Token</em>}</li>
  * </ul>
@@ -55,6 +56,26 @@ public class HostFlapDetectionOptionsImpl extends EObjectImpl implements
 	 * @ordered
 	 */
 	protected String comment = COMMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTILINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -143,6 +164,29 @@ public class HostFlapDetectionOptionsImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMultiline() {
+		return multiline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiline(boolean newMultiline) {
+		boolean oldMultiline = multiline;
+		multiline = newMultiline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__MULTILINE,
+					oldMultiline, multiline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public HostStateValue getValue() {
 		return value;
 	}
@@ -180,6 +224,8 @@ public class HostFlapDetectionOptionsImpl extends EObjectImpl implements
 		switch (featureID) {
 		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__COMMENT:
 			return getComment();
+		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__MULTILINE:
+			return isMultiline();
 		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__VALUE:
 			return getValue();
 		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__TOKEN:
@@ -199,6 +245,9 @@ public class HostFlapDetectionOptionsImpl extends EObjectImpl implements
 		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__COMMENT:
 			setComment((String) newValue);
 			return;
+		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__MULTILINE:
+			setMultiline((Boolean) newValue);
+			return;
 		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__VALUE:
 			setValue((HostStateValue) newValue);
 			return;
@@ -216,6 +265,9 @@ public class HostFlapDetectionOptionsImpl extends EObjectImpl implements
 		switch (featureID) {
 		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__COMMENT:
 			setComment(COMMENT_EDEFAULT);
+			return;
+		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__MULTILINE:
+			setMultiline(MULTILINE_EDEFAULT);
 			return;
 		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__VALUE:
 			setValue(VALUE_EDEFAULT);
@@ -235,6 +287,8 @@ public class HostFlapDetectionOptionsImpl extends EObjectImpl implements
 		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__COMMENT:
 			return COMMENT_EDEFAULT == null ? comment != null
 					: !COMMENT_EDEFAULT.equals(comment);
+		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__MULTILINE:
+			return multiline != MULTILINE_EDEFAULT;
 		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__VALUE:
 			return value != VALUE_EDEFAULT;
 		case AttributesPackage.HOST_FLAP_DETECTION_OPTIONS__TOKEN:
@@ -257,6 +311,8 @@ public class HostFlapDetectionOptionsImpl extends EObjectImpl implements
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (comment: ");
 		result.append(comment);
+		result.append(", multiline: ");
+		result.append(multiline);
 		result.append(", value: ");
 		result.append(value);
 		result.append(", token: ");

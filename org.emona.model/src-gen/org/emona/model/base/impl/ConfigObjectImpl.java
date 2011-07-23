@@ -38,34 +38,44 @@ public class ConfigObjectImpl extends InfoObjectImpl implements ConfigObject {
 
 	/**
 	 * This adapter tracks
+	 * 
 	 * @author martin
-	 *
+	 * 
 	 */
 	private class AttributeObserver extends EContentAdapter {
-		/* (non-Javadoc)
-		 * @see org.eclipse.emf.ecore.util.EContentAdapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * org.eclipse.emf.ecore.util.EContentAdapter#notifyChanged(org.eclipse
+		 * .emf.common.notify.Notification)
 		 */
 		@Override
 		public void notifyChanged(Notification notification) {
 			if (notification.getNotifier() == ConfigObjectImpl.this) {
+				super.notifyChanged(notification);
 				try {
 					switch (notification.getEventType()) {
 					case Notification.ADD:
-						System.out.println("ADD: " + notification);
 						if (notification.getNewValue() instanceof Attribute) {
-
-							currentTokens.add(((Attribute) notification
-									.getNewValue()).getToken());
+							Attribute att = (Attribute) notification.getNewValue();
+							String token = att.getToken();
+							if (currentTokens.contains(token) && !att.isMultiline()) {
+								System.err.println("Token already defined! "
+										+ token);
+							} else {
+								currentTokens.add(token);
+							}
 						}
 						break;
 					case Notification.REMOVE:
-						System.out.println("REMOVE: " + notification);
 						if (notification.getNewValue() instanceof Attribute) {
 							currentTokens.remove(((Attribute) notification
 									.getOldValue()).getToken());
 						}
 
 					default:
+						System.err.println("UNNOTICED NOTIF: " + notification);
 						break;
 					}
 				} catch (UnsupportedOperationException e) {
@@ -74,7 +84,6 @@ public class ConfigObjectImpl extends InfoObjectImpl implements ConfigObject {
 					System.err.println(notification.getNewValue());
 				}
 			}
-			super.notifyChanged(notification);
 		}
 	}
 

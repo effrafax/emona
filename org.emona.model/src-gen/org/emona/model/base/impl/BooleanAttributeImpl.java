@@ -25,6 +25,7 @@ import org.emona.model.base.BooleanAttribute;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.emona.model.base.impl.BooleanAttributeImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.impl.BooleanAttributeImpl#isMultiline <em>Multiline</em>}</li>
  *   <li>{@link org.emona.model.base.impl.BooleanAttributeImpl#isEnabled <em>Enabled</em>}</li>
  * </ul>
  * </p>
@@ -52,6 +53,26 @@ public class BooleanAttributeImpl extends EObjectImpl implements
 	 * @ordered
 	 */
 	protected String comment = COMMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTILINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
@@ -119,6 +140,29 @@ public class BooleanAttributeImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMultiline() {
+		return multiline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiline(boolean newMultiline) {
+		boolean oldMultiline = multiline;
+		multiline = newMultiline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE, oldMultiline,
+					multiline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -157,6 +201,8 @@ public class BooleanAttributeImpl extends EObjectImpl implements
 		switch (featureID) {
 		case BasePackage.BOOLEAN_ATTRIBUTE__COMMENT:
 			return getComment();
+		case BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE:
+			return isMultiline();
 		case BasePackage.BOOLEAN_ATTRIBUTE__ENABLED:
 			return isEnabled();
 		}
@@ -173,6 +219,9 @@ public class BooleanAttributeImpl extends EObjectImpl implements
 		switch (featureID) {
 		case BasePackage.BOOLEAN_ATTRIBUTE__COMMENT:
 			setComment((String) newValue);
+			return;
+		case BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE:
+			setMultiline((Boolean) newValue);
 			return;
 		case BasePackage.BOOLEAN_ATTRIBUTE__ENABLED:
 			setEnabled((Boolean) newValue);
@@ -192,6 +241,9 @@ public class BooleanAttributeImpl extends EObjectImpl implements
 		case BasePackage.BOOLEAN_ATTRIBUTE__COMMENT:
 			setComment(COMMENT_EDEFAULT);
 			return;
+		case BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE:
+			setMultiline(MULTILINE_EDEFAULT);
+			return;
 		case BasePackage.BOOLEAN_ATTRIBUTE__ENABLED:
 			setEnabled(ENABLED_EDEFAULT);
 			return;
@@ -210,6 +262,8 @@ public class BooleanAttributeImpl extends EObjectImpl implements
 		case BasePackage.BOOLEAN_ATTRIBUTE__COMMENT:
 			return COMMENT_EDEFAULT == null ? comment != null
 					: !COMMENT_EDEFAULT.equals(comment);
+		case BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE:
+			return multiline != MULTILINE_EDEFAULT;
 		case BasePackage.BOOLEAN_ATTRIBUTE__ENABLED:
 			return enabled != ENABLED_EDEFAULT;
 		}
@@ -229,6 +283,8 @@ public class BooleanAttributeImpl extends EObjectImpl implements
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (comment: ");
 		result.append(comment);
+		result.append(", multiline: ");
+		result.append(multiline);
 		result.append(", enabled: ");
 		result.append(enabled);
 		result.append(')');

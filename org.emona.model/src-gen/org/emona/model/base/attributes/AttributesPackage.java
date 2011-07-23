@@ -83,6 +83,15 @@ public interface AttributesPackage extends EPackage {
 	int ALIAS__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIAS__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -127,6 +136,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int HOST_INITIAL_STATE__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_INITIAL_STATE__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -175,6 +193,15 @@ public interface AttributesPackage extends EPackage {
 	int HOSTGROUPS__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOSTGROUPS__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -219,6 +246,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARENTS__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENTS__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
@@ -267,6 +303,15 @@ public interface AttributesPackage extends EPackage {
 	int ADDRESS__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -311,6 +356,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISPLAY_NAME__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISPLAY_NAME__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -359,6 +413,15 @@ public interface AttributesPackage extends EPackage {
 	int REGISTER__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REGISTER__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -403,6 +466,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int USE__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USE__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
@@ -451,6 +523,15 @@ public interface AttributesPackage extends EPackage {
 	int TIMEPERIOD_NAME__COMMENT = BasePackage.NAME_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMEPERIOD_NAME__MULTILINE = BasePackage.NAME_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -495,6 +576,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int HOSTGROUP_NAME__COMMENT = BasePackage.NAME_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOSTGROUP_NAME__MULTILINE = BasePackage.NAME_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -543,6 +633,15 @@ public interface AttributesPackage extends EPackage {
 	int HOST_NAME__COMMENT = BasePackage.NAME_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_NAME__MULTILINE = BasePackage.NAME_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -587,6 +686,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int TEMPLATE_NAME__COMMENT = BasePackage.NAME_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_NAME__MULTILINE = BasePackage.NAME_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -635,6 +743,15 @@ public interface AttributesPackage extends EPackage {
 	int COMMAND_LINE__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_LINE__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -679,6 +796,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMMAND_NAME__COMMENT = BasePackage.NAME_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_NAME__MULTILINE = BasePackage.NAME_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -727,6 +853,15 @@ public interface AttributesPackage extends EPackage {
 	int MAX_CHECK_ATTEMPTS__COMMENT = BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAX_CHECK_ATTEMPTS__MULTILINE = BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -771,6 +906,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHECK_INTERVAL__COMMENT = BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECK_INTERVAL__MULTILINE = BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -819,6 +963,15 @@ public interface AttributesPackage extends EPackage {
 	int RETRY_INTERVAL__COMMENT = BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_INTERVAL__MULTILINE = BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -863,6 +1016,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVE_CHECKS_ENABLED__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVE_CHECKS_ENABLED__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -911,6 +1073,15 @@ public interface AttributesPackage extends EPackage {
 	int PASSIVE_CHECKS_ENABLED__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSIVE_CHECKS_ENABLED__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -955,6 +1126,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHECK_PERIOD__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECK_PERIOD__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -1003,6 +1183,15 @@ public interface AttributesPackage extends EPackage {
 	int CHECK_COMMAND__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECK_COMMAND__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1047,6 +1236,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_EXCLUDE__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EXCLUDE__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
@@ -1095,6 +1293,15 @@ public interface AttributesPackage extends EPackage {
 	int CONTACT_NAME__COMMENT = BasePackage.NAME_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTACT_NAME__MULTILINE = BasePackage.NAME_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1139,6 +1346,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int NOTIFICATIONS_ENABLED__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTIFICATIONS_ENABLED__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -1187,6 +1403,15 @@ public interface AttributesPackage extends EPackage {
 	int HOST_NOTIFICATIONS_ENABLED__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_NOTIFICATIONS_ENABLED__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1231,6 +1456,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE_NOTIFICATIONS_ENABLED__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_NOTIFICATIONS_ENABLED__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -1279,6 +1513,15 @@ public interface AttributesPackage extends EPackage {
 	int NOTIFICATION_PERIOD__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTIFICATION_PERIOD__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1323,6 +1566,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int HOST_NOTIFICATION_PERIOD__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_NOTIFICATION_PERIOD__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -1371,6 +1623,15 @@ public interface AttributesPackage extends EPackage {
 	int SERVICE_NOTIFICATION_PERIOD__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_NOTIFICATION_PERIOD__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1415,6 +1676,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int HOST_NOTIFICATION_OPTIONS__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_NOTIFICATION_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -1508,6 +1778,15 @@ public interface AttributesPackage extends EPackage {
 	int SERVICE_NOTIFICATION_OPTIONS__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_NOTIFICATION_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Ok</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1599,6 +1878,15 @@ public interface AttributesPackage extends EPackage {
 	int NOTIFICATION_COMMANDS__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTIFICATION_COMMANDS__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1645,7 +1933,16 @@ public interface AttributesPackage extends EPackage {
 	int HOST_NOTIFICATION_COMMANDS__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
-	 * The feature id for the '<em><b>Reference</b></em>' reference.
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_NOTIFICATION_COMMANDS__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
+	 * The feature id for the '<em><b>Reference</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1691,7 +1988,16 @@ public interface AttributesPackage extends EPackage {
 	int SERVICE_NOTIFICATION_COMMANDS__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
-	 * The feature id for the '<em><b>Reference</b></em>' reference.
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_NOTIFICATION_COMMANDS__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
+	 * The feature id for the '<em><b>Reference</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1735,6 +2041,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTACT_ADDRESS__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTACT_ADDRESS__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1783,6 +2098,15 @@ public interface AttributesPackage extends EPackage {
 	int EMAIL__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMAIL__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1827,6 +2151,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int PAGER__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGER__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -1875,6 +2208,15 @@ public interface AttributesPackage extends EPackage {
 	int CONTACT_MEMBERS__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTACT_MEMBERS__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1919,6 +2261,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTACT_GROUP_NAME__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTACT_GROUP_NAME__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1967,6 +2318,15 @@ public interface AttributesPackage extends EPackage {
 	int CONTACTS__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTACTS__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2011,6 +2371,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTACT_GROUPS__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTACT_GROUPS__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
@@ -2059,6 +2428,15 @@ public interface AttributesPackage extends EPackage {
 	int NOTIFICATION_INTERVAL__COMMENT = BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTIFICATION_INTERVAL__MULTILINE = BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2105,6 +2483,15 @@ public interface AttributesPackage extends EPackage {
 	int FIRST_NOTIFICATION_DELAY__COMMENT = BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIRST_NOTIFICATION_DELAY__MULTILINE = BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2149,6 +2536,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int HOST_STALKING_OPTIONS__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_STALKING_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Up</b></em>' attribute.
@@ -2215,6 +2611,15 @@ public interface AttributesPackage extends EPackage {
 	int NOTES__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTES__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2259,6 +2664,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int NOTES_URL__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTES_URL__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2307,6 +2721,15 @@ public interface AttributesPackage extends EPackage {
 	int ACTION_URL__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_URL__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2351,6 +2774,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ICON_IMAGE__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICON_IMAGE__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2399,6 +2831,15 @@ public interface AttributesPackage extends EPackage {
 	int ICON_IMAGE_ALT__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICON_IMAGE_ALT__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2443,6 +2884,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int VRML_IMAGE__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VRML_IMAGE__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2491,6 +2941,15 @@ public interface AttributesPackage extends EPackage {
 	int STATUSMAP_IMAGE__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUSMAP_IMAGE__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2535,6 +2994,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int TWO_DCOORDS__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TWO_DCOORDS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -2590,6 +3058,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int THREE_DCOORDS__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREE_DCOORDS__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2665,6 +3142,15 @@ public interface AttributesPackage extends EPackage {
 	int HOSTGROUP_MEMBERS__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOSTGROUP_MEMBERS__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2709,6 +3195,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int HOST_MEMBERS__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_MEMBERS__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
@@ -2757,6 +3252,15 @@ public interface AttributesPackage extends EPackage {
 	int HOST_NAME_REFERENCE__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_NAME_REFERENCE__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2801,6 +3305,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int HOSTGROUP_NAME_REFERENCE__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOSTGROUP_NAME_REFERENCE__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
@@ -2849,6 +3362,15 @@ public interface AttributesPackage extends EPackage {
 	int SERVICE_DESCRIPTION__COMMENT = BasePackage.NAME_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_DESCRIPTION__MULTILINE = BasePackage.NAME_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2893,6 +3415,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE_INITIAL_STATE__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_INITIAL_STATE__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2950,6 +3481,15 @@ public interface AttributesPackage extends EPackage {
 	int IS_VOLATILE_FLAG__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_VOLATILE_FLAG__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2994,6 +3534,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBSESS_OVER_HOST__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSESS_OVER_HOST__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -3042,6 +3591,15 @@ public interface AttributesPackage extends EPackage {
 	int OBSESS_OVER_SERVICE__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSESS_OVER_SERVICE__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3086,6 +3644,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHECK_FRESHNESS__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECK_FRESHNESS__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -3134,6 +3701,15 @@ public interface AttributesPackage extends EPackage {
 	int FRESHNESS_THRESHOLD__COMMENT = BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FRESHNESS_THRESHOLD__MULTILINE = BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3178,6 +3754,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_HANDLER__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_HANDLER__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -3226,6 +3811,15 @@ public interface AttributesPackage extends EPackage {
 	int EVENT_HANDLER_ENABLED__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_HANDLER_ENABLED__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3270,6 +3864,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOW_FLAP_THRESHOLD__COMMENT = BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOW_FLAP_THRESHOLD__MULTILINE = BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3318,6 +3921,15 @@ public interface AttributesPackage extends EPackage {
 	int HIGH_FLAP_THRESHOLD__COMMENT = BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HIGH_FLAP_THRESHOLD__MULTILINE = BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3362,6 +3974,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int FLAP_DETECTION_ENABLED__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLAP_DETECTION_ENABLED__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -3410,6 +4031,15 @@ public interface AttributesPackage extends EPackage {
 	int HOST_FLAP_DETECTION_OPTIONS__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_FLAP_DETECTION_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3454,6 +4084,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_PERF_DATA__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_PERF_DATA__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -3502,6 +4141,15 @@ public interface AttributesPackage extends EPackage {
 	int RETAIN_STATUS_INFORMATION__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETAIN_STATUS_INFORMATION__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3548,6 +4196,15 @@ public interface AttributesPackage extends EPackage {
 	int RETAIN_NONSTATUS_INFORMATION__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETAIN_NONSTATUS_INFORMATION__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3592,6 +4249,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE_FLAP_DETECTION_OPTIONS__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_FLAP_DETECTION_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Ok</b></em>' attribute.
@@ -3667,6 +4333,15 @@ public interface AttributesPackage extends EPackage {
 	int SERVICEGROUP_NAME__COMMENT = BasePackage.NAME_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICEGROUP_NAME__MULTILINE = BasePackage.NAME_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3711,6 +4386,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE_MEMBERS__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_MEMBERS__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
@@ -3759,6 +4443,15 @@ public interface AttributesPackage extends EPackage {
 	int SERVICEGROUP_MEMBERS__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICEGROUP_MEMBERS__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3803,6 +4496,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICEGROUPS__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICEGROUPS__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
@@ -3851,6 +4553,15 @@ public interface AttributesPackage extends EPackage {
 	int DEPENDENT_HOST_NAME__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPENDENT_HOST_NAME__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3895,6 +4606,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DEPENDENT_HOSTGROUP_NAME__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPENDENT_HOSTGROUP_NAME__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
@@ -3943,6 +4663,15 @@ public interface AttributesPackage extends EPackage {
 	int DEPENDENT_SERVICE_DESCRIPTION__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPENDENT_SERVICE_DESCRIPTION__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3987,6 +4716,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE_DESCRIPTION_REFERENCE__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_DESCRIPTION_REFERENCE__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
@@ -4035,6 +4773,15 @@ public interface AttributesPackage extends EPackage {
 	int INHERITS_PARENT__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INHERITS_PARENT__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4079,6 +4826,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE_EXECUTION_FAILURE_CRITERIA__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_EXECUTION_FAILURE_CRITERIA__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Ok</b></em>' attribute.
@@ -4172,6 +4928,15 @@ public interface AttributesPackage extends EPackage {
 	int NOTIFICATION_FAILURE_CRITERIA__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTIFICATION_FAILURE_CRITERIA__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Ok</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4263,6 +5028,15 @@ public interface AttributesPackage extends EPackage {
 	int DEPENDENCY_PERIOD__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPENDENCY_PERIOD__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4307,6 +5081,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE_STALKING_OPTIONS__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_STALKING_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Ok</b></em>' attribute.
@@ -4382,6 +5165,15 @@ public interface AttributesPackage extends EPackage {
 	int FIRST_NOTIFICATION__COMMENT = BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIRST_NOTIFICATION__MULTILINE = BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4426,6 +5218,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int LAST_NOTIFICATION__COMMENT = BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAST_NOTIFICATION__MULTILINE = BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -4474,6 +5275,15 @@ public interface AttributesPackage extends EPackage {
 	int ESCALATION_PERIOD__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESCALATION_PERIOD__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4518,6 +5328,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE_ESCALATION_OPTIONS__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_ESCALATION_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Ok</b></em>' attribute.
@@ -4591,6 +5410,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int HOST_EXECUTION_FAILURE_CRITERIA__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_EXECUTION_FAILURE_CRITERIA__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Up</b></em>' attribute.
@@ -4673,6 +5501,15 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE_NOTIFICATION_FAILURE_CRITERIA__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_NOTIFICATION_FAILURE_CRITERIA__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Ok</b></em>' attribute.
@@ -4766,6 +5603,15 @@ public interface AttributesPackage extends EPackage {
 	int HOST_NOTIFICATION_FAILURE_CRITERIA__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_NOTIFICATION_FAILURE_CRITERIA__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Up</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4848,6 +5694,15 @@ public interface AttributesPackage extends EPackage {
 	int HOST_ESCALATION_OPTIONS__COMMENT = BasePackage.ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_ESCALATION_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Up</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4891,6 +5746,61 @@ public interface AttributesPackage extends EPackage {
 	 * @ordered
 	 */
 	int HOST_ESCALATION_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.CanSubmitCommandsImpl <em>Can Submit Commands</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.emona.model.base.attributes.impl.CanSubmitCommandsImpl
+	 * @see org.emona.model.base.attributes.impl.AttributesPackageImpl#getCanSubmitCommands()
+	 * @generated
+	 */
+	int CAN_SUBMIT_COMMANDS = 95;
+
+	/**
+	 * The feature id for the '<em><b>Comment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAN_SUBMIT_COMMANDS__COMMENT = BasePackage.BOOLEAN_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAN_SUBMIT_COMMANDS__MULTILINE = BasePackage.BOOLEAN_ATTRIBUTE__MULTILINE;
+
+	/**
+	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAN_SUBMIT_COMMANDS__ENABLED = BasePackage.BOOLEAN_ATTRIBUTE__ENABLED;
+
+	/**
+	 * The feature id for the '<em><b>Token</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAN_SUBMIT_COMMANDS__TOKEN = BasePackage.BOOLEAN_ATTRIBUTE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Can Submit Commands</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAN_SUBMIT_COMMANDS_FEATURE_COUNT = BasePackage.BOOLEAN_ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * Returns the meta object for class '{@link org.emona.model.base.attributes.Alias <em>Alias</em>}'.
@@ -5773,10 +6683,10 @@ public interface AttributesPackage extends EPackage {
 	EClass getHostNotificationCommands();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.emona.model.base.attributes.HostNotificationCommands#getReference <em>Reference</em>}'.
+	 * Returns the meta object for the reference list '{@link org.emona.model.base.attributes.HostNotificationCommands#getReference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Reference</em>'.
+	 * @return the meta object for the reference list '<em>Reference</em>'.
 	 * @see org.emona.model.base.attributes.HostNotificationCommands#getReference()
 	 * @see #getHostNotificationCommands()
 	 * @generated
@@ -5805,10 +6715,10 @@ public interface AttributesPackage extends EPackage {
 	EClass getServiceNotificationCommands();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.emona.model.base.attributes.ServiceNotificationCommands#getReference <em>Reference</em>}'.
+	 * Returns the meta object for the reference list '{@link org.emona.model.base.attributes.ServiceNotificationCommands#getReference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Reference</em>'.
+	 * @return the meta object for the reference list '<em>Reference</em>'.
 	 * @see org.emona.model.base.attributes.ServiceNotificationCommands#getReference()
 	 * @see #getServiceNotificationCommands()
 	 * @generated
@@ -7405,6 +8315,27 @@ public interface AttributesPackage extends EPackage {
 	EAttribute getHostEscalationOptions_Token();
 
 	/**
+	 * Returns the meta object for class '{@link org.emona.model.base.attributes.CanSubmitCommands <em>Can Submit Commands</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Can Submit Commands</em>'.
+	 * @see org.emona.model.base.attributes.CanSubmitCommands
+	 * @generated
+	 */
+	EClass getCanSubmitCommands();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.emona.model.base.attributes.CanSubmitCommands#getToken <em>Token</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Token</em>'.
+	 * @see org.emona.model.base.attributes.CanSubmitCommands#getToken()
+	 * @see #getCanSubmitCommands()
+	 * @generated
+	 */
+	EAttribute getCanSubmitCommands_Token();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8190,7 +9121,7 @@ public interface AttributesPackage extends EPackage {
 				.getHostNotificationCommands();
 
 		/**
-		 * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Reference</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -8219,7 +9150,7 @@ public interface AttributesPackage extends EPackage {
 				.getServiceNotificationCommands();
 
 		/**
-		 * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Reference</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -9620,6 +10551,25 @@ public interface AttributesPackage extends EPackage {
 		 */
 		EAttribute HOST_ESCALATION_OPTIONS__TOKEN = eINSTANCE
 				.getHostEscalationOptions_Token();
+
+		/**
+		 * The meta object literal for the '{@link org.emona.model.base.attributes.impl.CanSubmitCommandsImpl <em>Can Submit Commands</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.emona.model.base.attributes.impl.CanSubmitCommandsImpl
+		 * @see org.emona.model.base.attributes.impl.AttributesPackageImpl#getCanSubmitCommands()
+		 * @generated
+		 */
+		EClass CAN_SUBMIT_COMMANDS = eINSTANCE.getCanSubmitCommands();
+
+		/**
+		 * The meta object literal for the '<em><b>Token</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CAN_SUBMIT_COMMANDS__TOKEN = eINSTANCE
+				.getCanSubmitCommands_Token();
 
 	}
 

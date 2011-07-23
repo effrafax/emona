@@ -27,6 +27,7 @@ import org.emona.model.base.attributes.AttributesPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.emona.model.base.attributes.impl.AddressImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.attributes.impl.AddressImpl#isMultiline <em>Multiline</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.AddressImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.AddressImpl#getToken <em>Token</em>}</li>
  * </ul>
@@ -54,6 +55,26 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * @ordered
 	 */
 	protected String comment = COMMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTILINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -141,6 +162,29 @@ public class AddressImpl extends EObjectImpl implements Address {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMultiline() {
+		return multiline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiline(boolean newMultiline) {
+		boolean oldMultiline = multiline;
+		multiline = newMultiline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					AttributesPackage.ADDRESS__MULTILINE, oldMultiline,
+					multiline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InetAddress getValue() {
 		return value;
 	}
@@ -177,6 +221,8 @@ public class AddressImpl extends EObjectImpl implements Address {
 		switch (featureID) {
 		case AttributesPackage.ADDRESS__COMMENT:
 			return getComment();
+		case AttributesPackage.ADDRESS__MULTILINE:
+			return isMultiline();
 		case AttributesPackage.ADDRESS__VALUE:
 			return getValue();
 		case AttributesPackage.ADDRESS__TOKEN:
@@ -196,6 +242,9 @@ public class AddressImpl extends EObjectImpl implements Address {
 		case AttributesPackage.ADDRESS__COMMENT:
 			setComment((String) newValue);
 			return;
+		case AttributesPackage.ADDRESS__MULTILINE:
+			setMultiline((Boolean) newValue);
+			return;
 		case AttributesPackage.ADDRESS__VALUE:
 			setValue((InetAddress) newValue);
 			return;
@@ -213,6 +262,9 @@ public class AddressImpl extends EObjectImpl implements Address {
 		switch (featureID) {
 		case AttributesPackage.ADDRESS__COMMENT:
 			setComment(COMMENT_EDEFAULT);
+			return;
+		case AttributesPackage.ADDRESS__MULTILINE:
+			setMultiline(MULTILINE_EDEFAULT);
 			return;
 		case AttributesPackage.ADDRESS__VALUE:
 			setValue(VALUE_EDEFAULT);
@@ -232,6 +284,8 @@ public class AddressImpl extends EObjectImpl implements Address {
 		case AttributesPackage.ADDRESS__COMMENT:
 			return COMMENT_EDEFAULT == null ? comment != null
 					: !COMMENT_EDEFAULT.equals(comment);
+		case AttributesPackage.ADDRESS__MULTILINE:
+			return multiline != MULTILINE_EDEFAULT;
 		case AttributesPackage.ADDRESS__VALUE:
 			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT
 					.equals(value);
@@ -255,6 +309,8 @@ public class AddressImpl extends EObjectImpl implements Address {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (comment: ");
 		result.append(comment);
+		result.append(", multiline: ");
+		result.append(multiline);
 		result.append(", value: ");
 		result.append(value);
 		result.append(", token: ");

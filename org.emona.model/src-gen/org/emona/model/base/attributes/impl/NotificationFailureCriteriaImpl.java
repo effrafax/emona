@@ -29,6 +29,7 @@ import org.emona.model.base.attributes.NotificationFailureCriteria;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.emona.model.base.attributes.impl.NotificationFailureCriteriaImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.attributes.impl.NotificationFailureCriteriaImpl#isMultiline <em>Multiline</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.NotificationFailureCriteriaImpl#isOk <em>Ok</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.NotificationFailureCriteriaImpl#isWarning <em>Warning</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.NotificationFailureCriteriaImpl#isCritical <em>Critical</em>}</li>
@@ -62,6 +63,26 @@ public class NotificationFailureCriteriaImpl extends EObjectImpl implements
 	 * @ordered
 	 */
 	protected String comment = COMMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTILINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isOk() <em>Ok</em>}' attribute.
@@ -250,6 +271,29 @@ public class NotificationFailureCriteriaImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMultiline() {
+		return multiline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiline(boolean newMultiline) {
+		boolean oldMultiline = multiline;
+		multiline = newMultiline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__MULTILINE,
+					oldMultiline, multiline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isOk() {
 		return ok;
 	}
@@ -402,6 +446,8 @@ public class NotificationFailureCriteriaImpl extends EObjectImpl implements
 		switch (featureID) {
 		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__COMMENT:
 			return getComment();
+		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__MULTILINE:
+			return isMultiline();
 		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__OK:
 			return isOk();
 		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__WARNING:
@@ -430,6 +476,9 @@ public class NotificationFailureCriteriaImpl extends EObjectImpl implements
 		switch (featureID) {
 		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__COMMENT:
 			setComment((String) newValue);
+			return;
+		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__MULTILINE:
+			setMultiline((Boolean) newValue);
 			return;
 		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__OK:
 			setOk((Boolean) newValue);
@@ -464,6 +513,9 @@ public class NotificationFailureCriteriaImpl extends EObjectImpl implements
 		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__COMMENT:
 			setComment(COMMENT_EDEFAULT);
 			return;
+		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__MULTILINE:
+			setMultiline(MULTILINE_EDEFAULT);
+			return;
 		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__OK:
 			setOk(OK_EDEFAULT);
 			return;
@@ -497,6 +549,8 @@ public class NotificationFailureCriteriaImpl extends EObjectImpl implements
 		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__COMMENT:
 			return COMMENT_EDEFAULT == null ? comment != null
 					: !COMMENT_EDEFAULT.equals(comment);
+		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__MULTILINE:
+			return multiline != MULTILINE_EDEFAULT;
 		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__OK:
 			return ok != OK_EDEFAULT;
 		case AttributesPackage.NOTIFICATION_FAILURE_CRITERIA__WARNING:
@@ -597,6 +651,8 @@ public class NotificationFailureCriteriaImpl extends EObjectImpl implements
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (comment: ");
 		result.append(comment);
+		result.append(", multiline: ");
+		result.append(multiline);
 		result.append(", ok: ");
 		result.append(ok);
 		result.append(", warning: ");

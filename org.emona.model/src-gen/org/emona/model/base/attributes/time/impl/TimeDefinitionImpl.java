@@ -32,6 +32,7 @@ import org.emona.model.types.TimeRange;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.emona.model.base.attributes.time.impl.TimeDefinitionImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.attributes.time.impl.TimeDefinitionImpl#isMultiline <em>Multiline</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.time.impl.TimeDefinitionImpl#getToken <em>Token</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.time.impl.TimeDefinitionImpl#getDays <em>Days</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.time.impl.TimeDefinitionImpl#getRanges <em>Ranges</em>}</li>
@@ -60,6 +61,26 @@ public class TimeDefinitionImpl extends EObjectImpl implements TimeDefinition {
 	 * @ordered
 	 */
 	protected String comment = COMMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated NO
+	 * @ordered
+	 */
+	protected static final boolean MULTILINE_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getToken() <em>Token</em>}' attribute.
@@ -140,6 +161,29 @@ public class TimeDefinitionImpl extends EObjectImpl implements TimeDefinition {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 					TimePackage.TIME_DEFINITION__COMMENT, oldComment, comment));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isMultiline() {
+		return multiline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiline(boolean newMultiline) {
+		boolean oldMultiline = multiline;
+		multiline = newMultiline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TimePackage.TIME_DEFINITION__MULTILINE, oldMultiline,
+					multiline));
 	}
 
 	/**
@@ -243,6 +287,8 @@ public class TimeDefinitionImpl extends EObjectImpl implements TimeDefinition {
 		switch (featureID) {
 		case TimePackage.TIME_DEFINITION__COMMENT:
 			return getComment();
+		case TimePackage.TIME_DEFINITION__MULTILINE:
+			return isMultiline();
 		case TimePackage.TIME_DEFINITION__TOKEN:
 			return getToken();
 		case TimePackage.TIME_DEFINITION__DAYS:
@@ -264,6 +310,9 @@ public class TimeDefinitionImpl extends EObjectImpl implements TimeDefinition {
 		switch (featureID) {
 		case TimePackage.TIME_DEFINITION__COMMENT:
 			setComment((String) newValue);
+			return;
+		case TimePackage.TIME_DEFINITION__MULTILINE:
+			setMultiline((Boolean) newValue);
 			return;
 		case TimePackage.TIME_DEFINITION__DAYS:
 			setDays((DateSpec) newValue);
@@ -287,6 +336,9 @@ public class TimeDefinitionImpl extends EObjectImpl implements TimeDefinition {
 		case TimePackage.TIME_DEFINITION__COMMENT:
 			setComment(COMMENT_EDEFAULT);
 			return;
+		case TimePackage.TIME_DEFINITION__MULTILINE:
+			setMultiline(MULTILINE_EDEFAULT);
+			return;
 		case TimePackage.TIME_DEFINITION__DAYS:
 			setDays((DateSpec) null);
 			return;
@@ -308,6 +360,8 @@ public class TimeDefinitionImpl extends EObjectImpl implements TimeDefinition {
 		case TimePackage.TIME_DEFINITION__COMMENT:
 			return COMMENT_EDEFAULT == null ? comment != null
 					: !COMMENT_EDEFAULT.equals(comment);
+		case TimePackage.TIME_DEFINITION__MULTILINE:
+			return multiline != MULTILINE_EDEFAULT;
 		case TimePackage.TIME_DEFINITION__TOKEN:
 			return TOKEN_EDEFAULT == null ? token != null : !TOKEN_EDEFAULT
 					.equals(token);
@@ -332,6 +386,8 @@ public class TimeDefinitionImpl extends EObjectImpl implements TimeDefinition {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (comment: ");
 		result.append(comment);
+		result.append(", multiline: ");
+		result.append(multiline);
 		result.append(", token: ");
 		result.append(token);
 		result.append(", ranges: ");

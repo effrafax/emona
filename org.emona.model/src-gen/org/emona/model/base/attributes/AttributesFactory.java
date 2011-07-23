@@ -883,6 +883,15 @@ public interface AttributesFactory extends EFactory {
 	HostEscalationOptions createHostEscalationOptions();
 
 	/**
+	 * Returns a new object of class '<em>Can Submit Commands</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Can Submit Commands</em>'.
+	 * @generated
+	 */
+	CanSubmitCommands createCanSubmitCommands();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

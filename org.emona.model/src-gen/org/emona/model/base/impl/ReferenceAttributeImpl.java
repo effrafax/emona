@@ -25,6 +25,7 @@ import org.emona.model.base.ReferenceAttribute;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.emona.model.base.impl.ReferenceAttributeImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.impl.ReferenceAttributeImpl#isMultiline <em>Multiline</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,6 +52,26 @@ public class ReferenceAttributeImpl extends EObjectImpl implements
 	 * @ordered
 	 */
 	protected String comment = COMMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTILINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -99,6 +120,29 @@ public class ReferenceAttributeImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMultiline() {
+		return multiline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiline(boolean newMultiline) {
+		boolean oldMultiline = multiline;
+		multiline = newMultiline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					BasePackage.REFERENCE_ATTRIBUTE__MULTILINE, oldMultiline,
+					multiline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getToken() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -115,6 +159,8 @@ public class ReferenceAttributeImpl extends EObjectImpl implements
 		switch (featureID) {
 		case BasePackage.REFERENCE_ATTRIBUTE__COMMENT:
 			return getComment();
+		case BasePackage.REFERENCE_ATTRIBUTE__MULTILINE:
+			return isMultiline();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -129,6 +175,9 @@ public class ReferenceAttributeImpl extends EObjectImpl implements
 		switch (featureID) {
 		case BasePackage.REFERENCE_ATTRIBUTE__COMMENT:
 			setComment((String) newValue);
+			return;
+		case BasePackage.REFERENCE_ATTRIBUTE__MULTILINE:
+			setMultiline((Boolean) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -145,6 +194,9 @@ public class ReferenceAttributeImpl extends EObjectImpl implements
 		case BasePackage.REFERENCE_ATTRIBUTE__COMMENT:
 			setComment(COMMENT_EDEFAULT);
 			return;
+		case BasePackage.REFERENCE_ATTRIBUTE__MULTILINE:
+			setMultiline(MULTILINE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -160,6 +212,8 @@ public class ReferenceAttributeImpl extends EObjectImpl implements
 		case BasePackage.REFERENCE_ATTRIBUTE__COMMENT:
 			return COMMENT_EDEFAULT == null ? comment != null
 					: !COMMENT_EDEFAULT.equals(comment);
+		case BasePackage.REFERENCE_ATTRIBUTE__MULTILINE:
+			return multiline != MULTILINE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -177,6 +231,8 @@ public class ReferenceAttributeImpl extends EObjectImpl implements
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (comment: ");
 		result.append(comment);
+		result.append(", multiline: ");
+		result.append(multiline);
 		result.append(')');
 		return result.toString();
 	}

@@ -42,6 +42,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Attribute" abstract="true" interface="true">
     <eOperations name="getToken" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiline" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NameAttribute" abstract="true" eSuperTypes="#//Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -294,12 +296,14 @@
           defaultValueLiteral="notification_commands"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="HostNotificationCommands" eSuperTypes="#//ReferenceAttribute">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//attributes/CommandName"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
+          eType="#//attributes/CommandName"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="host_notification_commands"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ServiceNotificationCommands" eSuperTypes="#//ReferenceAttribute">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//attributes/CommandName"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
+          eType="#//attributes/CommandName"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="service_notification_commands"/>
     </eClassifiers>
@@ -307,13 +311,15 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="contact_address"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Email" eSuperTypes="#//ValueAttribute">
+    <eClassifiers xsi:type="ecore:EClass" name="Email" eSuperTypes="#//Attribute">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="email"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//MailAddress"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Pager" eSuperTypes="#//ValueAttribute">
+    <eClassifiers xsi:type="ecore:EClass" name="Pager" eSuperTypes="#//Attribute">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="pager"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//MailAddress"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ContactMembers" eSuperTypes="#//ReferenceAttribute">
       <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
@@ -592,6 +598,10 @@
     <eClassifiers xsi:type="ecore:EClass" name="HostEscalationOptions" eSuperTypes="#//Attribute #//HostState">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="escalation_options"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CanSubmitCommands" eSuperTypes="#//BooleanAttribute">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="can_submit_commands"/>
     </eClassifiers>
     <eSubpackages name="time" nsURI="http://www.emona.org/model/base/attributes/time"
         nsPrefix="eatime">

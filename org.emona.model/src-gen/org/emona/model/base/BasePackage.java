@@ -129,13 +129,22 @@ public interface BasePackage extends EPackage {
 	int ATTRIBUTE__COMMENT = 0;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__MULTILINE = 1;
+
+	/**
 	 * The number of structural features of the '<em>Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE_FEATURE_COUNT = 1;
+	int ATTRIBUTE_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.impl.NameAttributeImpl <em>Name Attribute</em>}' class.
@@ -155,6 +164,15 @@ public interface BasePackage extends EPackage {
 	 * @ordered
 	 */
 	int NAME_ATTRIBUTE__COMMENT = ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAME_ATTRIBUTE__MULTILINE = ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -194,6 +212,15 @@ public interface BasePackage extends EPackage {
 	int VALUE_ATTRIBUTE__COMMENT = ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_ATTRIBUTE__MULTILINE = ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -229,6 +256,15 @@ public interface BasePackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_ATTRIBUTE__COMMENT = ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ATTRIBUTE__MULTILINE = ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -268,6 +304,15 @@ public interface BasePackage extends EPackage {
 	int REFERENCE_ATTRIBUTE__COMMENT = ATTRIBUTE__COMMENT;
 
 	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_ATTRIBUTE__MULTILINE = ATTRIBUTE__MULTILINE;
+
+	/**
 	 * The number of structural features of the '<em>Reference Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -294,6 +339,15 @@ public interface BasePackage extends EPackage {
 	 * @ordered
 	 */
 	int INTEGER_VALUE_ATTRIBUTE__COMMENT = ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VALUE_ATTRIBUTE__MULTILINE = ATTRIBUTE__MULTILINE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1236,6 +1290,17 @@ public interface BasePackage extends EPackage {
 	EAttribute getAttribute_Comment();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.emona.model.base.Attribute#isMultiline <em>Multiline</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Multiline</em>'.
+	 * @see org.emona.model.base.Attribute#isMultiline()
+	 * @see #getAttribute()
+	 * @generated
+	 */
+	EAttribute getAttribute_Multiline();
+
+	/**
 	 * Returns the meta object for class '{@link org.emona.model.base.NameAttribute <em>Name Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1871,6 +1936,14 @@ public interface BasePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ATTRIBUTE__COMMENT = eINSTANCE.getAttribute_Comment();
+
+		/**
+		 * The meta object literal for the '<em><b>Multiline</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ATTRIBUTE__MULTILINE = eINSTANCE.getAttribute_Multiline();
 
 		/**
 		 * The meta object literal for the '{@link org.emona.model.base.impl.NameAttributeImpl <em>Name Attribute</em>}' class.

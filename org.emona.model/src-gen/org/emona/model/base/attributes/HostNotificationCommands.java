@@ -7,6 +7,7 @@
  */
 package org.emona.model.base.attributes;
 
+import org.eclipse.emf.common.util.EList;
 import org.emona.model.base.ReferenceAttribute;
 
 /**
@@ -28,30 +29,20 @@ import org.emona.model.base.ReferenceAttribute;
  */
 public interface HostNotificationCommands extends ReferenceAttribute {
 	/**
-	 * Returns the value of the '<em><b>Reference</b></em>' reference.
+	 * Returns the value of the '<em><b>Reference</b></em>' reference list.
+	 * The list contents are of type {@link org.emona.model.base.attributes.CommandName}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Reference</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Reference</em>' reference.
-	 * @see #setReference(CommandName)
+	 * @return the value of the '<em>Reference</em>' reference list.
 	 * @see org.emona.model.base.attributes.AttributesPackage#getHostNotificationCommands_Reference()
 	 * @model
 	 * @generated
 	 */
-	CommandName getReference();
-
-	/**
-	 * Sets the value of the '{@link org.emona.model.base.attributes.HostNotificationCommands#getReference <em>Reference</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reference</em>' reference.
-	 * @see #getReference()
-	 * @generated
-	 */
-	void setReference(CommandName value);
+	EList<CommandName> getReference();
 
 	/**
 	 * Returns the value of the '<em><b>Token</b></em>' attribute.

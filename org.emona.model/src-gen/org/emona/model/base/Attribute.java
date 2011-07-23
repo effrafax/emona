@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.emona.model.base.Attribute#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.Attribute#isMultiline <em>Multiline</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,6 +52,33 @@ public interface Attribute extends EObject {
 	 * @generated
 	 */
 	void setComment(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Multiline</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Multiline</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Multiline</em>' attribute.
+	 * @see #setMultiline(boolean)
+	 * @see org.emona.model.base.BasePackage#getAttribute_Multiline()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isMultiline();
+
+	/**
+	 * Sets the value of the '{@link org.emona.model.base.Attribute#isMultiline <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Multiline</em>' attribute.
+	 * @see #isMultiline()
+	 * @generated
+	 */
+	void setMultiline(boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -29,6 +29,7 @@ import org.emona.model.base.attributes.HostExecutionFailureCriteria;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.emona.model.base.attributes.impl.HostExecutionFailureCriteriaImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.attributes.impl.HostExecutionFailureCriteriaImpl#isMultiline <em>Multiline</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.HostExecutionFailureCriteriaImpl#isUp <em>Up</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.HostExecutionFailureCriteriaImpl#isDown <em>Down</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.HostExecutionFailureCriteriaImpl#isUnreachable <em>Unreachable</em>}</li>
@@ -61,6 +62,26 @@ public class HostExecutionFailureCriteriaImpl extends EObjectImpl implements
 	 * @ordered
 	 */
 	protected String comment = COMMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTILINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isUp() <em>Up</em>}' attribute.
@@ -229,6 +250,31 @@ public class HostExecutionFailureCriteriaImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMultiline() {
+		return multiline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiline(boolean newMultiline) {
+		boolean oldMultiline = multiline;
+		multiline = newMultiline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(
+					this,
+					Notification.SET,
+					AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__MULTILINE,
+					oldMultiline, multiline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isUp() {
 		return up;
 	}
@@ -360,6 +406,8 @@ public class HostExecutionFailureCriteriaImpl extends EObjectImpl implements
 		switch (featureID) {
 		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__COMMENT:
 			return getComment();
+		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__MULTILINE:
+			return isMultiline();
 		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__UP:
 			return isUp();
 		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__DOWN:
@@ -386,6 +434,9 @@ public class HostExecutionFailureCriteriaImpl extends EObjectImpl implements
 		switch (featureID) {
 		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__COMMENT:
 			setComment((String) newValue);
+			return;
+		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__MULTILINE:
+			setMultiline((Boolean) newValue);
 			return;
 		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__UP:
 			setUp((Boolean) newValue);
@@ -417,6 +468,9 @@ public class HostExecutionFailureCriteriaImpl extends EObjectImpl implements
 		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__COMMENT:
 			setComment(COMMENT_EDEFAULT);
 			return;
+		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__MULTILINE:
+			setMultiline(MULTILINE_EDEFAULT);
+			return;
 		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__UP:
 			setUp(UP_EDEFAULT);
 			return;
@@ -447,6 +501,8 @@ public class HostExecutionFailureCriteriaImpl extends EObjectImpl implements
 		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__COMMENT:
 			return COMMENT_EDEFAULT == null ? comment != null
 					: !COMMENT_EDEFAULT.equals(comment);
+		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__MULTILINE:
+			return multiline != MULTILINE_EDEFAULT;
 		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__UP:
 			return up != UP_EDEFAULT;
 		case AttributesPackage.HOST_EXECUTION_FAILURE_CRITERIA__DOWN:
@@ -541,6 +597,8 @@ public class HostExecutionFailureCriteriaImpl extends EObjectImpl implements
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (comment: ");
 		result.append(comment);
+		result.append(", multiline: ");
+		result.append(multiline);
 		result.append(", up: ");
 		result.append(up);
 		result.append(", down: ");

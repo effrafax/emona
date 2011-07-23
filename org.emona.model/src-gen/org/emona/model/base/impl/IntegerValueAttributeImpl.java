@@ -25,6 +25,7 @@ import org.emona.model.base.IntegerValueAttribute;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.emona.model.base.impl.IntegerValueAttributeImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.impl.IntegerValueAttributeImpl#isMultiline <em>Multiline</em>}</li>
  *   <li>{@link org.emona.model.base.impl.IntegerValueAttributeImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
@@ -52,6 +53,26 @@ public class IntegerValueAttributeImpl extends EObjectImpl implements
 	 * @ordered
 	 */
 	protected String comment = COMMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTILINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -120,6 +141,29 @@ public class IntegerValueAttributeImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMultiline() {
+		return multiline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiline(boolean newMultiline) {
+		boolean oldMultiline = multiline;
+		multiline = newMultiline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE,
+					oldMultiline, multiline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getValue() {
 		return value;
 	}
@@ -158,6 +202,8 @@ public class IntegerValueAttributeImpl extends EObjectImpl implements
 		switch (featureID) {
 		case BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT:
 			return getComment();
+		case BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE:
+			return isMultiline();
 		case BasePackage.INTEGER_VALUE_ATTRIBUTE__VALUE:
 			return getValue();
 		}
@@ -174,6 +220,9 @@ public class IntegerValueAttributeImpl extends EObjectImpl implements
 		switch (featureID) {
 		case BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT:
 			setComment((String) newValue);
+			return;
+		case BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE:
+			setMultiline((Boolean) newValue);
 			return;
 		case BasePackage.INTEGER_VALUE_ATTRIBUTE__VALUE:
 			setValue((Integer) newValue);
@@ -193,6 +242,9 @@ public class IntegerValueAttributeImpl extends EObjectImpl implements
 		case BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT:
 			setComment(COMMENT_EDEFAULT);
 			return;
+		case BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE:
+			setMultiline(MULTILINE_EDEFAULT);
+			return;
 		case BasePackage.INTEGER_VALUE_ATTRIBUTE__VALUE:
 			setValue(VALUE_EDEFAULT);
 			return;
@@ -211,6 +263,8 @@ public class IntegerValueAttributeImpl extends EObjectImpl implements
 		case BasePackage.INTEGER_VALUE_ATTRIBUTE__COMMENT:
 			return COMMENT_EDEFAULT == null ? comment != null
 					: !COMMENT_EDEFAULT.equals(comment);
+		case BasePackage.INTEGER_VALUE_ATTRIBUTE__MULTILINE:
+			return multiline != MULTILINE_EDEFAULT;
 		case BasePackage.INTEGER_VALUE_ATTRIBUTE__VALUE:
 			return value != VALUE_EDEFAULT;
 		}
@@ -230,6 +284,8 @@ public class IntegerValueAttributeImpl extends EObjectImpl implements
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (comment: ");
 		result.append(comment);
+		result.append(", multiline: ");
+		result.append(multiline);
 		result.append(", value: ");
 		result.append(value);
 		result.append(')');

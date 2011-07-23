@@ -25,6 +25,7 @@ import org.emona.model.base.attributes.TwoDCoords;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.emona.model.base.attributes.impl.TwoDCoordsImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.emona.model.base.attributes.impl.TwoDCoordsImpl#isMultiline <em>Multiline</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.TwoDCoordsImpl#getToken <em>Token</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.TwoDCoordsImpl#getXcoord <em>Xcoord</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.TwoDCoordsImpl#getYcoord <em>Ycoord</em>}</li>
@@ -53,6 +54,26 @@ public class TwoDCoordsImpl extends EObjectImpl implements TwoDCoords {
 	 * @ordered
 	 */
 	protected String comment = COMMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MULTILINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMultiline() <em>Multiline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMultiline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getToken() <em>Token</em>}' attribute.
@@ -160,6 +181,29 @@ public class TwoDCoordsImpl extends EObjectImpl implements TwoDCoords {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isMultiline() {
+		return multiline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMultiline(boolean newMultiline) {
+		boolean oldMultiline = multiline;
+		multiline = newMultiline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					AttributesPackage.TWO_DCOORDS__MULTILINE, oldMultiline,
+					multiline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getToken() {
 		return token;
 	}
@@ -218,6 +262,8 @@ public class TwoDCoordsImpl extends EObjectImpl implements TwoDCoords {
 		switch (featureID) {
 		case AttributesPackage.TWO_DCOORDS__COMMENT:
 			return getComment();
+		case AttributesPackage.TWO_DCOORDS__MULTILINE:
+			return isMultiline();
 		case AttributesPackage.TWO_DCOORDS__TOKEN:
 			return getToken();
 		case AttributesPackage.TWO_DCOORDS__XCOORD:
@@ -238,6 +284,9 @@ public class TwoDCoordsImpl extends EObjectImpl implements TwoDCoords {
 		switch (featureID) {
 		case AttributesPackage.TWO_DCOORDS__COMMENT:
 			setComment((String) newValue);
+			return;
+		case AttributesPackage.TWO_DCOORDS__MULTILINE:
+			setMultiline((Boolean) newValue);
 			return;
 		case AttributesPackage.TWO_DCOORDS__XCOORD:
 			setXcoord((Integer) newValue);
@@ -260,6 +309,9 @@ public class TwoDCoordsImpl extends EObjectImpl implements TwoDCoords {
 		case AttributesPackage.TWO_DCOORDS__COMMENT:
 			setComment(COMMENT_EDEFAULT);
 			return;
+		case AttributesPackage.TWO_DCOORDS__MULTILINE:
+			setMultiline(MULTILINE_EDEFAULT);
+			return;
 		case AttributesPackage.TWO_DCOORDS__XCOORD:
 			setXcoord(XCOORD_EDEFAULT);
 			return;
@@ -281,6 +333,8 @@ public class TwoDCoordsImpl extends EObjectImpl implements TwoDCoords {
 		case AttributesPackage.TWO_DCOORDS__COMMENT:
 			return COMMENT_EDEFAULT == null ? comment != null
 					: !COMMENT_EDEFAULT.equals(comment);
+		case AttributesPackage.TWO_DCOORDS__MULTILINE:
+			return multiline != MULTILINE_EDEFAULT;
 		case AttributesPackage.TWO_DCOORDS__TOKEN:
 			return TOKEN_EDEFAULT == null ? token != null : !TOKEN_EDEFAULT
 					.equals(token);
@@ -305,6 +359,8 @@ public class TwoDCoordsImpl extends EObjectImpl implements TwoDCoords {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (comment: ");
 		result.append(comment);
+		result.append(", multiline: ");
+		result.append(multiline);
 		result.append(", token: ");
 		result.append(token);
 		result.append(", xcoord: ");
