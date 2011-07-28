@@ -1,9 +1,12 @@
 package org.emona.test;
 
-import org.osgi.framework.BundleActivator;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-public class Activator implements BundleActivator {
+public class Activator extends AbstractUIPlugin {
+	
+	public static final String PLUGIN_ID="org.emona.test";
 
 	private static BundleContext context;
 
@@ -26,5 +29,11 @@ public class Activator implements BundleActivator {
 	public void stop(BundleContext bundleContext) throws Exception {
 		Activator.context = null;
 	}
+	
+	public static ImageDescriptor getImageDescriptor(String path) {
+		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+	}
+
+	
 
 }

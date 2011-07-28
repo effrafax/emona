@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+	<template id="org.emona.host1" autoinsert="true"
+		context="org.emona.edit.NagiosCfg.ConfigObject" deleted="false"
+		description="host template" enabled="true" name="host"><![CDATA[define host {
+    use ${templateRef:CrossReference('Use.reference')}
+    host_name ${host_name}
+    address ${address}
+    ${cursor}
+}]]></template>
+	<template id='org.emona.att.statusmap_image' autoinsert='true'
+		context='org.emona.edit.NagiosCfg.kw_statusmap_image' deleted='false'
+		description='Attribute: statusmap_image' enabled='true' name='statusmap_image'
+		relevance="100" image="icons/attribute.gif">statusmap_image
+		${value}
+		${cursor}
+	</template>
+	<template id='org.emona.att.obsess_over_host' autoinsert='true'
+		context='org.emona.edit.NagiosCfg.kw_obsess_over_host' deleted='false'
+		description='Attribute: obsess_over_host' enabled='true' name='obsess_over_host'>obsess_over_host
+		${value} ${cursor}
+	</template>
+	<template id='org.emona.att.members' autoinsert='true'
+		context='org.emona.edit.NagiosCfg.kw_members' deleted='false'
+		description='Attribute: members' enabled='true' name='members'>members ${value}
+		${cursor}
+	</template>
+	<template id='org.emona.att.vrml_image' autoinsert='true'
+		context='org.emona.edit.NagiosCfg.kw_vrml_image' deleted='false'
+		description='Attribute: vrml_image' enabled='true' name='vrml_image'>vrml_image
+		${value} ${cursor}
+	</template>
+</templates>
