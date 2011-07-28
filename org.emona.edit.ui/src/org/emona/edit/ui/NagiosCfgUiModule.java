@@ -19,10 +19,10 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
 import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
-import org.eclipse.xtext.ui.editor.templates.DefaultTemplateProposalProvider;
 import org.emona.edit.ui.container.StateProvider;
 import org.emona.edit.ui.contentassist.NagiosCfgTemplateProposalProvider;
 import org.emona.edit.ui.contentassist.ProposalComparator;
+import org.emona.edit.ui.contentassist.XTemplateReader;
 import org.emona.edit.ui.syntaxcoloring.NagTokenMapper;
 
 /**
@@ -53,6 +53,10 @@ public class NagiosCfgUiModule extends org.emona.edit.ui.AbstractNagiosCfgUiModu
 	
 	public Class<? extends ITemplateProposalProvider> bindITemplateProposalProvider() {
 		return NagiosCfgTemplateProposalProvider.class;
+	}
+	
+	public Class<? extends XTemplateReader> bindXTemplateReader() {
+		return XTemplateReader.class;
 	}
 
 

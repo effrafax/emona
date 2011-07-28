@@ -15,11 +15,15 @@ package org.emona.edit.ui;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.QualifiedName;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.emona.edit.sourceset.ISourceSetHandler;
 import org.osgi.framework.BundleContext;
 
-public class NagiosCfgActivator extends
+public class EmonaUiActivator extends
 		org.emona.edit.ui.internal.NagiosCfgActivator {
+	
+	public static final String PLUGIN_ID = "org.emona.edit.ui";
+
 	
 	public static final String SOURCE_SETS = "definition";
 	
@@ -41,5 +45,10 @@ public class NagiosCfgActivator extends
 			}
 		}
 	}
+	
+	public static ImageDescriptor getImageDescriptor(String path) {
+		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+	}
+
 
 }

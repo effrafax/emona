@@ -13,13 +13,28 @@
 
 package org.emona.edit.ui.contentassist;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.text.templates.ContextTypeRegistry;
 import org.eclipse.jface.text.templates.Template;
 import org.eclipse.jface.text.templates.TemplateContext;
+import org.eclipse.jface.text.templates.TemplateProposal;
+import org.eclipse.jface.text.templates.persistence.TemplatePersistenceData;
 import org.eclipse.jface.text.templates.persistence.TemplateStore;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ui.editor.contentassist.ITemplateAcceptor;
 import org.eclipse.xtext.ui.editor.templates.ContextTypeIdHelper;
 import org.eclipse.xtext.ui.editor.templates.DefaultTemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContext;
+import org.emona.edit.ui.EmonaUiActivator;
 import org.emona.model.base.ConfigObject;
 
 import com.google.inject.Inject;
@@ -27,15 +42,19 @@ import com.google.inject.Singleton;
 
 /**
  * @author martin
- *
+ * 
  */
 @Singleton
 public class NagiosCfgTemplateProposalProvider extends
 		DefaultTemplateProposalProvider {
-	
+
+	Log log = LogFactory.getLog(NagiosCfgTemplateProposalProvider.class);
+
 	private static final String KEYWORD_PREFIX = "org.emona.edit.NagiosCfg.kw_";
 	private static final int KEYWORD_PREFIX_SIZE = KEYWORD_PREFIX.length();
-	
+
+	@Inject
+	private XTemplateReader tread;
 
 	/**
 	 * @param templateStore
@@ -47,23 +66,87 @@ public class NagiosCfgTemplateProposalProvider extends
 			ContextTypeRegistry registry, ContextTypeIdHelper helper) {
 		super(templateStore, registry, helper);
 	}
-	
+
+	@Override
+	protected void createTemplates(TemplateContext templateContext,
+			ContentAssistContext context, ITemplateAcceptor acceptor) {
+		// "regular templates"
+		super.createTemplates(templateContext, context, acceptor);
+
+		// create a template on the fly
+		InputStream in;
+		try {
+			in = FileLocator.openStream(EmonaUiActivator.getInstance()
+					.getBundle(), new Path("templates/xtemplates.xml"), false);
+			Reader reader = new InputStreamReader(in);
+			TemplatePersistenceData[] templ = tread.read(reader);
+
+			for (int i = 0; i < templ.length; i++) {
+				Template template = templ[i].getTemplate();
+				// create a proposal
+				TemplateProposal tp = createProposal(template, templateContext,
+						context, getImage(template), getRelevance(template));
+
+				// make it available
+				acceptor.accept(tp);
+			}
+		} catch (IOException e) {
+			log.error("Could not load attribute templates!");
+			return;
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.xtext.ui.editor.templates.DefaultTemplateProposalProvider
+	 * #getImage(org.eclipse.jface.text.templates.Template)
+	 */
+	@Override
+	public Image getImage(Template template) {
+		if (template instanceof XTemplate) {
+			return ((XTemplate) template).getImage();
+		} else {
+			return super.getImage(template);
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.xtext.ui.editor.templates.DefaultTemplateProposalProvider
+	 * #getRelevance(org.eclipse.jface.text.templates.Template)
+	 */
+	@Override
+	public int getRelevance(Template template) {
+		if (template instanceof XTemplate) {
+			return ((XTemplate) template).getRelevance();
+		} else {
+			return super.getRelevance(template);
+		}
+	}
+
 	/**
 	 * 
-	 * If the current context is a ConfigObject and the attribute is already set,
-	 * the template is ignored.
+	 * If the current context is a ConfigObject and the attribute is already
+	 * set, the template is ignored.
 	 * 
-	 * @see org.eclipse.xtext.ui.editor.templates.AbstractTemplateProposalProvider#validate(org.eclipse.jface.text.templates.Template, org.eclipse.jface.text.templates.TemplateContext)
+	 * @see org.eclipse.xtext.ui.editor.templates.AbstractTemplateProposalProvider#validate(org.eclipse.jface.text.templates.Template,
+	 *      org.eclipse.jface.text.templates.TemplateContext)
 	 */
 	@Override
 	protected boolean validate(Template template, TemplateContext context) {
 		boolean result = super.validate(template, context);
 		if (template.getContextTypeId().startsWith(KEYWORD_PREFIX)) {
 			if (context instanceof XtextTemplateContext) {
-				XtextTemplateContext xctx = (XtextTemplateContext)context;
+				XtextTemplateContext xctx = (XtextTemplateContext) context;
 				if (xctx.getContentAssistContext().getCurrentModel() instanceof ConfigObject) {
-					ConfigObject cfgObj = (ConfigObject) xctx.getContentAssistContext().getCurrentModel();
-					String keyword = template.getContextTypeId().substring(KEYWORD_PREFIX_SIZE);
+					ConfigObject cfgObj = (ConfigObject) xctx
+							.getContentAssistContext().getCurrentModel();
+					String keyword = template.getContextTypeId().substring(
+							KEYWORD_PREFIX_SIZE);
 					return !cfgObj.hasAttribute(keyword);
 				}
 			}

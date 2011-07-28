@@ -16,5 +16,11 @@ Require-Bundle: org.emona.edit;visibility:=reexport,
 Import-Package: org.apache.commons.logging,
  org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.emona.edit.ui.contentassist.antlr
-Bundle-Activator: org.emona.edit.ui.NagiosCfgActivator
+Export-Package: org.emona.edit.ui.contentassist;x-friends:="org.emona.test",
+ org.emona.edit.ui.contentassist.antlr;
+  uses:="org.eclipse.xtext,
+   org.emona.edit.services,
+   org.eclipse.xtext.ui.editor.contentassist.antlr.internal,
+   org.emona.edit.ui.contentassist.antlr.internal,
+   org.eclipse.xtext.ui.editor.contentassist.antlr"
+Bundle-Activator: org.emona.edit.ui.EmonaUiActivator

@@ -50,7 +50,7 @@ import org.eclipse.xtext.ui.editor.preferences.AbstractPreferencePage;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
 import org.emona.edit.sourceset.IModifiableSourceSetHandler;
 import org.emona.edit.sourceset.ISourceSetHandler;
-import org.emona.edit.ui.NagiosCfgActivator;
+import org.emona.edit.ui.EmonaUiActivator;
 import org.emona.edit.ui.properties.SourceTreeContentProvider.SourceSetNode;
 
 import com.google.inject.Inject;
@@ -325,7 +325,7 @@ public class SubsetPropertyPage extends AbstractPreferencePage {
 		if (retVal && isPropertyPage()) {
 			try {
 				project.setPersistentProperty(new QualifiedName(
-						qualifiedName(), NagiosCfgActivator.SOURCE_SETS),
+						qualifiedName(), EmonaUiActivator.SOURCE_SETS),
 						sourceSet.serialize(project.getName()));
 				((IPersistentPreferenceStore) getPreferenceStore()).save();
 			} catch (Exception e) {
