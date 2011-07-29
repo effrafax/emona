@@ -52,6 +52,7 @@ public class NagiosCfgTemplateProposalProvider extends
 
 	private static final String KEYWORD_PREFIX = "org.emona.edit.NagiosCfg.kw_";
 	private static final int KEYWORD_PREFIX_SIZE = KEYWORD_PREFIX.length();
+	private TemplatePersistenceData[] staticTemplates;
 
 	@Inject
 	private XTemplateReader tread;
@@ -76,19 +77,30 @@ public class NagiosCfgTemplateProposalProvider extends
 		// create a template on the fly
 		InputStream in;
 		try {
-			in = FileLocator.openStream(EmonaUiActivator.getInstance()
-					.getBundle(), new Path("templates/xtemplates.xml"), false);
-			Reader reader = new InputStreamReader(in);
-			TemplatePersistenceData[] templ = tread.read(reader);
+			if (staticTemplates == null) {
+				in = FileLocator.openStream(EmonaUiActivator.getInstance()
+						.getBundle(), new Path("templates/xtemplates.xml"),
+						false);
+				Reader reader = new InputStreamReader(in);
+				staticTemplates = tread.read(reader);
+			}
 
-			for (int i = 0; i < templ.length; i++) {
-				Template template = templ[i].getTemplate();
-				// create a proposal
-				TemplateProposal tp = createProposal(template, templateContext,
-						context, getImage(template), getRelevance(template));
+			for (int i = 0; i < staticTemplates.length; i++) {
+				Template template = staticTemplates[i].getTemplate();
 
-				// make it available
-				acceptor.accept(tp);
+				if ((templateContext.getContextType().getId() == null || templateContext
+						.getContextType().getId()
+						.equals(template.getContextTypeId()))
+						&& validate(template, context)
+						&& validate(template, templateContext)) {
+					// create a proposal
+					TemplateProposal tp = createProposal(template,
+							templateContext, context, getImage(template),
+							getRelevance(template));
+
+					// make it available
+					acceptor.accept(tp);
+				}
 			}
 		} catch (IOException e) {
 			log.error("Could not load attribute templates!");

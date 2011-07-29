@@ -126,7 +126,8 @@ public class XTemplateReader extends TemplateReaderWriter {
 							if (imgPath != null && !"".equals(imgPath)) {
 								imageDescriptor = EmonaUiActivator
 										.getImageDescriptor(imgPath);
-							} else {
+							} 
+							if (imageDescriptor == null) {
 								imageDescriptor = EmonaUiActivator
 										.getImageDescriptor("icons/defaultnode.gif"); //$NON-NLS-1$
 							}
