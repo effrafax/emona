@@ -57,6 +57,7 @@ public class XTemplateReader extends TemplateReaderWriter {
 	private static final String ATT_RELEVANCE = "relevance"; //$NON-NLS-1$
 	private static final String ATT_IMAGE = "image"; //$NON-NLS-1$
 	private static final String ATT_AUTO_INSERTABLE = "autoinsert"; //$NON-NLS-1$
+	private static final String ATT_PARENTS = "parents"; //$NON-NLS-1$
 
 	private Map<String, Image> imgMap = new HashMap<String, Image>();
 
@@ -134,12 +135,19 @@ public class XTemplateReader extends TemplateReaderWriter {
 							image = imageDescriptor.createImage();
 							imgMap.put(imgPath, image);
 						}
+						String parents = xread.getAttributeValue(null, ATT_PARENTS);
 
 						String pattern = translateString(
 								xread.getElementText(), bundle);
 						XTemplate template = new XTemplate(name, description,
 								context, pattern, autoInsertable, relevance,
 								image);
+						if (parents != null && !"".equals(parents)) {
+							String[] parStrings = parents.split(",");
+							for (int i = 0; i < parStrings.length; i++) {
+								template.addParentObject(parStrings[i]);
+							}
+						}
 						TemplatePersistenceData data = new TemplatePersistenceData(
 								template, enabled, id);
 						data.setDeleted(deleted);

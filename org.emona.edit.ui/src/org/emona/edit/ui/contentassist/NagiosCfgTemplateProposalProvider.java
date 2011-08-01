@@ -157,6 +157,15 @@ public class NagiosCfgTemplateProposalProvider extends
 				if (xctx.getContentAssistContext().getCurrentModel() instanceof ConfigObject) {
 					ConfigObject cfgObj = (ConfigObject) xctx
 							.getContentAssistContext().getCurrentModel();
+					
+					if (template instanceof XTemplate) {
+						XTemplate xtemp = (XTemplate) template;
+						if (xtemp.getParentObjects() != null) {
+							if (!xtemp.getParentObjects().contains(cfgObj.eClass().getName())) {
+								return false;
+							}
+						}
+					}
 					String keyword = template.getContextTypeId().substring(
 							KEYWORD_PREFIX_SIZE);
 					return !cfgObj.hasAttribute(keyword);

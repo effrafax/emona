@@ -78,7 +78,9 @@ public class XTemplateReaderTest {
 				Assert.assertNotNull(data);
 				
 				Image expectedImg = org.emona.test.Activator.getImageDescriptor("icons/attribute.gif").createImage();
-				Assert.assertArrayEquals("Wrong image loaded", expectedImg.getImageData().data, img.getImageData().data); 
+				Assert.assertArrayEquals("Wrong image loaded", expectedImg.getImageData().data, img.getImageData().data);
+				
+				Assert.assertTrue(template.getParentObjects().contains("Host"));
 
 			} else {
 				Image img = template.getImage();

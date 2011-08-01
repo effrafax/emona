@@ -11,7 +11,7 @@
 	<template id='org.emona.att.statusmap_image' autoinsert='true'
 		context='org.emona.edit.NagiosCfg.kw_statusmap_image' deleted='false'
 		description='Attribute: statusmap_image' enabled='true' name='statusmap_image'
-		relevance="100" image="icons/attribute.gif">statusmap_image
+		relevance="100" image="icons/attribute.gif" parents="Host,Service">statusmap_image
 		${value}
 		${cursor}
 	</template>

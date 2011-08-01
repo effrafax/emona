@@ -13,6 +13,9 @@
 
 package org.emona.edit.ui.contentassist;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.jface.text.templates.Template;
 import org.eclipse.swt.graphics.Image;
 
@@ -25,6 +28,7 @@ public class XTemplate extends Template {
 
 	private int relevance;
 	private Image image;
+	private List<String> parentObjects = null;
 
 	
 	/**
@@ -51,6 +55,15 @@ public class XTemplate extends Template {
 		super(name, description, contextTypeId, pattern, isAutoInsertable);
 		this.relevance = relevance;
 		this.image = image;
+	}
+
+	public XTemplate(String name, String description, String contextTypeId,
+			String pattern, boolean isAutoInsertable, int relevance, Image image,
+			List<String> parentObjects) {
+		super(name, description, contextTypeId, pattern, isAutoInsertable);
+		this.relevance = relevance;
+		this.image = image;
+		this.parentObjects = parentObjects;
 	}
 
 	
@@ -87,6 +100,17 @@ public class XTemplate extends Template {
 
 	public void setImage(Image image) {
 		this.image = image;
+	}
+	
+	public void addParentObject(String obj) {
+		if (parentObjects == null) {
+			parentObjects = new ArrayList<String>();
+		}
+		parentObjects.add(obj);
+	}
+	
+	public List<String> getParentObjects() {
+		return parentObjects;
 	}
 	
 
