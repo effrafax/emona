@@ -571,26 +571,6 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getServiceFailureCriteria_Pending() {
-		return (EAttribute) serviceFailureCriteriaEClass
-				.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getServiceFailureCriteria_None() {
-		return (EAttribute) serviceFailureCriteriaEClass
-				.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getServiceState() {
 		return serviceStateEClass;
 	}
@@ -600,35 +580,8 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getServiceState_Ok() {
+	public EAttribute getServiceState_State() {
 		return (EAttribute) serviceStateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getServiceState_Warning() {
-		return (EAttribute) serviceStateEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getServiceState_Critical() {
-		return (EAttribute) serviceStateEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getServiceState_Unknown() {
-		return (EAttribute) serviceStateEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -674,26 +627,8 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getHostState_Up() {
+	public EAttribute getHostState_State() {
 		return (EAttribute) hostStateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getHostState_Down() {
-		return (EAttribute) hostStateEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getHostState_Unreachable() {
-		return (EAttribute) hostStateEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -703,26 +638,6 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 */
 	public EClass getHostFailureCriteria() {
 		return hostFailureCriteriaEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getHostFailureCriteria_Pending() {
-		return (EAttribute) hostFailureCriteriaEClass.getEStructuralFeatures()
-				.get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getHostFailureCriteria_None() {
-		return (EAttribute) hostFailureCriteriaEClass.getEStructuralFeatures()
-				.get(1);
 	}
 
 	/**
@@ -1021,33 +936,21 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		createEAttribute(integerValueAttributeEClass,
 				INTEGER_VALUE_ATTRIBUTE__VALUE);
 
-		serviceFailureCriteriaEClass = createEClass(SERVICE_FAILURE_CRITERIA);
-		createEAttribute(serviceFailureCriteriaEClass,
-				SERVICE_FAILURE_CRITERIA__PENDING);
-		createEAttribute(serviceFailureCriteriaEClass,
-				SERVICE_FAILURE_CRITERIA__NONE);
-
 		serviceStateEClass = createEClass(SERVICE_STATE);
-		createEAttribute(serviceStateEClass, SERVICE_STATE__OK);
-		createEAttribute(serviceStateEClass, SERVICE_STATE__WARNING);
-		createEAttribute(serviceStateEClass, SERVICE_STATE__CRITICAL);
-		createEAttribute(serviceStateEClass, SERVICE_STATE__UNKNOWN);
+		createEAttribute(serviceStateEClass, SERVICE_STATE__STATE);
+
+		hostStateEClass = createEClass(HOST_STATE);
+		createEAttribute(hostStateEClass, HOST_STATE__STATE);
+
+		serviceFailureCriteriaEClass = createEClass(SERVICE_FAILURE_CRITERIA);
+
+		hostFailureCriteriaEClass = createEClass(HOST_FAILURE_CRITERIA);
 
 		serviceNotificationOptionEClass = createEClass(SERVICE_NOTIFICATION_OPTION);
 		createEAttribute(serviceNotificationOptionEClass,
 				SERVICE_NOTIFICATION_OPTION__FLAPPING);
 		createEAttribute(serviceNotificationOptionEClass,
 				SERVICE_NOTIFICATION_OPTION__NONE);
-
-		hostStateEClass = createEClass(HOST_STATE);
-		createEAttribute(hostStateEClass, HOST_STATE__UP);
-		createEAttribute(hostStateEClass, HOST_STATE__DOWN);
-		createEAttribute(hostStateEClass, HOST_STATE__UNREACHABLE);
-
-		hostFailureCriteriaEClass = createEClass(HOST_FAILURE_CRITERIA);
-		createEAttribute(hostFailureCriteriaEClass,
-				HOST_FAILURE_CRITERIA__PENDING);
-		createEAttribute(hostFailureCriteriaEClass, HOST_FAILURE_CRITERIA__NONE);
 
 		configObjectEClass = createEClass(CONFIG_OBJECT);
 		createEReference(configObjectEClass, CONFIG_OBJECT__ATTR);
@@ -1141,9 +1044,9 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		integerValueAttributeEClass.getESuperTypes().add(this.getAttribute());
 		serviceFailureCriteriaEClass.getESuperTypes().add(
 				this.getServiceState());
+		hostFailureCriteriaEClass.getESuperTypes().add(this.getHostState());
 		serviceNotificationOptionEClass.getESuperTypes().add(
 				this.getServiceState());
-		hostFailureCriteriaEClass.getESuperTypes().add(this.getHostState());
 		configObjectEClass.getESuperTypes().add(this.getInfoObject());
 		commentLineEClass.getESuperTypes().add(this.getInfoObject());
 		hostEClass.getESuperTypes().add(this.getConfigObject());
@@ -1228,38 +1131,27 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
-		initEClass(serviceFailureCriteriaEClass, ServiceFailureCriteria.class,
-				"ServiceFailureCriteria", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getServiceFailureCriteria_Pending(),
-				ecorePackage.getEBoolean(), "pending", "false", 1, 1,
-				ServiceFailureCriteria.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getServiceFailureCriteria_None(),
-				ecorePackage.getEBoolean(), "none", "false", 1, 1,
-				ServiceFailureCriteria.class, !IS_TRANSIENT, !IS_VOLATILE,
+		initEClass(serviceStateEClass, ServiceState.class, "ServiceState",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServiceState_State(), this.getServiceStateValue(),
+				"state", null, 1, -1, ServiceState.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(hostStateEClass, HostState.class, "HostState", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHostState_State(), this.getHostStateValue(), "state",
+				null, 0, -1, HostState.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
-		initEClass(serviceStateEClass, ServiceState.class, "ServiceState",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getServiceState_Ok(), ecorePackage.getEBoolean(), "ok",
-				"false", 1, 1, ServiceState.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getServiceState_Warning(), ecorePackage.getEBoolean(),
-				"warning", "false", 1, 1, ServiceState.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getServiceState_Critical(), ecorePackage.getEBoolean(),
-				"critical", "false", 1, 1, ServiceState.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getServiceState_Unknown(), ecorePackage.getEBoolean(),
-				"unknown", "false", 1, 1, ServiceState.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEClass(serviceFailureCriteriaEClass, ServiceFailureCriteria.class,
+				"ServiceFailureCriteria", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(hostFailureCriteriaEClass, HostFailureCriteria.class,
+				"HostFailureCriteria", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(serviceNotificationOptionEClass,
 				ServiceNotificationOption.class, "ServiceNotificationOption",
@@ -1272,35 +1164,6 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		initEAttribute(getServiceNotificationOption_None(),
 				ecorePackage.getEBoolean(), "none", "false", 1, 1,
 				ServiceNotificationOption.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-
-		initEClass(hostStateEClass, HostState.class, "HostState", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getHostState_Up(), ecorePackage.getEBoolean(), "up",
-				"false", 1, 1, HostState.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getHostState_Down(), ecorePackage.getEBoolean(), "down",
-				"false", 1, 1, HostState.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getHostState_Unreachable(), ecorePackage.getEBoolean(),
-				"unreachable", "false", 1, 1, HostState.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-
-		initEClass(hostFailureCriteriaEClass, HostFailureCriteria.class,
-				"HostFailureCriteria", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getHostFailureCriteria_Pending(),
-				ecorePackage.getEBoolean(), "pending", "false", 1, 1,
-				HostFailureCriteria.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getHostFailureCriteria_None(),
-				ecorePackage.getEBoolean(), "none", "false", 1, 1,
-				HostFailureCriteria.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
@@ -1402,6 +1265,11 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		addEEnumLiteral(hostStateValueEEnum, HostStateValue.UP);
 		addEEnumLiteral(hostStateValueEEnum, HostStateValue.DOWN);
 		addEEnumLiteral(hostStateValueEEnum, HostStateValue.UNREACHABLE);
+		addEEnumLiteral(hostStateValueEEnum, HostStateValue.PENDING);
+		addEEnumLiteral(hostStateValueEEnum, HostStateValue.FLAPPING);
+		addEEnumLiteral(hostStateValueEEnum, HostStateValue.RECOVERY);
+		addEEnumLiteral(hostStateValueEEnum, HostStateValue.SCHEDULEDDOWNTIME);
+		addEEnumLiteral(hostStateValueEEnum, HostStateValue.NONE);
 
 		initEEnum(serviceStateValueEEnum, ServiceStateValue.class,
 				"ServiceStateValue");
@@ -1409,6 +1277,9 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		addEEnumLiteral(serviceStateValueEEnum, ServiceStateValue.WARNING);
 		addEEnumLiteral(serviceStateValueEEnum, ServiceStateValue.CRITICAL);
 		addEEnumLiteral(serviceStateValueEEnum, ServiceStateValue.UNKNOWN);
+		addEEnumLiteral(serviceStateValueEEnum, ServiceStateValue.PENDING);
+		addEEnumLiteral(serviceStateValueEEnum, ServiceStateValue.FLAPPING);
+		addEEnumLiteral(serviceStateValueEEnum, ServiceStateValue.NONE);
 
 		// Initialize data types
 		initEDataType(inetAddressEDataType, InetAddress.class, "InetAddress",

@@ -759,7 +759,7 @@ ObsessOverHost returns baseAttributes::ObsessOverHost:
  */
 HostStalkingOptions returns baseAttributes::HostStalkingOptions:
     {baseAttributes::HostStalkingOptions}
-    'stalking_options' (up?='u'? & down?='d'? & unreachable?='u'?);
+    'stalking_options' state+=HostStateValue (COMMA state+=HostStateValue)*;
 
 /* */
 /*
@@ -768,10 +768,9 @@ HostStalkingOptions returns baseAttributes::HostStalkingOptions:
 HostFlapDetectionOptions returns baseAttributes::HostFlapDetectionOptions:
     'flap_detection_options' value=HostStateValue;
 
-HNotificationOptions returns baseAttributes::HostNotificationOptions hidden(IL_WS, COMMA):
+HNotificationOptions returns baseAttributes::HostNotificationOptions hidden(IL_WS):
     {baseAttributes::HostNotificationOptions}
-    'notification_options' (recovery?='r'? & down?='d'? & unreachable?='u'? & flapping?='f'? & scheduledDowntime?='s'?
-    & none?='n'?);
+    'notification_options' state+=HostStateValue3 (COMMA state+=HostStateValue3)*;
 
 VrmlImage returns baseAttributes::VrmlImage:
     'vrml_image' value=Entry;
@@ -850,7 +849,7 @@ ObsessOverService returns baseAttributes::ObsessOverService:
  */
 ServiceFlapDetectionOptions returns baseAttributes::ServiceFlapDetectionOptions:
     {baseAttributes::ServiceFlapDetectionOptions}
-    'flap_detection_options' (ok?='o'? & warning?='w'? & critical?='c'? & unknown?='u'?);
+    'flap_detection_options' state+=ServiceStateValue (COMMA state+=ServiceStateValue)*;
 
 /* */
 /*
@@ -858,7 +857,7 @@ ServiceFlapDetectionOptions returns baseAttributes::ServiceFlapDetectionOptions:
  */
 ServiceStalkingOptions returns baseAttributes::ServiceStalkingOptions:
     {baseAttributes::ServiceStalkingOptions}
-    'stalking_options' (ok?='o'? & warning?='w'? & critical?='c'? & unknown?='u'?);
+    'stalking_options' state+=ServiceStateValue (COMMA state+=ServiceStateValue)*;
 
 /* */
 /*
@@ -895,15 +894,14 @@ DependentServiceDescription returns baseAttributes::DependentServiceDescription:
 InheritsParent returns baseAttributes::InheritsParent:
     'inherits_parent' enabled=TrueFalse;
 
-ServiceExecutionFailureCriteria returns baseAttributes::ServiceExecutionFailureCriteria hidden(IL_WS, COMMA):
+ServiceExecutionFailureCriteria returns baseAttributes::ServiceExecutionFailureCriteria hidden(IL_WS):
     {baseAttributes::ServiceExecutionFailureCriteria}
-    'execution_failure_criteria' (ok?='o'? & warning?='w'? & critical?='c'? & unknown?='u'? & pending?='p'? &
-    none?='n'?);
+    'execution_failure_criteria' state+=ServiceStateValue1 (COMMA state+=ServiceStateValue1)*;
 
-ServiceNotificationFailureCriteria returns baseAttributes::ServiceNotificationFailureCriteria hidden(IL_WS, COMMA):
+
+ServiceNotificationFailureCriteria returns baseAttributes::ServiceNotificationFailureCriteria hidden(IL_WS):
     {baseAttributes::ServiceNotificationFailureCriteria}
-    'notification_failure_criteria' (ok?='o'? & warning?='w'? & critical?='c'? & unknown?='u'? & pending?='p'? &
-    none?='n'?);
+    'notification_failure_criteria' state+=ServiceStateValue1 (COMMA state+=ServiceStateValue1)*;
 
 DependencyPeriod returns baseAttributes::DependencyPeriod:
     'dependency_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
@@ -923,9 +921,9 @@ LastNotification returns baseAttributes::LastNotification:
 EscalationPeriod returns baseAttributes::EscalationPeriod:
     'escalation_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
 
-ServiceEscalationOptions returns baseAttributes::ServiceEscalationOptions hidden(IL_WS, COMMA):
+ServiceEscalationOptions returns baseAttributes::ServiceEscalationOptions hidden(IL_WS):
     {baseAttributes::ServiceEscalationOptions}
-    'escalation_options' (ok?='o'? & warning?='w'? & critical?='c'? & unknown?='u'?);
+    'escalation_options' state+=ServiceStateValue (COMMA state+=ServiceStateValue)*;
 
 /* */
 /*
@@ -933,17 +931,17 @@ ServiceEscalationOptions returns baseAttributes::ServiceEscalationOptions hidden
  * Host Escalation Attributes
  * **************************************
  */
-HostExecutionFailureCriteria returns baseAttributes::HostExecutionFailureCriteria hidden(IL_WS, COMMA):
+HostExecutionFailureCriteria returns baseAttributes::HostExecutionFailureCriteria hidden(IL_WS):
     {baseAttributes::HostExecutionFailureCriteria}
-    'execution_failure_criteria' (up?='o'? & down?='d'? & unreachable?='u'? & pending?='p'? & none?='n'?);
+    'execution_failure_criteria' state+=HostStateValue2 (COMMA state+=HostStateValue2)*;
 
-HostNotificationFailureCriteria returns baseAttributes::HostNotificationFailureCriteria hidden(IL_WS, COMMA):
+HostNotificationFailureCriteria returns baseAttributes::HostNotificationFailureCriteria hidden(IL_WS):
     {baseAttributes::HostNotificationFailureCriteria}
-    'notification_failure_criteria' (up?='o'? & down?='d'? & unreachable?='u'? & pending?='p'? & none?='n'?);
+    'notification_failure_criteria' state+=HostStateValue2 (COMMA state+=HostStateValue2)*;
 
-HostEscalationOptions returns baseAttributes::HostEscalationOptions hidden(IL_WS, COMMA):
+HostEscalationOptions returns baseAttributes::HostEscalationOptions hidden(IL_WS):
     {baseAttributes::HostEscalationOptions}
-    'escalation_options' (up?='r'? & down?='d'? & unreachable?='u'?);
+    'escalation_options' state+=HostStateValue1 (COMMA state+=HostStateValue1)*;
 
 /* */
 /*
@@ -1037,14 +1035,13 @@ HostNotificationPeriod returns baseAttributes::HostNotificationPeriod:
 ServiceNotificationPeriod returns baseAttributes::ServiceNotificationPeriod:
     'service_notification_period' reference=[baseAttributes::TimeperiodName|TimeperiodNameEntry];
 
-HostNotificationOptions returns baseAttributes::HostNotificationOptions hidden(IL_WS, COMMA):
+HostNotificationOptions returns baseAttributes::HostNotificationOptions hidden(IL_WS):
     {baseAttributes::HostNotificationOptions}
-    'host_notification_options' (recovery?='r'? & down?='d'? & unreachable?='u'? & flapping?='f'? &
-    scheduledDowntime?='s'? & none?='n'?);
+    'host_notification_options' state+=HostStateValue3 (COMMA state+=HostStateValue3)*;
 
 ServiceNotificationOptions returns baseAttributes::ServiceNotificationOptions:
     {baseAttributes::ServiceNotificationOptions}
-    'service_notification_options' (warning?='w'? & unknown?='u'? & critical?='c'? & flapping?='f'? & none?='n'?);
+    'service_notification_options' state+=ServiceStateValue2 (COMMA state+=ServiceStateValue2)*;
 
 HostNotificationCommands returns baseAttributes::HostNotificationCommands:
     'host_notification_commands' reference+=[baseAttributes::CommandName|CommandNameEntry] (COMMA
@@ -1105,8 +1102,26 @@ ContactMembers returns baseAttributes::ContactMembers:
 enum ServiceStateValue returns baseModel::ServiceStateValue:
     OK='o' | WARNING='w' | CRITICAL='c' | UNKNOWN='u';
 
+enum ServiceStateValue1 returns baseModel::ServiceStateValue:
+    OK='o' | WARNING='w' | CRITICAL='c' | UNKNOWN='u' | PENDING='p' | NONE='n';
+
+enum ServiceStateValue2 returns baseModel::ServiceStateValue:
+    WARNING='w' | UNKNOWN='u' | CRITICAL='c' | FLAPPING='f' | NONE='n';
+    
+
 enum HostStateValue returns baseModel::HostStateValue:
     UP='o' | DOWN='d' | UNREACHABLE='u';
+
+enum HostStateValue1 returns baseModel::HostStateValue:
+    UP='r' | DOWN='d' | UNREACHABLE='u';
+
+enum HostStateValue2 returns baseModel::HostStateValue:
+    UP='r' | DOWN='d' | UNREACHABLE='u' | PENDING='p' | NONE='n';
+
+enum HostStateValue3 returns baseModel::HostStateValue:
+    RECOVERY='r' | DOWN='d' | UNREACHABLE='u' | FLAPPING='f' | 
+    SCHEDULEDDOWNTIME='s' | NONE='n';
+
 
 HostNameEntry:
     UID;

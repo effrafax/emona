@@ -613,6 +613,11 @@ public class AttributesAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseHostState(HostState object) {
+			return createHostStateAdapter();
+		}
+
+		@Override
 		public Adapter caseServiceState(ServiceState object) {
 			return createServiceStateAdapter();
 		}
@@ -621,11 +626,6 @@ public class AttributesAdapterFactory extends AdapterFactoryImpl {
 		public Adapter caseServiceNotificationOption(
 				ServiceNotificationOption object) {
 			return createServiceNotificationOptionAdapter();
-		}
-
-		@Override
-		public Adapter caseHostState(HostState object) {
-			return createHostStateAdapter();
 		}
 
 		@Override

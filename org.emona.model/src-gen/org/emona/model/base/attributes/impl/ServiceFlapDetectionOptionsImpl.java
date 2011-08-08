@@ -7,16 +7,20 @@
  */
 package org.emona.model.base.attributes.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.emona.model.base.BasePackage;
 import org.emona.model.base.ServiceState;
 
+import org.emona.model.base.ServiceStateValue;
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.ServiceFlapDetectionOptions;
 
@@ -29,10 +33,7 @@ import org.emona.model.base.attributes.ServiceFlapDetectionOptions;
  * <ul>
  *   <li>{@link org.emona.model.base.attributes.impl.ServiceFlapDetectionOptionsImpl#getComment <em>Comment</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.ServiceFlapDetectionOptionsImpl#isMultiline <em>Multiline</em>}</li>
- *   <li>{@link org.emona.model.base.attributes.impl.ServiceFlapDetectionOptionsImpl#isOk <em>Ok</em>}</li>
- *   <li>{@link org.emona.model.base.attributes.impl.ServiceFlapDetectionOptionsImpl#isWarning <em>Warning</em>}</li>
- *   <li>{@link org.emona.model.base.attributes.impl.ServiceFlapDetectionOptionsImpl#isCritical <em>Critical</em>}</li>
- *   <li>{@link org.emona.model.base.attributes.impl.ServiceFlapDetectionOptionsImpl#isUnknown <em>Unknown</em>}</li>
+ *   <li>{@link org.emona.model.base.attributes.impl.ServiceFlapDetectionOptionsImpl#getState <em>State</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.ServiceFlapDetectionOptionsImpl#getToken <em>Token</em>}</li>
  * </ul>
  * </p>
@@ -82,84 +83,14 @@ public class ServiceFlapDetectionOptionsImpl extends EObjectImpl implements
 	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isOk() <em>Ok</em>}' attribute.
+	 * The cached value of the '{@link #getState() <em>State</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isOk()
+	 * @see #getState()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean OK_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isOk() <em>Ok</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isOk()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean ok = OK_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isWarning() <em>Warning</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isWarning()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean WARNING_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isWarning() <em>Warning</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isWarning()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean warning = WARNING_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isCritical() <em>Critical</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isCritical()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean CRITICAL_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isCritical() <em>Critical</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isCritical()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean critical = CRITICAL_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isUnknown() <em>Unknown</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isUnknown()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean UNKNOWN_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isUnknown() <em>Unknown</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isUnknown()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean unknown = UNKNOWN_EDEFAULT;
+	protected EList<ServiceStateValue> state;
 
 	/**
 	 * The default value of the '{@link #getToken() <em>Token</em>}' attribute.
@@ -253,91 +184,13 @@ public class ServiceFlapDetectionOptionsImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isOk() {
-		return ok;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOk(boolean newOk) {
-		boolean oldOk = ok;
-		ok = newOk;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__OK,
-					oldOk, ok));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isWarning() {
-		return warning;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setWarning(boolean newWarning) {
-		boolean oldWarning = warning;
-		warning = newWarning;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__WARNING,
-					oldWarning, warning));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isCritical() {
-		return critical;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCritical(boolean newCritical) {
-		boolean oldCritical = critical;
-		critical = newCritical;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__CRITICAL,
-					oldCritical, critical));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isUnknown() {
-		return unknown;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUnknown(boolean newUnknown) {
-		boolean oldUnknown = unknown;
-		unknown = newUnknown;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__UNKNOWN,
-					oldUnknown, unknown));
+	public EList<ServiceStateValue> getState() {
+		if (state == null) {
+			state = new EDataTypeUniqueEList<ServiceStateValue>(
+					ServiceStateValue.class, this,
+					AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__STATE);
+		}
+		return state;
 	}
 
 	/**
@@ -361,14 +214,8 @@ public class ServiceFlapDetectionOptionsImpl extends EObjectImpl implements
 			return getComment();
 		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__MULTILINE:
 			return isMultiline();
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__OK:
-			return isOk();
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__WARNING:
-			return isWarning();
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__CRITICAL:
-			return isCritical();
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__UNKNOWN:
-			return isUnknown();
+		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__STATE:
+			return getState();
 		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__TOKEN:
 			return getToken();
 		}
@@ -380,6 +227,7 @@ public class ServiceFlapDetectionOptionsImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -389,17 +237,10 @@ public class ServiceFlapDetectionOptionsImpl extends EObjectImpl implements
 		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__MULTILINE:
 			setMultiline((Boolean) newValue);
 			return;
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__OK:
-			setOk((Boolean) newValue);
-			return;
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__WARNING:
-			setWarning((Boolean) newValue);
-			return;
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__CRITICAL:
-			setCritical((Boolean) newValue);
-			return;
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__UNKNOWN:
-			setUnknown((Boolean) newValue);
+		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__STATE:
+			getState().clear();
+			getState().addAll(
+					(Collection<? extends ServiceStateValue>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -419,17 +260,8 @@ public class ServiceFlapDetectionOptionsImpl extends EObjectImpl implements
 		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__MULTILINE:
 			setMultiline(MULTILINE_EDEFAULT);
 			return;
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__OK:
-			setOk(OK_EDEFAULT);
-			return;
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__WARNING:
-			setWarning(WARNING_EDEFAULT);
-			return;
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__CRITICAL:
-			setCritical(CRITICAL_EDEFAULT);
-			return;
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__UNKNOWN:
-			setUnknown(UNKNOWN_EDEFAULT);
+		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__STATE:
+			getState().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -448,14 +280,8 @@ public class ServiceFlapDetectionOptionsImpl extends EObjectImpl implements
 					: !COMMENT_EDEFAULT.equals(comment);
 		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__MULTILINE:
 			return multiline != MULTILINE_EDEFAULT;
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__OK:
-			return ok != OK_EDEFAULT;
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__WARNING:
-			return warning != WARNING_EDEFAULT;
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__CRITICAL:
-			return critical != CRITICAL_EDEFAULT;
-		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__UNKNOWN:
-			return unknown != UNKNOWN_EDEFAULT;
+		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__STATE:
+			return state != null && !state.isEmpty();
 		case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__TOKEN:
 			return TOKEN_EDEFAULT == null ? token != null : !TOKEN_EDEFAULT
 					.equals(token);
@@ -472,14 +298,8 @@ public class ServiceFlapDetectionOptionsImpl extends EObjectImpl implements
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == ServiceState.class) {
 			switch (derivedFeatureID) {
-			case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__OK:
-				return BasePackage.SERVICE_STATE__OK;
-			case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__WARNING:
-				return BasePackage.SERVICE_STATE__WARNING;
-			case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__CRITICAL:
-				return BasePackage.SERVICE_STATE__CRITICAL;
-			case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__UNKNOWN:
-				return BasePackage.SERVICE_STATE__UNKNOWN;
+			case AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__STATE:
+				return BasePackage.SERVICE_STATE__STATE;
 			default:
 				return -1;
 			}
@@ -496,14 +316,8 @@ public class ServiceFlapDetectionOptionsImpl extends EObjectImpl implements
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == ServiceState.class) {
 			switch (baseFeatureID) {
-			case BasePackage.SERVICE_STATE__OK:
-				return AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__OK;
-			case BasePackage.SERVICE_STATE__WARNING:
-				return AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__WARNING;
-			case BasePackage.SERVICE_STATE__CRITICAL:
-				return AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__CRITICAL;
-			case BasePackage.SERVICE_STATE__UNKNOWN:
-				return AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__UNKNOWN;
+			case BasePackage.SERVICE_STATE__STATE:
+				return AttributesPackage.SERVICE_FLAP_DETECTION_OPTIONS__STATE;
 			default:
 				return -1;
 			}
@@ -526,14 +340,8 @@ public class ServiceFlapDetectionOptionsImpl extends EObjectImpl implements
 		result.append(comment);
 		result.append(", multiline: ");
 		result.append(multiline);
-		result.append(", ok: ");
-		result.append(ok);
-		result.append(", warning: ");
-		result.append(warning);
-		result.append(", critical: ");
-		result.append(critical);
-		result.append(", unknown: ");
-		result.append(unknown);
+		result.append(", state: ");
+		result.append(state);
 		result.append(", token: ");
 		result.append(token);
 		result.append(')');

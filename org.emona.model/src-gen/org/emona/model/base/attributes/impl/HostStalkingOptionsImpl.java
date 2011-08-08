@@ -7,16 +7,20 @@
  */
 package org.emona.model.base.attributes.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.emona.model.base.BasePackage;
 import org.emona.model.base.HostState;
 
+import org.emona.model.base.HostStateValue;
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.HostStalkingOptions;
 
@@ -29,9 +33,7 @@ import org.emona.model.base.attributes.HostStalkingOptions;
  * <ul>
  *   <li>{@link org.emona.model.base.attributes.impl.HostStalkingOptionsImpl#getComment <em>Comment</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.HostStalkingOptionsImpl#isMultiline <em>Multiline</em>}</li>
- *   <li>{@link org.emona.model.base.attributes.impl.HostStalkingOptionsImpl#isUp <em>Up</em>}</li>
- *   <li>{@link org.emona.model.base.attributes.impl.HostStalkingOptionsImpl#isDown <em>Down</em>}</li>
- *   <li>{@link org.emona.model.base.attributes.impl.HostStalkingOptionsImpl#isUnreachable <em>Unreachable</em>}</li>
+ *   <li>{@link org.emona.model.base.attributes.impl.HostStalkingOptionsImpl#getState <em>State</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.impl.HostStalkingOptionsImpl#getToken <em>Token</em>}</li>
  * </ul>
  * </p>
@@ -81,64 +83,14 @@ public class HostStalkingOptionsImpl extends EObjectImpl implements
 	protected boolean multiline = MULTILINE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isUp() <em>Up</em>}' attribute.
+	 * The cached value of the '{@link #getState() <em>State</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isUp()
+	 * @see #getState()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean UP_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isUp() <em>Up</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isUp()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean up = UP_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isDown() <em>Down</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isDown()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean DOWN_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isDown() <em>Down</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isDown()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean down = DOWN_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isUnreachable() <em>Unreachable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isUnreachable()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean UNREACHABLE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isUnreachable() <em>Unreachable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isUnreachable()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean unreachable = UNREACHABLE_EDEFAULT;
+	protected EList<HostStateValue> state;
 
 	/**
 	 * The default value of the '{@link #getToken() <em>Token</em>}' attribute.
@@ -230,67 +182,13 @@ public class HostStalkingOptionsImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isUp() {
-		return up;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUp(boolean newUp) {
-		boolean oldUp = up;
-		up = newUp;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AttributesPackage.HOST_STALKING_OPTIONS__UP, oldUp, up));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isDown() {
-		return down;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDown(boolean newDown) {
-		boolean oldDown = down;
-		down = newDown;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AttributesPackage.HOST_STALKING_OPTIONS__DOWN, oldDown,
-					down));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isUnreachable() {
-		return unreachable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUnreachable(boolean newUnreachable) {
-		boolean oldUnreachable = unreachable;
-		unreachable = newUnreachable;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					AttributesPackage.HOST_STALKING_OPTIONS__UNREACHABLE,
-					oldUnreachable, unreachable));
+	public EList<HostStateValue> getState() {
+		if (state == null) {
+			state = new EDataTypeUniqueEList<HostStateValue>(
+					HostStateValue.class, this,
+					AttributesPackage.HOST_STALKING_OPTIONS__STATE);
+		}
+		return state;
 	}
 
 	/**
@@ -314,12 +212,8 @@ public class HostStalkingOptionsImpl extends EObjectImpl implements
 			return getComment();
 		case AttributesPackage.HOST_STALKING_OPTIONS__MULTILINE:
 			return isMultiline();
-		case AttributesPackage.HOST_STALKING_OPTIONS__UP:
-			return isUp();
-		case AttributesPackage.HOST_STALKING_OPTIONS__DOWN:
-			return isDown();
-		case AttributesPackage.HOST_STALKING_OPTIONS__UNREACHABLE:
-			return isUnreachable();
+		case AttributesPackage.HOST_STALKING_OPTIONS__STATE:
+			return getState();
 		case AttributesPackage.HOST_STALKING_OPTIONS__TOKEN:
 			return getToken();
 		}
@@ -331,6 +225,7 @@ public class HostStalkingOptionsImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -340,14 +235,9 @@ public class HostStalkingOptionsImpl extends EObjectImpl implements
 		case AttributesPackage.HOST_STALKING_OPTIONS__MULTILINE:
 			setMultiline((Boolean) newValue);
 			return;
-		case AttributesPackage.HOST_STALKING_OPTIONS__UP:
-			setUp((Boolean) newValue);
-			return;
-		case AttributesPackage.HOST_STALKING_OPTIONS__DOWN:
-			setDown((Boolean) newValue);
-			return;
-		case AttributesPackage.HOST_STALKING_OPTIONS__UNREACHABLE:
-			setUnreachable((Boolean) newValue);
+		case AttributesPackage.HOST_STALKING_OPTIONS__STATE:
+			getState().clear();
+			getState().addAll((Collection<? extends HostStateValue>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -367,14 +257,8 @@ public class HostStalkingOptionsImpl extends EObjectImpl implements
 		case AttributesPackage.HOST_STALKING_OPTIONS__MULTILINE:
 			setMultiline(MULTILINE_EDEFAULT);
 			return;
-		case AttributesPackage.HOST_STALKING_OPTIONS__UP:
-			setUp(UP_EDEFAULT);
-			return;
-		case AttributesPackage.HOST_STALKING_OPTIONS__DOWN:
-			setDown(DOWN_EDEFAULT);
-			return;
-		case AttributesPackage.HOST_STALKING_OPTIONS__UNREACHABLE:
-			setUnreachable(UNREACHABLE_EDEFAULT);
+		case AttributesPackage.HOST_STALKING_OPTIONS__STATE:
+			getState().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -393,12 +277,8 @@ public class HostStalkingOptionsImpl extends EObjectImpl implements
 					: !COMMENT_EDEFAULT.equals(comment);
 		case AttributesPackage.HOST_STALKING_OPTIONS__MULTILINE:
 			return multiline != MULTILINE_EDEFAULT;
-		case AttributesPackage.HOST_STALKING_OPTIONS__UP:
-			return up != UP_EDEFAULT;
-		case AttributesPackage.HOST_STALKING_OPTIONS__DOWN:
-			return down != DOWN_EDEFAULT;
-		case AttributesPackage.HOST_STALKING_OPTIONS__UNREACHABLE:
-			return unreachable != UNREACHABLE_EDEFAULT;
+		case AttributesPackage.HOST_STALKING_OPTIONS__STATE:
+			return state != null && !state.isEmpty();
 		case AttributesPackage.HOST_STALKING_OPTIONS__TOKEN:
 			return TOKEN_EDEFAULT == null ? token != null : !TOKEN_EDEFAULT
 					.equals(token);
@@ -415,12 +295,8 @@ public class HostStalkingOptionsImpl extends EObjectImpl implements
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == HostState.class) {
 			switch (derivedFeatureID) {
-			case AttributesPackage.HOST_STALKING_OPTIONS__UP:
-				return BasePackage.HOST_STATE__UP;
-			case AttributesPackage.HOST_STALKING_OPTIONS__DOWN:
-				return BasePackage.HOST_STATE__DOWN;
-			case AttributesPackage.HOST_STALKING_OPTIONS__UNREACHABLE:
-				return BasePackage.HOST_STATE__UNREACHABLE;
+			case AttributesPackage.HOST_STALKING_OPTIONS__STATE:
+				return BasePackage.HOST_STATE__STATE;
 			default:
 				return -1;
 			}
@@ -437,12 +313,8 @@ public class HostStalkingOptionsImpl extends EObjectImpl implements
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == HostState.class) {
 			switch (baseFeatureID) {
-			case BasePackage.HOST_STATE__UP:
-				return AttributesPackage.HOST_STALKING_OPTIONS__UP;
-			case BasePackage.HOST_STATE__DOWN:
-				return AttributesPackage.HOST_STALKING_OPTIONS__DOWN;
-			case BasePackage.HOST_STATE__UNREACHABLE:
-				return AttributesPackage.HOST_STALKING_OPTIONS__UNREACHABLE;
+			case BasePackage.HOST_STATE__STATE:
+				return AttributesPackage.HOST_STALKING_OPTIONS__STATE;
 			default:
 				return -1;
 			}
@@ -465,12 +337,8 @@ public class HostStalkingOptionsImpl extends EObjectImpl implements
 		result.append(comment);
 		result.append(", multiline: ");
 		result.append(multiline);
-		result.append(", up: ");
-		result.append(up);
-		result.append(", down: ");
-		result.append(down);
-		result.append(", unreachable: ");
-		result.append(unreachable);
+		result.append(", state: ");
+		result.append(state);
 		result.append(", token: ");
 		result.append(token);
 		result.append(')');

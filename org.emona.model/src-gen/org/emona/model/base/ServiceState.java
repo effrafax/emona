@@ -7,6 +7,7 @@
  */
 package org.emona.model.base;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -17,10 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.emona.model.base.ServiceState#isOk <em>Ok</em>}</li>
- *   <li>{@link org.emona.model.base.ServiceState#isWarning <em>Warning</em>}</li>
- *   <li>{@link org.emona.model.base.ServiceState#isCritical <em>Critical</em>}</li>
- *   <li>{@link org.emona.model.base.ServiceState#isUnknown <em>Unknown</em>}</li>
+ *   <li>{@link org.emona.model.base.ServiceState#getState <em>State</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,111 +28,21 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ServiceState extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Ok</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
+	 * Returns the value of the '<em><b>State</b></em>' attribute list.
+	 * The list contents are of type {@link org.emona.model.base.ServiceStateValue}.
+	 * The literals are from the enumeration {@link org.emona.model.base.ServiceStateValue}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Ok</em>' attribute isn't clear,
+	 * If the meaning of the '<em>State</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ok</em>' attribute.
-	 * @see #setOk(boolean)
-	 * @see org.emona.model.base.BasePackage#getServiceState_Ok()
-	 * @model default="false" required="true"
+	 * @return the value of the '<em>State</em>' attribute list.
+	 * @see org.emona.model.base.ServiceStateValue
+	 * @see org.emona.model.base.BasePackage#getServiceState_State()
+	 * @model required="true"
 	 * @generated
 	 */
-	boolean isOk();
-
-	/**
-	 * Sets the value of the '{@link org.emona.model.base.ServiceState#isOk <em>Ok</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ok</em>' attribute.
-	 * @see #isOk()
-	 * @generated
-	 */
-	void setOk(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Warning</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Warning</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Warning</em>' attribute.
-	 * @see #setWarning(boolean)
-	 * @see org.emona.model.base.BasePackage#getServiceState_Warning()
-	 * @model default="false" required="true"
-	 * @generated
-	 */
-	boolean isWarning();
-
-	/**
-	 * Sets the value of the '{@link org.emona.model.base.ServiceState#isWarning <em>Warning</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Warning</em>' attribute.
-	 * @see #isWarning()
-	 * @generated
-	 */
-	void setWarning(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Critical</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Critical</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Critical</em>' attribute.
-	 * @see #setCritical(boolean)
-	 * @see org.emona.model.base.BasePackage#getServiceState_Critical()
-	 * @model default="false" required="true"
-	 * @generated
-	 */
-	boolean isCritical();
-
-	/**
-	 * Sets the value of the '{@link org.emona.model.base.ServiceState#isCritical <em>Critical</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Critical</em>' attribute.
-	 * @see #isCritical()
-	 * @generated
-	 */
-	void setCritical(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Unknown</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Unknown</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unknown</em>' attribute.
-	 * @see #setUnknown(boolean)
-	 * @see org.emona.model.base.BasePackage#getServiceState_Unknown()
-	 * @model default="false" required="true"
-	 * @generated
-	 */
-	boolean isUnknown();
-
-	/**
-	 * Sets the value of the '{@link org.emona.model.base.ServiceState#isUnknown <em>Unknown</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unknown</em>' attribute.
-	 * @see #isUnknown()
-	 * @generated
-	 */
-	void setUnknown(boolean value);
+	EList<ServiceStateValue> getState();
 
 } // ServiceState

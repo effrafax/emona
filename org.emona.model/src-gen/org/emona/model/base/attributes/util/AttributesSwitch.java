@@ -404,6 +404,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(hostNotificationOptions);
 			if (result == null)
+				result = caseHostState(hostNotificationOptions);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}

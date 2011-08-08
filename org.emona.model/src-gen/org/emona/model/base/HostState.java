@@ -7,6 +7,7 @@
  */
 package org.emona.model.base;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -17,9 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.emona.model.base.HostState#isUp <em>Up</em>}</li>
- *   <li>{@link org.emona.model.base.HostState#isDown <em>Down</em>}</li>
- *   <li>{@link org.emona.model.base.HostState#isUnreachable <em>Unreachable</em>}</li>
+ *   <li>{@link org.emona.model.base.HostState#getState <em>State</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,84 +28,21 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface HostState extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Up</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
+	 * Returns the value of the '<em><b>State</b></em>' attribute list.
+	 * The list contents are of type {@link org.emona.model.base.HostStateValue}.
+	 * The literals are from the enumeration {@link org.emona.model.base.HostStateValue}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Up</em>' attribute isn't clear,
+	 * If the meaning of the '<em>State</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Up</em>' attribute.
-	 * @see #setUp(boolean)
-	 * @see org.emona.model.base.BasePackage#getHostState_Up()
-	 * @model default="false" required="true"
+	 * @return the value of the '<em>State</em>' attribute list.
+	 * @see org.emona.model.base.HostStateValue
+	 * @see org.emona.model.base.BasePackage#getHostState_State()
+	 * @model
 	 * @generated
 	 */
-	boolean isUp();
-
-	/**
-	 * Sets the value of the '{@link org.emona.model.base.HostState#isUp <em>Up</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Up</em>' attribute.
-	 * @see #isUp()
-	 * @generated
-	 */
-	void setUp(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Down</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Down</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Down</em>' attribute.
-	 * @see #setDown(boolean)
-	 * @see org.emona.model.base.BasePackage#getHostState_Down()
-	 * @model default="false" required="true"
-	 * @generated
-	 */
-	boolean isDown();
-
-	/**
-	 * Sets the value of the '{@link org.emona.model.base.HostState#isDown <em>Down</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Down</em>' attribute.
-	 * @see #isDown()
-	 * @generated
-	 */
-	void setDown(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Unreachable</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Unreachable</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unreachable</em>' attribute.
-	 * @see #setUnreachable(boolean)
-	 * @see org.emona.model.base.BasePackage#getHostState_Unreachable()
-	 * @model default="false" required="true"
-	 * @generated
-	 */
-	boolean isUnreachable();
-
-	/**
-	 * Sets the value of the '{@link org.emona.model.base.HostState#isUnreachable <em>Unreachable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unreachable</em>' attribute.
-	 * @see #isUnreachable()
-	 * @generated
-	 */
-	void setUnreachable(boolean value);
+	EList<HostStateValue> getState();
 
 } // HostState

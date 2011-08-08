@@ -61,7 +61,31 @@ public enum ServiceStateValue implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	UNKNOWN(3, "UNKNOWN", "u");
+	UNKNOWN(3, "UNKNOWN", "u"), /**
+								 * The '<em><b>PENDING</b></em>' literal object.
+								 * <!-- begin-user-doc -->
+								 * <!-- end-user-doc -->
+								 * @see #PENDING_VALUE
+								 * @generated
+								 * @ordered
+								 */
+	PENDING(4, "PENDING", "p"), /**
+								 * The '<em><b>FLAPPING</b></em>' literal object.
+								 * <!-- begin-user-doc -->
+								 * <!-- end-user-doc -->
+								 * @see #FLAPPING_VALUE
+								 * @generated
+								 * @ordered
+								 */
+	FLAPPING(5, "FLAPPING", "f"), /**
+									 * The '<em><b>NONE</b></em>' literal object.
+									 * <!-- begin-user-doc -->
+									 * <!-- end-user-doc -->
+									 * @see #NONE_VALUE
+									 * @generated
+									 * @ordered
+									 */
+	NONE(6, "NONE", "n");
 
 	/**
 	 * The '<em><b>OK</b></em>' literal value.
@@ -124,13 +148,58 @@ public enum ServiceStateValue implements Enumerator {
 	public static final int UNKNOWN_VALUE = 3;
 
 	/**
+	 * The '<em><b>PENDING</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>PENDING</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #PENDING
+	 * @model literal="p"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PENDING_VALUE = 4;
+
+	/**
+	 * The '<em><b>FLAPPING</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>FLAPPING</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #FLAPPING
+	 * @model literal="f"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAPPING_VALUE = 5;
+
+	/**
+	 * The '<em><b>NONE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NONE
+	 * @model literal="n"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NONE_VALUE = 6;
+
+	/**
 	 * An array of all the '<em><b>Service State Value</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static final ServiceStateValue[] VALUES_ARRAY = new ServiceStateValue[] {
-			OK, WARNING, CRITICAL, UNKNOWN, };
+			OK, WARNING, CRITICAL, UNKNOWN, PENDING, FLAPPING, NONE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Service State Value</b></em>' enumerators.
@@ -189,6 +258,12 @@ public enum ServiceStateValue implements Enumerator {
 			return CRITICAL;
 		case UNKNOWN_VALUE:
 			return UNKNOWN;
+		case PENDING_VALUE:
+			return PENDING;
+		case FLAPPING_VALUE:
+			return FLAPPING;
+		case NONE_VALUE:
+			return NONE;
 		}
 		return null;
 	}

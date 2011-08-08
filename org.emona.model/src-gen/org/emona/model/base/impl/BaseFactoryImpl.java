@@ -78,16 +78,16 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory {
 			return createReferenceAttribute();
 		case BasePackage.INTEGER_VALUE_ATTRIBUTE:
 			return createIntegerValueAttribute();
-		case BasePackage.SERVICE_FAILURE_CRITERIA:
-			return createServiceFailureCriteria();
 		case BasePackage.SERVICE_STATE:
 			return createServiceState();
-		case BasePackage.SERVICE_NOTIFICATION_OPTION:
-			return createServiceNotificationOption();
 		case BasePackage.HOST_STATE:
 			return createHostState();
+		case BasePackage.SERVICE_FAILURE_CRITERIA:
+			return createServiceFailureCriteria();
 		case BasePackage.HOST_FAILURE_CRITERIA:
 			return createHostFailureCriteria();
+		case BasePackage.SERVICE_NOTIFICATION_OPTION:
+			return createServiceNotificationOption();
 		case BasePackage.CONFIG_OBJECT:
 			return createConfigObject();
 		case BasePackage.INFO_OBJECT:

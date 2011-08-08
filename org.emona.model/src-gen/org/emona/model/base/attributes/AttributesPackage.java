@@ -1687,67 +1687,22 @@ public interface AttributesPackage extends EPackage {
 	int HOST_NOTIFICATION_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_NOTIFICATION_OPTIONS__STATE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_NOTIFICATION_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Recovery</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_NOTIFICATION_OPTIONS__RECOVERY = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Down</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_NOTIFICATION_OPTIONS__DOWN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Unreachable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_NOTIFICATION_OPTIONS__UNREACHABLE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Flapping</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_NOTIFICATION_OPTIONS__FLAPPING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Scheduled Downtime</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_NOTIFICATION_OPTIONS__SCHEDULED_DOWNTIME = BasePackage.ATTRIBUTE_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>None</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_NOTIFICATION_OPTIONS__NONE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 6;
+	int HOST_NOTIFICATION_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Host Notification Options</em>' class.
@@ -1756,7 +1711,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_NOTIFICATION_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 7;
+	int HOST_NOTIFICATION_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.ServiceNotificationOptionsImpl <em>Service Notification Options</em>}' class.
@@ -1787,40 +1742,13 @@ public interface AttributesPackage extends EPackage {
 	int SERVICE_NOTIFICATION_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
-	 * The feature id for the '<em><b>Ok</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_NOTIFICATION_OPTIONS__OK = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Warning</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_NOTIFICATION_OPTIONS__WARNING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Critical</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_NOTIFICATION_OPTIONS__CRITICAL = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Unknown</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_NOTIFICATION_OPTIONS__UNKNOWN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 3;
+	int SERVICE_NOTIFICATION_OPTIONS__STATE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Flapping</b></em>' attribute.
@@ -1829,7 +1757,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_NOTIFICATION_OPTIONS__FLAPPING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
+	int SERVICE_NOTIFICATION_OPTIONS__FLAPPING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>None</b></em>' attribute.
@@ -1838,7 +1766,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_NOTIFICATION_OPTIONS__NONE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 5;
+	int SERVICE_NOTIFICATION_OPTIONS__NONE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -1847,7 +1775,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_NOTIFICATION_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 6;
+	int SERVICE_NOTIFICATION_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Service Notification Options</em>' class.
@@ -1856,7 +1784,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_NOTIFICATION_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 7;
+	int SERVICE_NOTIFICATION_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.NotificationCommandsImpl <em>Notification Commands</em>}' class.
@@ -2547,31 +2475,13 @@ public interface AttributesPackage extends EPackage {
 	int HOST_STALKING_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
-	 * The feature id for the '<em><b>Up</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_STALKING_OPTIONS__UP = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Down</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_STALKING_OPTIONS__DOWN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Unreachable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_STALKING_OPTIONS__UNREACHABLE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
+	int HOST_STALKING_OPTIONS__STATE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -2580,7 +2490,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_STALKING_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 3;
+	int HOST_STALKING_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Host Stalking Options</em>' class.
@@ -2589,7 +2499,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_STALKING_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
+	int HOST_STALKING_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.NotesImpl <em>Notes</em>}' class.
@@ -4260,40 +4170,13 @@ public interface AttributesPackage extends EPackage {
 	int SERVICE_FLAP_DETECTION_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
-	 * The feature id for the '<em><b>Ok</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_FLAP_DETECTION_OPTIONS__OK = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Warning</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_FLAP_DETECTION_OPTIONS__WARNING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Critical</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_FLAP_DETECTION_OPTIONS__CRITICAL = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Unknown</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_FLAP_DETECTION_OPTIONS__UNKNOWN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 3;
+	int SERVICE_FLAP_DETECTION_OPTIONS__STATE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -4302,7 +4185,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_FLAP_DETECTION_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
+	int SERVICE_FLAP_DETECTION_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Service Flap Detection Options</em>' class.
@@ -4311,7 +4194,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_FLAP_DETECTION_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 5;
+	int SERVICE_FLAP_DETECTION_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.ServicegroupNameImpl <em>Servicegroup Name</em>}' class.
@@ -4837,58 +4720,13 @@ public interface AttributesPackage extends EPackage {
 	int SERVICE_EXECUTION_FAILURE_CRITERIA__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
-	 * The feature id for the '<em><b>Ok</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_EXECUTION_FAILURE_CRITERIA__OK = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Warning</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_EXECUTION_FAILURE_CRITERIA__WARNING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Critical</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_EXECUTION_FAILURE_CRITERIA__CRITICAL = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Unknown</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_EXECUTION_FAILURE_CRITERIA__UNKNOWN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Pending</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_EXECUTION_FAILURE_CRITERIA__PENDING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>None</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_EXECUTION_FAILURE_CRITERIA__NONE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 5;
+	int SERVICE_EXECUTION_FAILURE_CRITERIA__STATE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -4897,7 +4735,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_EXECUTION_FAILURE_CRITERIA__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 6;
+	int SERVICE_EXECUTION_FAILURE_CRITERIA__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Service Execution Failure Criteria</em>' class.
@@ -4906,7 +4744,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_EXECUTION_FAILURE_CRITERIA_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 7;
+	int SERVICE_EXECUTION_FAILURE_CRITERIA_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.NotificationFailureCriteriaImpl <em>Notification Failure Criteria</em>}' class.
@@ -4937,58 +4775,13 @@ public interface AttributesPackage extends EPackage {
 	int NOTIFICATION_FAILURE_CRITERIA__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
-	 * The feature id for the '<em><b>Ok</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NOTIFICATION_FAILURE_CRITERIA__OK = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Warning</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NOTIFICATION_FAILURE_CRITERIA__WARNING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Critical</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NOTIFICATION_FAILURE_CRITERIA__CRITICAL = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Unknown</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NOTIFICATION_FAILURE_CRITERIA__UNKNOWN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Pending</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NOTIFICATION_FAILURE_CRITERIA__PENDING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>None</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NOTIFICATION_FAILURE_CRITERIA__NONE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 5;
+	int NOTIFICATION_FAILURE_CRITERIA__STATE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -4997,7 +4790,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NOTIFICATION_FAILURE_CRITERIA__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 6;
+	int NOTIFICATION_FAILURE_CRITERIA__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Notification Failure Criteria</em>' class.
@@ -5006,7 +4799,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NOTIFICATION_FAILURE_CRITERIA_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 7;
+	int NOTIFICATION_FAILURE_CRITERIA_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.DependencyPeriodImpl <em>Dependency Period</em>}' class.
@@ -5092,40 +4885,13 @@ public interface AttributesPackage extends EPackage {
 	int SERVICE_STALKING_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
-	 * The feature id for the '<em><b>Ok</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_STALKING_OPTIONS__OK = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Warning</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_STALKING_OPTIONS__WARNING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Critical</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_STALKING_OPTIONS__CRITICAL = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Unknown</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_STALKING_OPTIONS__UNKNOWN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 3;
+	int SERVICE_STALKING_OPTIONS__STATE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -5134,7 +4900,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_STALKING_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
+	int SERVICE_STALKING_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Service Stalking Options</em>' class.
@@ -5143,7 +4909,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_STALKING_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 5;
+	int SERVICE_STALKING_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.FirstNotificationImpl <em>First Notification</em>}' class.
@@ -5339,40 +5105,13 @@ public interface AttributesPackage extends EPackage {
 	int SERVICE_ESCALATION_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
-	 * The feature id for the '<em><b>Ok</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_ESCALATION_OPTIONS__OK = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Warning</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_ESCALATION_OPTIONS__WARNING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Critical</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_ESCALATION_OPTIONS__CRITICAL = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Unknown</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_ESCALATION_OPTIONS__UNKNOWN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 3;
+	int SERVICE_ESCALATION_OPTIONS__STATE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -5381,7 +5120,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_ESCALATION_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
+	int SERVICE_ESCALATION_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Service Escalation Options</em>' class.
@@ -5390,7 +5129,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_ESCALATION_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 5;
+	int SERVICE_ESCALATION_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.HostExecutionFailureCriteriaImpl <em>Host Execution Failure Criteria</em>}' class.
@@ -5421,49 +5160,13 @@ public interface AttributesPackage extends EPackage {
 	int HOST_EXECUTION_FAILURE_CRITERIA__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
-	 * The feature id for the '<em><b>Up</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_EXECUTION_FAILURE_CRITERIA__UP = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Down</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_EXECUTION_FAILURE_CRITERIA__DOWN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Unreachable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_EXECUTION_FAILURE_CRITERIA__UNREACHABLE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Pending</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_EXECUTION_FAILURE_CRITERIA__PENDING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>None</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_EXECUTION_FAILURE_CRITERIA__NONE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
+	int HOST_EXECUTION_FAILURE_CRITERIA__STATE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -5472,7 +5175,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_EXECUTION_FAILURE_CRITERIA__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 5;
+	int HOST_EXECUTION_FAILURE_CRITERIA__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Host Execution Failure Criteria</em>' class.
@@ -5481,7 +5184,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_EXECUTION_FAILURE_CRITERIA_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 6;
+	int HOST_EXECUTION_FAILURE_CRITERIA_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.ServiceNotificationFailureCriteriaImpl <em>Service Notification Failure Criteria</em>}' class.
@@ -5512,58 +5215,13 @@ public interface AttributesPackage extends EPackage {
 	int SERVICE_NOTIFICATION_FAILURE_CRITERIA__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
-	 * The feature id for the '<em><b>Ok</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_NOTIFICATION_FAILURE_CRITERIA__OK = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Warning</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_NOTIFICATION_FAILURE_CRITERIA__WARNING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Critical</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_NOTIFICATION_FAILURE_CRITERIA__CRITICAL = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Unknown</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_NOTIFICATION_FAILURE_CRITERIA__UNKNOWN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Pending</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_NOTIFICATION_FAILURE_CRITERIA__PENDING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>None</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_NOTIFICATION_FAILURE_CRITERIA__NONE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 5;
+	int SERVICE_NOTIFICATION_FAILURE_CRITERIA__STATE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -5572,7 +5230,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_NOTIFICATION_FAILURE_CRITERIA__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 6;
+	int SERVICE_NOTIFICATION_FAILURE_CRITERIA__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Service Notification Failure Criteria</em>' class.
@@ -5581,7 +5239,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_NOTIFICATION_FAILURE_CRITERIA_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 7;
+	int SERVICE_NOTIFICATION_FAILURE_CRITERIA_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.HostNotificationFailureCriteriaImpl <em>Host Notification Failure Criteria</em>}' class.
@@ -5612,49 +5270,13 @@ public interface AttributesPackage extends EPackage {
 	int HOST_NOTIFICATION_FAILURE_CRITERIA__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
-	 * The feature id for the '<em><b>Up</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_NOTIFICATION_FAILURE_CRITERIA__UP = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Down</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_NOTIFICATION_FAILURE_CRITERIA__DOWN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Unreachable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_NOTIFICATION_FAILURE_CRITERIA__UNREACHABLE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Pending</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_NOTIFICATION_FAILURE_CRITERIA__PENDING = BasePackage.ATTRIBUTE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>None</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_NOTIFICATION_FAILURE_CRITERIA__NONE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
+	int HOST_NOTIFICATION_FAILURE_CRITERIA__STATE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -5663,7 +5285,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_NOTIFICATION_FAILURE_CRITERIA__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 5;
+	int HOST_NOTIFICATION_FAILURE_CRITERIA__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Host Notification Failure Criteria</em>' class.
@@ -5672,7 +5294,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_NOTIFICATION_FAILURE_CRITERIA_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 6;
+	int HOST_NOTIFICATION_FAILURE_CRITERIA_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.HostEscalationOptionsImpl <em>Host Escalation Options</em>}' class.
@@ -5703,31 +5325,13 @@ public interface AttributesPackage extends EPackage {
 	int HOST_ESCALATION_OPTIONS__MULTILINE = BasePackage.ATTRIBUTE__MULTILINE;
 
 	/**
-	 * The feature id for the '<em><b>Up</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_ESCALATION_OPTIONS__UP = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Down</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_ESCALATION_OPTIONS__DOWN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Unreachable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_ESCALATION_OPTIONS__UNREACHABLE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
+	int HOST_ESCALATION_OPTIONS__STATE = BasePackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -5736,7 +5340,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_ESCALATION_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 3;
+	int HOST_ESCALATION_OPTIONS__TOKEN = BasePackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Host Escalation Options</em>' class.
@@ -5745,7 +5349,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HOST_ESCALATION_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 4;
+	int HOST_ESCALATION_OPTIONS_FEATURE_COUNT = BasePackage.ATTRIBUTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.CanSubmitCommandsImpl <em>Can Submit Commands</em>}' class.
@@ -6552,72 +6156,6 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getHostNotificationOptions_Token();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.attributes.HostNotificationOptions#isRecovery <em>Recovery</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Recovery</em>'.
-	 * @see org.emona.model.base.attributes.HostNotificationOptions#isRecovery()
-	 * @see #getHostNotificationOptions()
-	 * @generated
-	 */
-	EAttribute getHostNotificationOptions_Recovery();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.attributes.HostNotificationOptions#isDown <em>Down</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Down</em>'.
-	 * @see org.emona.model.base.attributes.HostNotificationOptions#isDown()
-	 * @see #getHostNotificationOptions()
-	 * @generated
-	 */
-	EAttribute getHostNotificationOptions_Down();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.attributes.HostNotificationOptions#isUnreachable <em>Unreachable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Unreachable</em>'.
-	 * @see org.emona.model.base.attributes.HostNotificationOptions#isUnreachable()
-	 * @see #getHostNotificationOptions()
-	 * @generated
-	 */
-	EAttribute getHostNotificationOptions_Unreachable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.attributes.HostNotificationOptions#isFlapping <em>Flapping</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Flapping</em>'.
-	 * @see org.emona.model.base.attributes.HostNotificationOptions#isFlapping()
-	 * @see #getHostNotificationOptions()
-	 * @generated
-	 */
-	EAttribute getHostNotificationOptions_Flapping();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.attributes.HostNotificationOptions#isScheduledDowntime <em>Scheduled Downtime</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Scheduled Downtime</em>'.
-	 * @see org.emona.model.base.attributes.HostNotificationOptions#isScheduledDowntime()
-	 * @see #getHostNotificationOptions()
-	 * @generated
-	 */
-	EAttribute getHostNotificationOptions_ScheduledDowntime();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.attributes.HostNotificationOptions#isNone <em>None</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>None</em>'.
-	 * @see org.emona.model.base.attributes.HostNotificationOptions#isNone()
-	 * @see #getHostNotificationOptions()
-	 * @generated
-	 */
-	EAttribute getHostNotificationOptions_None();
 
 	/**
 	 * Returns the meta object for class '{@link org.emona.model.base.attributes.ServiceNotificationOptions <em>Service Notification Options</em>}'.
@@ -9006,60 +8544,6 @@ public interface AttributesPackage extends EPackage {
 		 */
 		EAttribute HOST_NOTIFICATION_OPTIONS__TOKEN = eINSTANCE
 				.getHostNotificationOptions_Token();
-
-		/**
-		 * The meta object literal for the '<em><b>Recovery</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HOST_NOTIFICATION_OPTIONS__RECOVERY = eINSTANCE
-				.getHostNotificationOptions_Recovery();
-
-		/**
-		 * The meta object literal for the '<em><b>Down</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HOST_NOTIFICATION_OPTIONS__DOWN = eINSTANCE
-				.getHostNotificationOptions_Down();
-
-		/**
-		 * The meta object literal for the '<em><b>Unreachable</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HOST_NOTIFICATION_OPTIONS__UNREACHABLE = eINSTANCE
-				.getHostNotificationOptions_Unreachable();
-
-		/**
-		 * The meta object literal for the '<em><b>Flapping</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HOST_NOTIFICATION_OPTIONS__FLAPPING = eINSTANCE
-				.getHostNotificationOptions_Flapping();
-
-		/**
-		 * The meta object literal for the '<em><b>Scheduled Downtime</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HOST_NOTIFICATION_OPTIONS__SCHEDULED_DOWNTIME = eINSTANCE
-				.getHostNotificationOptions_ScheduledDowntime();
-
-		/**
-		 * The meta object literal for the '<em><b>None</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HOST_NOTIFICATION_OPTIONS__NONE = eINSTANCE
-				.getHostNotificationOptions_None();
 
 		/**
 		 * The meta object literal for the '{@link org.emona.model.base.attributes.impl.ServiceNotificationOptionsImpl <em>Service Notification Options</em>}' class.

@@ -375,43 +375,16 @@ public interface BasePackage extends EPackage {
 	 * @see org.emona.model.base.impl.BasePackageImpl#getServiceState()
 	 * @generated
 	 */
-	int SERVICE_STATE = 8;
+	int SERVICE_STATE = 7;
 
 	/**
-	 * The feature id for the '<em><b>Ok</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_STATE__OK = 0;
-
-	/**
-	 * The feature id for the '<em><b>Warning</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_STATE__WARNING = 1;
-
-	/**
-	 * The feature id for the '<em><b>Critical</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_STATE__CRITICAL = 2;
-
-	/**
-	 * The feature id for the '<em><b>Unknown</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_STATE__UNKNOWN = 3;
+	int SERVICE_STATE__STATE = 0;
 
 	/**
 	 * The number of structural features of the '<em>Service State</em>' class.
@@ -420,7 +393,7 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_STATE_FEATURE_COUNT = 4;
+	int SERVICE_STATE_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.impl.ServiceFailureCriteriaImpl <em>Service Failure Criteria</em>}' class.
@@ -430,70 +403,7 @@ public interface BasePackage extends EPackage {
 	 * @see org.emona.model.base.impl.BasePackageImpl#getServiceFailureCriteria()
 	 * @generated
 	 */
-	int SERVICE_FAILURE_CRITERIA = 7;
-
-	/**
-	 * The feature id for the '<em><b>Ok</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_FAILURE_CRITERIA__OK = SERVICE_STATE__OK;
-
-	/**
-	 * The feature id for the '<em><b>Warning</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_FAILURE_CRITERIA__WARNING = SERVICE_STATE__WARNING;
-
-	/**
-	 * The feature id for the '<em><b>Critical</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_FAILURE_CRITERIA__CRITICAL = SERVICE_STATE__CRITICAL;
-
-	/**
-	 * The feature id for the '<em><b>Unknown</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_FAILURE_CRITERIA__UNKNOWN = SERVICE_STATE__UNKNOWN;
-
-	/**
-	 * The feature id for the '<em><b>Pending</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_FAILURE_CRITERIA__PENDING = SERVICE_STATE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>None</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_FAILURE_CRITERIA__NONE = SERVICE_STATE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Service Failure Criteria</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_FAILURE_CRITERIA_FEATURE_COUNT = SERVICE_STATE_FEATURE_COUNT + 2;
+	int SERVICE_FAILURE_CRITERIA = 9;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.impl.ServiceNotificationOptionImpl <em>Service Notification Option</em>}' class.
@@ -503,43 +413,90 @@ public interface BasePackage extends EPackage {
 	 * @see org.emona.model.base.impl.BasePackageImpl#getServiceNotificationOption()
 	 * @generated
 	 */
-	int SERVICE_NOTIFICATION_OPTION = 9;
+	int SERVICE_NOTIFICATION_OPTION = 11;
 
 	/**
-	 * The feature id for the '<em><b>Ok</b></em>' attribute.
+	 * The meta object id for the '{@link org.emona.model.base.impl.HostStateImpl <em>Host State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.emona.model.base.impl.HostStateImpl
+	 * @see org.emona.model.base.impl.BasePackageImpl#getHostState()
+	 * @generated
+	 */
+	int HOST_STATE = 8;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_NOTIFICATION_OPTION__OK = SERVICE_STATE__OK;
+	int HOST_STATE__STATE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Warning</b></em>' attribute.
+	 * The number of structural features of the '<em>Host State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_NOTIFICATION_OPTION__WARNING = SERVICE_STATE__WARNING;
+	int HOST_STATE_FEATURE_COUNT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Critical</b></em>' attribute.
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_NOTIFICATION_OPTION__CRITICAL = SERVICE_STATE__CRITICAL;
+	int SERVICE_FAILURE_CRITERIA__STATE = SERVICE_STATE__STATE;
 
 	/**
-	 * The feature id for the '<em><b>Unknown</b></em>' attribute.
+	 * The number of structural features of the '<em>Service Failure Criteria</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_NOTIFICATION_OPTION__UNKNOWN = SERVICE_STATE__UNKNOWN;
+	int SERVICE_FAILURE_CRITERIA_FEATURE_COUNT = SERVICE_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.emona.model.base.impl.HostFailureCriteriaImpl <em>Host Failure Criteria</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.emona.model.base.impl.HostFailureCriteriaImpl
+	 * @see org.emona.model.base.impl.BasePackageImpl#getHostFailureCriteria()
+	 * @generated
+	 */
+	int HOST_FAILURE_CRITERIA = 10;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_FAILURE_CRITERIA__STATE = HOST_STATE__STATE;
+
+	/**
+	 * The number of structural features of the '<em>Host Failure Criteria</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HOST_FAILURE_CRITERIA_FEATURE_COUNT = HOST_STATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_NOTIFICATION_OPTION__STATE = SERVICE_STATE__STATE;
 
 	/**
 	 * The feature id for the '<em><b>Flapping</b></em>' attribute.
@@ -567,116 +524,6 @@ public interface BasePackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVICE_NOTIFICATION_OPTION_FEATURE_COUNT = SERVICE_STATE_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link org.emona.model.base.impl.HostStateImpl <em>Host State</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.emona.model.base.impl.HostStateImpl
-	 * @see org.emona.model.base.impl.BasePackageImpl#getHostState()
-	 * @generated
-	 */
-	int HOST_STATE = 10;
-
-	/**
-	 * The feature id for the '<em><b>Up</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_STATE__UP = 0;
-
-	/**
-	 * The feature id for the '<em><b>Down</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_STATE__DOWN = 1;
-
-	/**
-	 * The feature id for the '<em><b>Unreachable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_STATE__UNREACHABLE = 2;
-
-	/**
-	 * The number of structural features of the '<em>Host State</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_STATE_FEATURE_COUNT = 3;
-
-	/**
-	 * The meta object id for the '{@link org.emona.model.base.impl.HostFailureCriteriaImpl <em>Host Failure Criteria</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.emona.model.base.impl.HostFailureCriteriaImpl
-	 * @see org.emona.model.base.impl.BasePackageImpl#getHostFailureCriteria()
-	 * @generated
-	 */
-	int HOST_FAILURE_CRITERIA = 11;
-
-	/**
-	 * The feature id for the '<em><b>Up</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_FAILURE_CRITERIA__UP = HOST_STATE__UP;
-
-	/**
-	 * The feature id for the '<em><b>Down</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_FAILURE_CRITERIA__DOWN = HOST_STATE__DOWN;
-
-	/**
-	 * The feature id for the '<em><b>Unreachable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_FAILURE_CRITERIA__UNREACHABLE = HOST_STATE__UNREACHABLE;
-
-	/**
-	 * The feature id for the '<em><b>Pending</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_FAILURE_CRITERIA__PENDING = HOST_STATE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>None</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_FAILURE_CRITERIA__NONE = HOST_STATE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Host Failure Criteria</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HOST_FAILURE_CRITERIA_FEATURE_COUNT = HOST_STATE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.impl.InfoObjectImpl <em>Info Object</em>}' class.
@@ -1405,28 +1252,6 @@ public interface BasePackage extends EPackage {
 	EClass getServiceFailureCriteria();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.ServiceFailureCriteria#isPending <em>Pending</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pending</em>'.
-	 * @see org.emona.model.base.ServiceFailureCriteria#isPending()
-	 * @see #getServiceFailureCriteria()
-	 * @generated
-	 */
-	EAttribute getServiceFailureCriteria_Pending();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.ServiceFailureCriteria#isNone <em>None</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>None</em>'.
-	 * @see org.emona.model.base.ServiceFailureCriteria#isNone()
-	 * @see #getServiceFailureCriteria()
-	 * @generated
-	 */
-	EAttribute getServiceFailureCriteria_None();
-
-	/**
 	 * Returns the meta object for class '{@link org.emona.model.base.ServiceState <em>Service State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1437,48 +1262,15 @@ public interface BasePackage extends EPackage {
 	EClass getServiceState();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.ServiceState#isOk <em>Ok</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.emona.model.base.ServiceState#getState <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ok</em>'.
-	 * @see org.emona.model.base.ServiceState#isOk()
+	 * @return the meta object for the attribute list '<em>State</em>'.
+	 * @see org.emona.model.base.ServiceState#getState()
 	 * @see #getServiceState()
 	 * @generated
 	 */
-	EAttribute getServiceState_Ok();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.ServiceState#isWarning <em>Warning</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Warning</em>'.
-	 * @see org.emona.model.base.ServiceState#isWarning()
-	 * @see #getServiceState()
-	 * @generated
-	 */
-	EAttribute getServiceState_Warning();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.ServiceState#isCritical <em>Critical</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Critical</em>'.
-	 * @see org.emona.model.base.ServiceState#isCritical()
-	 * @see #getServiceState()
-	 * @generated
-	 */
-	EAttribute getServiceState_Critical();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.ServiceState#isUnknown <em>Unknown</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Unknown</em>'.
-	 * @see org.emona.model.base.ServiceState#isUnknown()
-	 * @see #getServiceState()
-	 * @generated
-	 */
-	EAttribute getServiceState_Unknown();
+	EAttribute getServiceState_State();
 
 	/**
 	 * Returns the meta object for class '{@link org.emona.model.base.ServiceNotificationOption <em>Service Notification Option</em>}'.
@@ -1523,37 +1315,15 @@ public interface BasePackage extends EPackage {
 	EClass getHostState();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.HostState#isUp <em>Up</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.emona.model.base.HostState#getState <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Up</em>'.
-	 * @see org.emona.model.base.HostState#isUp()
+	 * @return the meta object for the attribute list '<em>State</em>'.
+	 * @see org.emona.model.base.HostState#getState()
 	 * @see #getHostState()
 	 * @generated
 	 */
-	EAttribute getHostState_Up();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.HostState#isDown <em>Down</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Down</em>'.
-	 * @see org.emona.model.base.HostState#isDown()
-	 * @see #getHostState()
-	 * @generated
-	 */
-	EAttribute getHostState_Down();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.HostState#isUnreachable <em>Unreachable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Unreachable</em>'.
-	 * @see org.emona.model.base.HostState#isUnreachable()
-	 * @see #getHostState()
-	 * @generated
-	 */
-	EAttribute getHostState_Unreachable();
+	EAttribute getHostState_State();
 
 	/**
 	 * Returns the meta object for class '{@link org.emona.model.base.HostFailureCriteria <em>Host Failure Criteria</em>}'.
@@ -1564,28 +1334,6 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getHostFailureCriteria();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.HostFailureCriteria#isPending <em>Pending</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pending</em>'.
-	 * @see org.emona.model.base.HostFailureCriteria#isPending()
-	 * @see #getHostFailureCriteria()
-	 * @generated
-	 */
-	EAttribute getHostFailureCriteria_Pending();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.emona.model.base.HostFailureCriteria#isNone <em>None</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>None</em>'.
-	 * @see org.emona.model.base.HostFailureCriteria#isNone()
-	 * @see #getHostFailureCriteria()
-	 * @generated
-	 */
-	EAttribute getHostFailureCriteria_None();
 
 	/**
 	 * Returns the meta object for class '{@link org.emona.model.base.ConfigObject <em>Config Object</em>}'.
@@ -2040,24 +1788,6 @@ public interface BasePackage extends EPackage {
 		EClass SERVICE_FAILURE_CRITERIA = eINSTANCE.getServiceFailureCriteria();
 
 		/**
-		 * The meta object literal for the '<em><b>Pending</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SERVICE_FAILURE_CRITERIA__PENDING = eINSTANCE
-				.getServiceFailureCriteria_Pending();
-
-		/**
-		 * The meta object literal for the '<em><b>None</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SERVICE_FAILURE_CRITERIA__NONE = eINSTANCE
-				.getServiceFailureCriteria_None();
-
-		/**
 		 * The meta object literal for the '{@link org.emona.model.base.impl.ServiceStateImpl <em>Service State</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2068,37 +1798,12 @@ public interface BasePackage extends EPackage {
 		EClass SERVICE_STATE = eINSTANCE.getServiceState();
 
 		/**
-		 * The meta object literal for the '<em><b>Ok</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>State</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SERVICE_STATE__OK = eINSTANCE.getServiceState_Ok();
-
-		/**
-		 * The meta object literal for the '<em><b>Warning</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SERVICE_STATE__WARNING = eINSTANCE.getServiceState_Warning();
-
-		/**
-		 * The meta object literal for the '<em><b>Critical</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SERVICE_STATE__CRITICAL = eINSTANCE
-				.getServiceState_Critical();
-
-		/**
-		 * The meta object literal for the '<em><b>Unknown</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SERVICE_STATE__UNKNOWN = eINSTANCE.getServiceState_Unknown();
+		EAttribute SERVICE_STATE__STATE = eINSTANCE.getServiceState_State();
 
 		/**
 		 * The meta object literal for the '{@link org.emona.model.base.impl.ServiceNotificationOptionImpl <em>Service Notification Option</em>}' class.
@@ -2140,29 +1845,12 @@ public interface BasePackage extends EPackage {
 		EClass HOST_STATE = eINSTANCE.getHostState();
 
 		/**
-		 * The meta object literal for the '<em><b>Up</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>State</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute HOST_STATE__UP = eINSTANCE.getHostState_Up();
-
-		/**
-		 * The meta object literal for the '<em><b>Down</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HOST_STATE__DOWN = eINSTANCE.getHostState_Down();
-
-		/**
-		 * The meta object literal for the '<em><b>Unreachable</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HOST_STATE__UNREACHABLE = eINSTANCE
-				.getHostState_Unreachable();
+		EAttribute HOST_STATE__STATE = eINSTANCE.getHostState_State();
 
 		/**
 		 * The meta object literal for the '{@link org.emona.model.base.impl.HostFailureCriteriaImpl <em>Host Failure Criteria</em>}' class.
@@ -2173,24 +1861,6 @@ public interface BasePackage extends EPackage {
 		 * @generated
 		 */
 		EClass HOST_FAILURE_CRITERIA = eINSTANCE.getHostFailureCriteria();
-
-		/**
-		 * The meta object literal for the '<em><b>Pending</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HOST_FAILURE_CRITERIA__PENDING = eINSTANCE
-				.getHostFailureCriteria_Pending();
-
-		/**
-		 * The meta object literal for the '<em><b>None</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HOST_FAILURE_CRITERIA__NONE = eINSTANCE
-				.getHostFailureCriteria_None();
 
 		/**
 		 * The meta object literal for the '{@link org.emona.model.base.impl.ConfigObjectImpl <em>Config Object</em>}' class.

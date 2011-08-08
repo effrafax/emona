@@ -58,9 +58,11 @@ public class ConfigObjectImpl extends InfoObjectImpl implements ConfigObject {
 					switch (notification.getEventType()) {
 					case Notification.ADD:
 						if (notification.getNewValue() instanceof Attribute) {
-							Attribute att = (Attribute) notification.getNewValue();
+							Attribute att = (Attribute) notification
+									.getNewValue();
 							String token = att.getToken();
-							if (currentTokens.contains(token) && !att.isMultiline()) {
+							if (currentTokens.contains(token)
+									&& !att.isMultiline()) {
 								System.err.println("Token already defined! "
 										+ token);
 							} else {

@@ -107,19 +107,8 @@ public class BaseAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseServiceFailureCriteria(ServiceFailureCriteria object) {
-			return createServiceFailureCriteriaAdapter();
-		}
-
-		@Override
 		public Adapter caseServiceState(ServiceState object) {
 			return createServiceStateAdapter();
-		}
-
-		@Override
-		public Adapter caseServiceNotificationOption(
-				ServiceNotificationOption object) {
-			return createServiceNotificationOptionAdapter();
 		}
 
 		@Override
@@ -128,8 +117,19 @@ public class BaseAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseServiceFailureCriteria(ServiceFailureCriteria object) {
+			return createServiceFailureCriteriaAdapter();
+		}
+
+		@Override
 		public Adapter caseHostFailureCriteria(HostFailureCriteria object) {
 			return createHostFailureCriteriaAdapter();
+		}
+
+		@Override
+		public Adapter caseServiceNotificationOption(
+				ServiceNotificationOption object) {
+			return createServiceNotificationOptionAdapter();
 		}
 
 		@Override

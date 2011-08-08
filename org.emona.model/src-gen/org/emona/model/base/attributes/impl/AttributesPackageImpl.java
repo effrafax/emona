@@ -1536,66 +1536,6 @@ public class AttributesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getHostNotificationOptions_Recovery() {
-		return (EAttribute) hostNotificationOptionsEClass
-				.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getHostNotificationOptions_Down() {
-		return (EAttribute) hostNotificationOptionsEClass
-				.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getHostNotificationOptions_Unreachable() {
-		return (EAttribute) hostNotificationOptionsEClass
-				.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getHostNotificationOptions_Flapping() {
-		return (EAttribute) hostNotificationOptionsEClass
-				.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getHostNotificationOptions_ScheduledDowntime() {
-		return (EAttribute) hostNotificationOptionsEClass
-				.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getHostNotificationOptions_None() {
-		return (EAttribute) hostNotificationOptionsEClass
-				.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getServiceNotificationOptions() {
 		return serviceNotificationOptionsEClass;
 	}
@@ -3258,18 +3198,6 @@ public class AttributesPackageImpl extends EPackageImpl implements
 		hostNotificationOptionsEClass = createEClass(HOST_NOTIFICATION_OPTIONS);
 		createEAttribute(hostNotificationOptionsEClass,
 				HOST_NOTIFICATION_OPTIONS__TOKEN);
-		createEAttribute(hostNotificationOptionsEClass,
-				HOST_NOTIFICATION_OPTIONS__RECOVERY);
-		createEAttribute(hostNotificationOptionsEClass,
-				HOST_NOTIFICATION_OPTIONS__DOWN);
-		createEAttribute(hostNotificationOptionsEClass,
-				HOST_NOTIFICATION_OPTIONS__UNREACHABLE);
-		createEAttribute(hostNotificationOptionsEClass,
-				HOST_NOTIFICATION_OPTIONS__FLAPPING);
-		createEAttribute(hostNotificationOptionsEClass,
-				HOST_NOTIFICATION_OPTIONS__SCHEDULED_DOWNTIME);
-		createEAttribute(hostNotificationOptionsEClass,
-				HOST_NOTIFICATION_OPTIONS__NONE);
 
 		serviceNotificationOptionsEClass = createEClass(SERVICE_NOTIFICATION_OPTIONS);
 		createEAttribute(serviceNotificationOptionsEClass,
@@ -3632,6 +3560,8 @@ public class AttributesPackageImpl extends EPackageImpl implements
 				theBasePackage.getReferenceAttribute());
 		hostNotificationOptionsEClass.getESuperTypes().add(
 				theBasePackage.getAttribute());
+		hostNotificationOptionsEClass.getESuperTypes().add(
+				theBasePackage.getHostState());
 		serviceNotificationOptionsEClass.getESuperTypes().add(
 				theBasePackage.getAttribute());
 		serviceNotificationOptionsEClass.getESuperTypes().add(
@@ -4069,36 +3999,6 @@ public class AttributesPackageImpl extends EPackageImpl implements
 				"host_notification_options", 0, 1,
 				HostNotificationOptions.class, !IS_TRANSIENT, !IS_VOLATILE,
 				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getHostNotificationOptions_Recovery(),
-				ecorePackage.getEBoolean(), "recovery", "false", 1, 1,
-				HostNotificationOptions.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getHostNotificationOptions_Down(),
-				ecorePackage.getEBoolean(), "down", "false", 1, 1,
-				HostNotificationOptions.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getHostNotificationOptions_Unreachable(),
-				ecorePackage.getEBoolean(), "unreachable", "false", 1, 1,
-				HostNotificationOptions.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getHostNotificationOptions_Flapping(),
-				ecorePackage.getEBoolean(), "flapping", "false", 1, 1,
-				HostNotificationOptions.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getHostNotificationOptions_ScheduledDowntime(),
-				ecorePackage.getEBoolean(), "scheduledDowntime", "false", 1, 1,
-				HostNotificationOptions.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getHostNotificationOptions_None(),
-				ecorePackage.getEBoolean(), "none", "false", 1, 1,
-				HostNotificationOptions.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
 		initEClass(serviceNotificationOptionsEClass,

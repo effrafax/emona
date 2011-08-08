@@ -51,7 +51,47 @@ public enum HostStateValue implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	UNREACHABLE(2, "UNREACHABLE", "u");
+	UNREACHABLE(2, "UNREACHABLE", "u"), /**
+										 * The '<em><b>PENDING</b></em>' literal object.
+										 * <!-- begin-user-doc -->
+										 * <!-- end-user-doc -->
+										 * @see #PENDING_VALUE
+										 * @generated
+										 * @ordered
+										 */
+	PENDING(3, "PENDING", "p"), /**
+								 * The '<em><b>FLAPPING</b></em>' literal object.
+								 * <!-- begin-user-doc -->
+								 * <!-- end-user-doc -->
+								 * @see #FLAPPING_VALUE
+								 * @generated
+								 * @ordered
+								 */
+	FLAPPING(4, "FLAPPING", "FLAPPING"), /**
+											 * The '<em><b>RECOVERY</b></em>' literal object.
+											 * <!-- begin-user-doc -->
+											 * <!-- end-user-doc -->
+											 * @see #RECOVERY_VALUE
+											 * @generated
+											 * @ordered
+											 */
+	RECOVERY(5, "RECOVERY", "r"), /**
+									 * The '<em><b>SCHEDULEDDOWNTIME</b></em>' literal object.
+									 * <!-- begin-user-doc -->
+									 * <!-- end-user-doc -->
+									 * @see #SCHEDULEDDOWNTIME_VALUE
+									 * @generated
+									 * @ordered
+									 */
+	SCHEDULEDDOWNTIME(6, "SCHEDULEDDOWNTIME", "s"), /**
+													 * The '<em><b>NONE</b></em>' literal object.
+													 * <!-- begin-user-doc -->
+													 * <!-- end-user-doc -->
+													 * @see #NONE_VALUE
+													 * @generated
+													 * @ordered
+													 */
+	NONE(7, "NONE", "n");
 
 	/**
 	 * The '<em><b>UP</b></em>' literal value.
@@ -99,13 +139,89 @@ public enum HostStateValue implements Enumerator {
 	public static final int UNREACHABLE_VALUE = 2;
 
 	/**
+	 * The '<em><b>PENDING</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>PENDING</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #PENDING
+	 * @model literal="p"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PENDING_VALUE = 3;
+
+	/**
+	 * The '<em><b>FLAPPING</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>FLAPPING</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #FLAPPING
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAPPING_VALUE = 4;
+
+	/**
+	 * The '<em><b>RECOVERY</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>RECOVERY</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #RECOVERY
+	 * @model literal="r"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RECOVERY_VALUE = 5;
+
+	/**
+	 * The '<em><b>SCHEDULEDDOWNTIME</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>SCHEDULEDDOWNTIME</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #SCHEDULEDDOWNTIME
+	 * @model literal="s"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SCHEDULEDDOWNTIME_VALUE = 6;
+
+	/**
+	 * The '<em><b>NONE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NONE
+	 * @model literal="n"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NONE_VALUE = 7;
+
+	/**
 	 * An array of all the '<em><b>Host State Value</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static final HostStateValue[] VALUES_ARRAY = new HostStateValue[] {
-			UP, DOWN, UNREACHABLE, };
+			UP, DOWN, UNREACHABLE, PENDING, FLAPPING, RECOVERY,
+			SCHEDULEDDOWNTIME, NONE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Host State Value</b></em>' enumerators.
@@ -162,6 +278,16 @@ public enum HostStateValue implements Enumerator {
 			return DOWN;
 		case UNREACHABLE_VALUE:
 			return UNREACHABLE;
+		case PENDING_VALUE:
+			return PENDING;
+		case FLAPPING_VALUE:
+			return FLAPPING;
+		case RECOVERY_VALUE:
+			return RECOVERY;
+		case SCHEDULEDDOWNTIME_VALUE:
+			return SCHEDULEDDOWNTIME;
+		case NONE_VALUE:
+			return NONE;
 		}
 		return null;
 	}

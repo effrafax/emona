@@ -24,6 +24,8 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.text.contentassist.ICompletionProposal;
+import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
@@ -52,7 +54,7 @@ public class NagiosCfgProposalProvider extends
 			while ((line = reader.readLine()) != null) {
 				int tt = line.indexOf('=');
 				String keyword = line.trim().substring(0, tt);
-				log.debug("Add keyword: "+keyword);
+				log.debug("Add keyword: " + keyword);
 				ignoredKeywords.add(keyword);
 			}
 		} catch (IOException e) {
@@ -60,23 +62,69 @@ public class NagiosCfgProposalProvider extends
 		}
 	}
 
-
 	public NagiosCfgProposalProvider() {
 		super();
 	}
-
 
 	@Override
 	public void completeKeyword(Keyword keyword, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		EObject model = context.getCurrentModel();
-		if (model instanceof ConfigObject) {
-			if (ignoredKeywords.contains(keyword.getValue())) {
-				return;
-			} else {
-				super.completeKeyword(keyword, context, acceptor);
-			}
+		if (model instanceof ConfigObject
+				&& ignoredKeywords.contains(keyword.getValue())) {
+			return;
+		} else {
+			super.completeKeyword(keyword, context, acceptor);
+		}
 
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.emona.edit.ui.contentassist.AbstractNagiosCfgProposalProvider#
+	 * completeHostEscalationOptions_State(org.eclipse.emf.ecore.EObject,
+	 * org.eclipse.xtext.Assignment,
+	 * org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext,
+	 * org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor)
+	 */
+	@Override
+	public void completeHostEscalationOptions_State(EObject model,
+			Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		super.completeHostEscalationOptions_State(model, assignment, context,
+				acceptor);
+		System.out.println(model.eClass());
+
+		if ("r".equals(context.getPrefix()) || "u".equals(context.getPrefix())
+				|| "d".equals(context.getPrefix())) {
+			ICompletionProposal prop = createCompletionProposal(
+					context.getPrefix() + ",r", "UP State", null, context);
+			acceptor.accept(prop);
+			prop = createCompletionProposal(
+					context.getPrefix() + ",u", "UNREACHABLE State", null, context);
+			acceptor.accept(prop);
+			prop = createCompletionProposal(
+					context.getPrefix() + ",d", "DOWN State", null, context);
+			acceptor.accept(prop);
+		}
+	}
+
+	/*
+	 * Overwrite to allow ",.."-Proposals for Option-Flags of attributes.
+	 * 
+	 * @see
+	 * org.eclipse.xtext.ui.editor.contentassist.AbstractContentProposalProvider
+	 * #isValidProposal(java.lang.String, java.lang.String,
+	 * org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext)
+	 */
+	@Override
+	protected boolean isValidProposal(String proposal, String prefix,
+			ContentAssistContext context) {
+		if (proposal.startsWith(",")) {
+			return true;
+		} else {
+			return super.isValidProposal(proposal, prefix, context);
 		}
 	}
 

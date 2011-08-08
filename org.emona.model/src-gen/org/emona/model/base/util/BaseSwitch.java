@@ -130,27 +130,9 @@ public class BaseSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case BasePackage.SERVICE_FAILURE_CRITERIA: {
-			ServiceFailureCriteria serviceFailureCriteria = (ServiceFailureCriteria) theEObject;
-			T result = caseServiceFailureCriteria(serviceFailureCriteria);
-			if (result == null)
-				result = caseServiceState(serviceFailureCriteria);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case BasePackage.SERVICE_STATE: {
 			ServiceState serviceState = (ServiceState) theEObject;
 			T result = caseServiceState(serviceState);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case BasePackage.SERVICE_NOTIFICATION_OPTION: {
-			ServiceNotificationOption serviceNotificationOption = (ServiceNotificationOption) theEObject;
-			T result = caseServiceNotificationOption(serviceNotificationOption);
-			if (result == null)
-				result = caseServiceState(serviceNotificationOption);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -162,11 +144,29 @@ public class BaseSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case BasePackage.SERVICE_FAILURE_CRITERIA: {
+			ServiceFailureCriteria serviceFailureCriteria = (ServiceFailureCriteria) theEObject;
+			T result = caseServiceFailureCriteria(serviceFailureCriteria);
+			if (result == null)
+				result = caseServiceState(serviceFailureCriteria);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case BasePackage.HOST_FAILURE_CRITERIA: {
 			HostFailureCriteria hostFailureCriteria = (HostFailureCriteria) theEObject;
 			T result = caseHostFailureCriteria(hostFailureCriteria);
 			if (result == null)
 				result = caseHostState(hostFailureCriteria);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case BasePackage.SERVICE_NOTIFICATION_OPTION: {
+			ServiceNotificationOption serviceNotificationOption = (ServiceNotificationOption) theEObject;
+			T result = caseServiceNotificationOption(serviceNotificationOption);
+			if (result == null)
+				result = caseServiceState(serviceNotificationOption);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
