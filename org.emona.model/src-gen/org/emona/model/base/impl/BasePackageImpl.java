@@ -1267,7 +1267,6 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		addEEnumLiteral(hostStateValueEEnum, HostStateValue.UNREACHABLE);
 		addEEnumLiteral(hostStateValueEEnum, HostStateValue.PENDING);
 		addEEnumLiteral(hostStateValueEEnum, HostStateValue.FLAPPING);
-		addEEnumLiteral(hostStateValueEEnum, HostStateValue.RECOVERY);
 		addEEnumLiteral(hostStateValueEEnum, HostStateValue.SCHEDULEDDOWNTIME);
 		addEEnumLiteral(hostStateValueEEnum, HostStateValue.NONE);
 

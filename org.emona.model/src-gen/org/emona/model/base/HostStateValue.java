@@ -67,15 +67,7 @@ public enum HostStateValue implements Enumerator {
 								 * @generated
 								 * @ordered
 								 */
-	FLAPPING(4, "FLAPPING", "FLAPPING"), /**
-											 * The '<em><b>RECOVERY</b></em>' literal object.
-											 * <!-- begin-user-doc -->
-											 * <!-- end-user-doc -->
-											 * @see #RECOVERY_VALUE
-											 * @generated
-											 * @ordered
-											 */
-	RECOVERY(5, "RECOVERY", "r"), /**
+	FLAPPING(4, "FLAPPING", "f"), /**
 									 * The '<em><b>SCHEDULEDDOWNTIME</b></em>' literal object.
 									 * <!-- begin-user-doc -->
 									 * <!-- end-user-doc -->
@@ -83,7 +75,7 @@ public enum HostStateValue implements Enumerator {
 									 * @generated
 									 * @ordered
 									 */
-	SCHEDULEDDOWNTIME(6, "SCHEDULEDDOWNTIME", "s"), /**
+	SCHEDULEDDOWNTIME(5, "SCHEDULEDDOWNTIME", "s"), /**
 													 * The '<em><b>NONE</b></em>' literal object.
 													 * <!-- begin-user-doc -->
 													 * <!-- end-user-doc -->
@@ -91,7 +83,7 @@ public enum HostStateValue implements Enumerator {
 													 * @generated
 													 * @ordered
 													 */
-	NONE(7, "NONE", "n");
+	NONE(6, "NONE", "n");
 
 	/**
 	 * The '<em><b>UP</b></em>' literal value.
@@ -162,26 +154,11 @@ public enum HostStateValue implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FLAPPING
-	 * @model
+	 * @model literal="f"
 	 * @generated
 	 * @ordered
 	 */
 	public static final int FLAPPING_VALUE = 4;
-
-	/**
-	 * The '<em><b>RECOVERY</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>RECOVERY</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #RECOVERY
-	 * @model literal="r"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RECOVERY_VALUE = 5;
 
 	/**
 	 * The '<em><b>SCHEDULEDDOWNTIME</b></em>' literal value.
@@ -196,7 +173,7 @@ public enum HostStateValue implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SCHEDULEDDOWNTIME_VALUE = 6;
+	public static final int SCHEDULEDDOWNTIME_VALUE = 5;
 
 	/**
 	 * The '<em><b>NONE</b></em>' literal value.
@@ -211,7 +188,7 @@ public enum HostStateValue implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NONE_VALUE = 7;
+	public static final int NONE_VALUE = 6;
 
 	/**
 	 * An array of all the '<em><b>Host State Value</b></em>' enumerators.
@@ -220,8 +197,7 @@ public enum HostStateValue implements Enumerator {
 	 * @generated
 	 */
 	private static final HostStateValue[] VALUES_ARRAY = new HostStateValue[] {
-			UP, DOWN, UNREACHABLE, PENDING, FLAPPING, RECOVERY,
-			SCHEDULEDDOWNTIME, NONE, };
+			UP, DOWN, UNREACHABLE, PENDING, FLAPPING, SCHEDULEDDOWNTIME, NONE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Host State Value</b></em>' enumerators.
@@ -282,8 +258,6 @@ public enum HostStateValue implements Enumerator {
 			return PENDING;
 		case FLAPPING_VALUE:
 			return FLAPPING;
-		case RECOVERY_VALUE:
-			return RECOVERY;
 		case SCHEDULEDDOWNTIME_VALUE:
 			return SCHEDULEDDOWNTIME;
 		case NONE_VALUE:

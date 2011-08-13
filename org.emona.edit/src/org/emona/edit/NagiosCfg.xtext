@@ -1116,10 +1116,10 @@ enum HostStateValue1 returns baseModel::HostStateValue:
     UP='r' | DOWN='d' | UNREACHABLE='u';
 
 enum HostStateValue2 returns baseModel::HostStateValue:
-    UP='r' | DOWN='d' | UNREACHABLE='u' | PENDING='p' | NONE='n';
+    UP='o' | DOWN='d' | UNREACHABLE='u' | PENDING='p' | NONE='n';
 
 enum HostStateValue3 returns baseModel::HostStateValue:
-    RECOVERY='r' | DOWN='d' | UNREACHABLE='u' | FLAPPING='f' | 
+    UP='r' | DOWN='d' | UNREACHABLE='u' | FLAPPING='f' | 
     SCHEDULEDDOWNTIME='s' | NONE='n';
 
 

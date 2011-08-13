@@ -63,10 +63,9 @@
     <eLiterals name="DOWN" value="1" literal="d"/>
     <eLiterals name="UNREACHABLE" value="2" literal="u"/>
     <eLiterals name="PENDING" value="3" literal="p"/>
-    <eLiterals name="FLAPPING" value="4"/>
-    <eLiterals name="RECOVERY" value="5" literal="r"/>
-    <eLiterals name="SCHEDULEDDOWNTIME" value="6" literal="s"/>
-    <eLiterals name="NONE" value="7" literal="n"/>
+    <eLiterals name="FLAPPING" value="4" literal="f"/>
+    <eLiterals name="SCHEDULEDDOWNTIME" value="5" literal="s"/>
+    <eLiterals name="NONE" value="6" literal="n"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ServiceStateValue">
     <eLiterals name="OK" literal="o"/>

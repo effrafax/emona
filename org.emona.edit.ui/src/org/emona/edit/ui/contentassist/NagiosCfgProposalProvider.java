@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashSet;
+import java.util.ListIterator;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -29,7 +31,12 @@ import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.emona.model.base.Attribute;
 import org.emona.model.base.ConfigObject;
+import org.emona.model.base.HostStateValue;
+import org.emona.model.base.attributes.HostEscalationOptions;
+import org.emona.model.types.Flag;
+import org.emona.model.types.FlagInformation;
 
 /**
  * see
@@ -41,6 +48,8 @@ public class NagiosCfgProposalProvider extends
 
 	private final static Logger log = Logger
 			.getLogger(NagiosCfgProposalProvider.class);
+	
+
 
 	private static Set<String> ignoredKeywords = new HashSet<String>();
 	static {
@@ -60,6 +69,11 @@ public class NagiosCfgProposalProvider extends
 		} catch (IOException e) {
 			log.error("Could not load keyword resource file!");
 		}
+		
+		for (String token : FlagInformation.FLAG_TOKENS) {
+			System.err.println("ADD IGNORE: "+token);
+			ignoredKeywords.add(token);
+		}
 	}
 
 	public NagiosCfgProposalProvider() {
@@ -70,7 +84,7 @@ public class NagiosCfgProposalProvider extends
 	public void completeKeyword(Keyword keyword, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		EObject model = context.getCurrentModel();
-		if (model instanceof ConfigObject
+		if (model instanceof ConfigObject || model instanceof Attribute
 				&& ignoredKeywords.contains(keyword.getValue())) {
 			return;
 		} else {
@@ -95,17 +109,25 @@ public class NagiosCfgProposalProvider extends
 		super.completeHostEscalationOptions_State(model, assignment, context,
 				acceptor);
 		System.out.println(model.eClass());
-
-		if ("r".equals(context.getPrefix()) || "u".equals(context.getPrefix())
-				|| "d".equals(context.getPrefix())) {
+		HostEscalationOptions opts = (HostEscalationOptions) model;
+		ListIterator<HostStateValue> it = opts.getState().listIterator();
+		Map<Integer, Flag> flags = FlagInformation.HOST_STATE_VALUE1.clone()
+				.getMap();
+		while (it.hasNext()) {
+			HostStateValue hostStateValue = it.next();
+			Integer key = hostStateValue.getValue();
+			if (flags.containsKey(key)) {
+				flags.remove(key);
+			}
+		}
+		String prefix = "";
+		if (context.getPrefix().length() == 1) {
+			prefix = ",";
+		}
+		for (Flag flag : flags.values()) {
 			ICompletionProposal prop = createCompletionProposal(
-					context.getPrefix() + ",r", "UP State", null, context);
-			acceptor.accept(prop);
-			prop = createCompletionProposal(
-					context.getPrefix() + ",u", "UNREACHABLE State", null, context);
-			acceptor.accept(prop);
-			prop = createCompletionProposal(
-					context.getPrefix() + ",d", "DOWN State", null, context);
+					context.getPrefix() + prefix + flag.getToken(),
+					flag.getDescription(), null, context);
 			acceptor.accept(prop);
 		}
 	}
