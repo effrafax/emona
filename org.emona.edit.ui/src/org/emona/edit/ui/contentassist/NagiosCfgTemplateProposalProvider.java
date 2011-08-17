@@ -41,7 +41,13 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 /**
- * @author martin
+ * 
+ * Template proposal provider that provides enhanced templates.
+ * 
+ * The enhanced templates are stored in templates/xtemplates.xml
+ * They are only used as replacement for keyword proposals.
+ * 
+ * @author Martin Stockhammer
  * 
  */
 @Singleton

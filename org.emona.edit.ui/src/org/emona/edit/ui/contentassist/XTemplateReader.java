@@ -39,7 +39,7 @@ import org.emona.edit.ui.EmonaUiActivator;
  * 
  * Template Reader / Writer with default values for relevance and images.
  * 
- * @author martin
+ * @author Martin Stockhammer
  * 
  */
 public class XTemplateReader extends TemplateReaderWriter {

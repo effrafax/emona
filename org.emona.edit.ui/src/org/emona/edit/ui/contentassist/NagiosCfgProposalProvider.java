@@ -39,6 +39,11 @@ import org.emona.model.types.Flag;
 import org.emona.model.types.FlagInformation;
 
 /**
+ * 
+ * Removes keyword proposals for attributes and replaces them with special
+ * template proposals.
+ * 
+ * 
  * see
  * http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on
  * how to customize content assistant
@@ -48,8 +53,6 @@ public class NagiosCfgProposalProvider extends
 
 	private final static Logger log = Logger
 			.getLogger(NagiosCfgProposalProvider.class);
-	
-
 
 	private static Set<String> ignoredKeywords = new HashSet<String>();
 	static {
@@ -69,9 +72,9 @@ public class NagiosCfgProposalProvider extends
 		} catch (IOException e) {
 			log.error("Could not load keyword resource file!");
 		}
-		
+
 		for (String token : FlagInformation.FLAG_TOKENS) {
-			System.err.println("ADD IGNORE: "+token);
+			System.err.println("ADD IGNORE: " + token);
 			ignoredKeywords.add(token);
 		}
 	}
@@ -132,13 +135,13 @@ public class NagiosCfgProposalProvider extends
 		}
 	}
 
-	/*
-	 * Overwrite to allow ",.."-Proposals for Option-Flags of attributes.
+	/**
 	 * 
-	 * @see
-	 * org.eclipse.xtext.ui.editor.contentassist.AbstractContentProposalProvider
-	 * #isValidProposal(java.lang.String, java.lang.String,
-	 * org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext)
+	 * Allows ",.."-Proposals for Option-Flags of attributes.
+	 * 
+	 * @see org.eclipse.xtext.ui.editor.contentassist.AbstractContentProposalProvider
+	 *      #isValidProposal(java.lang.String, java.lang.String,
+	 *      org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext)
 	 */
 	@Override
 	protected boolean isValidProposal(String proposal, String prefix,

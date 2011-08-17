@@ -20,7 +20,10 @@ import org.eclipse.jface.text.templates.Template;
 import org.eclipse.swt.graphics.Image;
 
 /**
- * @author martin
+ * 
+ * Enhanced template that contains additional information.
+ * 
+ * @author Martin Stockhammer
  *
  */
 public class XTemplate extends Template {
