@@ -18,6 +18,7 @@ import org.emona.model.base.ServiceStateValue;
 
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.ServiceInitialState;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,7 +37,7 @@ import org.emona.model.base.attributes.ServiceInitialState;
  *
  * @generated
  */
-public class ServiceInitialStateImpl extends EObjectImpl implements
+public class ServiceInitialStateImpl extends ObjectContentImpl implements
 		ServiceInitialState {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.

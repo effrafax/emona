@@ -32,7 +32,7 @@ import org.emona.model.base.ValueAttribute;
  *
  * @generated
  */
-public abstract class ValueAttributeImpl extends EObjectImpl implements
+public abstract class ValueAttributeImpl extends ObjectContentImpl implements
 		ValueAttribute {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.

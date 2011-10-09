@@ -18,6 +18,7 @@ import org.emona.model.base.HostStateValue;
 
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.HostFlapDetectionOptions;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +36,7 @@ import org.emona.model.base.attributes.HostFlapDetectionOptions;
  *
  * @generated
  */
-public class HostFlapDetectionOptionsImpl extends EObjectImpl implements
+public class HostFlapDetectionOptionsImpl extends ObjectContentImpl implements
 		HostFlapDetectionOptions {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.

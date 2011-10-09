@@ -78,14 +78,22 @@ public enum ServiceStateValue implements Enumerator {
 								 * @ordered
 								 */
 	FLAPPING(5, "FLAPPING", "f"), /**
-									 * The '<em><b>NONE</b></em>' literal object.
+									 * The '<em><b>SCHEDULEDDOWNTIME</b></em>' literal object.
 									 * <!-- begin-user-doc -->
 									 * <!-- end-user-doc -->
-									 * @see #NONE_VALUE
+									 * @see #SCHEDULEDDOWNTIME_VALUE
 									 * @generated
 									 * @ordered
 									 */
-	NONE(6, "NONE", "n");
+	SCHEDULEDDOWNTIME(6, "SCHEDULEDDOWNTIME", ""), /**
+													 * The '<em><b>NONE</b></em>' literal object.
+													 * <!-- begin-user-doc -->
+													 * <!-- end-user-doc -->
+													 * @see #NONE_VALUE
+													 * @generated
+													 * @ordered
+													 */
+	NONE(7, "NONE", "n");
 
 	/**
 	 * The '<em><b>OK</b></em>' literal value.
@@ -178,6 +186,21 @@ public enum ServiceStateValue implements Enumerator {
 	public static final int FLAPPING_VALUE = 5;
 
 	/**
+	 * The '<em><b>SCHEDULEDDOWNTIME</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>SCHEDULEDDOWNTIME</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #SCHEDULEDDOWNTIME
+	 * @model literal=""
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SCHEDULEDDOWNTIME_VALUE = 6;
+
+	/**
 	 * The '<em><b>NONE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -190,7 +213,7 @@ public enum ServiceStateValue implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NONE_VALUE = 6;
+	public static final int NONE_VALUE = 7;
 
 	/**
 	 * An array of all the '<em><b>Service State Value</b></em>' enumerators.
@@ -199,7 +222,8 @@ public enum ServiceStateValue implements Enumerator {
 	 * @generated
 	 */
 	private static final ServiceStateValue[] VALUES_ARRAY = new ServiceStateValue[] {
-			OK, WARNING, CRITICAL, UNKNOWN, PENDING, FLAPPING, NONE, };
+			OK, WARNING, CRITICAL, UNKNOWN, PENDING, FLAPPING,
+			SCHEDULEDDOWNTIME, NONE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Service State Value</b></em>' enumerators.
@@ -262,6 +286,8 @@ public enum ServiceStateValue implements Enumerator {
 			return PENDING;
 		case FLAPPING_VALUE:
 			return FLAPPING;
+		case SCHEDULEDDOWNTIME_VALUE:
+			return SCHEDULEDDOWNTIME;
 		case NONE_VALUE:
 			return NONE;
 		}

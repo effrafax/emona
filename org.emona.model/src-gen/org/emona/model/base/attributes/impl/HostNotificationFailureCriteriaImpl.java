@@ -24,6 +24,7 @@ import org.emona.model.base.HostState;
 import org.emona.model.base.HostStateValue;
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.HostNotificationFailureCriteria;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,8 +42,8 @@ import org.emona.model.base.attributes.HostNotificationFailureCriteria;
  *
  * @generated
  */
-public class HostNotificationFailureCriteriaImpl extends EObjectImpl implements
-		HostNotificationFailureCriteria {
+public class HostNotificationFailureCriteriaImpl extends ObjectContentImpl
+		implements HostNotificationFailureCriteria {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
 	 * <!-- begin-user-doc -->

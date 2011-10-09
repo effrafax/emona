@@ -31,12 +31,11 @@ ConfigObject returns baseModel::ConfigObject hidden(IL_WS, NL):
     Host | Hostgroup | Service | Servicegroup | Command | Timeperiod | Contact | Contactgroup |
     Servicedependency | Serviceescalation | Hostdependency | Hostescalation | Hostextinfo | Serviceextinfo;
 
-
     // Proposals haben Probleme mit NL !!!
 Host returns baseModel::Host:
     {baseModel::Host}
     'define' 'host' '{'
-    attr+=HostAttribute*
+    attr+=(HostAttribute | CommentLine)*
     '}';
 
 HostAttribute returns baseModel::Attribute hidden(IL_WS):
@@ -157,7 +156,7 @@ ServiceAttribute returns baseModel::Attribute hidden(IL_WS):
     LowFlapThreshold | HighFlapThreshold | FlapDetectionEnabled | ServiceFlapDetectionOptions |
     ProcessPerfData | RetainStatusInformation | RetainNonStatusInformation |
     NotificationInterval | FirstNotificationDelay | NotificationPeriod |
-    ServiceNotificationOptions | NotificationsEnabled |
+    SNotificationOptions | NotificationsEnabled |
     Contacts | ContactGroups | ServiceStalkingOptions | Notes | NotesUrl | ActionUrl |
     IconImage | IconImageAlt |
     TemplateAttribute) comment=SL_COMMENT? NL;
@@ -439,7 +438,7 @@ Contact returns baseModel::Contact:
     '}';
 
 ContactAttribute returns baseModel::Attribute hidden(IL_WS):
-    (ContactName | HostNotificationsEnabled |
+    (ContactName | ContactGroupNameReference | HostNotificationsEnabled |
     ServiceNotificationsEnabled | HostNotificationPeriod |
     ServiceNotificationPeriod | HostNotificationOptions |
     ServiceNotificationOptions | HostNotificationCommands |
@@ -652,6 +651,14 @@ ContactGroups returns baseAttributes::ContactGroups:
 
 /* */
 /*
+ * Contact Attribute 'contactgroups': Reference to contact groups
+ */
+ContactGroupNameReference returns baseAttributes::ContactGroupNameReference:
+    'contactgroups' reference+=[baseAttributes::ContactGroupName|ContactGroupNameEntry] (COMMA
+    reference+=[baseAttributes::ContactGroupName|ContactGroupNameEntry])*;
+
+/* */
+/*
  * Host/Service Attribute 'notes': Any Entry
  */
 Notes returns baseAttributes::Notes:
@@ -859,6 +866,11 @@ ServiceStalkingOptions returns baseAttributes::ServiceStalkingOptions:
     {baseAttributes::ServiceStalkingOptions}
     'stalking_options' state+=ServiceStateValue (COMMA state+=ServiceStateValue)*;
 
+SNotificationOptions returns baseAttributes::ServiceNotificationOptions hidden(IL_WS):
+    {baseAttributes::ServiceNotificationOptions}
+    'notification_options' state+=ServiceStateValue2 (COMMA state+=ServiceStateValue2)*;
+
+
 /* */
 /*
  * **************************************
@@ -958,7 +970,7 @@ ServiceDescriptionReference returns baseAttributes::ServiceDescriptionReference:
  * **************************************
  */
 CheckCommand returns baseAttributes::CheckCommand:
-    'check_command' reference=[baseAttributes::CommandName|CommandNameEntry];
+    'check_command' reference=[baseAttributes::CommandName|CommandNameEntry] ('!' args+=CommandArg )*;
 
 CommandLine returns baseAttributes::CommandLine:
     'command_line' value=Entry;
@@ -1093,7 +1105,7 @@ define contactgroup{
     }
  */
 ContactGroupName returns baseAttributes::ContactGroupName:
-    'contactgroup_name' value=ContactGroupNameEntry;
+    'contactgroup_name' name=ContactGroupNameEntry;
 
 ContactMembers returns baseAttributes::ContactMembers:
     'members' reference+=[baseAttributes::ContactName|ContactNameEntry] (COMMA
@@ -1106,7 +1118,7 @@ enum ServiceStateValue1 returns baseModel::ServiceStateValue:
     OK='o' | WARNING='w' | CRITICAL='c' | UNKNOWN='u' | PENDING='p' | NONE='n';
 
 enum ServiceStateValue2 returns baseModel::ServiceStateValue:
-    WARNING='w' | UNKNOWN='u' | CRITICAL='c' | FLAPPING='f' | NONE='n';
+    OK='r' | WARNING='w' | UNKNOWN='u' | CRITICAL='c' | FLAPPING='f' | SCHEDULEDDOWNTIME='s' | NONE='n';
     
 
 enum HostStateValue returns baseModel::HostStateValue:
@@ -1131,6 +1143,10 @@ HostgroupNameEntry:
 
 CommandNameEntry:
     UID;
+    
+CommandArg hidden():
+    (UID | INT | Keywords | '%' | '&' | '$')*
+;
 
 TimeperiodNameEntry:
     UID;
@@ -1156,7 +1172,7 @@ RealNumber returns ecore::EDouble hidden():
  * The entry is a catchall rule
  */
 Entry hidden():
-    (UID | ANY | Keywords | IL_WS | NO_COMMENT | LOWER | UPPER | INT | STRING)+;
+    (UID | ANY | DASH | Keywords | IL_WS | NO_COMMENT | LOWER | UPPER | INT | STRING | '$')+;
 
 IpAddress returns baseModel::InetAddress hidden():
     INT '.' INT '.' INT '.' INT;
@@ -1244,7 +1260,7 @@ Keywords:
     'check_period' | 'host_name' | 'check_command' | 'icon_image' |
     'action_url' | 'u' | 'register' |
     'is_volatile' | 'obsess_over_service' |
-    'servicegroup_members';
+    'servicegroup_members'  | 'p';
 
 terminal fragment DIGIT:
     '0'..'9';
@@ -1295,7 +1311,7 @@ terminal HASH_COMMENT:
 
     // Using an extended ID terminal
 terminal UID:
-    ('^')? (LOWER | UPPER | '_') (LOWER | UPPER | '_' | DASH | INT)*;
+    ('^')? (LOWER | UPPER | '_' | DASH | INT)+;
 
     // maybe strings are needed 
 terminal STRING:

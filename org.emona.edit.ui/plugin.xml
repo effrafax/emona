@@ -217,7 +217,11 @@
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="org.emona.edit.ui.NagiosCfgExecutableExtensionFactory:org.emona.edit.ui.project.NagiosCfgNature">
+               class="org.emona.edit.ui.NagiosCfgExecutableExtensionFactory">
+            <parameter
+                  name="guicekey"
+                  value="org.emona.edit.ui.project.NagiosCfgNature">
+            </parameter>
          </run>
       </runtime>
       <requires-nature

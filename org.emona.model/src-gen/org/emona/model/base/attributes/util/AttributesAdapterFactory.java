@@ -20,6 +20,7 @@ import org.emona.model.base.HostFailureCriteria;
 import org.emona.model.base.HostState;
 import org.emona.model.base.IntegerValueAttribute;
 import org.emona.model.base.NameAttribute;
+import org.emona.model.base.ObjectContent;
 import org.emona.model.base.ReferenceAttribute;
 import org.emona.model.base.ServiceFailureCriteria;
 import org.emona.model.base.ServiceNotificationOption;
@@ -580,6 +581,17 @@ public class AttributesAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseCanSubmitCommands(CanSubmitCommands object) {
 			return createCanSubmitCommandsAdapter();
+		}
+
+		@Override
+		public Adapter caseContactGroupNameReference(
+				ContactGroupNameReference object) {
+			return createContactGroupNameReferenceAdapter();
+		}
+
+		@Override
+		public Adapter caseObjectContent(ObjectContent object) {
+			return createObjectContentAdapter();
 		}
 
 		@Override
@@ -1998,6 +2010,34 @@ public class AttributesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCanSubmitCommandsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.emona.model.base.attributes.ContactGroupNameReference <em>Contact Group Name Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.emona.model.base.attributes.ContactGroupNameReference
+	 * @generated
+	 */
+	public Adapter createContactGroupNameReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.emona.model.base.ObjectContent <em>Object Content</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.emona.model.base.ObjectContent
+	 * @generated
+	 */
+	public Adapter createObjectContentAdapter() {
 		return null;
 	}
 

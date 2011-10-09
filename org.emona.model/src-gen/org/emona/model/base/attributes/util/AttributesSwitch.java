@@ -18,6 +18,7 @@ import org.emona.model.base.HostFailureCriteria;
 import org.emona.model.base.HostState;
 import org.emona.model.base.IntegerValueAttribute;
 import org.emona.model.base.NameAttribute;
+import org.emona.model.base.ObjectContent;
 import org.emona.model.base.ReferenceAttribute;
 import org.emona.model.base.ServiceFailureCriteria;
 import org.emona.model.base.ServiceNotificationOption;
@@ -91,6 +92,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(alias);
 			if (result == null)
+				result = caseObjectContent(alias);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -99,6 +102,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			T result = caseHostInitialState(hostInitialState);
 			if (result == null)
 				result = caseAttribute(hostInitialState);
+			if (result == null)
+				result = caseObjectContent(hostInitialState);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -111,6 +116,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(hostgroups);
 			if (result == null)
+				result = caseObjectContent(hostgroups);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -122,6 +129,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(parents);
 			if (result == null)
+				result = caseObjectContent(parents);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -130,6 +139,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			T result = caseAddress(address);
 			if (result == null)
 				result = caseAttribute(address);
+			if (result == null)
+				result = caseObjectContent(address);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -142,6 +153,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(displayName);
 			if (result == null)
+				result = caseObjectContent(displayName);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -152,6 +165,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseBooleanAttribute(register);
 			if (result == null)
 				result = caseAttribute(register);
+			if (result == null)
+				result = caseObjectContent(register);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -164,6 +179,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(use);
 			if (result == null)
+				result = caseObjectContent(use);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -174,6 +191,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseNameAttribute(timeperiodName);
 			if (result == null)
 				result = caseAttribute(timeperiodName);
+			if (result == null)
+				result = caseObjectContent(timeperiodName);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -186,6 +205,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(hostgroupName);
 			if (result == null)
+				result = caseObjectContent(hostgroupName);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -196,6 +217,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseNameAttribute(hostName);
 			if (result == null)
 				result = caseAttribute(hostName);
+			if (result == null)
+				result = caseObjectContent(hostName);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -208,6 +231,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(templateName);
 			if (result == null)
+				result = caseObjectContent(templateName);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -218,6 +243,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseValueAttribute(commandLine);
 			if (result == null)
 				result = caseAttribute(commandLine);
+			if (result == null)
+				result = caseObjectContent(commandLine);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -230,6 +257,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(commandName);
 			if (result == null)
+				result = caseObjectContent(commandName);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -240,6 +269,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseIntegerValueAttribute(maxCheckAttempts);
 			if (result == null)
 				result = caseAttribute(maxCheckAttempts);
+			if (result == null)
+				result = caseObjectContent(maxCheckAttempts);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -252,6 +283,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(checkInterval);
 			if (result == null)
+				result = caseObjectContent(checkInterval);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -262,6 +295,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseIntegerValueAttribute(retryInterval);
 			if (result == null)
 				result = caseAttribute(retryInterval);
+			if (result == null)
+				result = caseObjectContent(retryInterval);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -274,6 +309,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(activeChecksEnabled);
 			if (result == null)
+				result = caseObjectContent(activeChecksEnabled);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -284,6 +321,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseBooleanAttribute(passiveChecksEnabled);
 			if (result == null)
 				result = caseAttribute(passiveChecksEnabled);
+			if (result == null)
+				result = caseObjectContent(passiveChecksEnabled);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -296,6 +335,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(checkPeriod);
 			if (result == null)
+				result = caseObjectContent(checkPeriod);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -306,6 +347,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseReferenceAttribute(checkCommand);
 			if (result == null)
 				result = caseAttribute(checkCommand);
+			if (result == null)
+				result = caseObjectContent(checkCommand);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -318,6 +361,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(timeExclude);
 			if (result == null)
+				result = caseObjectContent(timeExclude);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -328,6 +373,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseNameAttribute(contactName);
 			if (result == null)
 				result = caseAttribute(contactName);
+			if (result == null)
+				result = caseObjectContent(contactName);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -340,6 +387,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(notificationsEnabled);
 			if (result == null)
+				result = caseObjectContent(notificationsEnabled);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -350,6 +399,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseBooleanAttribute(hostNotificationsEnabled);
 			if (result == null)
 				result = caseAttribute(hostNotificationsEnabled);
+			if (result == null)
+				result = caseObjectContent(hostNotificationsEnabled);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -362,6 +413,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(serviceNotificationsEnabled);
 			if (result == null)
+				result = caseObjectContent(serviceNotificationsEnabled);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -372,6 +425,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseReferenceAttribute(notificationPeriod);
 			if (result == null)
 				result = caseAttribute(notificationPeriod);
+			if (result == null)
+				result = caseObjectContent(notificationPeriod);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -384,6 +439,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(hostNotificationPeriod);
 			if (result == null)
+				result = caseObjectContent(hostNotificationPeriod);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -394,6 +451,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseReferenceAttribute(serviceNotificationPeriod);
 			if (result == null)
 				result = caseAttribute(serviceNotificationPeriod);
+			if (result == null)
+				result = caseObjectContent(serviceNotificationPeriod);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -406,6 +465,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseHostState(hostNotificationOptions);
 			if (result == null)
+				result = caseObjectContent(hostNotificationOptions);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -416,6 +477,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseAttribute(serviceNotificationOptions);
 			if (result == null)
 				result = caseServiceNotificationOption(serviceNotificationOptions);
+			if (result == null)
+				result = caseObjectContent(serviceNotificationOptions);
 			if (result == null)
 				result = caseServiceState(serviceNotificationOptions);
 			if (result == null)
@@ -430,6 +493,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(notificationCommands);
 			if (result == null)
+				result = caseObjectContent(notificationCommands);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -440,6 +505,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseReferenceAttribute(hostNotificationCommands);
 			if (result == null)
 				result = caseAttribute(hostNotificationCommands);
+			if (result == null)
+				result = caseObjectContent(hostNotificationCommands);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -452,6 +519,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(serviceNotificationCommands);
 			if (result == null)
+				result = caseObjectContent(serviceNotificationCommands);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -463,6 +532,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(contactAddress);
 			if (result == null)
+				result = caseObjectContent(contactAddress);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -472,6 +543,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(email);
 			if (result == null)
+				result = caseObjectContent(email);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -480,6 +553,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			T result = casePager(pager);
 			if (result == null)
 				result = caseAttribute(pager);
+			if (result == null)
+				result = caseObjectContent(pager);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -492,6 +567,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(contactMembers);
 			if (result == null)
+				result = caseObjectContent(contactMembers);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -499,9 +576,11 @@ public class AttributesSwitch<T> extends Switch<T> {
 			ContactGroupName contactGroupName = (ContactGroupName) theEObject;
 			T result = caseContactGroupName(contactGroupName);
 			if (result == null)
-				result = caseValueAttribute(contactGroupName);
+				result = caseNameAttribute(contactGroupName);
 			if (result == null)
 				result = caseAttribute(contactGroupName);
+			if (result == null)
+				result = caseObjectContent(contactGroupName);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -514,6 +593,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(contacts);
 			if (result == null)
+				result = caseObjectContent(contacts);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -524,6 +605,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseReferenceAttribute(contactGroups);
 			if (result == null)
 				result = caseAttribute(contactGroups);
+			if (result == null)
+				result = caseObjectContent(contactGroups);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -536,6 +619,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(notificationInterval);
 			if (result == null)
+				result = caseObjectContent(notificationInterval);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -546,6 +631,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseIntegerValueAttribute(firstNotificationDelay);
 			if (result == null)
 				result = caseAttribute(firstNotificationDelay);
+			if (result == null)
+				result = caseObjectContent(firstNotificationDelay);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -558,6 +645,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseHostState(hostStalkingOptions);
 			if (result == null)
+				result = caseObjectContent(hostStalkingOptions);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -568,6 +657,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseValueAttribute(notes);
 			if (result == null)
 				result = caseAttribute(notes);
+			if (result == null)
+				result = caseObjectContent(notes);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -580,6 +671,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(notesUrl);
 			if (result == null)
+				result = caseObjectContent(notesUrl);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -590,6 +683,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseValueAttribute(actionUrl);
 			if (result == null)
 				result = caseAttribute(actionUrl);
+			if (result == null)
+				result = caseObjectContent(actionUrl);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -602,6 +697,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(iconImage);
 			if (result == null)
+				result = caseObjectContent(iconImage);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -612,6 +709,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseValueAttribute(iconImageAlt);
 			if (result == null)
 				result = caseAttribute(iconImageAlt);
+			if (result == null)
+				result = caseObjectContent(iconImageAlt);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -624,6 +723,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(vrmlImage);
 			if (result == null)
+				result = caseObjectContent(vrmlImage);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -635,6 +736,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(statusmapImage);
 			if (result == null)
+				result = caseObjectContent(statusmapImage);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -643,6 +746,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			T result = caseTwoDCoords(twoDCoords);
 			if (result == null)
 				result = caseAttribute(twoDCoords);
+			if (result == null)
+				result = caseObjectContent(twoDCoords);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -655,6 +760,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(threeDCoords);
 			if (result == null)
+				result = caseObjectContent(threeDCoords);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -665,6 +772,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseReferenceAttribute(hostgroupMembers);
 			if (result == null)
 				result = caseAttribute(hostgroupMembers);
+			if (result == null)
+				result = caseObjectContent(hostgroupMembers);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -677,6 +786,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(hostMembers);
 			if (result == null)
+				result = caseObjectContent(hostMembers);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -687,6 +798,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseReferenceAttribute(hostNameReference);
 			if (result == null)
 				result = caseAttribute(hostNameReference);
+			if (result == null)
+				result = caseObjectContent(hostNameReference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -699,6 +812,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(hostgroupNameReference);
 			if (result == null)
+				result = caseObjectContent(hostgroupNameReference);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -710,6 +825,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(serviceDescription);
 			if (result == null)
+				result = caseObjectContent(serviceDescription);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -718,6 +835,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			T result = caseServiceInitialState(serviceInitialState);
 			if (result == null)
 				result = caseAttribute(serviceInitialState);
+			if (result == null)
+				result = caseObjectContent(serviceInitialState);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -730,6 +849,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(isVolatileFlag);
 			if (result == null)
+				result = caseObjectContent(isVolatileFlag);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -740,6 +861,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseBooleanAttribute(obsessOverHost);
 			if (result == null)
 				result = caseAttribute(obsessOverHost);
+			if (result == null)
+				result = caseObjectContent(obsessOverHost);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -752,6 +875,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(obsessOverService);
 			if (result == null)
+				result = caseObjectContent(obsessOverService);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -762,6 +887,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseBooleanAttribute(checkFreshness);
 			if (result == null)
 				result = caseAttribute(checkFreshness);
+			if (result == null)
+				result = caseObjectContent(checkFreshness);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -774,6 +901,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(freshnessThreshold);
 			if (result == null)
+				result = caseObjectContent(freshnessThreshold);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -784,6 +913,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseReferenceAttribute(eventHandler);
 			if (result == null)
 				result = caseAttribute(eventHandler);
+			if (result == null)
+				result = caseObjectContent(eventHandler);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -796,6 +927,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(eventHandlerEnabled);
 			if (result == null)
+				result = caseObjectContent(eventHandlerEnabled);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -806,6 +939,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseIntegerValueAttribute(lowFlapThreshold);
 			if (result == null)
 				result = caseAttribute(lowFlapThreshold);
+			if (result == null)
+				result = caseObjectContent(lowFlapThreshold);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -818,6 +953,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(highFlapThreshold);
 			if (result == null)
+				result = caseObjectContent(highFlapThreshold);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -829,6 +966,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(flapDetectionEnabled);
 			if (result == null)
+				result = caseObjectContent(flapDetectionEnabled);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -837,6 +976,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			T result = caseHostFlapDetectionOptions(hostFlapDetectionOptions);
 			if (result == null)
 				result = caseAttribute(hostFlapDetectionOptions);
+			if (result == null)
+				result = caseObjectContent(hostFlapDetectionOptions);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -849,6 +990,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(processPerfData);
 			if (result == null)
+				result = caseObjectContent(processPerfData);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -859,6 +1002,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseBooleanAttribute(retainStatusInformation);
 			if (result == null)
 				result = caseAttribute(retainStatusInformation);
+			if (result == null)
+				result = caseObjectContent(retainStatusInformation);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -871,6 +1016,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(retainNonstatusInformation);
 			if (result == null)
+				result = caseObjectContent(retainNonstatusInformation);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -881,6 +1028,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseAttribute(serviceFlapDetectionOptions);
 			if (result == null)
 				result = caseServiceState(serviceFlapDetectionOptions);
+			if (result == null)
+				result = caseObjectContent(serviceFlapDetectionOptions);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -893,6 +1042,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(servicegroupName);
 			if (result == null)
+				result = caseObjectContent(servicegroupName);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -903,6 +1054,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseReferenceAttribute(serviceMembers);
 			if (result == null)
 				result = caseAttribute(serviceMembers);
+			if (result == null)
+				result = caseObjectContent(serviceMembers);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -915,6 +1068,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(servicegroupMembers);
 			if (result == null)
+				result = caseObjectContent(servicegroupMembers);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -925,6 +1080,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseReferenceAttribute(servicegroups);
 			if (result == null)
 				result = caseAttribute(servicegroups);
+			if (result == null)
+				result = caseObjectContent(servicegroups);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -937,6 +1094,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(dependentHostName);
 			if (result == null)
+				result = caseObjectContent(dependentHostName);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -947,6 +1106,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseReferenceAttribute(dependentHostgroupName);
 			if (result == null)
 				result = caseAttribute(dependentHostgroupName);
+			if (result == null)
+				result = caseObjectContent(dependentHostgroupName);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -959,6 +1120,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(dependentServiceDescription);
 			if (result == null)
+				result = caseObjectContent(dependentServiceDescription);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -969,6 +1132,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseReferenceAttribute(serviceDescriptionReference);
 			if (result == null)
 				result = caseAttribute(serviceDescriptionReference);
+			if (result == null)
+				result = caseObjectContent(serviceDescriptionReference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -981,6 +1146,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(inheritsParent);
 			if (result == null)
+				result = caseObjectContent(inheritsParent);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -991,6 +1158,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseAttribute(serviceExecutionFailureCriteria);
 			if (result == null)
 				result = caseServiceFailureCriteria(serviceExecutionFailureCriteria);
+			if (result == null)
+				result = caseObjectContent(serviceExecutionFailureCriteria);
 			if (result == null)
 				result = caseServiceState(serviceExecutionFailureCriteria);
 			if (result == null)
@@ -1005,6 +1174,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseServiceFailureCriteria(notificationFailureCriteria);
 			if (result == null)
+				result = caseObjectContent(notificationFailureCriteria);
+			if (result == null)
 				result = caseServiceState(notificationFailureCriteria);
 			if (result == null)
 				result = defaultCase(theEObject);
@@ -1018,6 +1189,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(dependencyPeriod);
 			if (result == null)
+				result = caseObjectContent(dependencyPeriod);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -1028,6 +1201,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseAttribute(serviceStalkingOptions);
 			if (result == null)
 				result = caseServiceState(serviceStalkingOptions);
+			if (result == null)
+				result = caseObjectContent(serviceStalkingOptions);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -1040,6 +1215,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(firstNotification);
 			if (result == null)
+				result = caseObjectContent(firstNotification);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -1050,6 +1227,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseIntegerValueAttribute(lastNotification);
 			if (result == null)
 				result = caseAttribute(lastNotification);
+			if (result == null)
+				result = caseObjectContent(lastNotification);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -1062,6 +1241,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(escalationPeriod);
 			if (result == null)
+				result = caseObjectContent(escalationPeriod);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -1073,6 +1254,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseServiceState(serviceEscalationOptions);
 			if (result == null)
+				result = caseObjectContent(serviceEscalationOptions);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -1083,6 +1266,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseAttribute(hostExecutionFailureCriteria);
 			if (result == null)
 				result = caseHostFailureCriteria(hostExecutionFailureCriteria);
+			if (result == null)
+				result = caseObjectContent(hostExecutionFailureCriteria);
 			if (result == null)
 				result = caseHostState(hostExecutionFailureCriteria);
 			if (result == null)
@@ -1097,6 +1282,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseServiceFailureCriteria(serviceNotificationFailureCriteria);
 			if (result == null)
+				result = caseObjectContent(serviceNotificationFailureCriteria);
+			if (result == null)
 				result = caseServiceState(serviceNotificationFailureCriteria);
 			if (result == null)
 				result = defaultCase(theEObject);
@@ -1109,6 +1296,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseAttribute(hostNotificationFailureCriteria);
 			if (result == null)
 				result = caseHostFailureCriteria(hostNotificationFailureCriteria);
+			if (result == null)
+				result = caseObjectContent(hostNotificationFailureCriteria);
 			if (result == null)
 				result = caseHostState(hostNotificationFailureCriteria);
 			if (result == null)
@@ -1123,6 +1312,8 @@ public class AttributesSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseHostState(hostEscalationOptions);
 			if (result == null)
+				result = caseObjectContent(hostEscalationOptions);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -1133,6 +1324,21 @@ public class AttributesSwitch<T> extends Switch<T> {
 				result = caseBooleanAttribute(canSubmitCommands);
 			if (result == null)
 				result = caseAttribute(canSubmitCommands);
+			if (result == null)
+				result = caseObjectContent(canSubmitCommands);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case AttributesPackage.CONTACT_GROUP_NAME_REFERENCE: {
+			ContactGroupNameReference contactGroupNameReference = (ContactGroupNameReference) theEObject;
+			T result = caseContactGroupNameReference(contactGroupNameReference);
+			if (result == null)
+				result = caseReferenceAttribute(contactGroupNameReference);
+			if (result == null)
+				result = caseAttribute(contactGroupNameReference);
+			if (result == null)
+				result = caseObjectContent(contactGroupNameReference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -2583,6 +2789,36 @@ public class AttributesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCanSubmitCommands(CanSubmitCommands object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Contact Group Name Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Contact Group Name Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseContactGroupNameReference(ContactGroupNameReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Object Content</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Object Content</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseObjectContent(ObjectContent object) {
 		return null;
 	}
 

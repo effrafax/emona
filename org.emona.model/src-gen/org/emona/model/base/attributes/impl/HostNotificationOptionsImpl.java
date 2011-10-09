@@ -22,6 +22,7 @@ import org.emona.model.base.HostState;
 import org.emona.model.base.HostStateValue;
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.HostNotificationOptions;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +40,7 @@ import org.emona.model.base.attributes.HostNotificationOptions;
  *
  * @generated
  */
-public class HostNotificationOptionsImpl extends EObjectImpl implements
+public class HostNotificationOptionsImpl extends ObjectContentImpl implements
 		HostNotificationOptions {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.

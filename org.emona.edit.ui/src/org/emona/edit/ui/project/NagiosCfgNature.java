@@ -18,7 +18,7 @@ import org.eclipse.core.runtime.CoreException;
 
 public class NagiosCfgNature implements IProjectNature {
 
-	public static final String NATURE_ID = "org.emona.core.ui.nagiosCfgNature";
+	public static final String NATURE_ID = "org.emona.edit.ui.nagiosCfgNature";
 	private IProject project;
 
 	public void configure() throws CoreException {

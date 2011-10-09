@@ -23,6 +23,7 @@ import org.emona.model.base.HostState;
 import org.emona.model.base.HostStateValue;
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.HostEscalationOptions;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +41,7 @@ import org.emona.model.base.attributes.HostEscalationOptions;
  *
  * @generated
  */
-public class HostEscalationOptionsImpl extends EObjectImpl implements
+public class HostEscalationOptionsImpl extends ObjectContentImpl implements
 		HostEscalationOptions {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.

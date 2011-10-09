@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.emona.model.base.attributes.Address;
 import org.emona.model.base.attributes.AttributesPackage;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +36,7 @@ import org.emona.model.base.attributes.AttributesPackage;
  *
  * @generated
  */
-public class AddressImpl extends EObjectImpl implements Address {
+public class AddressImpl extends ObjectContentImpl implements Address {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
 	 * <!-- begin-user-doc -->

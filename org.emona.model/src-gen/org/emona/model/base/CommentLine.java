@@ -23,7 +23,7 @@ package org.emona.model.base;
  * @model
  * @generated
  */
-public interface CommentLine extends InfoObject {
+public interface CommentLine extends InfoObject, ObjectContent {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->

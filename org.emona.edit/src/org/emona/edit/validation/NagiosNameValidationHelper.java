@@ -33,7 +33,8 @@ public class NagiosNameValidationHelper extends NamesAreUniqueValidationHelper {
 		EClass clazz = super.getAssociatedClusterType(eClass);
 		if (clazz == BasePackage.Literals.CONFIG_OBJECT || 
 				clazz == BasePackage.Literals.ATTRIBUTE ||
-				clazz == BasePackage.Literals.NAME_ATTRIBUTE) {
+				clazz == BasePackage.Literals.NAME_ATTRIBUTE |
+				clazz == BasePackage.Literals.OBJECT_CONTENT ) {
 			return eClass;
 		} else {
 			return clazz;

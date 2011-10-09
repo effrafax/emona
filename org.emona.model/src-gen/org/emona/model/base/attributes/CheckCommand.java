@@ -7,6 +7,7 @@
  */
 package org.emona.model.base.attributes;
 
+import org.eclipse.emf.common.util.EList;
 import org.emona.model.base.ReferenceAttribute;
 
 /**
@@ -19,6 +20,7 @@ import org.emona.model.base.ReferenceAttribute;
  * <ul>
  *   <li>{@link org.emona.model.base.attributes.CheckCommand#getReference <em>Reference</em>}</li>
  *   <li>{@link org.emona.model.base.attributes.CheckCommand#getToken <em>Token</em>}</li>
+ *   <li>{@link org.emona.model.base.attributes.CheckCommand#getArgs <em>Args</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,5 +70,21 @@ public interface CheckCommand extends ReferenceAttribute {
 	 * @generated
 	 */
 	String getToken();
+
+	/**
+	 * Returns the value of the '<em><b>Args</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Args</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Args</em>' attribute list.
+	 * @see org.emona.model.base.attributes.AttributesPackage#getCheckCommand_Args()
+	 * @model
+	 * @generated
+	 */
+	EList<String> getArgs();
 
 } // CheckCommand

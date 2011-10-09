@@ -7,6 +7,7 @@
  */
 package org.emona.model.base.attributes;
 
+import org.emona.model.base.NameAttribute;
 import org.emona.model.base.ValueAttribute;
 
 /**
@@ -25,7 +26,7 @@ import org.emona.model.base.ValueAttribute;
  * @model
  * @generated
  */
-public interface ContactGroupName extends ValueAttribute {
+public interface ContactGroupName extends NameAttribute {
 	/**
 	 * Returns the value of the '<em><b>Token</b></em>' attribute.
 	 * The default value is <code>"contactgroup_name"</code>.

@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface Attribute extends EObject {
+public interface Attribute extends ObjectContent {
 	/**
 	 * Returns the value of the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->

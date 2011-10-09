@@ -24,6 +24,7 @@ import org.emona.model.base.ServiceState;
 import org.emona.model.base.ServiceStateValue;
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.ServiceNotificationOptions;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,7 +44,7 @@ import org.emona.model.base.attributes.ServiceNotificationOptions;
  *
  * @generated
  */
-public class ServiceNotificationOptionsImpl extends EObjectImpl implements
+public class ServiceNotificationOptionsImpl extends ObjectContentImpl implements
 		ServiceNotificationOptions {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.

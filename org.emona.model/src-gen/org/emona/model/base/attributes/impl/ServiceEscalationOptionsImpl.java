@@ -23,6 +23,7 @@ import org.emona.model.base.ServiceState;
 import org.emona.model.base.ServiceStateValue;
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.ServiceEscalationOptions;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +41,7 @@ import org.emona.model.base.attributes.ServiceEscalationOptions;
  *
  * @generated
  */
-public class ServiceEscalationOptionsImpl extends EObjectImpl implements
+public class ServiceEscalationOptionsImpl extends ObjectContentImpl implements
 		ServiceEscalationOptions {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.

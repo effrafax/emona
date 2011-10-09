@@ -892,6 +892,15 @@ public interface AttributesFactory extends EFactory {
 	CanSubmitCommands createCanSubmitCommands();
 
 	/**
+	 * Returns a new object of class '<em>Contact Group Name Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Contact Group Name Reference</em>'.
+	 * @generated
+	 */
+	ContactGroupNameReference createContactGroupNameReference();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

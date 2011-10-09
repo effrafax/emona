@@ -23,6 +23,7 @@ import org.emona.model.base.ServiceState;
 import org.emona.model.base.ServiceStateValue;
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.ServiceStalkingOptions;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +41,7 @@ import org.emona.model.base.attributes.ServiceStalkingOptions;
  *
  * @generated
  */
-public class ServiceStalkingOptionsImpl extends EObjectImpl implements
+public class ServiceStalkingOptionsImpl extends ObjectContentImpl implements
 		ServiceStalkingOptions {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.

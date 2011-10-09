@@ -31,7 +31,7 @@ import org.emona.model.base.ReferenceAttribute;
  *
  * @generated
  */
-public class ReferenceAttributeImpl extends EObjectImpl implements
+public class ReferenceAttributeImpl extends ObjectContentImpl implements
 		ReferenceAttribute {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.

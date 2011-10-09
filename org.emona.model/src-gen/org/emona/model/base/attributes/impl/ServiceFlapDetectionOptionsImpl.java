@@ -23,6 +23,7 @@ import org.emona.model.base.ServiceState;
 import org.emona.model.base.ServiceStateValue;
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.ServiceFlapDetectionOptions;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,8 +41,8 @@ import org.emona.model.base.attributes.ServiceFlapDetectionOptions;
  *
  * @generated
  */
-public class ServiceFlapDetectionOptionsImpl extends EObjectImpl implements
-		ServiceFlapDetectionOptions {
+public class ServiceFlapDetectionOptionsImpl extends ObjectContentImpl
+		implements ServiceFlapDetectionOptions {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -31,6 +31,7 @@ import org.emona.model.base.attributes.CommandLine;
 import org.emona.model.base.attributes.CommandName;
 import org.emona.model.base.attributes.ContactAddress;
 import org.emona.model.base.attributes.ContactGroupName;
+import org.emona.model.base.attributes.ContactGroupNameReference;
 import org.emona.model.base.attributes.ContactGroups;
 import org.emona.model.base.attributes.ContactMembers;
 import org.emona.model.base.attributes.ContactName;
@@ -800,6 +801,13 @@ public class AttributesPackageImpl extends EPackageImpl implements
 	private EClass canSubmitCommandsEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass contactGroupNameReferenceEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -1321,6 +1329,15 @@ public class AttributesPackageImpl extends EPackageImpl implements
 	 */
 	public EAttribute getCheckCommand_Token() {
 		return (EAttribute) checkCommandEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCheckCommand_Args() {
+		return (EAttribute) checkCommandEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -3063,6 +3080,35 @@ public class AttributesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getContactGroupNameReference() {
+		return contactGroupNameReferenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getContactGroupNameReference_Reference() {
+		return (EReference) contactGroupNameReferenceEClass
+				.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContactGroupNameReference_Token() {
+		return (EAttribute) contactGroupNameReferenceEClass
+				.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AttributesFactory getAttributesFactory() {
 		return (AttributesFactory) getEFactoryInstance();
 	}
@@ -3158,6 +3204,7 @@ public class AttributesPackageImpl extends EPackageImpl implements
 		checkCommandEClass = createEClass(CHECK_COMMAND);
 		createEReference(checkCommandEClass, CHECK_COMMAND__REFERENCE);
 		createEAttribute(checkCommandEClass, CHECK_COMMAND__TOKEN);
+		createEAttribute(checkCommandEClass, CHECK_COMMAND__ARGS);
 
 		timeExcludeEClass = createEClass(TIME_EXCLUDE);
 		createEReference(timeExcludeEClass, TIME_EXCLUDE__REFERENCE);
@@ -3464,6 +3511,12 @@ public class AttributesPackageImpl extends EPackageImpl implements
 
 		canSubmitCommandsEClass = createEClass(CAN_SUBMIT_COMMANDS);
 		createEAttribute(canSubmitCommandsEClass, CAN_SUBMIT_COMMANDS__TOKEN);
+
+		contactGroupNameReferenceEClass = createEClass(CONTACT_GROUP_NAME_REFERENCE);
+		createEReference(contactGroupNameReferenceEClass,
+				CONTACT_GROUP_NAME_REFERENCE__REFERENCE);
+		createEAttribute(contactGroupNameReferenceEClass,
+				CONTACT_GROUP_NAME_REFERENCE__TOKEN);
 	}
 
 	/**
@@ -3579,7 +3632,7 @@ public class AttributesPackageImpl extends EPackageImpl implements
 		contactMembersEClass.getESuperTypes().add(
 				theBasePackage.getReferenceAttribute());
 		contactGroupNameEClass.getESuperTypes().add(
-				theBasePackage.getValueAttribute());
+				theBasePackage.getNameAttribute());
 		contactsEClass.getESuperTypes().add(
 				theBasePackage.getReferenceAttribute());
 		contactGroupsEClass.getESuperTypes().add(
@@ -3711,6 +3764,8 @@ public class AttributesPackageImpl extends EPackageImpl implements
 				theBasePackage.getHostState());
 		canSubmitCommandsEClass.getESuperTypes().add(
 				theBasePackage.getBooleanAttribute());
+		contactGroupNameReferenceEClass.getESuperTypes().add(
+				theBasePackage.getReferenceAttribute());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(aliasEClass, Alias.class, "Alias", !IS_ABSTRACT,
@@ -3898,6 +3953,10 @@ public class AttributesPackageImpl extends EPackageImpl implements
 				"token", "check_command", 0, 1, CheckCommand.class,
 				!IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCheckCommand_Args(), ecorePackage.getEString(),
+				"args", null, 0, -1, CheckCommand.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(timeExcludeEClass, TimeExclude.class, "TimeExclude",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4702,6 +4761,20 @@ public class AttributesPackageImpl extends EPackageImpl implements
 				"token", "can_submit_commands", 0, 1, CanSubmitCommands.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(contactGroupNameReferenceEClass,
+				ContactGroupNameReference.class, "ContactGroupNameReference",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getContactGroupNameReference_Reference(),
+				this.getContactGroupName(), null, "reference", null, 0, -1,
+				ContactGroupNameReference.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContactGroupNameReference_Token(),
+				ecorePackage.getEString(), "token", "contactgroups", 0, 1,
+				ContactGroupNameReference.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 	}
 
 } //AttributesPackageImpl

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.emona.model.base.Attribute;
 
+import org.emona.model.base.ObjectContent;
 import org.emona.model.base.attributes.time.*;
 
 /**
@@ -78,6 +79,8 @@ public class TimeSwitch<T> extends Switch<T> {
 			T result = caseTimeDefinition(timeDefinition);
 			if (result == null)
 				result = caseAttribute(timeDefinition);
+			if (result == null)
+				result = caseObjectContent(timeDefinition);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -261,6 +264,21 @@ public class TimeSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNumericDateRange(NumericDateRange object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Object Content</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Object Content</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseObjectContent(ObjectContent object) {
 		return null;
 	}
 

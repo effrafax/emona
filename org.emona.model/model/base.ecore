@@ -39,7 +39,8 @@
   <eClassifiers xsi:type="ecore:EDataType" name="InetAddress" instanceClassName="java.net.InetAddress"/>
   <eClassifiers xsi:type="ecore:EDataType" name="TimeRange" instanceClassName="org.emona.model.types.TimeRange"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Date" instanceClassName="java.util.Date"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Attribute" abstract="true" interface="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute" abstract="true" interface="true"
+      eSuperTypes="#//ObjectContent">
     <eOperations name="getToken" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiline" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -74,10 +75,11 @@
     <eLiterals name="UNKNOWN" value="3" literal="u"/>
     <eLiterals name="PENDING" value="4" literal="p"/>
     <eLiterals name="FLAPPING" value="5" literal="f"/>
-    <eLiterals name="NONE" value="6" literal="n"/>
+    <eLiterals name="SCHEDULEDDOWNTIME" value="6" literal=""/>
+    <eLiterals name="NONE" value="7" literal="n"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceState">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" lowerBound="1" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" upperBound="-1"
         eType="#//ServiceStateValue"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HostState">
@@ -97,11 +99,11 @@
     <eOperations name="hasAttribute" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="token" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attr" upperBound="-1" eType="#//Attribute"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attr" upperBound="-1" eType="#//ObjectContent"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InfoObject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CommentLine" eSuperTypes="#//InfoObject">
+  <eClassifiers xsi:type="ecore:EClass" name="CommentLine" eSuperTypes="#//InfoObject #//ObjectContent">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Host" eSuperTypes="#//ConfigObject"/>
@@ -118,6 +120,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Timeperiod" eSuperTypes="#//ConfigObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="Contact" eSuperTypes="#//ConfigObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="Contactgroup" eSuperTypes="#//ConfigObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectContent" abstract="true"/>
   <eSubpackages name="attributes" nsURI="http://www.emona.org/model/base/attributes"
       nsPrefix="eatt">
     <eClassifiers xsi:type="ecore:EClass" name="Alias" eSuperTypes="#//ValueAttribute">
@@ -213,6 +216,8 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//attributes/CommandName"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="check_command"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="args" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TimeExclude" eSuperTypes="#//ReferenceAttribute">
       <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
@@ -296,7 +301,7 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="members"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ContactGroupName" eSuperTypes="#//ValueAttribute">
+    <eClassifiers xsi:type="ecore:EClass" name="ContactGroupName" eSuperTypes="#//NameAttribute">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" defaultValueLiteral="contactgroup_name"/>
     </eClassifiers>
@@ -571,6 +576,12 @@
     <eClassifiers xsi:type="ecore:EClass" name="CanSubmitCommands" eSuperTypes="#//BooleanAttribute">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="can_submit_commands"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ContactGroupNameReference" eSuperTypes="#//ReferenceAttribute">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reference" upperBound="-1"
+          eType="#//attributes/ContactGroupName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="contactgroups"/>
     </eClassifiers>
     <eSubpackages name="time" nsURI="http://www.emona.org/model/base/attributes/time"
         nsPrefix="eatime">

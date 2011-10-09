@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.Pager;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +33,7 @@ import org.emona.model.base.attributes.Pager;
  *
  * @generated
  */
-public class PagerImpl extends EObjectImpl implements Pager {
+public class PagerImpl extends ObjectContentImpl implements Pager {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
 	 * <!-- begin-user-doc -->

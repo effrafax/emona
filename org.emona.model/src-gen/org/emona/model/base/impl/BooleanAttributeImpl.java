@@ -32,7 +32,7 @@ import org.emona.model.base.BooleanAttribute;
  *
  * @generated
  */
-public class BooleanAttributeImpl extends EObjectImpl implements
+public class BooleanAttributeImpl extends ObjectContentImpl implements
 		BooleanAttribute {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.

@@ -40,7 +40,7 @@ public interface ServiceState extends EObject {
 	 * @return the value of the '<em>State</em>' attribute list.
 	 * @see org.emona.model.base.ServiceStateValue
 	 * @see org.emona.model.base.BasePackage#getServiceState_State()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	EList<ServiceStateValue> getState();

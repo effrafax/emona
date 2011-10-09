@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
 public interface ConfigObject extends InfoObject {
 	/**
 	 * Returns the value of the '<em><b>Attr</b></em>' containment reference list.
-	 * The list contents are of type {@link org.emona.model.base.Attribute}.
+	 * The list contents are of type {@link org.emona.model.base.ObjectContent}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Attr</em>' containment reference list isn't clear,
@@ -40,7 +40,7 @@ public interface ConfigObject extends InfoObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Attribute> getAttr();
+	EList<ObjectContent> getAttr();
 
 	/**
 	 * <!-- begin-user-doc -->

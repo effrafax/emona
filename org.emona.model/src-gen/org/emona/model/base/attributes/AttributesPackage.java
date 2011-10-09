@@ -1210,13 +1210,22 @@ public interface AttributesPackage extends EPackage {
 	int CHECK_COMMAND__TOKEN = BasePackage.REFERENCE_ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Args</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECK_COMMAND__ARGS = BasePackage.REFERENCE_ATTRIBUTE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Check Command</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHECK_COMMAND_FEATURE_COUNT = BasePackage.REFERENCE_ATTRIBUTE_FEATURE_COUNT + 2;
+	int CHECK_COMMAND_FEATURE_COUNT = BasePackage.REFERENCE_ATTRIBUTE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.TimeExcludeImpl <em>Time Exclude</em>}' class.
@@ -2188,7 +2197,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTACT_GROUP_NAME__COMMENT = BasePackage.VALUE_ATTRIBUTE__COMMENT;
+	int CONTACT_GROUP_NAME__COMMENT = BasePackage.NAME_ATTRIBUTE__COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
@@ -2197,16 +2206,16 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTACT_GROUP_NAME__MULTILINE = BasePackage.VALUE_ATTRIBUTE__MULTILINE;
+	int CONTACT_GROUP_NAME__MULTILINE = BasePackage.NAME_ATTRIBUTE__MULTILINE;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTACT_GROUP_NAME__VALUE = BasePackage.VALUE_ATTRIBUTE__VALUE;
+	int CONTACT_GROUP_NAME__NAME = BasePackage.NAME_ATTRIBUTE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Token</b></em>' attribute.
@@ -2215,7 +2224,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTACT_GROUP_NAME__TOKEN = BasePackage.VALUE_ATTRIBUTE_FEATURE_COUNT + 0;
+	int CONTACT_GROUP_NAME__TOKEN = BasePackage.NAME_ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Contact Group Name</em>' class.
@@ -2224,7 +2233,7 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTACT_GROUP_NAME_FEATURE_COUNT = BasePackage.VALUE_ATTRIBUTE_FEATURE_COUNT + 1;
+	int CONTACT_GROUP_NAME_FEATURE_COUNT = BasePackage.NAME_ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.ContactsImpl <em>Contacts</em>}' class.
@@ -5407,6 +5416,61 @@ public interface AttributesPackage extends EPackage {
 	int CAN_SUBMIT_COMMANDS_FEATURE_COUNT = BasePackage.BOOLEAN_ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.emona.model.base.attributes.impl.ContactGroupNameReferenceImpl <em>Contact Group Name Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.emona.model.base.attributes.impl.ContactGroupNameReferenceImpl
+	 * @see org.emona.model.base.attributes.impl.AttributesPackageImpl#getContactGroupNameReference()
+	 * @generated
+	 */
+	int CONTACT_GROUP_NAME_REFERENCE = 96;
+
+	/**
+	 * The feature id for the '<em><b>Comment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTACT_GROUP_NAME_REFERENCE__COMMENT = BasePackage.REFERENCE_ATTRIBUTE__COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTACT_GROUP_NAME_REFERENCE__MULTILINE = BasePackage.REFERENCE_ATTRIBUTE__MULTILINE;
+
+	/**
+	 * The feature id for the '<em><b>Reference</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTACT_GROUP_NAME_REFERENCE__REFERENCE = BasePackage.REFERENCE_ATTRIBUTE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Token</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTACT_GROUP_NAME_REFERENCE__TOKEN = BasePackage.REFERENCE_ATTRIBUTE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Contact Group Name Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTACT_GROUP_NAME_REFERENCE_FEATURE_COUNT = BasePackage.REFERENCE_ATTRIBUTE_FEATURE_COUNT + 2;
+
+	/**
 	 * Returns the meta object for class '{@link org.emona.model.base.attributes.Alias <em>Alias</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5923,6 +5987,17 @@ public interface AttributesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCheckCommand_Token();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.emona.model.base.attributes.CheckCommand#getArgs <em>Args</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Args</em>'.
+	 * @see org.emona.model.base.attributes.CheckCommand#getArgs()
+	 * @see #getCheckCommand()
+	 * @generated
+	 */
+	EAttribute getCheckCommand_Args();
 
 	/**
 	 * Returns the meta object for class '{@link org.emona.model.base.attributes.TimeExclude <em>Time Exclude</em>}'.
@@ -7874,6 +7949,38 @@ public interface AttributesPackage extends EPackage {
 	EAttribute getCanSubmitCommands_Token();
 
 	/**
+	 * Returns the meta object for class '{@link org.emona.model.base.attributes.ContactGroupNameReference <em>Contact Group Name Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Contact Group Name Reference</em>'.
+	 * @see org.emona.model.base.attributes.ContactGroupNameReference
+	 * @generated
+	 */
+	EClass getContactGroupNameReference();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.emona.model.base.attributes.ContactGroupNameReference#getReference <em>Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Reference</em>'.
+	 * @see org.emona.model.base.attributes.ContactGroupNameReference#getReference()
+	 * @see #getContactGroupNameReference()
+	 * @generated
+	 */
+	EReference getContactGroupNameReference_Reference();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.emona.model.base.attributes.ContactGroupNameReference#getToken <em>Token</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Token</em>'.
+	 * @see org.emona.model.base.attributes.ContactGroupNameReference#getToken()
+	 * @see #getContactGroupNameReference()
+	 * @generated
+	 */
+	EAttribute getContactGroupNameReference_Token();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8335,6 +8442,14 @@ public interface AttributesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CHECK_COMMAND__TOKEN = eINSTANCE.getCheckCommand_Token();
+
+		/**
+		 * The meta object literal for the '<em><b>Args</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHECK_COMMAND__ARGS = eINSTANCE.getCheckCommand_Args();
 
 		/**
 		 * The meta object literal for the '{@link org.emona.model.base.attributes.impl.TimeExcludeImpl <em>Time Exclude</em>}' class.
@@ -10054,6 +10169,35 @@ public interface AttributesPackage extends EPackage {
 		 */
 		EAttribute CAN_SUBMIT_COMMANDS__TOKEN = eINSTANCE
 				.getCanSubmitCommands_Token();
+
+		/**
+		 * The meta object literal for the '{@link org.emona.model.base.attributes.impl.ContactGroupNameReferenceImpl <em>Contact Group Name Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.emona.model.base.attributes.impl.ContactGroupNameReferenceImpl
+		 * @see org.emona.model.base.attributes.impl.AttributesPackageImpl#getContactGroupNameReference()
+		 * @generated
+		 */
+		EClass CONTACT_GROUP_NAME_REFERENCE = eINSTANCE
+				.getContactGroupNameReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Reference</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTACT_GROUP_NAME_REFERENCE__REFERENCE = eINSTANCE
+				.getContactGroupNameReference_Reference();
+
+		/**
+		 * The meta object literal for the '<em><b>Token</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTACT_GROUP_NAME_REFERENCE__TOKEN = eINSTANCE
+				.getContactGroupNameReference_Token();
 
 	}
 

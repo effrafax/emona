@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.emona.model.base.attributes.time.DateSpec;
 import org.emona.model.base.attributes.time.TimeDefinition;
 import org.emona.model.base.attributes.time.TimePackage;
+import org.emona.model.base.impl.ObjectContentImpl;
 import org.emona.model.types.TimeRange;
 
 /**
@@ -41,7 +42,8 @@ import org.emona.model.types.TimeRange;
  *
  * @generated
  */
-public class TimeDefinitionImpl extends EObjectImpl implements TimeDefinition {
+public class TimeDefinitionImpl extends ObjectContentImpl implements
+		TimeDefinition {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
 	 * <!-- begin-user-doc -->

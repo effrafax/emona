@@ -32,7 +32,7 @@ import org.emona.model.base.IntegerValueAttribute;
  *
  * @generated
  */
-public class IntegerValueAttributeImpl extends EObjectImpl implements
+public class IntegerValueAttributeImpl extends ObjectContentImpl implements
 		IntegerValueAttribute {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.

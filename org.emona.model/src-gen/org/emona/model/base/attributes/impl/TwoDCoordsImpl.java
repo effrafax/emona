@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.TwoDCoords;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +35,7 @@ import org.emona.model.base.attributes.TwoDCoords;
  *
  * @generated
  */
-public class TwoDCoordsImpl extends EObjectImpl implements TwoDCoords {
+public class TwoDCoordsImpl extends ObjectContentImpl implements TwoDCoords {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
 	 * <!-- begin-user-doc -->

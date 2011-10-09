@@ -254,6 +254,8 @@ public class AttributesFactoryImpl extends EFactoryImpl implements
 			return createHostEscalationOptions();
 		case AttributesPackage.CAN_SUBMIT_COMMANDS:
 			return createCanSubmitCommands();
+		case AttributesPackage.CONTACT_GROUP_NAME_REFERENCE:
+			return createContactGroupNameReference();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName()
 					+ "' is not a valid classifier");
@@ -1218,6 +1220,16 @@ public class AttributesFactoryImpl extends EFactoryImpl implements
 	public CanSubmitCommands createCanSubmitCommands() {
 		CanSubmitCommandsImpl canSubmitCommands = new CanSubmitCommandsImpl();
 		return canSubmitCommands;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContactGroupNameReference createContactGroupNameReference() {
+		ContactGroupNameReferenceImpl contactGroupNameReference = new ContactGroupNameReferenceImpl();
+		return contactGroupNameReference;
 	}
 
 	/**

@@ -45,6 +45,7 @@ import org.emona.model.base.IntegerValueAttribute;
 import org.emona.model.base.MonObject;
 import org.emona.model.base.Month;
 import org.emona.model.base.NameAttribute;
+import org.emona.model.base.ObjectContent;
 import org.emona.model.base.ReferenceAttribute;
 import org.emona.model.base.Service;
 import org.emona.model.base.ServiceFailureCriteria;
@@ -276,6 +277,13 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * @generated
 	 */
 	private EClass contactgroupEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass objectContentEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -816,6 +824,15 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getObjectContent() {
+		return objectContentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getWeekday() {
 		return weekdayEEnum;
 	}
@@ -988,6 +1005,8 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 
 		contactgroupEClass = createEClass(CONTACTGROUP);
 
+		objectContentEClass = createEClass(OBJECT_CONTENT);
+
 		// Create enums
 		weekdayEEnum = createEEnum(WEEKDAY);
 		monthEEnum = createEEnum(MONTH);
@@ -1037,6 +1056,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		attributeEClass.getESuperTypes().add(this.getObjectContent());
 		nameAttributeEClass.getESuperTypes().add(this.getAttribute());
 		valueAttributeEClass.getESuperTypes().add(this.getAttribute());
 		booleanAttributeEClass.getESuperTypes().add(this.getAttribute());
@@ -1049,6 +1069,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 				this.getServiceState());
 		configObjectEClass.getESuperTypes().add(this.getInfoObject());
 		commentLineEClass.getESuperTypes().add(this.getInfoObject());
+		commentLineEClass.getESuperTypes().add(this.getObjectContent());
 		hostEClass.getESuperTypes().add(this.getConfigObject());
 		hostgroupEClass.getESuperTypes().add(this.getConfigObject());
 		serviceEClass.getESuperTypes().add(this.getConfigObject());
@@ -1134,7 +1155,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		initEClass(serviceStateEClass, ServiceState.class, "ServiceState",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getServiceState_State(), this.getServiceStateValue(),
-				"state", null, 1, -1, ServiceState.class, !IS_TRANSIENT,
+				"state", null, 0, -1, ServiceState.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
@@ -1169,7 +1190,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 
 		initEClass(configObjectEClass, ConfigObject.class, "ConfigObject",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConfigObject_Attr(), this.getAttribute(), null,
+		initEReference(getConfigObject_Attr(), this.getObjectContent(), null,
 				"attr", null, 0, -1, ConfigObject.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1237,6 +1258,9 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		initEClass(contactgroupEClass, Contactgroup.class, "Contactgroup",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(objectContentEClass, ObjectContent.class, "ObjectContent",
+				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		// Initialize enums and add enum literals
 		initEEnum(weekdayEEnum, Weekday.class, "Weekday");
 		addEEnumLiteral(weekdayEEnum, Weekday.SU);
@@ -1278,6 +1302,8 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		addEEnumLiteral(serviceStateValueEEnum, ServiceStateValue.UNKNOWN);
 		addEEnumLiteral(serviceStateValueEEnum, ServiceStateValue.PENDING);
 		addEEnumLiteral(serviceStateValueEEnum, ServiceStateValue.FLAPPING);
+		addEEnumLiteral(serviceStateValueEEnum,
+				ServiceStateValue.SCHEDULEDDOWNTIME);
 		addEEnumLiteral(serviceStateValueEEnum, ServiceStateValue.NONE);
 
 		// Initialize data types

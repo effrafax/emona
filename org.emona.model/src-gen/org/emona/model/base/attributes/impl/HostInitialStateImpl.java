@@ -18,6 +18,7 @@ import org.emona.model.base.HostStateValue;
 
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.HostInitialState;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +36,7 @@ import org.emona.model.base.attributes.HostInitialState;
  *
  * @generated
  */
-public class HostInitialStateImpl extends EObjectImpl implements
+public class HostInitialStateImpl extends ObjectContentImpl implements
 		HostInitialState {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.

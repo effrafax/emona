@@ -82,6 +82,8 @@ public class BaseSwitch<T> extends Switch<T> {
 			Attribute attribute = (Attribute) theEObject;
 			T result = caseAttribute(attribute);
 			if (result == null)
+				result = caseObjectContent(attribute);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -90,6 +92,8 @@ public class BaseSwitch<T> extends Switch<T> {
 			T result = caseNameAttribute(nameAttribute);
 			if (result == null)
 				result = caseAttribute(nameAttribute);
+			if (result == null)
+				result = caseObjectContent(nameAttribute);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -100,6 +104,8 @@ public class BaseSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(valueAttribute);
 			if (result == null)
+				result = caseObjectContent(valueAttribute);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -108,6 +114,8 @@ public class BaseSwitch<T> extends Switch<T> {
 			T result = caseBooleanAttribute(booleanAttribute);
 			if (result == null)
 				result = caseAttribute(booleanAttribute);
+			if (result == null)
+				result = caseObjectContent(booleanAttribute);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -118,6 +126,8 @@ public class BaseSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseAttribute(referenceAttribute);
 			if (result == null)
+				result = caseObjectContent(referenceAttribute);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -126,6 +136,8 @@ public class BaseSwitch<T> extends Switch<T> {
 			T result = caseIntegerValueAttribute(integerValueAttribute);
 			if (result == null)
 				result = caseAttribute(integerValueAttribute);
+			if (result == null)
+				result = caseObjectContent(integerValueAttribute);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -192,6 +204,8 @@ public class BaseSwitch<T> extends Switch<T> {
 			T result = caseCommentLine(commentLine);
 			if (result == null)
 				result = caseInfoObject(commentLine);
+			if (result == null)
+				result = caseObjectContent(commentLine);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -346,6 +360,13 @@ public class BaseSwitch<T> extends Switch<T> {
 				result = caseConfigObject(contactgroup);
 			if (result == null)
 				result = caseInfoObject(contactgroup);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case BasePackage.OBJECT_CONTENT: {
+			ObjectContent objectContent = (ObjectContent) theEObject;
+			T result = caseObjectContent(objectContent);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -787,6 +808,21 @@ public class BaseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseContactgroup(Contactgroup object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Object Content</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Object Content</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseObjectContent(ObjectContent object) {
 		return null;
 	}
 

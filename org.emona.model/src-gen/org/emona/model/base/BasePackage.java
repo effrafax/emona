@@ -110,6 +110,25 @@ public interface BasePackage extends EPackage {
 	int MON_OBJECT_FEATURE_COUNT = 3;
 
 	/**
+	 * The meta object id for the '{@link org.emona.model.base.impl.ObjectContentImpl <em>Object Content</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.emona.model.base.impl.ObjectContentImpl
+	 * @see org.emona.model.base.impl.BasePackageImpl#getObjectContent()
+	 * @generated
+	 */
+	int OBJECT_CONTENT = 29;
+
+	/**
+	 * The number of structural features of the '<em>Object Content</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_CONTENT_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.emona.model.base.Attribute <em>Attribute</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -126,7 +145,7 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE__COMMENT = 0;
+	int ATTRIBUTE__COMMENT = OBJECT_CONTENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Multiline</b></em>' attribute.
@@ -135,7 +154,7 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE__MULTILINE = 1;
+	int ATTRIBUTE__MULTILINE = OBJECT_CONTENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Attribute</em>' class.
@@ -144,7 +163,7 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE_FEATURE_COUNT = 2;
+	int ATTRIBUTE_FEATURE_COUNT = OBJECT_CONTENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.impl.NameAttributeImpl <em>Name Attribute</em>}' class.
@@ -1000,7 +1019,7 @@ public interface BasePackage extends EPackage {
 	 * @see org.emona.model.base.impl.BasePackageImpl#getWeekday()
 	 * @generated
 	 */
-	int WEEKDAY = 29;
+	int WEEKDAY = 30;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.Month <em>Month</em>}' enum.
@@ -1010,7 +1029,7 @@ public interface BasePackage extends EPackage {
 	 * @see org.emona.model.base.impl.BasePackageImpl#getMonth()
 	 * @generated
 	 */
-	int MONTH = 30;
+	int MONTH = 31;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.HostStateValue <em>Host State Value</em>}' enum.
@@ -1020,7 +1039,7 @@ public interface BasePackage extends EPackage {
 	 * @see org.emona.model.base.impl.BasePackageImpl#getHostStateValue()
 	 * @generated
 	 */
-	int HOST_STATE_VALUE = 31;
+	int HOST_STATE_VALUE = 32;
 
 	/**
 	 * The meta object id for the '{@link org.emona.model.base.ServiceStateValue <em>Service State Value</em>}' enum.
@@ -1030,7 +1049,7 @@ public interface BasePackage extends EPackage {
 	 * @see org.emona.model.base.impl.BasePackageImpl#getServiceStateValue()
 	 * @generated
 	 */
-	int SERVICE_STATE_VALUE = 32;
+	int SERVICE_STATE_VALUE = 33;
 
 	/**
 	 * The meta object id for the '<em>Inet Address</em>' data type.
@@ -1040,7 +1059,7 @@ public interface BasePackage extends EPackage {
 	 * @see org.emona.model.base.impl.BasePackageImpl#getInetAddress()
 	 * @generated
 	 */
-	int INET_ADDRESS = 33;
+	int INET_ADDRESS = 34;
 
 	/**
 	 * The meta object id for the '<em>Time Range</em>' data type.
@@ -1050,7 +1069,7 @@ public interface BasePackage extends EPackage {
 	 * @see org.emona.model.base.impl.BasePackageImpl#getTimeRange()
 	 * @generated
 	 */
-	int TIME_RANGE = 34;
+	int TIME_RANGE = 35;
 
 	/**
 	 * The meta object id for the '<em>Date</em>' data type.
@@ -1060,7 +1079,7 @@ public interface BasePackage extends EPackage {
 	 * @see org.emona.model.base.impl.BasePackageImpl#getDate()
 	 * @generated
 	 */
-	int DATE = 35;
+	int DATE = 36;
 
 	/**
 	 * The meta object id for the '<em>Mail Address</em>' data type.
@@ -1070,7 +1089,7 @@ public interface BasePackage extends EPackage {
 	 * @see org.emona.model.base.impl.BasePackageImpl#getMailAddress()
 	 * @generated
 	 */
-	int MAIL_ADDRESS = 36;
+	int MAIL_ADDRESS = 37;
 
 	/**
 	 * Returns the meta object for class '{@link org.emona.model.base.MonObject <em>Mon Object</em>}'.
@@ -1526,6 +1545,16 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getContactgroup();
+
+	/**
+	 * Returns the meta object for class '{@link org.emona.model.base.ObjectContent <em>Object Content</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Object Content</em>'.
+	 * @see org.emona.model.base.ObjectContent
+	 * @generated
+	 */
+	EClass getObjectContent();
 
 	/**
 	 * Returns the meta object for enum '{@link org.emona.model.base.Weekday <em>Weekday</em>}'.
@@ -2047,6 +2076,16 @@ public interface BasePackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONTACTGROUP = eINSTANCE.getContactgroup();
+
+		/**
+		 * The meta object literal for the '{@link org.emona.model.base.impl.ObjectContentImpl <em>Object Content</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.emona.model.base.impl.ObjectContentImpl
+		 * @see org.emona.model.base.impl.BasePackageImpl#getObjectContent()
+		 * @generated
+		 */
+		EClass OBJECT_CONTENT = eINSTANCE.getObjectContent();
 
 		/**
 		 * The meta object literal for the '{@link org.emona.model.base.Weekday <em>Weekday</em>}' enum.

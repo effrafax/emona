@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.emona.model.base.Attribute;
 
+import org.emona.model.base.ObjectContent;
 import org.emona.model.base.attributes.time.*;
 
 /**
@@ -111,6 +112,11 @@ public class TimeAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseNumericDateRange(NumericDateRange object) {
 			return createNumericDateRangeAdapter();
+		}
+
+		@Override
+		public Adapter caseObjectContent(ObjectContent object) {
+			return createObjectContentAdapter();
 		}
 
 		@Override
@@ -246,6 +252,20 @@ public class TimeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNumericDateRangeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.emona.model.base.ObjectContent <em>Object Content</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.emona.model.base.ObjectContent
+	 * @generated
+	 */
+	public Adapter createObjectContentAdapter() {
 		return null;
 	}
 

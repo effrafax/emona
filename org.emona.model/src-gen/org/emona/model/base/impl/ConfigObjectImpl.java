@@ -15,12 +15,17 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.emona.model.base.Attribute;
 import org.emona.model.base.BasePackage;
+import org.emona.model.base.CommentLine;
 import org.emona.model.base.ConfigObject;
+import org.emona.model.base.ObjectContent;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -98,7 +103,7 @@ public class ConfigObjectImpl extends InfoObjectImpl implements ConfigObject {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Attribute> attr;
+	protected EList<ObjectContent> attr;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -131,10 +136,10 @@ public class ConfigObjectImpl extends InfoObjectImpl implements ConfigObject {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Attribute> getAttr() {
+	public EList<ObjectContent> getAttr() {
 		if (attr == null) {
-			attr = new EObjectContainmentEList<Attribute>(Attribute.class,
-					this, BasePackage.CONFIG_OBJECT__ATTR);
+			attr = new EObjectContainmentEList<ObjectContent>(
+					ObjectContent.class, this, BasePackage.CONFIG_OBJECT__ATTR);
 		}
 		return attr;
 	}
@@ -185,7 +190,7 @@ public class ConfigObjectImpl extends InfoObjectImpl implements ConfigObject {
 		switch (featureID) {
 		case BasePackage.CONFIG_OBJECT__ATTR:
 			getAttr().clear();
-			getAttr().addAll((Collection<? extends Attribute>) newValue);
+			getAttr().addAll((Collection<? extends ObjectContent>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

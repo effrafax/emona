@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.ContactGroupName;
 
+import org.emona.model.base.impl.NameAttributeImpl;
 import org.emona.model.base.impl.ValueAttributeImpl;
 
 /**
@@ -27,7 +28,7 @@ import org.emona.model.base.impl.ValueAttributeImpl;
  *
  * @generated
  */
-public class ContactGroupNameImpl extends ValueAttributeImpl implements
+public class ContactGroupNameImpl extends NameAttributeImpl implements
 		ContactGroupName {
 	/**
 	 * The default value of the '{@link #getToken() <em>Token</em>}' attribute.

@@ -24,6 +24,7 @@ import org.emona.model.base.ServiceState;
 import org.emona.model.base.ServiceStateValue;
 import org.emona.model.base.attributes.AttributesPackage;
 import org.emona.model.base.attributes.ServiceNotificationFailureCriteria;
+import org.emona.model.base.impl.ObjectContentImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +42,7 @@ import org.emona.model.base.attributes.ServiceNotificationFailureCriteria;
  *
  * @generated
  */
-public class ServiceNotificationFailureCriteriaImpl extends EObjectImpl
+public class ServiceNotificationFailureCriteriaImpl extends ObjectContentImpl
 		implements ServiceNotificationFailureCriteria {
 	/**
 	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
